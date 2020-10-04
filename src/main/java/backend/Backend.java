@@ -5,8 +5,8 @@ import java.sql.*;
 public class Backend {
 
     public void call() throws SQLException {
-        final String fileName = "CMS.db";
-        final String completePath = System.getProperty("user.home") + "\\JFXdb\\" + fileName;
+        final String fileName = "CMS";
+        final String completePath = System.getProperty("user.home") + "\\CMSdb\\" + fileName;
 
 
         Connection con = DriverManager.getConnection("jdbc:h2:file:\\" + completePath + ";", "sa", "");
