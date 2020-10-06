@@ -6,7 +6,7 @@ public class Backend {
 
     public void call() throws SQLException {
         final String fileName = "CMS.db";
-        final String completePath = System.getProperty("user.home") + "\\JFXdb\\" + fileName;
+        final String completePath = System.getProperty("user.home") + "\\CMSdb\\" + fileName;
 
 
         Connection con = DriverManager.getConnection("jdbc:h2:file:\\" + completePath + ";", "sa", "");
@@ -14,13 +14,18 @@ public class Backend {
 
 
         stm.execute("CREATE TABLE redbulls (id int(3))");
-        stm.execute("INSERT INTO redbulls (id) values '123';");
+        stm.execute("INSERT INTO redbulls (id) values ('123');");
 
         ResultSet rs = stm.executeQuery("SELECT * FROM redbulls");
 
         while (rs.next()) {
             System.out.println(rs.getString("id"));
         }
+    }
+
+    public  int add( int i, int i1) {
+        return i1 + i;
+
     }
 
 
