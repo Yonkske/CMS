@@ -1,4 +1,4 @@
+#Files and Dirs not to be staged in git commits
+
 .idea
 .project
-/target/
-*.iml
