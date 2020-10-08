@@ -24,27 +24,27 @@ public class User {
         return isAdmin;
     }
 
-    public static boolean checkIsAdmin(String userName){
+    public static boolean checkIsAdmin(String userName) {
 
         return true;
     }
 
-    public static boolean deleteUser(String userName){
+    public static boolean deleteUser(String userName) {
 
         return true;
     }
 
-    public static boolean changePassword(String userName, String newPassword){
+    public static boolean changePassword(String userName, String newPassword) {
 
         return true;
     }
 
-    public static boolean changePassword(String userName, String oldPassword, String newPassword){
+    public static boolean changePassword(String userName, String oldPassword, String newPassword) {
 
         return true;
     }
 
-    public static boolean logOut(){
+    public static boolean logOut() {
 
         return true;
     }
