@@ -1,10 +1,12 @@
 package backend.usability;
 
+import backend.database.DbCallerUser;
+
 public class User {
 
     private final String userName;
     private String name;
-    private String surName;
+    private String surname;
     private String password;
     private boolean isAdmin;
     private boolean isInitial;
@@ -21,11 +23,12 @@ public class User {
     private User(String userName, String name, String surname, String password, boolean isAdmin, boolean isInitial) {
         this.userName = userName;
         this.name = name;
-        this.surName = surname;
+        this.surname = surname;
         this.password = password;
         this.isAdmin = isAdmin;
         this.isInitial = isInitial;
     }
+
 
     /**
      * Within this method a user can be read out of the database.
@@ -34,7 +37,7 @@ public class User {
      */
     public static User getUser(String userName) {
 
-        User existingUser = null;
+        User existingUser = DbCallerUser.getUser(userName);
         return existingUser;
     }
 
@@ -62,17 +65,23 @@ public class User {
      */
     public static boolean changeAdmin(String userName, boolean isAdmin) {
 
-        return isAdmin;
+        User userToChange = getUser(userName);
+
+        userToChange.isAdmin = isAdmin;
+
+        return userToChange.isAdmin;
     }
 
     /**
-     * Within this method it can be checked whether the user is an admin or not
+     * Within this method it can be checked whether the user is an admin or not.
      * @param userName - username of the user whose authorisation should be checked
      * @return true - if true returns he is admin, if false returns he is just a normal user
      */
     public static boolean checkIsAdmin(String userName) {
 
-        return true;
+        User userToCheckAdmin = getUser(userName);
+
+        return userToCheckAdmin.isAdmin;
     }
 
     /**
@@ -82,7 +91,14 @@ public class User {
      */
     public static boolean deleteUser(String userName) {
 
-        return true;
+        User userToDelete = getUser(userName);
+
+        if (DbCallerUser.deleteUser(userToDelete)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -93,7 +109,7 @@ public class User {
      */
     public boolean changePassword(String userName, String newPassword) {
 
-        User userToChangePwByAdmin = getUser(userName);
+        org.h2.engine.User userToChangePwByAdmin = getUser(userName);
 
         if (userToChangePwByAdmin.userName == userName) {
             userToChangePwByAdmin.password = newPassword;
@@ -116,7 +132,7 @@ public class User {
     public boolean changePassword(String userName, String oldPassword, String newPassword) {
     // TODO: functionality when oldPassword != userToChangePw.password
 
-        User userToChangePw = getUser(userName);
+        org.h2.engine.User userToChangePw = getUser(userName);
 
         if (userToChangePw.userName == userName & userToChangePw.password == oldPassword) {
             userToChangePw.password = newPassword;
