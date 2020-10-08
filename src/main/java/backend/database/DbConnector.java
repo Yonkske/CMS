@@ -37,7 +37,7 @@ public class DbConnector {
      * @throws SQLException
      */
     private void createTableCit() throws SQLException{
-        String query = "Create Table CIT "
+        String query = "Create Table IF NOT EXISTS CIT "
                 + "(Type_ID int NOT NULL, "
                 + "Type_Name varchar(255) NOT NULL, "
                 + "Attribute_Name_1 varchar(255), "
@@ -59,7 +59,7 @@ public class DbConnector {
      * @throws SQLException
      */
     private void createTableCir() throws SQLException{
-        String query = "Create Table CIR "
+        String query = "Create Table IF NOT EXISTS CIR "
                 + "(Item_ID int NOT NULL, "
                 + "Type_ID int NOT NULL, "
                 + "Record_Name varchar(255) NOT NULL, "
@@ -83,7 +83,7 @@ public class DbConnector {
      * @throws SQLException
      */
     private void createTableUser() throws SQLException{
-        String query = "Create Table User "
+        String query = "Create Table IF NOT EXISTS User "
                 + "(User_Name varchar(255) NOT NULL, "
                 + "Password varchar(255) NOT NULL, "
                 + "Is_Initial boolean DEFAULT 'true', "
@@ -95,4 +95,5 @@ public class DbConnector {
         Statement stmt = con.createStatement();
         stmt.execute(query);
     }
+
 }
