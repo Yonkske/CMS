@@ -1,4 +1,4 @@
 package backend.database;
 
-public class DbCallerCit {
+public class DbCallerCit extends DbConnector{
 }
