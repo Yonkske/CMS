@@ -17,30 +17,30 @@ public class DbCallerUser {
 
     /**
      * Method to write a new user into the database.
-     * @param user - this user should be saved
+     * @param userToCreate - this user should be saved
      * @return boolean - if true: user was saved, if false: user can´t be saved
      */
-    public static boolean createUser(User user) {
+    public static boolean createUser(User userToCreate) {
 
         return true;
     }
 
     /**
      * Method to update a user being saved in the database.
-     * @param user - this user should be updated
+     * @param userToUpdate - this user should be updated
      * @return boolean - if true: user was updated, if false: user can´t be updated
      */
-    public static boolean updateUser(User user) {
+    public static boolean updateUser(User userToUpdate) {
 
         return true;
     }
 
     /**
      * Method to delete user from the database.
-     * @param user - this user should be deleted
+     * @param userToDelete - this user should be deleted
      * @return boolean - if true: user was deleted, if false: user can´t be deleted
      */
-    public static boolean deleteUser(User user) {
+    public static boolean deleteUser(User userToDelete) {
 
         return true;
     }
