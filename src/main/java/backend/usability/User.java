@@ -3,11 +3,11 @@ package backend.usability;
 public class User {
 
     private final String userName;
-    private static String name;
-    private static String surName;
-    private static String password;
-    private static boolean isAdmin;
-    private static boolean isInitial;
+    private String name;
+    private String surName;
+    private String password;
+    private boolean isAdmin;
+    private boolean isInitial;
 
     /**
      * Its the constructor for this class.
@@ -93,7 +93,7 @@ public class User {
      */
     public boolean changePassword(String userName, String newPassword) {
 
-        User userToChangePwByAdmin= getUser(userName);
+        User userToChangePwByAdmin = getUser(userName);
 
         if (userToChangePwByAdmin.userName == userName) {
             userToChangePwByAdmin.password = newPassword;
@@ -116,7 +116,7 @@ public class User {
     public boolean changePassword(String userName, String oldPassword, String newPassword) {
     // TODO: functionality when oldPassword != userToChangePw.password
 
-        User userToChangePw= getUser(userName);
+        User userToChangePw = getUser(userName);
 
         if (userToChangePw.userName == userName & userToChangePw.password == oldPassword) {
             userToChangePw.password = newPassword;
