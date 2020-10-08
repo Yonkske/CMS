@@ -1,7 +1,7 @@
 package backend.usability;
 
 public class User {
-    //private static Object User;
+
     private static String userName;
     private static String name;
     private static String surName;
