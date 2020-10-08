@@ -29,7 +29,6 @@ public class User {
         this.isInitial = isInitial;
     }
 
-
     /**
      * Within this method a user can be read out of the database.
      * @param userName - the username of the user which should be got
