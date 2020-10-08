@@ -98,17 +98,18 @@ public class DbConnector {
         stmt.execute(query);
     }
 
+    /**
+     * Inserts a user with username = "admin" and password = "admin" into the USER-table
+     * if there are no users yet
+     *
+     * @throws SQLException
+     */
     private void insertFirstUser() throws SQLException{
-        String query = "Insert into USER values ("
-                + "USER_NAME = \"admin\", "
-                + "PASSWORD = \"admin\", "
-                + "IS_ADMIN = true)";
-
-        String query1 = "INSERT INTO USER "
+        String query = "INSERT INTO USER "
                 + "SELECT \'admin\', \'admin\', false, true, \'\', \'\'"
                 + "WHERE NOT EXISTS (SELECT * FROM USER)";
 
-        stmt.execute(query1);
+        stmt.execute(query);
     }
 
 }
