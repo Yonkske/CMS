@@ -109,7 +109,7 @@ public class User {
      */
     public boolean changePassword(String userName, String newPassword) {
 
-        org.h2.engine.User userToChangePwByAdmin = getUser(userName);
+        User userToChangePwByAdmin = getUser(userName);
 
         if (userToChangePwByAdmin.userName == userName) {
             userToChangePwByAdmin.password = newPassword;
@@ -132,7 +132,7 @@ public class User {
     public boolean changePassword(String userName, String oldPassword, String newPassword) {
     // TODO: functionality when oldPassword != userToChangePw.password
 
-        org.h2.engine.User userToChangePw = getUser(userName);
+        User userToChangePw = getUser(userName);
 
         if (userToChangePw.userName == userName & userToChangePw.password == oldPassword) {
             userToChangePw.password = newPassword;
