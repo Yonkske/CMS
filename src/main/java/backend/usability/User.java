@@ -2,7 +2,7 @@ package backend.usability;
 
 public class User {
 
-    private static String userName;
+    private final String userName;
     private static String name;
     private static String surName;
     private static String password;
@@ -19,7 +19,12 @@ public class User {
      * @param isInitial - specification if the password is that the admin gave the future user or if he already changed his password
      */
     public User(String userName, String name, String surname, String password, boolean isAdmin, boolean isInitial) {
-
+        this.userName = userName;
+        this.name = name;
+        this.surName = surname;
+        this.password = password;
+        this.isAdmin = isAdmin;
+        this.isInitial = isInitial;
     }
 
     /**
