@@ -6,7 +6,7 @@ public class DbConnector {
 
     static Connection con;
     static Statement stmt;
-    private static final String FILE_NAME = "CMS.db";
+    private static final String FILE_NAME = "CMS";
     private static final String COMPLETE_PATH = System.getProperty("user.home") + "\\CMSdb\\" + FILE_NAME;
     private static final String URL = "jdbc:h2:file:\\" + COMPLETE_PATH + ";";
 
@@ -106,7 +106,7 @@ public class DbConnector {
      */
     private void insertFirstUser() throws SQLException{
         String query = "INSERT INTO USER "
-                + "SELECT \'admin\', \'admin\', false, true, \'\', \'\'"
+                + "SELECT 'admin', 'admin', false, true, '', ''"
                 + "WHERE NOT EXISTS (SELECT * FROM USER)";
 
         stmt.execute(query);
