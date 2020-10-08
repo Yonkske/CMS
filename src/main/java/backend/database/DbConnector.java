@@ -4,7 +4,8 @@ import java.sql.*;
 
 public class DbConnector {
 
-    private static Connection con;
+    static Connection con;
+    static Statement stmt;
     private static final String FILE_NAME = "CMS.db";
     private static final String COMPLETE_PATH = System.getProperty("user.home") + "\\CMSdb\\" + FILE_NAME;
     private static final String URL = "jdbc:h2:file:\\" + COMPLETE_PATH + ";";
@@ -17,6 +18,7 @@ public class DbConnector {
     public void startConnection() throws SQLException {
 
         con = DriverManager.getConnection(URL, "sa", "");
+        stmt = con.createStatement();
 
         initializeDb();
     }
@@ -31,6 +33,7 @@ public class DbConnector {
         createTableCit();
         createTableCir();
         createTableUser();
+        insertFirstUser();
     }
 
     /**
@@ -51,7 +54,6 @@ public class DbConnector {
                 + "Attribute_Name_7 varchar(255), "
                 + "PRIMARY KEY (Type_ID))";
 
-        Statement stmt = con.createStatement();
         stmt.execute(query);
     }
 
@@ -75,7 +77,6 @@ public class DbConnector {
                 + "PRIMARY KEY (Item_ID), "
                 + "FOREIGN KEY (Type_ID) REFERENCES CIT(Type_ID))";
 
-        Statement stmt = con.createStatement();
         stmt.execute(query);
     }
 
@@ -94,8 +95,20 @@ public class DbConnector {
                 + "Surname varchar(255), "
                 + "PRIMARY KEY (User_Name))";
 
-        Statement stmt = con.createStatement();
         stmt.execute(query);
+    }
+
+    private void insertFirstUser() throws SQLException{
+        String query = "Insert into USER values ("
+                + "USER_NAME = \"admin\", "
+                + "PASSWORD = \"admin\", "
+                + "IS_ADMIN = true)";
+
+        String query1 = "INSERT INTO USER "
+                + "SELECT \'admin\', \'admin\', false, true, \'\', \'\'"
+                + "WHERE NOT EXISTS (SELECT * FROM USER)";
+
+        stmt.execute(query1);
     }
 
 }
