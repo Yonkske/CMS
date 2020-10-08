@@ -5,9 +5,9 @@ import java.sql.*;
 public class DbConnector {
 
     private static Connection con;
-    private final String FILE_NAME = "CMS.db";
-    private final String COMPLETE_PATH = System.getProperty("user.home") + "\\CMSdb\\" + FILE_NAME;
-    private final String URL = "jdbc:h2:file:\\" + COMPLETE_PATH + ";";
+    private static final String FILE_NAME = "CMS.db";
+    private static final String COMPLETE_PATH = System.getProperty("user.home") + "\\CMSdb\\" + FILE_NAME;
+    private static final String URL = "jdbc:h2:file:\\" + COMPLETE_PATH + ";";
 
     /**
      * Starts the connection to the integrated h2-database
@@ -17,6 +17,8 @@ public class DbConnector {
     public void startConnection() throws SQLException {
 
         con = DriverManager.getConnection(URL, "sa", "");
+
+        initializeDb();
     }
 
     /**
