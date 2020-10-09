@@ -1,5 +1,4 @@
 package backend.database;
-public class DbCallerUser {
 
 
 import backend.usability.User;
@@ -14,6 +13,7 @@ public class DbCallerUser extends DbConnector{
      * @return userToGet - returns the user from the database
      */
     public User getUser(String userName) {
+
 
         return null;
     }

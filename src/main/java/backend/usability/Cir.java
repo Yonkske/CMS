@@ -2,12 +2,12 @@ package backend.usability;
 
 public class Cir {
 
+    // FIXME: change DbCallers to non-static
   private int id;
   private Cit cit;
   private String[] attribute;
   private String sCirName;
   private String sCitName;
-
 
     /**
      *

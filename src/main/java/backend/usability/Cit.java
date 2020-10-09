@@ -5,6 +5,7 @@ import backend.database.DbCallerCit;
 
 public class Cit {
 
+    // FIXME: change DbCallers to non-static
     private int id;
     private String cit_bezeichnung;
     private String[] attributes;
@@ -57,7 +58,7 @@ public class Cit {
      * @return a number of records which are stored in the database
      */
     public static int getCount(){                               //Methode des DBCallerCit wird aufgerufen Anzahl an Einträgen zu zeigen.
-        return DbCallerCit.getCount();
+        return DbCallerCit.getCitCount();
     }
 
 }

@@ -4,6 +4,7 @@ import backend.database.DbCallerUser;
 
 public class User {
 
+    // FIXME: change DbCallers to non-static
     private final String userName;
     private String name;
     private String surname;
@@ -34,9 +35,10 @@ public class User {
      * @param userName - the username of the user which should be got
      * @return User - return of the user that should be got
      */
-    public static User getUser(String userName) {
+    public User getUser(String userName) {
 
-        User existingUser = DbCallerUser.getUser(userName);
+        // TODO: get better solution
+        User existingUser = new DbCallerUser().getUser(userName);
         return existingUser;
     }
 
@@ -49,11 +51,12 @@ public class User {
      * @param isAdmin - boolean: if true that user is an admin else hes not
      * @return newUser - the returned new user
      */
-    public static User create(String userName, String name, String surname, String password, boolean isAdmin) {
+    public User create(String userName, String name, String surname, String password, boolean isAdmin) {
 
         User newUser = new User(userName, name, surname, password, isAdmin, true);
 
-        DbCallerUser.createUser(newUser);
+        // TODO: get better solution
+        new DbCallerUser().insertUser(newUser);
 
         return newUser;
     }
@@ -64,7 +67,7 @@ public class User {
      * @param isAdmin - former state of authorisation (expected: false = no admin)
      * @return isAdmin - new state of authorisation (expected: true = admin)
      */
-    public static boolean changeAdmin(String userName, boolean isAdmin) {
+    public boolean changeAdmin(String userName, boolean isAdmin) {
 
         User userToChange = getUser(userName);
 
@@ -78,7 +81,7 @@ public class User {
      * @param userName - username of the user whose authorisation should be checked
      * @return true - if true returns he is admin, if false returns he is just a normal user
      */
-    public static boolean checkIsAdmin(String userName) {
+    public boolean checkIsAdmin(String userName) {
 
         User userToCheckAdmin = getUser(userName);
 
@@ -90,11 +93,12 @@ public class User {
      * @param userName - username of the user which should be deleted
      * @return true - if true returns the user was deleted, if false returns the user could not be deleted
      */
-    public static boolean deleteUser(String userName) {
+    public boolean deleteUser(String userName) {
 
         User userToDelete = getUser(userName);
 
-        if (DbCallerUser.deleteUser(userToDelete)) {
+        // TODO: get better solution
+        if (new DbCallerUser().deleteUser(userToDelete)) {
             return true;
         }
         else {
@@ -148,7 +152,7 @@ public class User {
      * With this method the user can log out.
      * @return true
      */
-    public static boolean logOut() {
+    public boolean logOut() {
 
         return true;
     }
