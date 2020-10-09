@@ -3,6 +3,8 @@ package backend.usability;
 
 import backend.database.DbCallerCit;
 
+import java.util.ArrayList;
+
 public class Cit {
 
     // FIXME: change DbCallers to non-static
@@ -33,23 +35,23 @@ public class Cit {
      * @param id of the CIT to be shown
      * @return the CIT matching the id
      */
-    public Cit show(int id){ return DbCallerCit.getCit(id);}                            //Methode des DBCallerCit wird aufgerufen um Eintrag zu holen.
+    public Cit show(int id){ return new DbCallerCit().getCit(id);}                            //Methode des DBCallerCit wird aufgerufen um Eintrag zu holen.
 
     /**
      *Delete the CIT of the given ID
      *
-     * @param id of the CIT to be deleted
+     * @param citToDelete - the CIT to be deleted
      * @return boolean either it was successfully or not
      */
-    public boolean delete(int id){ return DbCallerCit.deleteCit(id);}                    //Methode des DBCallerCit wird aufgerufen um Eintrag zu löschen
+    public boolean delete(Cit citToDelete){ return new DbCallerCit().deleteCit(citToDelete);}                    //Methode des DBCallerCit wird aufgerufen um Eintrag zu löschen
 
     /**
      *Shows all CIT
      *
      * @return a list of CIT which are stored in the database
      */
-    public static Cit[] showAll(){                              //Methode des DBCallerCit wird aufgerufen um alle Einträge zu zeigen.
-        return DbCallerCit.getAllCits();
+    public static ArrayList<Cit> showAll(){                              //Methode des DBCallerCit wird aufgerufen um alle Einträge zu zeigen.
+        return new DbCallerCit().getAllCits();
     }
 
     /**
@@ -58,7 +60,7 @@ public class Cit {
      * @return a number of records which are stored in the database
      */
     public static int getCount(){                               //Methode des DBCallerCit wird aufgerufen Anzahl an Einträgen zu zeigen.
-        return DbCallerCit.getCitCount();
+        return new DbCallerCit().getCitCount();
     }
 
 }
