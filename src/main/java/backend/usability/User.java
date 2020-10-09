@@ -117,8 +117,7 @@ public class User {
             userToChangePwByAdmin.isInitial = true;
 
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
@@ -139,8 +138,7 @@ public class User {
             userToChangePw.password = newPassword;
 
             return true;
-        }
-        else{
+        } else {
             return false;
         }
 

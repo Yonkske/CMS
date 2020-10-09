@@ -9,7 +9,7 @@ public class DbCallerUser {
      * @param userName - this user should be got
      * @return userToGet - returns the user from the database
      */
-    public static backend.usability.User getUser (String userName) {
+    public static backend.usability.User getUser(String userName) {
 
         backend.usability.User userToGet = null;
         return userToGet;
