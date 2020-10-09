@@ -53,6 +53,8 @@ public class User {
 
         User newUser = new User(userName, name, surname, password, isAdmin, true);
 
+        DbCallerUser.createUser(newUser);
+
         return newUser;
     }
 

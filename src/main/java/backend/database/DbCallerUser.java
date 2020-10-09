@@ -9,9 +9,9 @@ public class DbCallerUser {
      * @param userName - this user should be got
      * @return userToGet - returns the user from the database
      */
-    public static User getUser (String userName) {
+    public static backend.usability.User getUser (String userName) {
 
-        User userToGet = null;
+        backend.usability.User userToGet = null;
         return userToGet;
     }
 
@@ -20,7 +20,7 @@ public class DbCallerUser {
      * @param userToCreate - this user should be saved
      * @return boolean - if true: user was saved, if false: user can´t be saved
      */
-    public static boolean createUser(User userToCreate) {
+    public static boolean createUser(backend.usability.User userToCreate) {
 
         return true;
     }
@@ -30,7 +30,7 @@ public class DbCallerUser {
      * @param userToUpdate - this user should be updated
      * @return boolean - if true: user was updated, if false: user can´t be updated
      */
-    public static boolean updateUser(User userToUpdate) {
+    public static boolean updateUser(backend.usability.User userToUpdate) {
 
         return true;
     }
@@ -40,7 +40,7 @@ public class DbCallerUser {
      * @param userToDelete - this user should be deleted
      * @return boolean - if true: user was deleted, if false: user can´t be deleted
      */
-    public static boolean deleteUser(User userToDelete) {
+    public static boolean deleteUser(backend.usability.User userToDelete) {
 
         return true;
     }
