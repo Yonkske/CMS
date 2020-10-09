@@ -23,7 +23,7 @@ public class DbCallerUser extends DbConnector{
 
     public boolean deleteUser(User user) {
 
-        return true;
+        return false;
     }
 
     public ArrayList<User> getAllUsers() {
