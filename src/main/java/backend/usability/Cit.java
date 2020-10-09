@@ -6,7 +6,7 @@ import backend.database.DbCallerCit;
 public class Cit {
 
     private int id;
-    private String cit_bezeichnung;                             //
+    private String cit_bezeichnung;
     private String[] attributes;
 
     /** Constructor to create an object of CIT
@@ -20,12 +20,10 @@ public class Cit {
         cit_bezeichnung = attributeList[0];                     //Die Bezeichnung des CIT steht an 2. Stelle im Array
         attributes[1] = "Name";                                 //Das Attribut Name gibt es in jedem CIT
 
-
         for (int i = 2; i <= attributeList.length; i++) {       //Alle anderen Attribute werden über den Übergabeparameter weitergegeben.
             this.attributes[i] = attributeList[i-1];
             System.out.println(attributes[i]);                  //Hilfestellung zur Überprüfung der Attribute
         }
-
     }
 
     /**
@@ -34,10 +32,7 @@ public class Cit {
      * @param id of the CIT to be shown
      * @return the CIT matching the id
      */
-    public Cit show(int id){
-        return DbCallerCit.getCit(id);                          //Methode des DBCallerCit wird aufgerufen um Eintrag zu holen.
-
-    }
+    public Cit show(int id){ return DbCallerCit.getCit(id);}                            //Methode des DBCallerCit wird aufgerufen um Eintrag zu holen.
 
     /**
      *Delete the CIT of the given ID
@@ -45,9 +40,7 @@ public class Cit {
      * @param id of the CIT to be deleted
      * @return boolean either it was successfully or not
      */
-    public boolean delete(int id){
-        return DbCallerCit.deleteCit(id);                       //Methode des DBCallerCit wird aufgerufen um Eintrag zu löschen.
-    }
+    public boolean delete(int id){ return DbCallerCit.deleteCit(id);}                    //Methode des DBCallerCit wird aufgerufen um Eintrag zu löschen
 
     /**
      *Shows all CIT
