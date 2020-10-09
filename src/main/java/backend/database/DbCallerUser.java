@@ -1,4 +1,6 @@
 package backend.database;
+public class DbCallerUser {
+
 
 import backend.usability.User;
 
@@ -50,5 +52,4 @@ public class DbCallerUser extends DbConnector{
 
         return null;
     }
-
 }
