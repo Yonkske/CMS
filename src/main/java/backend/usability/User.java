@@ -148,6 +148,30 @@ public class User {
 
     }
 
+    public String getUserName() {
+        return this.userName;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getSurName() {
+        return this.surname;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public boolean getIsAdmin() {
+        return this.isAdmin;
+    }
+
+    public boolean getIsInitial() {
+        return this.isInitial;
+    }
+
     /**
      * With this method the user can log out.
      * @return true
