@@ -5,109 +5,83 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.CIREdit">
-   <children>
-      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <HBox alignment="CENTER" cache="true" spacing="5.0">
-               <children>
-                  <Label id="idLbl" text="ID" />
-                  <TextField id="idTf" prefWidth="210.0"/>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" top="20.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER" cache="true" spacing="5.0">
-               <children>
-                  <Label id="citLbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="CIT" />
-                  <TextField id="citTf" prefWidth="210.0"/>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER" cache="true" prefHeight="34.0" prefWidth="187.0" spacing="5.0">
-               <children>
-                  <Label id="nameLbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Name" />
-                  <TextField id="nameTf" prefWidth="210.0"/>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER" cache="true">
-               <children>
-                  <Label id="attribut1Lbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Attribut" />
-                  <TextField id="attribut1Tf" prefWidth="210.0" />
-               </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER" cache="true" spacing="5.0">
-               <children>
-                  <Label id="attribut2Lbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Attribut" />
-                  <TextField id="attribut2Tf" prefWidth="210.0"/>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER" cache="true" spacing="5.0">
-               <children>
-                  <Label id="attribut3Lbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Attribut" />
-                  <TextField id="attribut3Tf" prefWidth="210.0"/>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER" cache="true" spacing="5.0">
-               <children>
-                  <Label id="attribut4Lbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Attribut" />
-                  <TextField id="attribut4Tf" prefWidth="210.0"/>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER" cache="true" spacing="5.0">
-               <children>
-                  <Label id="attribut5Lbl"alignment="BOTTOM_LEFT" prefWidth="50.0" text="Attribut" />
-                  <TextField id="attribut5Tf" prefWidth="210.0"/>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER" cache="true" spacing="5.0">
-               <children>
-                  <Label id="attribut6Lbl" alignment="BOTTOM_LEFT" prefWidth="50.0"text="Attribut" />
-                  <TextField id="attribut6Tf" prefWidth="210.0"/>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER" cache="true" spacing="5.0">
-               <children>
-                  <Label id="attribut7Lbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Attribut" />
-                  <TextField id="attribut7Tf" prefWidth="210.0"/>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER_RIGHT" cache="true" spacing="5.0">
-               <children>
-                  <Button id="submitBtn" mnemonicParsing="false" text="Speichern" />
-                  <Button id="chancelBtn" mnemonicParsing="false" text="Abbrechen" />
-               </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
-               </VBox.margin>
-            </HBox>
-         </children>
-      </VBox>
-   </children>
+   <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="20.0" />
+         </VBox.margin>
+         <Label id="idLbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="ID" />
+         <TextField id="idTf" disable="true" editable="false" prefWidth="210.0" />
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label id="citLbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="CIT" />
+         <TextField id="citTf" disable="true" editable="false" prefWidth="210.0" />
+      </HBox>
+      <HBox alignment="CENTER" cache="true" prefHeight="34.0" prefWidth="187.0" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label id="nameLbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Name" />
+         <TextField id="nameTf" editable="false" prefWidth="210.0" />
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label id="attribut1Lbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Attribut" />
+         <TextField id="attribut1Tf" prefWidth="210.0" />
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label id="attribut2Lbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Attribut" />
+         <TextField id="attribut2Tf" prefWidth="210.0" />
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label id="attribut3Lbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Attribut" />
+         <TextField id="attribut3Tf" prefWidth="210.0" />
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label id="attribut4Lbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Attribut" />
+         <TextField id="attribut4Tf" prefWidth="210.0" />
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label id="attribut5Lbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Attribut" />
+         <TextField id="attribut5Tf" prefWidth="210.0" />
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label id="attribut6Lbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Attribut" />
+         <TextField id="attribut6Tf" prefWidth="210.0" />
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label id="attribut7Lbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Attribut" />
+         <TextField id="attribut7Tf" prefWidth="210.0" />
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" right="10.0" top="5.0" />
+         </VBox.margin>
+         <Button id="submitBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Speichern" />
+         <Button id="chancelBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Abbrechen" />
+      </HBox>
+   </VBox>
 </AnchorPane>
