@@ -9,10 +9,14 @@ import java.util.ArrayList;
 
 public class DbCallerCir extends DbConnector{
 
-
+    /**
+     *
+     * @param id - Int ID of the CIR's
+     * @return cirName - the CIR Objekt
+     * @throws SQLException
+     */
     public Cir getCirById(int id) throws SQLException {
 
-        String sQuery = "SELECT * FROM CIR WHERE ITEM_ID = 1"; // SQL Abfrage der DB
         String[] sCirArray = new String[10]; // String zum Speichern der Resultset Daten
         ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE ITEM_ID = " + id); // SQL Abfrage
 
