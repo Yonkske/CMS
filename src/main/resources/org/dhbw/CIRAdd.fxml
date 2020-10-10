@@ -4,27 +4,71 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.CIRAdd">
-   <Label id="idLbl" layoutX="230.0" layoutY="43.0" text="ID" />
+   <VBox prefHeight="400.0" prefWidth="600.0">
+      <children>
+         <HBox prefHeight="43.0" prefWidth="207.0">
+            <children>
+               <Label id="idLbl" text="ID" />
+               <TextField id="idTf" />
+            </children>
+         </HBox>
+         <HBox prefHeight="44.0" prefWidth="190.0">
+            <children>
 
-   <Label id="citLbl" layoutX="222.0" layoutY="75.0" text="CIT" />
-   <Label id="nameLbl" layoutX="217.0" layoutY="108.0" text="Name" />
-   <Label id="attribut1Lbl" layoutX="210.0" layoutY="143.0" text="Attribut" />
-   <Label id="attibut2Lbl" layoutX="210.0" layoutY="180.0" text="Attribut" />
-   <Label id="attribut3Lbl" layoutX="210.0" layoutY="213.0" text="Attribut" />
-   <Label id="attribut4Lbl" layoutX="210.0" layoutY="246.0" text="Attribut" />
-   <Label id="attribut5Lbl" layoutX="210.0" layoutY="278.0" text="Attribut" />
-   <Label id="attribut6Lbl" layoutX="210.0" layoutY="308.0" text="Attribut" />
-   <Label id="attribut7Lbl" layoutX="210.0" layoutY="343.0" text="Attribut" />
-   <TextField id="idTf" layoutX="267.0" layoutY="39.0" />
-   <ChoiceBox id="citChoicebox" layoutX="267.0" layoutY="71.0" prefWidth="150.0" />
-   <TextField id="attribut1Tf" layoutX="267.0" layoutY="139.0" />
-   <TextField id="nameTf" layoutX="267.0" layoutY="104.0" />
-   <TextField id="attribut2Tf" layoutX="267.0" layoutY="176.0" />
-   <TextField id="attribut3Tf" layoutX="268.0" layoutY="209.0" />
-   <TextField id="attribut4Tf" layoutX="268.0" layoutY="242.0" />
-   <TextField id="attribut5Tf" layoutX="268.0" layoutY="274.0" />
-   <TextField id="attribut6Tf" layoutX="268.0" layoutY="304.0" />
-   <TextField id="attribut7Tf" layoutX="267.0" layoutY="339.0" />
-   <Button id="submitBtn" layoutX="430.0" layoutY="339.0" mnemonicParsing="false" text="Speichern" />
-   <Button id="chancelBtn" layoutX="506.0" layoutY="339.0" mnemonicParsing="false" text="Abbrechen" />
+               <Label id="citLbl" text="CIT" />
+               <ChoiceBox id="citChoicebox" prefWidth="150.0" />
+            </children>
+         </HBox>
+         <HBox prefHeight="48.0" prefWidth="202.0">
+            <children>
+               <Label id="nameLbl" text="Name" />
+               <TextField id="nameTf" />
+            </children>
+         </HBox>
+         <HBox prefHeight="46.0" prefWidth="193.0">
+            <children>
+               <Label id="attribut1Lbl" text="Attribut" />
+               <TextField id="attribut1Tf" />
+            </children>
+         </HBox>
+         <HBox prefHeight="35.0" prefWidth="196.0">
+            <children>
+               <Label id="attibut2Lbl" text="Attribut" />
+               <TextField id="attribut2Tf" />
+            </children>
+         </HBox>
+         <HBox prefHeight="42.0" prefWidth="191.0">
+            <children>
+               <Label id="attribut3Lbl" text="Attribut" />
+               <TextField id="attribut3Tf" />
+            </children>
+         </HBox>
+         <HBox prefHeight="42.0" prefWidth="193.0">
+            <children>
+               <Label id="attribut4Lbl" text="Attribut" />
+               <TextField id="attribut4Tf" />
+            </children>
+         </HBox>
+         <HBox prefHeight="40.0" prefWidth="185.0">
+            <children>
+               <Label id="attribut5Lbl" text="Attribut" />
+               <TextField id="attribut5Tf" />
+            </children>
+         </HBox>
+         <HBox prefHeight="38.0" prefWidth="193.0">
+            <children>
+               <Label id="attribut6Lbl" text="Attribut" />
+               <TextField id="attribut6Tf" />
+            </children>
+         </HBox>
+         <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+               <Label id="attribut7Lbl" text="Attribut" />
+               <TextField id="attribut7Tf" />
+               <Button id="submitBtn" mnemonicParsing="false" text="Speichern" />
+               <Button id="chancelBtn" mnemonicParsing="false" text="Abbrechen" />
+            </children>
+         </HBox>
+      </children>
+   </VBox>
 </AnchorPane>
