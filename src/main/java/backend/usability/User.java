@@ -4,7 +4,6 @@ import backend.database.DbCallerUser;
 
 public class User {
 
-    // FIXME: change DbCallers to non-static
     private final String userName;
     private String name;
     private String surname;
@@ -21,7 +20,7 @@ public class User {
      * @param isAdmin - specification if the future user is an admin
      * @param isInitial - specification if the password is that the admin gave the future user or if he already changed his password
      */
-    private User(String userName, String name, String surname, String password, boolean isAdmin, boolean isInitial) {
+    public User(String userName, String password, boolean isInitial, boolean isAdmin, String name, String surname) {
         this.userName = userName;
         this.name = name;
         this.surname = surname;
@@ -37,8 +36,7 @@ public class User {
      */
     public User getUser(String userName) {
 
-        // TODO: get better solution
-        User existingUser = new DbCallerUser().getUser(userName);
+        User existingUser = DbCallerUser.getUser(userName);
         return existingUser;
     }
 
@@ -53,10 +51,8 @@ public class User {
      */
     public User create(String userName, String name, String surname, String password, boolean isAdmin) {
 
-        User newUser = new User(userName, name, surname, password, isAdmin, true);
-
-        // TODO: get better solution
-        new DbCallerUser().insertUser(newUser);
+        User newUser = new User(userName, name, true, isAdmin, surname, password);
+        DbCallerUser.insertUser(newUser);
 
         return newUser;
     }
@@ -70,8 +66,9 @@ public class User {
     public boolean changeAdmin(String userName, boolean isAdmin) {
 
         User userToChange = getUser(userName);
-
         userToChange.isAdmin = isAdmin;
+
+        DbCallerUser.updateUser(userToChange);
 
         return userToChange.isAdmin;
     }
@@ -97,8 +94,7 @@ public class User {
 
         User userToDelete = getUser(userName);
 
-        // TODO: get better solution
-        if (new DbCallerUser().deleteUser(userToDelete)) {
+        if (DbCallerUser.deleteUser(userToDelete)) {
             return true;
         }
         else {
@@ -120,6 +116,7 @@ public class User {
             userToChangePwByAdmin.password = newPassword;
             userToChangePwByAdmin.isInitial = true;
 
+            DbCallerUser.updateUser(userToChangePwByAdmin);
             return true;
         } else {
             return false;
@@ -141,6 +138,7 @@ public class User {
         if (userToChangePw.userName == userName & userToChangePw.password == oldPassword) {
             userToChangePw.password = newPassword;
 
+            DbCallerUser.updateUser(userToChangePw);
             return true;
         } else {
             return false;
