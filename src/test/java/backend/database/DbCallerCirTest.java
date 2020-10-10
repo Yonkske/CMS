@@ -8,11 +8,11 @@ import java.sql.*;
 import java.sql.SQLException;
 
 public class DbCallerCirTest {
-    int id = 1;
+
     @Test
     public void getCirById () throws SQLException {
        new DbConnector().startConnection();
-        Assert.assertNotNull(new DbCallerCir().getCirById(id));
+        Assert.assertNotNull(new DbCallerCir().getCirById(1));
     }
     public void getCirById1 () throws SQLException {
 

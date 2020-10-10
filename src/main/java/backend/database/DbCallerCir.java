@@ -14,11 +14,12 @@ public class DbCallerCir extends DbConnector{
 
         String sQuery = "SELECT * FROM CIR WHERE ITEM_ID = 1"; // SQL Abfrage der DB
         String[] sCirArray = new String[10]; // String zum Speichern der Resultset Daten
-        ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE RECORD_NAME = 'Name';"); // SQL Abfrage
+        ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE ITEM_ID = " + id); // SQL Abfrage
 
+        rs.first();
         for(int i= 0; i <= 9; i++) // Übertragen des Result Sets auf ein Array
         {
-            sCirArray[i] = rs.getString(i);
+            sCirArray[i] = rs.getString(i+1);
         }
 
         Cir cirName; // initialisieren eines neuen Cir's

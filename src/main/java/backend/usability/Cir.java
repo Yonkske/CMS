@@ -1,7 +1,5 @@
 package backend.usability;
 
-import backend.database.DbCallerCir;
-
 import java.util.ArrayList;
 
 public class Cir {
@@ -10,8 +8,8 @@ public class Cir {
   private int id;
   private Cit cit;
   private String[] attribute;
-  private String sCirName;
-  private String sCitName;
+  private String name;
+  private String type; // TODO: change to Cit
 
     /**
      *
@@ -22,12 +20,13 @@ public class Cir {
         attribute = new String[7];
 
         // TODO: figure out if cit comes as object or String
-        sCitName = attributes[0];
-        sCirName = attributes[1];
+        id = Integer.parseInt(attributes[0]);
+        type = attributes[1];
+        name = attributes[2];
 
-        for(int i=2;i<attributes.length;i++)
+        for(int i=3;i<attributes.length;i++)
         {
-            attribute[i-2] = attributes[i];
+            attribute[i-3] = attributes[i];
         }
     }
 
