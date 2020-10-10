@@ -10,14 +10,11 @@ public class CirTest {
     private String[] sTestAttribute1 = {"CIT"};
     private String[] sTestAttribute2 = {"CIT", "CIR", "A1", "A2", "A3", "A4", "A5", "","","","","","",""};
     private Cir cirTest = new Cir(sTestAttribute);
-    //Test ob das Testen funktioniert
-    @Test
-    public void test1() {
-        Assert.assertEquals(3, new Cir(sTestAttribute).additionTest(1,2));
-    }
+
     // Methode Create, liefert nicht null zurück
     @Test
     public void testCreate(){
+
         Assert.assertNotNull(new Cir(sTestAttribute).create(sTestAttribute));
     }
     // Methode Create, Sting Array zu klein, liefert ein Fehler

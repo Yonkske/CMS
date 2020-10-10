@@ -1,5 +1,9 @@
 package backend.usability;
 
+import backend.database.DbCallerCir;
+
+import java.util.ArrayList;
+
 public class Cir {
 
     // FIXME: change DbCallers to non-static
@@ -87,13 +91,29 @@ public class Cir {
         return bCirDeleted;
     }
 
+    public static ArrayList<Cir> getAllForType(Cit citType) {
+        // todo:Anpassen der Rückgabe und der Methode
+       ArrayList<Cir> CirListe = new ArrayList<Cir>();
+        // Methode getAllCirForType aus DBCallerCIR
+        //CirListe = DbCallerCir.getAllCirForType(citType);  // Liste aller Cir zu CIT
 
+        return null;
+    }
 
+    public static int getCount(){
+        int iAnzahlCir = 0;
+        //todo: Anpassen der Metode und des Rückgabewertes
+        //iAnzahlCir = DBCallerCIR.getCirCount();
 
-    // Nur Test Methode für jUnit
-    public  int additionTest( int i, int i1) {
-        return i1 + i;
+        return iAnzahlCir;
+    }
 
+    public int getCountForType(Cit citType){
+        int iAnzahlCit = 0;
+        //todo: Anpassen der Methode und des Rückgabewertes
+        //iAnzahlCit = DbCallerCir.getCirCountForType(citType);
+
+        return iAnzahlCit;
     }
 
 } //Cir
