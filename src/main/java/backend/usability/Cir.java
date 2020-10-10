@@ -12,8 +12,9 @@ public class Cir {
   private String type; // TODO: change to Cit
 
     /**
+     * constructor creates the CIR object
      *
-     * @param attributes - Sting Array of 7 with all CIR Data
+     * @param attributes - Sting Array with a length of 10
      */
     public Cir(String[] attributes){
         attribute = new String[7];
@@ -30,9 +31,9 @@ public class Cir {
     }
 
     /**
-     * Beschreibung der Methode
+     * Creates the CIR Obekt and returns the reference
      *
-     * @param attributes - Sting Array with all CIR Data
+     * @param attributes - Sting Array with a length of 10
      * @return cirName - CIR Objekt
      *
      * */
