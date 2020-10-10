@@ -3,8 +3,7 @@ package backend.database;
 import backend.usability.Cir;
 
 import java.awt.*;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class DbCallerCir extends DbConnector{
@@ -31,9 +30,44 @@ public class DbCallerCir extends DbConnector{
         return cirName; // Rückgabe des Cir's
     }
 
-    public boolean insertCir() {
+    /**
+     *
+     * @param cirName - Type Cir
+     * @return bWorks - Boolean
+     * @throws SQLException
+     */
+    public boolean insertCir(Cir cirName) throws SQLException {
+        String[] sCirAttributes = cirName.getCirAttributes();
+        boolean bWorks;
+        try{
+            PreparedStatement prepStmt = con.prepareStatement
+                    ("INSERT INTO CIR VALUES (?,?,?,?,?,?,?,?,?,?)"); // SQL Statement
 
-        return false;
+            prepStmt.setInt(1,cirName.getCirID());
+            prepStmt.setString(2, cirName.getCitID());
+            prepStmt.setString(3,cirName.getCirName());
+            prepStmt.setString(4,sCirAttributes[0]);
+            prepStmt.setString(5,sCirAttributes[1]);
+            prepStmt.setString(6,sCirAttributes[2]);
+            prepStmt.setString(7,sCirAttributes[3]);
+            prepStmt.setString(8,sCirAttributes[4]);
+            prepStmt.setString(9,sCirAttributes[5]);
+            prepStmt.setString(10,sCirAttributes[6]);
+            prepStmt.executeUpdate();
+            prepStmt.close();
+            bWorks = true;
+        }
+        catch(SQLSyntaxErrorException a)
+        {
+            bWorks = false;
+        }
+        catch (SQLIntegrityConstraintViolationException b)
+        {
+            bWorks = false;
+        }
+
+
+        return bWorks;
     }
 
     public boolean updateCir() {

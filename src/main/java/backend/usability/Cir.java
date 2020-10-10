@@ -13,8 +13,7 @@ public class Cir {
 
     /**
      *
-     * Kontruktor of the class Cir
-     * @param attributes
+     * @param attributes - Sting Array of 7 with all CIR Data
      */
     public Cir(String[] attributes){
         attribute = new String[7];
@@ -33,8 +32,8 @@ public class Cir {
     /**
      * Beschreibung der Methode
      *
-     * @param attributes mit allen Cir Attributen aus dem Frontend.
-     * @return Cir Objekt.
+     * @param attributes - Sting Array with all CIR Data
+     * @return cirName - CIR Objekt
      *
      * */
     public static Cir create(String[]attributes){
@@ -113,6 +112,51 @@ public class Cir {
         //iAnzahlCit = DbCallerCir.getCirCountForType(citType);
 
         return iAnzahlCit;
+    }
+
+    /**
+     *
+     * @return id - CirId
+     */
+    public int getCirID()
+    {
+        return id;
+    }
+
+    /**
+     *
+     * @return type - Cit name as String
+     */
+    public String getCitID()
+    {
+        return type;
+    }
+
+    /**
+     *
+     * @return attrubute - Cir Attribites in a String Array
+     */
+    public String[] getCirAttributes()
+    {
+        return attribute;
+    }
+
+    /**
+     *
+     * @return name - CirName as String
+     */
+    public String getCirName()
+    {
+        return name;
+    }
+
+    /**
+     * This method is only used for testing and should never be used otherwise
+     * @param id - int of the new Cir ID
+     */
+    public void setCirID(int id)
+    {
+        this.id = id;
     }
 
 } //Cir
