@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class DbCallerCir extends DbConnector{
 
     /**
+     * Reads the CIR object from the database, needs the CIR ID
      *
      * @param id - Int ID of the CIR's
      * @return cirName - the CIR Objekt
@@ -31,6 +32,7 @@ public class DbCallerCir extends DbConnector{
     }
 
     /**
+     * Writes a new CIR into the database, requires a CIR object
      *
      * @param cirName - Type Cir
      * @return bWorks - Boolean
@@ -44,7 +46,7 @@ public class DbCallerCir extends DbConnector{
                     ("INSERT INTO CIR VALUES (?,?,?,?,?,?,?,?,?,?)"); // SQL Statement
 
             prepStmt.setInt(1,cirName.getCirID());
-            prepStmt.setString(2, cirName.getCitID());
+            prepStmt.setString(2, cirName.getCitID()); //todo: change String to CIT type
             prepStmt.setString(3,cirName.getCirName());
             prepStmt.setString(4,sCirAttributes[0]);
             prepStmt.setString(5,sCirAttributes[1]);
@@ -70,7 +72,9 @@ public class DbCallerCir extends DbConnector{
         return bWorks;
     }
 
-    public boolean updateCir() {
+    public boolean updateCir(Cir cirName) {
+
+
 
         return false;
     }
