@@ -1,5 +1,10 @@
 package backend.usability;
 
+import backend.database.DbCallerCir;
+import backend.database.DbConnector;
+import javafx.css.converter.StringConverter;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Cir {
@@ -20,7 +25,7 @@ public class Cir {
         attribute = new String[7];
 
         // TODO: figure out if cit comes as object or String
-        id = Integer.parseInt(attributes[0]);
+        id =  Integer.parseInt(attributes[0]);
         type = attributes[1];
         name = attributes[2];
 
@@ -37,7 +42,7 @@ public class Cir {
      * @return cirName - CIR Objekt
      *
      * */
-    public static Cir create(String[]attributes){
+    public static Cir create(String[] attributes){
 
         Cir cirName = new Cir(attributes);
 
@@ -47,17 +52,17 @@ public class Cir {
     /**
      * Returns the CIR object via the CIR ID
      *
-     * @param id as an int
-     * @return cir Objekt
+     * @param id - ID of the Cir as an integer
+     * @return cirName - Cir Objekt
      */
-    public Cir showCir(int id){
-        // todo: did the class DbCallerCir have a Method with the name getCirbyID
-      //  Cir cirName = DbCallerCir.getCirbyID(id);
+    public static Cir showCir(int id) throws SQLException {
 
-        return null;
+        Cir cirName = DbCallerCir.getCirById(id);
+
+        return cirName;
     }
 
-    public boolean change(String[] attributes, int id){
+    public boolean change(String[] attributes, int id) throws SQLException {
         //Variablen für die Methode
         boolean btest= false;
         //Über die ID das alte Cir aus der Datenbank holen todo: DbCallerCir Methode testen

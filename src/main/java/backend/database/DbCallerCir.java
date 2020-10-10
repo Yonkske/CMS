@@ -15,7 +15,7 @@ public class DbCallerCir extends DbConnector{
      * @return cirName - the CIR Objekt
      * @throws SQLException
      */
-    public Cir getCirById(int id) throws SQLException {
+    public static Cir getCirById(int id) throws SQLException {
 
         String[] sCirArray = new String[10]; // String zum Speichern der Resultset Daten
         ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE ITEM_ID = " + id); // SQL Abfrage
