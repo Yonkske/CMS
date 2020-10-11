@@ -36,7 +36,7 @@
                </opaqueInsets>
             </HBox>
             <HBox alignment="CENTER" spacing="5.0">
-               <Label fx:id="nameLBL" alignment="BOTTOM_LEFT" prefWidth="150.0" text="Nachname:">
+               <Label fx:id="nameLbl" alignment="BOTTOM_LEFT" prefWidth="150.0" text="Nachname:">
                   <HBox.margin>
                      <Insets />
                   </HBox.margin>

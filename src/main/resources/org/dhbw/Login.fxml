@@ -45,7 +45,7 @@
                     </VBox.margin>
                 </HBox>
                 <HBox alignment="TOP_CENTER" spacing="10.0">
-                    <Label fx:id="meldungLbl" alignment="BOTTOM_LEFT" prefWidth="130.0" style="-fx-border-color: red; -fx-border-radius: 3;" text="Ihr Benutzer oder Passwort ist falsch." textAlignment="CENTER" textFill="#fc0000" wrapText="true">
+                    <Label fx:id="meldungLbl" alignment="BOTTOM_LEFT" prefWidth="130.0" style="-fx-border-color: #ff0000; -fx-border-radius: 3;" text="Ihr Benutzer oder Passwort ist falsch." textAlignment="CENTER" textFill="#fc0000" wrapText="true">
                         <HBox.margin>
                             <Insets />
                         </HBox.margin></Label>
