@@ -76,19 +76,13 @@ public class Cir {
         boolean bTest; //Variablen für die Methode
         Cir cirName = showCir(id); //Über die ID das alte Cir aus der Datenbank holen
 
-        Cir cirVerName = create(attributes); // Neuse CIR mit den vielleicht geänderten Daten erstellen
-        // Prüfen ob sich das alte und neue Cir unterscheiden und fals ja das neue in die DB schreiben
-
-        if(cirName.attribute.equals(cirVerName.attribute) == true) {
-            bTest = false;
-
-        }
-        else{
-            // todo: Method of the class DbCallerCir static? what is better?
-            bTest = new DbCallerCir().updateCir(cirVerName);
+        for(int i=3;i<attributes.length;i++)
+        {
+            cirName.attribute[i-3] = attributes[i];
         }
 
-        return bTest;
+
+        return new DbCallerCir().updateCir(cirName);
     }
 
     public boolean delete(int id){
