@@ -12,15 +12,15 @@
             <Insets bottom="40.0" top="40.0" />
          </padding>
          <children>
-            <Label prefWidth="350.0" text="Sind Sie sich sicher, dass das Element unwiderruflich gelöscht werden soll?" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="notificationLbl" prefWidth="350.0" text="Sind Sie sich sicher, dass das Element unwiderruflich gelöscht werden soll?" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
             <HBox alignment="CENTER" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" prefWidth="41.0" text="Ja" />
-                  <Button mnemonicParsing="false" prefWidth="41.0" text="Nein" />
+                  <Button fx:id="yesBtn" mnemonicParsing="false" prefWidth="41.0" text="Ja" />
+                  <Button fx:id="noBtn" mnemonicParsing="false" prefWidth="41.0" text="Nein" />
                </children>
                <VBox.margin>
                   <Insets />
