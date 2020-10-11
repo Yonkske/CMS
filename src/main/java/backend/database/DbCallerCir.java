@@ -118,9 +118,33 @@ public class DbCallerCir extends DbConnector{
         return bUpdateCir;
     }
 
-    public boolean deleteCir() {
+    /**
+     *  Deletes the CIR object from the database, needs the CIR Objekt
+     *
+     * @param cirName - CIR Objekt
+     * @return bDeleteCir - boolean
+     * @throws SQLException
+     */
+    static public boolean deleteCir(Cir cirName) throws SQLException {
+        boolean bDeleteCir;
+        try{
+            stmt.execute("DELETE FROM CIR WHERE ITEM_ID = " + cirName.getCirID()); // SQL Abfrage
+            bDeleteCir = true;
+        }
+        catch(SQLSyntaxErrorException a)
+        {
+            bDeleteCir = false;
+        }
+        catch(SQLIntegrityConstraintViolationException b)
+        {
+            bDeleteCir = false;
+        }
+        catch (SQLNonTransientException c)
+        {
+            bDeleteCir = false;
+        }
 
-        return false;
+        return bDeleteCir;
     }
 
     public ArrayList<Cir> getAllCirsForType(Cir record) {

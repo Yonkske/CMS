@@ -75,7 +75,7 @@ public class Cir {
 
         boolean bTest; //Variablen für die Methode
         Cir cirName = showCir(id); //Über die ID das alte Cir aus der Datenbank holen
-
+        cirName.name = attributes[2];
         for(int i=3;i<attributes.length;i++)
         {
             cirName.attribute[i-3] = attributes[i];
@@ -85,14 +85,18 @@ public class Cir {
         return new DbCallerCir().updateCir(cirName);
     }
 
-    public boolean delete(int id){
-        boolean bCirDeleted = false;
-        //zu löschendes CIR aus DBCallerCIR auslesen todo: DbCallerCir Methode testen
-        //Cir cirName = showCir(id);
+    /**
+     * deleting the CIR object from the database, needs the CIR ID
+     *
+     * @param id - id of the CIR Objekt
+     * @return bCirDeleted - Boolean Deleted or not
+     * @throws SQLException
+     */
+    public static boolean delete(int id) throws SQLException {
 
-        // zu löschendes CIR an den DBCallerCIR übergeben todo: DbCallerCir Methode testen
-        // bCirDeleted = DBCallerCIR.deleteCir(cirName);
-
+        boolean bCirDeleted;
+        Cir cirName = showCir(id);  //zu löschendes CIR auslesen
+        bCirDeleted = DbCallerCir.deleteCir(cirName);     // zu löschendes CIR an den DBCallerCIR übergeben
 
         return bCirDeleted;
     }
