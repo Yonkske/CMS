@@ -133,6 +133,7 @@ public class Cir {
     }
 
     /**
+     * Id of the current CIR Object
      *
      * @return id - CirId
      */
@@ -142,6 +143,7 @@ public class Cir {
     }
 
     /**
+     * CIT id of the current CIR Objekt
      *
      * @return type - Cit name as String
      */
@@ -151,6 +153,7 @@ public class Cir {
     }
 
     /**
+     * Returns a string array with the CIR object attributes
      *
      * @return attrubute - Cir Attribites in a String Array
      */
@@ -160,6 +163,7 @@ public class Cir {
     }
 
     /**
+     * Returns the current name of the CIR object
      *
      * @return name - CirName as String
      */
@@ -169,8 +173,9 @@ public class Cir {
     }
 
     /**
-     * This method is only used for testing and should never be used otherwise
-     * @param id - int of the new Cir ID
+     *This method is only used for testing and should never be used otherwise
+     *
+     *  @param id - int of the new Cir ID
      */
     public void setCirID(int id)
     {
