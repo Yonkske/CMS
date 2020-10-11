@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.UserAddAdminController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" cache="true" spacing="5.0">
+               <Label fx:id="surnameLbl" alignment="BOTTOM_LEFT" prefWidth="150.0" text="Vorname:">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font></Label>
+               <TextField fx:id="surnameTf" prefWidth="210.0">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="TEXT" />
+                  </cursor></TextField>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="40.0" />
+               </VBox.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+            <HBox alignment="CENTER" spacing="5.0">
+               <Label fx:id="nameLbl" alignment="BOTTOM_LEFT" prefWidth="150.0" text="Nachname:">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font></Label>
+               <TextField fx:id="nameTf" prefWidth="210.0">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="TEXT" />
+                  </cursor></TextField>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" spacing="5.0">
+               <Label fx:id="usernameLbl" alignment="BOTTOM_LEFT" prefWidth="150.0" text="Benutzername:">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font></Label>
+               <TextField fx:id="usernameTf" prefWidth="210.0">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="TEXT" />
+                  </cursor></TextField>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" spacing="5.0">
+               <Label fx:id="authorizationLbl" alignment="BOTTOM_LEFT" prefWidth="150.0" text="Rechte:">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font></Label>
+               <ChoiceBox fx:id="authorizationChoiceBox" prefWidth="210.0">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin></ChoiceBox>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" spacing="5.0">
+               <Label fx:id="initialPasswordLbl" alignment="BOTTOM_LEFT" prefWidth="150.0" text="Initales Passwort:">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font></Label>
+               <PasswordField fx:id="initialPasswordTf" prefWidth="210.0" promptText="Initiales Passwort eingeben">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="TEXT" />
+                  </cursor></PasswordField>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" spacing="5.0">
+               <Label fx:id="repeatInitialPasswordLbl" alignment="BOTTOM_LEFT" prefWidth="150.0" text="Initiales Passwort:">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font></Label>
+               <PasswordField fx:id="repeatInitialPasswordTf" prefWidth="210.0" promptText="Initiales Passwort wiederholen">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="TEXT" />
+                  </cursor></PasswordField>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" spacing="10.0">
+               <children>
+                  <Button fx:id="submitBtn" mnemonicParsing="false" text="Speichern" />
+                  <Button fx:id="cancelBtn" mnemonicParsing="false" text="Abbrechen" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets right="33.0" top="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
