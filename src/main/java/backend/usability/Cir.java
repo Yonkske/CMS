@@ -62,25 +62,32 @@ public class Cir {
         return cirName;
     }
 
+    /**
+     *
+     * @param attributes - String Array with a length of 10 of the change CIR
+     * @param id - Iteger id of the CIR
+     * @return
+     * @throws SQLException
+     */
     public boolean change(String[] attributes, int id) throws SQLException {
         //Variablen für die Methode
-        boolean btest= false;
-        //Über die ID das alte Cir aus der Datenbank holen todo: DbCallerCir Methode testen
+        boolean bTest= false;
+        //Über die ID das alte Cir aus der Datenbank holen
         Cir cirName = showCir(id);
-        // Neuse CIR mit den vielleicht geänderten Daten erstellen todo: DbCallerCir Methode testen
+        // Neuse CIR mit den vielleicht geänderten Daten erstellen
         Cir cirVerName = create(attributes);
         // Prüfen ob sich das alte und neue Cir unterscheiden und fals ja das neue in die DB schreiben
         if(cirName.equals(cirVerName)) {
-            btest = false;
+            bTest = false;
 
         }
         else{
             // todo: did the class DbCallerCir have a Method with the name updateCir
-          //  btest = DBCallerCIR.updateCir(cirVerName);
+          //  bTest = DBCallerCIR.updateCir(cirVerName);
 
         }
 
-        return btest;
+        return bTest;
     }
 
     public boolean delete(int id){

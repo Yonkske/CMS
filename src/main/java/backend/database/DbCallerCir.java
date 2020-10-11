@@ -72,11 +72,52 @@ public class DbCallerCir extends DbConnector{
         return bWorks;
     }
 
-    public boolean updateCir(Cir cirName) {
+    /**
+     * Update a CIR in the database, requires a CIR object and returns a boolean value
+     *
+     * @param cirName - CirObjekt
+     * @return bUpdateCir - Boolean with true/false
+     * @throws SQLException
+     */
+    public boolean updateCir(Cir cirName) throws SQLException  {
+        boolean bUpdateCir;
+        String[] sCirAttributes = cirName.getCirAttributes();
+        try{
+            PreparedStatement prepStmt = con.prepareStatement
+                    ("UPDATE CIR SET Type_ID = ?," +
+                            "RECORD_NAME = ?," +
+                            "ATTRIBUTE_VALUE_1 = ?," +
+                            "ATTRIBUTE_VALUE_2 = ?," +
+                            "ATTRIBUTE_VALUE_3 = ?," +
+                            "ATTRIBUTE_VALUE_4 = ?," +
+                            "ATTRIBUTE_VALUE_5 = ?," +
+                            "ATTRIBUTE_VALUE_6 = ? ," +
+                            "ATTRIBUTE_VALUE_7 = ?" +
+                            "WHERE ITEM_ID ="+ cirName.getCirID()); // SQL Statement
 
+            prepStmt.setString(1, cirName.getCitID()); //todo: change String to CIT type
+            prepStmt.setString(2,cirName.getCirName());
+            prepStmt.setString(3,sCirAttributes[0]);
+            prepStmt.setString(4,sCirAttributes[1]);
+            prepStmt.setString(5,sCirAttributes[2]);
+            prepStmt.setString(6,sCirAttributes[3]);
+            prepStmt.setString(7,sCirAttributes[4]);
+            prepStmt.setString(8,sCirAttributes[5]);
+            prepStmt.setString(9,sCirAttributes[6]);
+            prepStmt.executeUpdate();
+            prepStmt.close();
+            bUpdateCir = true;
+        }
+        catch(SQLSyntaxErrorException a)
+        {
+            bUpdateCir = false;
+        }
+        catch (SQLIntegrityConstraintViolationException b)
+        {
+            bUpdateCir = false;
+        }
 
-
-        return false;
+        return bUpdateCir;
     }
 
     public boolean deleteCir() {
