@@ -95,7 +95,7 @@ public class CirTest {
     }
 
     @Test
-    //Test CIR Change ändern in Datenbak wenn sich ein CIR verändert hat
+    //Test CIR Change ändern in Datenbak wenn sich ein CIR verändert hat, geht aktuell nicht da es unten gelöscht wird
     public void change1() throws SQLException {
         Assert.assertTrue(Cir.change(sTestAttribute4, 2));
     }
@@ -104,7 +104,7 @@ public class CirTest {
     public void change2() throws SQLException {
         Assert.assertFalse(Cir.change(sTestAttribute4, 2000));
     }
-
+    // Testen ob das Löschen eines CIR's funktioniert
     @Test
     public void deleteCir() throws SQLException {
         try {
@@ -114,7 +114,7 @@ public class CirTest {
             Assert.fail();
         }
     }
-
+    // Testen was beim löschen passiert wernn der CIR nicht vorhanden ist
     @Test
     public void deleteCir1() throws SQLException {
         try {
@@ -123,5 +123,11 @@ public class CirTest {
         } catch (SQLNonTransientException a) {
            Assert.assertFalse(false);
         }
+    }
+    // Testen ob das Zählen funktioniert und den richtigen Wert ausgiebt
+    @Test
+    public void getCount() throws SQLException {
+        int iTest= Cir.getCount();
+        Assert.assertEquals(1,iTest);
     }
 }

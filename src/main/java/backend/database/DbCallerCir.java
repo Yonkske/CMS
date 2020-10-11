@@ -152,9 +152,32 @@ public class DbCallerCir extends DbConnector{
         return null;
     }
 
-    public int getCirCount() {
-
-        return 0;
+    /**
+     * The number of all CIR's
+     *
+     * @return iCirCount - int CIR Count of all Cir's
+     * @throws SQLException
+     */
+    public static int getCirCount() throws SQLException {
+        int iCirCount;
+        try{
+            ResultSet rs = stmt.executeQuery("SELECT count(ITEM_ID) FROM CIR");
+            rs.first();
+            iCirCount = rs.getInt(1);
+        }
+        catch (SQLSyntaxErrorException a)
+        {
+            iCirCount = 0;
+        }
+        catch (SQLIntegrityConstraintViolationException b)
+        {
+            iCirCount = 0;
+        }
+        catch (SQLNonTransientException c)
+        {
+            iCirCount = 0;
+        }
+        return iCirCount;
     }
 
     public int getCirCountForType(Cir type) {

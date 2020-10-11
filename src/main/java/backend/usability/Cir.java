@@ -110,12 +110,12 @@ public class Cir {
         return null;
     }
 
-    public static int getCount(){
-        int iAnzahlCir = 0;
-        //todo: Anpassen der Metode und des Rückgabewertes
-        //iAnzahlCir = DBCallerCIR.getCirCount();
+    public static int getCount() throws SQLException {
+        int iCountAllCir;
 
-        return iAnzahlCir;
+        iCountAllCir = DbCallerCir.getCirCount();
+
+        return iCountAllCir;
     }
 
     public int getCountForType(Cit citType){
