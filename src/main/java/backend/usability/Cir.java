@@ -63,28 +63,27 @@ public class Cir {
     }
 
     /**
+     * Compares if data has changed and transfers the changes to the database with a DBCallerCIR call
      *
      * @param attributes - String Array with a length of 10 of the change CIR
      * @param id - Iteger id of the CIR
-     * @return
+     * @return bTest - True if the CIR has changed or false if it contains the same data
      * @throws SQLException
      */
     public boolean change(String[] attributes, int id) throws SQLException {
-        //Variablen für die Methode
-        boolean bTest= false;
-        //Über die ID das alte Cir aus der Datenbank holen
-        Cir cirName = showCir(id);
-        // Neuse CIR mit den vielleicht geänderten Daten erstellen
-        Cir cirVerName = create(attributes);
+
+        boolean bTest= false; //Variablen für die Methode
+        Cir cirName = showCir(id); //Über die ID das alte Cir aus der Datenbank holen
+
+        Cir cirVerName = create(attributes); // Neuse CIR mit den vielleicht geänderten Daten erstellen
         // Prüfen ob sich das alte und neue Cir unterscheiden und fals ja das neue in die DB schreiben
         if(cirName.equals(cirVerName)) {
             bTest = false;
 
         }
         else{
-            // todo: did the class DbCallerCir have a Method with the name updateCir
-          //  bTest = DBCallerCIR.updateCir(cirVerName);
-
+            // todo: Method of the class DbCallerCir static? what is better?
+            bTest = new DbCallerCir().updateCir(cirVerName);
         }
 
         return bTest;

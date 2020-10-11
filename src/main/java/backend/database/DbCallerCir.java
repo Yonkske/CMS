@@ -84,8 +84,7 @@ public class DbCallerCir extends DbConnector{
         String[] sCirAttributes = cirName.getCirAttributes();
         try{
             PreparedStatement prepStmt = con.prepareStatement
-                    ("UPDATE CIR SET Type_ID = ?," +
-                            "RECORD_NAME = ?," +
+                    ("UPDATE CIR SET RECORD_NAME = ?," +
                             "ATTRIBUTE_VALUE_1 = ?," +
                             "ATTRIBUTE_VALUE_2 = ?," +
                             "ATTRIBUTE_VALUE_3 = ?," +
@@ -95,15 +94,14 @@ public class DbCallerCir extends DbConnector{
                             "ATTRIBUTE_VALUE_7 = ?" +
                             "WHERE ITEM_ID ="+ cirName.getCirID()); // SQL Statement
 
-            prepStmt.setString(1, cirName.getCitID()); //todo: change String to CIT type
-            prepStmt.setString(2,cirName.getCirName());
-            prepStmt.setString(3,sCirAttributes[0]);
-            prepStmt.setString(4,sCirAttributes[1]);
-            prepStmt.setString(5,sCirAttributes[2]);
-            prepStmt.setString(6,sCirAttributes[3]);
-            prepStmt.setString(7,sCirAttributes[4]);
-            prepStmt.setString(8,sCirAttributes[5]);
-            prepStmt.setString(9,sCirAttributes[6]);
+            prepStmt.setString(1,cirName.getCirName());
+            prepStmt.setString(2,sCirAttributes[0]);
+            prepStmt.setString(3,sCirAttributes[1]);
+            prepStmt.setString(4,sCirAttributes[2]);
+            prepStmt.setString(5,sCirAttributes[3]);
+            prepStmt.setString(6,sCirAttributes[4]);
+            prepStmt.setString(7,sCirAttributes[5]);
+            prepStmt.setString(8,sCirAttributes[6]);
             prepStmt.executeUpdate();
             prepStmt.close();
             bUpdateCir = true;
