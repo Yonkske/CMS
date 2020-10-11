@@ -6,6 +6,7 @@ import javafx.css.converter.StringConverter;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Cir {
 
@@ -70,14 +71,15 @@ public class Cir {
      * @return bTest - True if the CIR has changed or false if it contains the same data
      * @throws SQLException
      */
-    public boolean change(String[] attributes, int id) throws SQLException {
+    public static boolean change(String[] attributes, int id) throws SQLException {
 
-        boolean bTest= false; //Variablen für die Methode
+        boolean bTest; //Variablen für die Methode
         Cir cirName = showCir(id); //Über die ID das alte Cir aus der Datenbank holen
 
         Cir cirVerName = create(attributes); // Neuse CIR mit den vielleicht geänderten Daten erstellen
         // Prüfen ob sich das alte und neue Cir unterscheiden und fals ja das neue in die DB schreiben
-        if(cirName.equals(cirVerName)) {
+
+        if(cirName.attribute.equals(cirVerName.attribute) == true) {
             bTest = false;
 
         }
