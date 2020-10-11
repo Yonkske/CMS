@@ -110,6 +110,12 @@ public class Cir {
         return null;
     }
 
+    /**
+     * Number of all CIR's
+     *
+     * @return iCountAllCir - int of all CIR's
+     * @throws SQLException
+     */
     public static int getCount() throws SQLException {
         int iCountAllCir;
 
