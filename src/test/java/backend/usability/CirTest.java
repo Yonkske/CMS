@@ -130,4 +130,16 @@ public class CirTest {
         int iTest= Cir.getCount();
         Assert.assertEquals(1,iTest);
     }
+    @Test
+    // Test ob das Zählen von CIR's bei einem gegeben CIT klappt
+    public void getCountForType() throws SQLException{
+        String sTest = "1";
+        Assert.assertEquals(2, Cir.getCountForType(sTest));
+    }
+    @Test
+    // Test ob das Zählen von einem CIT den es nicht gibt funktioniert
+    public void getCountForType2() throws SQLException{
+        String sTest = "2";
+        Assert.assertEquals(0,Cir.getCountForType(sTest));
+    }
 }

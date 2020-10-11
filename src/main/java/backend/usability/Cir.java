@@ -124,12 +124,20 @@ public class Cir {
         return iCountAllCir;
     }
 
-    public int getCountForType(Cit citType){
-        int iAnzahlCit = 0;
-        //todo: Anpassen der Methode und des Rückgabewertes
-        //iAnzahlCit = DbCallerCir.getCirCountForType(citType);
+    /**
+     * Returns the number of CIR from a given CIT
+     *
+     * @param sCIT - CIT Type
+     * @return iCountCIRofCIT - Int number of CIR from a given CIT
+     * @throws SQLException
+     */
+    //todo: Anpassen der Methode Type ist CIT nicht String
+    public static int getCountForType(String sCIT) throws SQLException {
 
-        return iAnzahlCit;
+        int iCountCIRofCIT;
+        iCountCIRofCIT = DbCallerCir.getCirCountForType(sCIT);
+
+        return iCountCIRofCIT;
     }
 
     /**
