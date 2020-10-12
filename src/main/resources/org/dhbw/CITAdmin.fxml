@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.CITAdminController">
 
       <HBox alignment="TOP_RIGHT" prefHeight="23.0" prefWidth="600.0">
 
@@ -15,17 +15,17 @@
 
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
 
-                  <Button fx:id="startpageBtn" minWidth="65.6" mnemonicParsing="false" prefWidth="78.0" text="Startseite">
+                  <Button fx:id="startpageBtn" minWidth="65.6" mnemonicParsing="false" prefWidth="78.0" text="Startseite" onAction="#swapToStartpageAdmin">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" prefWidth="78.0" text="CIT">
+                  <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" prefWidth="78.0" text="CIT" onAction="#swapToCITAdmin">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="statisticBtn" minWidth="65.6" mnemonicParsing="false" prefWidth="78.0" text="Statistik">
+                  <Button fx:id="statisticBtn" minWidth="65.6" mnemonicParsing="false" prefWidth="78.0" text="Statistik" onAction="#swapToStatisticAdmin">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -181,7 +181,7 @@
                 <HBox alignment="CENTER" prefHeight="47.0" prefWidth="396.0">
             <children>
                <Button fx:id="deleteBtn" mnemonicParsing="false" text="Löschen" />
-               <Button fx:id="citaddBtn" mnemonicParsing="false" text="CIT erstellen" />
+               <Button fx:id="citaddBtn" mnemonicParsing="false" text="CIT erstellen" onAction="#swapToCITAdd"/>
             </children></HBox>
             </VBox>
 
