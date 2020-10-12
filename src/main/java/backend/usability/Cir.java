@@ -101,13 +101,19 @@ public class Cir {
         return bCirDeleted;
     }
 
-    public static ArrayList<Cir> getAllForType(Cit citType) {
-        // todo:Anpassen der Rückgabe und der Methode
-       ArrayList<Cir> CirListe = new ArrayList<Cir>();
-        // Methode getAllCirForType aus DBCallerCIR
-        //CirListe = DbCallerCir.getAllCirForType(citType);  // Liste aller Cir zu CIT
+    /**
+     * List of Cir's to a specific CIT
+     *
+     * @param sCitType - String later CIT Type
+     * @return CirListe - List with alle Cir's from a specific CIT
+     */
+    // todo: CIT Type anstatt String sCitType
+    public static ArrayList<Cir> getAllForType(String sCitType) throws SQLException {
 
-        return null;
+        ArrayList<Cir> CirListe = new ArrayList<Cir>(); // Erzeugen einer Cir Liste
+        CirListe = DbCallerCir.getAllCirForType(sCitType);  //Methoden aufruf
+
+        return CirListe;
     }
 
     /**
@@ -131,7 +137,7 @@ public class Cir {
      * @return iCountCIRofCIT - Int number of CIR from a given CIT
      * @throws SQLException
      */
-    //todo: Anpassen der Methode Type ist CIT nicht String
+    //todo: Anpassen der Methode, Type ist CIT nicht String
     public static int getCountForType(String sCIT) throws SQLException {
 
         int iCountCIRofCIT;

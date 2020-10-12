@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import java.sql.SQLException;
 import java.sql.SQLNonTransientException;
+import java.util.ArrayList;
 
 public class CirTest {
     private String[] sTestAttribute = {"1", "1", "CIR name", "A1", "A2", "A3", "A4", "A5", "A6", "A7"};
@@ -142,4 +143,16 @@ public class CirTest {
         String sTest = "2";
         Assert.assertEquals(0,Cir.getCountForType(sTest));
     }
+    @Test
+    // Test Array Liste
+    public void getAllForType() throws SQLException {
+        String sCit="1";
+        ArrayList<Cir> CirListe = new ArrayList<Cir>();
+        CirListe.add(0,Cir.showCir(1));
+        ArrayList<Cir> CirListe1 = new ArrayList<Cir>();
+        CirListe1 = Cir.getAllForType(sCit);
+        Assert.assertEquals(CirListe,CirListe1);
+    }
+
+
 }

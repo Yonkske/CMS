@@ -4,6 +4,7 @@ import backend.usability.Cir;
 import com.sun.javafx.scene.layout.region.Margins;
 
 import java.awt.*;
+import java.io.Console;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -148,9 +149,31 @@ public class DbCallerCir extends DbConnector{
         return bDeleteCir;
     }
 
-    public ArrayList<Cir> getAllCirsForType(Cir record) {
+    /**
+     *
+     * @param sCit
+     * @return
+     */
+    //todo: Ersetzen von String sCit durch Type CIT
+    public static ArrayList<Cir> getAllCirForType(String sCit) throws SQLException {
+        Cir cirName;
+        int iIDCir;
+        int iZaehler = 0;
+        int iCit = Integer.parseInt(sCit); // Muss später gelöscht werden
+        ArrayList<Cir> cirListe = new ArrayList<Cir>(); // Erzeugen einer Cir Liste
+        ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE TYPE_ID = "+iCit); // DB Abfrage
+        //FIXME: FIXEN
+        new DbConnector().startConnection(); // Warum???!
+        while(rs.next())
+        {
+            iIDCir = rs.getInt(1); // ID des ResultSet
+            cirName = Cir.showCir(iIDCir); // Über die ID ein CIR Objekt erzeugen
+            cirListe.add(iZaehler, cirName); // CIR Objekt in Liste eintragen
+            iZaehler++;
 
-        return null;
+        }
+
+        return cirListe;
     }
 
     /**
@@ -181,6 +204,13 @@ public class DbCallerCir extends DbConnector{
         return iCirCount;
     }
 
+    /**
+     * The Number of alle Cir's from a specific Cit
+     *
+     * @param sCit - String later CIT Type
+     * @return iCountCIRofCIT -Integer Count of Cir form a specific CIT
+     * @throws SQLException
+     */
     public static int getCirCountForType(String sCit) throws SQLException {
         int iCountCIRofCIT;
         int iCit = Integer.parseInt(sCit);
