@@ -3,9 +3,12 @@ package backend.database;
 
 import backend.usability.User;
 
+import java.sql.*;
 import java.util.ArrayList;
 
 public class DbCallerUser extends DbConnector{
+
+    static ResultSet rs;
 
     /**
      * Method for the query to get the user out if the database.
@@ -14,8 +17,23 @@ public class DbCallerUser extends DbConnector{
      */
     public User getUser(String userName) {
 
+        try {
+            rs = stmt.executeQuery("SELECT * FROM USER WHERE USER_NAME = '" + userName + "'");
+            rs.first();
+            userName = rs.getString("USER_NAME");
+            String password = rs.getString("PASSWORD");
+            boolean isInitial = rs.getBoolean("IS_INITIAL");
+            boolean isAdmin = rs.getBoolean("IS_ADMIN");
+            String name = rs.getString("NAME");
+            String surname = rs.getString("SURNAME");
 
-        return null;
+            User userToGet = new User(userName, password, isInitial, isAdmin, name, surname);
+
+            return userToGet;
+        } catch (SQLException getFailed) {
+            getFailed.printStackTrace();
+            return null;
+        }
     }
 
     /**
@@ -25,7 +43,27 @@ public class DbCallerUser extends DbConnector{
      */
     public boolean insertUser(User userToCreate) {
 
-        return false;
+        try {
+            PreparedStatement statement = con.prepareStatement("INSERT INTO USER VALUES (?, ?, ?, ?, ?, ?)");
+
+            statement.setString(1, userToCreate.getUserName());
+            statement.setString(2, userToCreate.getPassword());
+            statement.setBoolean(3, userToCreate.getIsInitial());
+            statement.setBoolean(4, userToCreate.getIsAdmin());
+            statement.setString(5, userToCreate.getName());
+            statement.setString(6, userToCreate.getSurName());
+
+            statement.execute();
+            statement.close();
+
+            return true;
+
+        } catch (SQLException creationFailed) {
+
+            creationFailed.printStackTrace();
+
+            return false;
+        }
     }
 
     /**
@@ -35,7 +73,23 @@ public class DbCallerUser extends DbConnector{
      */
     public boolean updateUser(User userToUpdate) {
 
-        return false;
+        try {
+            PreparedStatement statement = con.prepareStatement("UPDATE USER SET PASSWORD = ?, IS_INITIAL = ?, IS_ADMIN = ?, NAME = ?, SURNAME = ? WHERE USER_NAME = ?");
+
+            statement.setString(1, userToUpdate.getPassword());
+            statement.setBoolean(2, userToUpdate.getIsInitial());
+            statement.setBoolean(3, userToUpdate.getIsAdmin());
+            statement.setString(4, userToUpdate.getName());
+            statement.setString(5, userToUpdate.getSurName());
+            statement.setString(6, userToUpdate.getUserName());
+
+            statement.execute();
+            statement.close();
+            return true;
+        } catch (SQLException updateFailed) {
+            updateFailed.printStackTrace();
+            return false;
+        }
     }
 
     /**
@@ -45,11 +99,36 @@ public class DbCallerUser extends DbConnector{
      */
     public boolean deleteUser(User userToDelete) {
 
-        return false;
+        String userName = userToDelete.getUserName();
+        try {
+            stmt.execute("DELETE FROM USER WHERE USER_NAME = '" + userName + "'");
+
+            return true;
+        } catch (SQLException deleteFailed){
+            deleteFailed.printStackTrace();
+
+            return false;
+        }
     }
 
-    public ArrayList<User> getAllUsers() {
+    /**
+     * Method gives a list of all Users in database
+     * @return
+     */
+    /*public ArrayList<User> getAllUsers() {
+    // TODO: make it work
 
-        return null;
-    }
+        User[] allUsers;
+
+        try {
+            rs = stmt.executeQuery("SELECT * FROM USER");
+
+
+        } catch (SQLException throwables) {
+
+            throwables.printStackTrace();
+        }
+
+        return allUsers;
+    }*/
 }

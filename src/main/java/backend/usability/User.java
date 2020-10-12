@@ -4,7 +4,6 @@ import backend.database.DbCallerUser;
 
 public class User {
 
-    // FIXME: change DbCallers to non-static
     private final String userName;
     private String name;
     private String surname;
@@ -21,7 +20,7 @@ public class User {
      * @param isAdmin - specification if the future user is an admin
      * @param isInitial - specification if the password is that the admin gave the future user or if he already changed his password
      */
-    private User(String userName, String name, String surname, String password, boolean isAdmin, boolean isInitial) {
+    public User(String userName, String password, boolean isInitial, boolean isAdmin, String name, String surname) {
         this.userName = userName;
         this.name = name;
         this.surname = surname;
@@ -35,9 +34,8 @@ public class User {
      * @param userName - the username of the user which should be got
      * @return User - return of the user that should be got
      */
-    public User getUser(String userName) {
+    public static User getUser(String userName) {
 
-        // TODO: get better solution
         User existingUser = new DbCallerUser().getUser(userName);
         return existingUser;
     }
@@ -51,11 +49,9 @@ public class User {
      * @param isAdmin - boolean: if true that user is an admin else hes not
      * @return newUser - the returned new user
      */
-    public User create(String userName, String name, String surname, String password, boolean isAdmin) {
+    public static User create(String userName, String password, boolean isAdmin, String name, String surname) {
 
-        User newUser = new User(userName, name, surname, password, isAdmin, true);
-
-        // TODO: get better solution
+        User newUser = new User(userName, password, true, isAdmin, name, surname);
         new DbCallerUser().insertUser(newUser);
 
         return newUser;
@@ -67,11 +63,12 @@ public class User {
      * @param isAdmin - former state of authorisation (expected: false = no admin)
      * @return isAdmin - new state of authorisation (expected: true = admin)
      */
-    public boolean changeAdmin(String userName, boolean isAdmin) {
+    public static boolean changeAdmin(String userName, boolean isAdmin) {
 
         User userToChange = getUser(userName);
-
         userToChange.isAdmin = isAdmin;
+
+        new DbCallerUser().updateUser(userToChange);
 
         return userToChange.isAdmin;
     }
@@ -81,7 +78,7 @@ public class User {
      * @param userName - username of the user whose authorisation should be checked
      * @return true - if true returns he is admin, if false returns he is just a normal user
      */
-    public boolean checkIsAdmin(String userName) {
+    public static boolean checkIsAdmin(String userName) {
 
         User userToCheckAdmin = getUser(userName);
 
@@ -93,11 +90,10 @@ public class User {
      * @param userName - username of the user which should be deleted
      * @return true - if true returns the user was deleted, if false returns the user could not be deleted
      */
-    public boolean deleteUser(String userName) {
+    public static boolean deleteUser(String userName) {
 
         User userToDelete = getUser(userName);
 
-        // TODO: get better solution
         if (new DbCallerUser().deleteUser(userToDelete)) {
             return true;
         }
@@ -112,7 +108,8 @@ public class User {
      * @param newPassword - new password given by the admin
      * @return boolean - if the password was changed: true, else: false
      */
-    public boolean changePassword(String userName, String newPassword) {
+    public static boolean changePassword(String userName, String newPassword) {
+    // TODO: do functionality
 
         User userToChangePwByAdmin = getUser(userName);
 
@@ -120,6 +117,7 @@ public class User {
             userToChangePwByAdmin.password = newPassword;
             userToChangePwByAdmin.isInitial = true;
 
+            new DbCallerUser().updateUser(userToChangePwByAdmin);
             return true;
         } else {
             return false;
@@ -133,19 +131,45 @@ public class User {
      * @param newPassword - the new password
      * @return boolean - if true returns the password was changed, if false returns the password could not be changed
      */
-    public boolean changePassword(String userName, String oldPassword, String newPassword) {
+    public static boolean changePassword(String userName, String oldPassword, String newPassword) {
     // TODO: functionality when oldPassword != userToChangePw.password
+    // TODO: do functionality
 
         User userToChangePw = getUser(userName);
 
         if (userToChangePw.userName == userName & userToChangePw.password == oldPassword) {
             userToChangePw.password = newPassword;
 
+            new DbCallerUser().updateUser(userToChangePw);
             return true;
         } else {
             return false;
         }
 
+    }
+
+    public String getUserName() {
+        return this.userName;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getSurName() {
+        return this.surname;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public boolean getIsAdmin() {
+        return this.isAdmin;
+    }
+
+    public boolean getIsInitial() {
+        return this.isInitial;
     }
 
     /**
