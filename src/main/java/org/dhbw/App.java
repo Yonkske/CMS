@@ -6,6 +6,6 @@ package org.dhbw;
 public class App  {
 
     public static void main(String[] args) {
-        new MainController().main(args);
+        new FXMLFactory().go();
     }
 }
