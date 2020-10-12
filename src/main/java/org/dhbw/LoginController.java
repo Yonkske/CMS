@@ -34,8 +34,8 @@ public class LoginController extends Controller {
 
         String givenName = usernameTf.getText();
         String givenPassword = passwordField.getText();
-
-        if (new DbCallerUser().checkUser(givenName, givenPassword)) {
+        System.out.println(givenName + " " + givenPassword);
+        if (CB_CALLER_USER.checkUser(givenName, givenPassword) == true) {
             try {
                 switchToStartpage(User.getUser(givenName));
             } catch (IOException e) {
