@@ -27,8 +27,8 @@ public class CITAddController {
     @FXML public TextField attribut6Tf;
     @FXML public TextField attribut7Tf;
     @FXML public TextField attribut8Tf;
-    @FXML public Button cancelButton;
-    @FXML public Button submitButton;
+    @FXML public Button cancelBtn;
+    @FXML public Button submitBtn;
 
 
 }
