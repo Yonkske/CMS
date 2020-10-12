@@ -3,8 +3,7 @@ package backend.database;
 
 import backend.usability.User;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class DbCallerUser extends DbConnector{
@@ -19,7 +18,8 @@ public class DbCallerUser extends DbConnector{
     public static User getUser(String userName) {
 
         try {
-            rs = stmt.executeQuery("SELECT * FROM USER WHERE USER_NAME = " + userName + ";");
+            String quote = "'";
+            rs = stmt.executeQuery("SELECT * FROM USER WHERE USER_NAME = '" + userName + "'");
             userName = rs.getString("USER_NAME");
             String password = rs.getString("PASSWORD");
             boolean isInitial = rs.getBoolean("IS_INITIAL");
@@ -43,24 +43,25 @@ public class DbCallerUser extends DbConnector{
      */
     public static boolean insertUser(User userToCreate) {
 
-        String userName = userToCreate.getUserName();
-        String password = userToCreate.getPassword();
-        boolean isInitial = userToCreate.getIsInitial();
-        boolean isAdmin = userToCreate.getIsAdmin();
-        String name = userToCreate.getName();
-        String surname = userToCreate.getSurName();
-
         try {
-            stmt.execute("INSERT INTO USER VALUES ("
-                            + userName + ", "
-                            + password + ", "
-                            + isInitial + ", "
-                            + isAdmin + ", "
-                            + name + ", "
-                            + surname + ";");
+            PreparedStatement statement = con.prepareStatement("INSERT INTO USER VALUES (?, ?, ?, ?, ?, ?)");
+
+            statement.setString(1, userToCreate.getUserName());
+            statement.setString(2, userToCreate.getPassword());
+            statement.setBoolean(3, userToCreate.getIsInitial());
+            statement.setBoolean(4, userToCreate.getIsAdmin());
+            statement.setString(5, userToCreate.getName());
+            statement.setString(6, userToCreate.getSurName());
+
+            statement.execute();
+            statement.close();
+
             return true;
+
         } catch (SQLException creationFailed) {
+
             creationFailed.printStackTrace();
+
             return false;
         }
     }
@@ -72,21 +73,18 @@ public class DbCallerUser extends DbConnector{
      */
     public static boolean updateUser(User userToUpdate) {
 
-        String userName = userToUpdate.getUserName();
-        String password = userToUpdate.getPassword();
-        boolean isInitial = userToUpdate.getIsInitial();
-        boolean isAdmin = userToUpdate.getIsAdmin();
-        String name = userToUpdate.getName();
-        String surname = userToUpdate.getSurName();
-
         try {
-            stmt.execute("UPDATE USER SET ( USER_NAME ="
-                    + userName + ", PASSWORD = "
-                    + password + ", IS_INITIAL = "
-                    + isInitial + ", IS_ADMIN = "
-                    + isAdmin + ", NAME = "
-                    + name + ", SURNAME = "
-                    + surname + ";");
+            PreparedStatement statement = con.prepareStatement("UPDATE USER SET PASSWORD = ?, IS_INITIAL = ?, IS_ADMIN = ?, NAME = ?, SURNAME = ? WHERE USER_NAME = ?");
+
+            statement.setString(1, userToUpdate.getPassword());
+            statement.setBoolean(2, userToUpdate.getIsInitial());
+            statement.setBoolean(3, userToUpdate.getIsAdmin());
+            statement.setString(4, userToUpdate.getName());
+            statement.setString(5, userToUpdate.getSurName());
+            statement.setString(6, userToUpdate.getUserName());
+
+            statement.execute();
+            statement.close();
             return true;
         } catch (SQLException updateFailed) {
             updateFailed.printStackTrace();
@@ -103,15 +101,33 @@ public class DbCallerUser extends DbConnector{
 
         String userName = userToDelete.getUserName();
         try {
-            stmt.execute("DELETE FROM USER WHERE USER_NAME = " + userName + ";");
+            stmt.execute("DELETE FROM USER WHERE USER_NAME = " + userName);
+
+            return true;
         } catch (SQLException deleteFailed){
             deleteFailed.printStackTrace();
+
+            return false;
         }
-        return false;
     }
 
-    public ArrayList<User> getAllUsers() {
+    /**
+     * Method gives a list of all Users in database
+     * @return
+     */
+    /*public ArrayList<User> getAllUsers() {
 
-        return null;
-    }
+        User[] allUsers;
+
+        try {
+            rs = stmt.executeQuery("SELECT * FROM USER");
+
+
+        } catch (SQLException throwables) {
+
+            throwables.printStackTrace();
+        }
+
+        return allUsers;
+    }*/
 }

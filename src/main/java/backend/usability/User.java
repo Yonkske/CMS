@@ -34,7 +34,7 @@ public class User {
      * @param userName - the username of the user which should be got
      * @return User - return of the user that should be got
      */
-    public User getUser(String userName) {
+    public static User getUser(String userName) {
 
         User existingUser = DbCallerUser.getUser(userName);
         return existingUser;
@@ -49,7 +49,7 @@ public class User {
      * @param isAdmin - boolean: if true that user is an admin else hes not
      * @return newUser - the returned new user
      */
-    public User create(String userName, String name, String surname, String password, boolean isAdmin) {
+    public static User create(String userName, String password, boolean isAdmin, String name, String surname) {
 
         User newUser = new User(userName, name, true, isAdmin, surname, password);
         DbCallerUser.insertUser(newUser);
@@ -63,7 +63,7 @@ public class User {
      * @param isAdmin - former state of authorisation (expected: false = no admin)
      * @return isAdmin - new state of authorisation (expected: true = admin)
      */
-    public boolean changeAdmin(String userName, boolean isAdmin) {
+    public static boolean changeAdmin(String userName, boolean isAdmin) {
 
         User userToChange = getUser(userName);
         userToChange.isAdmin = isAdmin;
