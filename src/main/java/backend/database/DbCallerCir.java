@@ -164,7 +164,7 @@ public class DbCallerCir extends DbConnector{
         int iCit = Integer.parseInt(sCit); // Muss später gelöscht werden
         ArrayList<Cir> cirListe = new ArrayList<Cir>(); // Erzeugen einer Cir Liste
         ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE TYPE_ID = "+iCit); // DB Abfrage
-        //FIXME: FIXEN
+        //FIXME: FIXEN new DbConnector...
         new DbConnector().startConnection(); // Warum???!
         while(rs.next())
         {
