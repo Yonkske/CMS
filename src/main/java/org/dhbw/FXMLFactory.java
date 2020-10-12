@@ -1,6 +1,6 @@
 package org.dhbw;
 
-import backend.database.DbConnector;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
+/**
+ * Factory builds FXML Objects at first.
+ */
 public class FXMLFactory extends Application {
     private static Scene scene;
 
