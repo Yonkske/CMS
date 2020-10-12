@@ -51,7 +51,7 @@ public class User {
      */
     public static User create(String userName, String password, boolean isAdmin, String name, String surname) {
 
-        User newUser = new User(userName, name, true, isAdmin, surname, password);
+        User newUser = new User(userName, password, true, isAdmin, name, surname);
         DbCallerUser.insertUser(newUser);
 
         return newUser;

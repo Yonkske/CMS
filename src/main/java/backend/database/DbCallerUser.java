@@ -19,6 +19,7 @@ public class DbCallerUser extends DbConnector{
 
         try {
             rs = stmt.executeQuery("SELECT * FROM USER WHERE USER_NAME = '" + userName + "'");
+            rs.first();
             userName = rs.getString("USER_NAME");
             String password = rs.getString("PASSWORD");
             boolean isInitial = rs.getBoolean("IS_INITIAL");
@@ -100,7 +101,7 @@ public class DbCallerUser extends DbConnector{
 
         String userName = userToDelete.getUserName();
         try {
-            stmt.execute("DELETE FROM USER WHERE USER_NAME = " + userName);
+            stmt.execute("DELETE FROM USER WHERE USER_NAME = '" + userName + "'");
 
             return true;
         } catch (SQLException deleteFailed){
