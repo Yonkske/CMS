@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.CIREditController">
+   <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="20.0" />
+         </VBox.margin>
+         <Label fx:id="idLbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="ID" />
+         <TextField fx:id="idTf" disable="true" editable="false" prefWidth="210.0" />
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label fx:id="citLbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="CIT" />
+         <TextField fx:id="citTf" disable="true" editable="false" prefWidth="210.0" />
+      </HBox>
+      <HBox alignment="CENTER" cache="true" prefHeight="34.0" prefWidth="187.0" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label fx:id="nameLbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Name" />
+         <TextField fx:id="nameTf" editable="false" prefWidth="210.0" />
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label fx:id="attribut1Lbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Attribut1" />
+         <TextField fx:id="attribut1Tf" prefWidth="210.0" />
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label fx:id="attribut2Lbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Attribut2" />
+         <TextField fx:id="attribut2Tf" prefWidth="210.0" />
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label fx:id="attribut3Lbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Attribut3" />
+         <TextField fx:id="attribut3Tf" prefWidth="210.0" />
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label fx:id="attribut4Lbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Attribut4" />
+         <TextField fx:id="attribut4Tf" prefWidth="210.0" />
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label fx:id="attribut5Lbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Attribut5" />
+         <TextField fx:id="attribut5Tf" prefWidth="210.0" />
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label fx:id="attribut6Lbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Attribut6" />
+         <TextField fx:id="attribut6Tf" prefWidth="210.0" />
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label fx:id="attribut7Lbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Attribut7" />
+         <TextField fx:id="attribut7Tf" prefWidth="210.0" />
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" right="10.0" top="5.0" />
+         </VBox.margin>
+         <Button fx:id="submitBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Speichern" />
+         <Button fx:id="cancelBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Abbrechen" />
+      </HBox>
+   </VBox>
+</AnchorPane>
