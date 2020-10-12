@@ -3,18 +3,20 @@ package org.dhbw;
 import backend.database.DbCallerCir;
 import backend.database.DbCallerCit;
 import backend.database.DbCallerUser;
+import backend.usability.User;
 
 public class Controller {
 
-    DbCallerCir dbCallerCir;
-    DbCallerCit dbCallerCit;
-    DbCallerUser dbCallerUser;
+    final DbCallerCir DB_CALLER_CIR;
+    final DbCallerCit DB_CALLER_CIT;
+    final DbCallerUser CB_CALLER_USER;
+    User user = null;
 
     public Controller () {
 
-        dbCallerUser = new DbCallerUser();
-        dbCallerCir = new DbCallerCir();
-        dbCallerCit = new DbCallerCit();
+        CB_CALLER_USER = new DbCallerUser();
+        DB_CALLER_CIR = new DbCallerCir();
+        DB_CALLER_CIT = new DbCallerCit();
 
     }
 }
