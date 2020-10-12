@@ -114,8 +114,13 @@ public class DbCallerUser extends DbConnector{
     public boolean checkUser(String userName, String password) {
 
         try {
-            stmt.execute("SELECT * FROM USER WHERE USER_NAME = '" + userName + "' AND PASSWORD = '" + password + "'");
-            return true;
+            rs = stmt.executeQuery("SELECT * FROM USER WHERE USER_NAME = '" + userName + "' AND PASSWORD = '" + password + "'");
+
+            if (rs.getRow() == 0) {
+                return false;
+            }else {
+                return true;
+            }
         } catch (SQLException exception) {
             exception.printStackTrace();
             return false;
