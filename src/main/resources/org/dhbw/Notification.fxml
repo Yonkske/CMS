@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.NotificationController">
+   <children>
+      <VBox alignment="CENTER" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <padding>
+            <Insets bottom="40.0" top="40.0" />
+         </padding>
+         <children>
+            <Label fx:id="notificationLbl" prefWidth="350.0" text="Sind Sie sich sicher, dass das Element unwiderruflich gelöscht werden soll?" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <Button fx:id="yesBtn" mnemonicParsing="false" prefWidth="41.0" text="Ja" />
+                  <Button fx:id="noBtn" mnemonicParsing="false" prefWidth="41.0" text="Nein" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
