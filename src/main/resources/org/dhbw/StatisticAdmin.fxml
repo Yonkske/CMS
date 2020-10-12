@@ -9,7 +9,7 @@
    <children>
       <HBox alignment="TOP_RIGHT" prefHeight="23.0" prefWidth="600.0">
          <children>
-            <Label fx:id="adminLbl" text="Vorname, Nachnname">
+            <Label fx:id="adminLbl" text="Vorname, Nachname">
                <HBox.margin>
                   <Insets right="5.0" />
                </HBox.margin></Label>
