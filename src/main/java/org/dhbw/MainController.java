@@ -1,12 +1,11 @@
 package org.dhbw;
 
-import backend.Backend;
+import backend.database.DbConnector;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import backend.Backend;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -30,10 +29,16 @@ public class MainController extends Application  {
         return fxmlLoader.load();
     }
 
+    /**
+     * main-methode of the program
+     *
+     * @param args
+     */
     public static void main(String[] args) {
 
         try {
-            new Backend().call();
+            // Start the connection to the database
+            new DbConnector().startConnection();
         } catch (SQLException e) {
             System.out.println(e);
         }
