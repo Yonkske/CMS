@@ -67,7 +67,7 @@
                                  <HBox.margin>
                                     <Insets right="40.0" />
                                  </HBox.margin></Label>
-                              <Label fx:id="numberCIRLbl" text="Label" />
+                              <TextField fx:id="numberCIRTf" prefWidth="50.0" />
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
@@ -76,7 +76,7 @@
                                  <padding>
                                     <Insets right="40.0" />
                                  </padding></Label>
-                              <Label fx:id="NumberCITLbl" text="Label" />
+                              <TextField fx:id="numberCITTf" prefWidth="50.0" />
                            </children>
                         </HBox>
                      </children>
