@@ -1,9 +1,9 @@
 package org.dhbw;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 
-import java.awt.*;
 
 public class PasswordEditAdminController extends Controller {
     @FXML
