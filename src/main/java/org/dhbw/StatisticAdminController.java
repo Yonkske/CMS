@@ -1,4 +1,4 @@
 package org.dhbw;
 
-public class StatisticAdminController {
+public class StatisticAdminController extends Controller {
 }

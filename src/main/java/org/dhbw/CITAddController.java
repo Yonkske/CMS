@@ -1,11 +1,12 @@
 package org.dhbw;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
-import java.awt.*;
 
-public class CITAddController {
+public class CITAddController extends Controller {
 
     @FXML public Label idLbl;
     @FXML public Label citLbl;

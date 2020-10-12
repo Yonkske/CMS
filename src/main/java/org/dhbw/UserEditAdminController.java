@@ -1,5 +1,5 @@
 package org.dhbw;
 
-public class UserEditAdminController {
+public class UserEditAdminController extends Controller {
 
 }

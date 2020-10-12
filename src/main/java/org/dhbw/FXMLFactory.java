@@ -1,6 +1,6 @@
 package org.dhbw;
 
-import backend.database.DbConnector;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,10 +8,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
-public class MainController extends Application  {
+
+/**
+ * Factory builds FXML Objects at first.
+ */
+public class FXMLFactory extends Application {
     private static Scene scene;
+
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -20,28 +24,32 @@ public class MainController extends Application  {
         stage.show();
     }
 
+    /**
+     * Sets root of actual scene to scene in file of @param fxml. Scene is set to new size.
+     *
+     * @param fxml String name <b>without</b> suffix.
+     * @throws IOException
+     */
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
+        scene.getWindow().sizeToScene();
     }
 
+    /**
+     * @param fxml String name without suffix.
+     * @return FXMLLoader instance, loaded
+     * @throws IOException
+     */
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
     /**
-     * main-methode of the program
-     *
-     * @param args
+     * go method, extends main method of the program
      */
-    public static void main(String[] args) {
-
-        try {
-            // Start the connection to the database
-            new DbConnector().startConnection();
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
+    void go() {
+        new Controller();
         launch();
     }
 }

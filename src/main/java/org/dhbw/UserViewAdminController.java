@@ -1,4 +1,4 @@
 package org.dhbw;
 
-public class UserViewAdminController {
+public class UserViewAdminController extends Controller {
 }

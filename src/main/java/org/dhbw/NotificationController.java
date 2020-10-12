@@ -1,5 +1,5 @@
 package org.dhbw;
 
-public class NotificationController {
+public class NotificationController extends Controller {
 
 }
