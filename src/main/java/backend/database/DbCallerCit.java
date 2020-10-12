@@ -1,7 +1,12 @@
 package backend.database;
 
+import backend.usability.Cir;
 import backend.usability.Cit;
+import com.sun.javafx.scene.layout.region.Margins;
 
+import java.awt.*;
+import java.io.Console;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class DbCallerCit extends DbConnector{
@@ -11,47 +16,141 @@ public class DbCallerCit extends DbConnector{
      * @param id which should be selected in query
      * @return Object of CIT
      */
-    public Cit getCit(int id) {
+    public Cit getCit(int id) throws SQLException{
 
-        return null;
+        String[] sCitArray = new String[10]; // String zum Speichern der Resultset Daten
+        ResultSet rs = stmt.executeQuery("SELECT * FROM CIT WHERE TYPE_ID = " + id); // SQL Abfrage
+
+        rs.first();
+       for(int i= 1; i <= 9; i++) // Übertragen des Result Sets auf ein Array
+        {
+            sCitArray[i] = rs.getString(i+1);
+        }
+
+        Cit citName; // initialisieren eines neuen Cit's
+        citName = new Cit(id, sCitArray); // Erzeugen des Cit's
+        return citName; // Rückgabe des Cir's
     }
+
+
+
 
     /**Database Query to create a new CIT
      *
      * @param type which should be created
      * @return true if the CIT is created/ false if not
      */
-    public boolean createCit(Cit type) {
+    public boolean createCit(Cit type) throws SQLException{
+        String[] sCitAttributes = type.getCitAttributes();
+        boolean bWorks;
+        try{
+            PreparedStatement prepStmt = con.prepareStatement
+                    ("INSERT INTO CIT VALUES (?,?,?,?,?,?,?,?,?,?)"); // SQL Statement
 
-        return false;
+            prepStmt.setInt(1,type.getCitID());
+            prepStmt.setString(3,type.getCitName());
+            prepStmt.setString(4,sCitAttributes[0]);
+            prepStmt.setString(5,sCitAttributes[1]);
+            prepStmt.setString(6,sCitAttributes[2]);
+            prepStmt.setString(7,sCitAttributes[3]);
+            prepStmt.setString(8,sCitAttributes[4]);
+            prepStmt.setString(9,sCitAttributes[5]);
+            prepStmt.setString(10,sCitAttributes[6]);
+            prepStmt.executeUpdate();
+            prepStmt.close();
+            bWorks = true;
+        }
+        catch(SQLSyntaxErrorException a)
+        {
+            bWorks = false;
+        }
+        catch (SQLIntegrityConstraintViolationException b)
+        {
+            bWorks = false;
+        }
+
+        return bWorks;
     }
+
+
+
 
     /**Database Query to delete a CIT
      *
      * @param type which should be deleted
      * @return true if the CIT is deleted/ false if not
      */
-    public boolean deleteCit(Cit type) {
+    public boolean deleteCit(Cit type) throws SQLException{
+        boolean bDeleteCit;
+        try{
+            stmt.execute("DELETE FROM CIT WHERE Type_ID= "+ type.getCitID()); // SQL Abfrage
+            bDeleteCit = true;
+        }
+        catch(SQLSyntaxErrorException a)
+        {
+            bDeleteCit = false;
+        }
+        catch(SQLIntegrityConstraintViolationException b)
+        {
+            bDeleteCit = false;
+        }
+        catch (SQLNonTransientException c)
+        {
+            bDeleteCit = false;
+        }
 
-        return false;
+        return bDeleteCit;
     }
 
     /**Database Query to get all CIT in table
      *
      * @return a list of CIT records in table
      */
-    public ArrayList<Cit> getAllCits() {
+    public ArrayList<Cit> getAllCits() throws SQLException{
+        Cit citName;
+        int iIDCit;
+        int iZaehler = 0;
+        new DbConnector().startConnection(); // Warum???!
+        ArrayList<Cit>  citListe= new ArrayList<Cit>();
+        ResultSet rs = stmt.executeQuery("Select * From CIT");
+        while(rs.next())
+        {
+            iIDCit = rs.getInt(1); // ID des ResultSet
+            String[] attributes = new String[8];
+            for(int i = 0; i < attributes.length; i++) {
+                attributes[i] = rs.getString(i+1);
+            }
+            citListe.add(new Cit(iIDCit, attributes)); // CIR Objekt in Liste eintragen
 
-        return null;
+        }
+
+        return citListe;
     }
 
     /**Database Query to get sum of all CIT in table
      *
      * @return a integer number of CIT records in table
      */
-    public int getCitCount() {
-
-        return 0;
+    public int getCitCount() throws SQLException {
+        int iCountCIT;
+        try{
+            ResultSet rs = stmt.executeQuery("SELECT count(*) FROM CIT");
+            rs.first();
+            iCountCIT = rs.getInt(1);
+        }
+        catch (SQLSyntaxErrorException a)
+        {
+            iCountCIT = 0;
+        }
+        catch (SQLIntegrityConstraintViolationException b)
+        {
+            iCountCIT = 0;
+        }
+        catch (SQLNonTransientException c)
+        {
+            iCountCIT = 0;
+        }
+        return iCountCIT;
     }
 
 }
