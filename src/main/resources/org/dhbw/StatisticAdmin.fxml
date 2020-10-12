@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -8,28 +9,91 @@
    <children>
       <HBox alignment="TOP_RIGHT" prefHeight="23.0" prefWidth="600.0">
          <children>
-            <Label text="Vorname, Nachnname" />
+            <Label fx:id="adminLbl" text="Vorname, Nachname">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin></Label>
          </children>
       </HBox>
       <HBox prefHeight="389.0" prefWidth="600.0">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+            <VBox alignment="TOP_CENTER" prefHeight="383.0" prefWidth="136.0">
                <children>
-                  <Button minWidth="65.6" mnemonicParsing="false" text="Startseite">
+                  <Button fx:id="startpageBtn" minWidth="65.6" mnemonicParsing="false" text="Startseite">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button minWidth="65.6" mnemonicParsing="false" text="CIT">
+                  <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" text="CIT">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button minWidth="65.6" mnemonicParsing="false" text="Statistik">
+                  <Button fx:id="statisticBtn" minWidth="65.6" mnemonicParsing="false" text="Statistik">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
+                  <Button fx:id="userBtn" minWidth="65.6" mnemonicParsing="false" text="Benutzer">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="383.0" prefWidth="476.0">
+               <children>
+                  <HBox prefHeight="35.0" prefWidth="323.0">
+                     <children>
+                        <ComboBox fx:id="searchTf" editable="true" prefWidth="150.0">
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                        </ComboBox>
+                        <Button fx:id="filterBtn" mnemonicParsing="false" text="filtern" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <VBox prefHeight="74.0" prefWidth="323.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label fx:id="cirLabel" minWidth="30.0" text="Anzahl CIR">
+                                 <HBox.margin>
+                                    <Insets right="40.0" />
+                                 </HBox.margin></Label>
+                              <TextField fx:id="numberCIRTf" prefWidth="50.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label fx:id="citLabel" text="Anzahl CIT">
+                                 <padding>
+                                    <Insets right="40.0" />
+                                 </padding></Label>
+                              <TextField fx:id="numberCITTf" prefWidth="50.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <HBox prefHeight="253.0" prefWidth="393.0">
+                     <children>
+                        <PieChart fx:id="adminPieChart" maxWidth="300.0" prefHeight="253.0" prefWidth="292.0" />
+                        <BarChart fx:id="adminStackedBarChart" prefHeight="253.0" prefWidth="318.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>
