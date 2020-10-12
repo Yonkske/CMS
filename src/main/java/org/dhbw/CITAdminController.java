@@ -1,4 +1,4 @@
 package org.dhbw;
 
-public class CITAdminController {
+public class CITAdminController extends Controller {
 }

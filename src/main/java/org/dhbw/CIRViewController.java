@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 
 import java.awt.*;
 
-public class CIRViewController {
+public class CIRViewController extends Controller {
     @FXML public Label idLbl;
     @FXML public Label citLbl;
     @FXML public Label nameLbl;

@@ -10,9 +10,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
-public class FXMLFactory extends Application  {
+public class FXMLFactory extends Application {
     private static Scene scene;
-    private Controller controller;
+
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -23,6 +23,7 @@ public class FXMLFactory extends Application  {
 
     /**
      * Sets root of actual scene to scene in file of @param fxml. Scene is set to new size.
+     *
      * @param fxml String name <b>without</b> suffix.
      * @throws IOException
      */
@@ -32,7 +33,6 @@ public class FXMLFactory extends Application  {
     }
 
     /**
-     *
      * @param fxml String name without suffix.
      * @return FXMLLoader instance, loaded
      * @throws IOException
@@ -45,8 +45,8 @@ public class FXMLFactory extends Application  {
     /**
      * go method, extends main method of the program
      */
-     void go() {
-         controller = new Controller();
+    void go() {
+        new Controller();
         launch();
     }
 }

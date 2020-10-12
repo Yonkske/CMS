@@ -5,7 +5,7 @@ import javafx.scene.control.ChoiceBox;
 
 import java.awt.*;
 
-public class CITAddController {
+public class CITAddController extends Controller {
 
     @FXML public Label idLbl;
     @FXML public Label citLbl;

@@ -1,5 +1,5 @@
 package org.dhbw;
 
-public class UserInfoController {
+public class UserInfoController extends Controller {
 
 }

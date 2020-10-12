@@ -1,4 +1,4 @@
 package org.dhbw;
 
-public class StartpageAdminController {
+public class StartpageAdminController extends Controller {
 }

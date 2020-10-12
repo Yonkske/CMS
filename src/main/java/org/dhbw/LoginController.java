@@ -1,5 +1,5 @@
 package org.dhbw;
 
-public class LoginController {
+public class LoginController extends Controller {
 
 }
