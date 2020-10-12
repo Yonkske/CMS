@@ -58,10 +58,13 @@
                   </HBox>
                   <ScrollPane prefHeight="275.0" prefWidth="274.0">
                      <content>
-                        <TableView fx:id="cirTable" prefHeight="276.0" prefWidth="274.0">
+                        <TableView fx:id="cirTable" prefHeight="276.0" prefWidth="270.0">
                           <columns>
-                            <TableColumn editable="false" prefWidth="125.60000610351562" text="CIT" />
-                            <TableColumn editable="false" prefWidth="136.40000915527344" text="CIR-Bezeichnung" />
+                            <TableColumn editable="false" prefWidth="135.0" text="CIT">
+                                 <graphic>
+                                    <ComboBox prefHeight="25.0" prefWidth="135.0" promptText="CIT" />
+                                 </graphic></TableColumn>
+                            <TableColumn editable="false" prefWidth="135.0" text="CIR-Bezeichnung" />
                           </columns>
                         </TableView>
                      </content>
