@@ -236,4 +236,27 @@ public class DbCallerCir extends DbConnector{
         return iCountCIRofCIT;
 
     }
+
+    /**
+     * Get all CIRs from the database
+     *
+     * @return allCirs
+     * @throws SQLException
+     */
+    public ArrayList<Cir> getAll() throws SQLException {
+        startConnection();
+        ArrayList<Cir> allCirs = new ArrayList<Cir>();
+
+        ResultSet rs = stmt.executeQuery("Select * from CIR");
+
+        while (rs.next()) {
+            String[] attributes =  new String[10];
+            for(int i = 0; i < attributes.length; i++) {
+                attributes[i] = rs.getString(i+1);
+            }
+            allCirs.add(new Cir(attributes));
+        }
+
+        return allCirs;
+    }
 }

@@ -8,7 +8,7 @@ public class PrimaryController {
 
     @FXML
     private void switchToSecondary() throws IOException {
-        FXMLFactory.setRoot("startpageUser");
+        FXMLFactory.setRoot("secondary");
 
 
     }
