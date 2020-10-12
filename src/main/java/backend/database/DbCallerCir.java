@@ -150,9 +150,11 @@ public class DbCallerCir extends DbConnector{
     }
 
     /**
+     * Returns all CIR's from a given CIT as CIR list
      *
-     * @param sCit
-     * @return
+     * @param sCit -String later CIT type
+     * @return cirListe - List of all Cirs of a given CIT
+     * @throws SQLException
      */
     //todo: Ersetzen von String sCit durch Type CIT
     public static ArrayList<Cir> getAllCirForType(String sCit) throws SQLException {
