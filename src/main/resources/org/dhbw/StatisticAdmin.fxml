@@ -8,7 +8,7 @@
    <children>
       <HBox alignment="TOP_RIGHT" prefHeight="23.0" prefWidth="600.0">
          <children>
-            <Label text="Vorname, Nachnname" />
+            <Label text="Vorname, Nachname" />
          </children>
       </HBox>
       <HBox prefHeight="389.0" prefWidth="600.0">
