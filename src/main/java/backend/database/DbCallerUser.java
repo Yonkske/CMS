@@ -18,7 +18,6 @@ public class DbCallerUser extends DbConnector{
     public static User getUser(String userName) {
 
         try {
-            String quote = "'";
             rs = stmt.executeQuery("SELECT * FROM USER WHERE USER_NAME = '" + userName + "'");
             userName = rs.getString("USER_NAME");
             String password = rs.getString("PASSWORD");

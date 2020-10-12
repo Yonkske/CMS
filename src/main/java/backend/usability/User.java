@@ -78,7 +78,7 @@ public class User {
      * @param userName - username of the user whose authorisation should be checked
      * @return true - if true returns he is admin, if false returns he is just a normal user
      */
-    public boolean checkIsAdmin(String userName) {
+    public static boolean checkIsAdmin(String userName) {
 
         User userToCheckAdmin = getUser(userName);
 
@@ -90,7 +90,7 @@ public class User {
      * @param userName - username of the user which should be deleted
      * @return true - if true returns the user was deleted, if false returns the user could not be deleted
      */
-    public boolean deleteUser(String userName) {
+    public static boolean deleteUser(String userName) {
 
         User userToDelete = getUser(userName);
 
@@ -108,7 +108,7 @@ public class User {
      * @param newPassword - new password given by the admin
      * @return boolean - if the password was changed: true, else: false
      */
-    public boolean changePassword(String userName, String newPassword) {
+    public static boolean changePassword(String userName, String newPassword) {
 
         User userToChangePwByAdmin = getUser(userName);
 
@@ -130,7 +130,7 @@ public class User {
      * @param newPassword - the new password
      * @return boolean - if true returns the password was changed, if false returns the password could not be changed
      */
-    public boolean changePassword(String userName, String oldPassword, String newPassword) {
+    public static boolean changePassword(String userName, String oldPassword, String newPassword) {
     // TODO: functionality when oldPassword != userToChangePw.password
 
         User userToChangePw = getUser(userName);
