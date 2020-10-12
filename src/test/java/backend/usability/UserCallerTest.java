@@ -15,24 +15,24 @@ public class UserCallerTest {
     @Test
     public void testGetUser() throws SQLException {
         new DbConnector().startConnection();
-        Assert.assertNotNull(DbCallerUser.getUser("admin"));
+        Assert.assertNotNull(new DbCallerUser().getUser("admin"));
     } //is the function running without any failures?
 
     @Test
     public void testInsertUser() throws SQLException {
         new DbConnector().startConnection();
-        Assert.assertEquals(true, DbCallerUser.insertUser(testUser1));
+        Assert.assertEquals(true, new DbCallerUser().insertUser(testUser1));
     } //is the function running without any failures?
 
     @Test
     public void testUpdateUser() throws SQLException {
         new DbConnector().startConnection();
-        Assert.assertEquals(true, DbCallerUser.updateUser(testUser2));
+        Assert.assertEquals(true, new DbCallerUser().updateUser(testUser2));
     } //is the function running without any failures?
 
     @Test
     public void testDeleteUser() throws SQLException {
         new DbConnector().startConnection();
-        Assert.assertEquals(true, DbCallerUser.deleteUser(testUser2));
+        Assert.assertEquals(true, new DbCallerUser().deleteUser(testUser2));
     } //is the function running without any failures?
 }

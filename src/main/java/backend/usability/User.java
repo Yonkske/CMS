@@ -36,7 +36,7 @@ public class User {
      */
     public static User getUser(String userName) {
 
-        User existingUser = DbCallerUser.getUser(userName);
+        User existingUser = new DbCallerUser().getUser(userName);
         return existingUser;
     }
 
@@ -52,7 +52,7 @@ public class User {
     public static User create(String userName, String password, boolean isAdmin, String name, String surname) {
 
         User newUser = new User(userName, password, true, isAdmin, name, surname);
-        DbCallerUser.insertUser(newUser);
+        new DbCallerUser().insertUser(newUser);
 
         return newUser;
     }
@@ -68,7 +68,7 @@ public class User {
         User userToChange = getUser(userName);
         userToChange.isAdmin = isAdmin;
 
-        DbCallerUser.updateUser(userToChange);
+        new DbCallerUser().updateUser(userToChange);
 
         return userToChange.isAdmin;
     }
@@ -94,7 +94,7 @@ public class User {
 
         User userToDelete = getUser(userName);
 
-        if (DbCallerUser.deleteUser(userToDelete)) {
+        if (new DbCallerUser().deleteUser(userToDelete)) {
             return true;
         }
         else {
@@ -109,6 +109,7 @@ public class User {
      * @return boolean - if the password was changed: true, else: false
      */
     public static boolean changePassword(String userName, String newPassword) {
+    // TODO: do functionality
 
         User userToChangePwByAdmin = getUser(userName);
 
@@ -116,7 +117,7 @@ public class User {
             userToChangePwByAdmin.password = newPassword;
             userToChangePwByAdmin.isInitial = true;
 
-            DbCallerUser.updateUser(userToChangePwByAdmin);
+            new DbCallerUser().updateUser(userToChangePwByAdmin);
             return true;
         } else {
             return false;
@@ -132,13 +133,14 @@ public class User {
      */
     public static boolean changePassword(String userName, String oldPassword, String newPassword) {
     // TODO: functionality when oldPassword != userToChangePw.password
+    // TODO: do functionality
 
         User userToChangePw = getUser(userName);
 
         if (userToChangePw.userName == userName & userToChangePw.password == oldPassword) {
             userToChangePw.password = newPassword;
 
-            DbCallerUser.updateUser(userToChangePw);
+            new DbCallerUser().updateUser(userToChangePw);
             return true;
         } else {
             return false;

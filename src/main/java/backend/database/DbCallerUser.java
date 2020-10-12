@@ -15,7 +15,7 @@ public class DbCallerUser extends DbConnector{
      * @param userName - this user should be got
      * @return userToGet - returns the user from the database
      */
-    public static User getUser(String userName) {
+    public User getUser(String userName) {
 
         try {
             rs = stmt.executeQuery("SELECT * FROM USER WHERE USER_NAME = '" + userName + "'");
@@ -41,7 +41,7 @@ public class DbCallerUser extends DbConnector{
      * @param userToCreate - this user should be saved
      * @return boolean - if true: user was saved, if false: user can´t be saved
      */
-    public static boolean insertUser(User userToCreate) {
+    public boolean insertUser(User userToCreate) {
 
         try {
             PreparedStatement statement = con.prepareStatement("INSERT INTO USER VALUES (?, ?, ?, ?, ?, ?)");
@@ -71,7 +71,7 @@ public class DbCallerUser extends DbConnector{
      * @param userToUpdate - this user should be updated
      * @return boolean - if true: user was updated, if false: user can´t be updated
      */
-    public static boolean updateUser(User userToUpdate) {
+    public boolean updateUser(User userToUpdate) {
 
         try {
             PreparedStatement statement = con.prepareStatement("UPDATE USER SET PASSWORD = ?, IS_INITIAL = ?, IS_ADMIN = ?, NAME = ?, SURNAME = ? WHERE USER_NAME = ?");
@@ -97,7 +97,7 @@ public class DbCallerUser extends DbConnector{
      * @param userToDelete - this user should be deleted
      * @return boolean - if true: user was deleted, if false: user can´t be deleted
      */
-    public static boolean deleteUser(User userToDelete) {
+    public boolean deleteUser(User userToDelete) {
 
         String userName = userToDelete.getUserName();
         try {
@@ -116,6 +116,7 @@ public class DbCallerUser extends DbConnector{
      * @return
      */
     /*public ArrayList<User> getAllUsers() {
+    // TODO: make it work
 
         User[] allUsers;
 
