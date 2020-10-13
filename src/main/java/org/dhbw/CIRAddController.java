@@ -1,6 +1,7 @@
 package org.dhbw;
 
 import backend.database.DbCallerCir;
+import backend.database.DbCallerCit;
 import backend.usability.Cir;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -47,7 +48,7 @@ public class CIRAddController extends Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            idTf.setText(String.valueOf(Cir.getCount()+1));
+            idTf.setText(String.valueOf(Cir.getCount()+2));
 
           //todo: Liste von CIT's als String Liste
            // ArrayList<Cit> citListe = new ArrayList<Cit>();

@@ -6,12 +6,13 @@ import backend.usability.User;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class DbCallerUser extends DbConnector{
+public class DbCallerUser extends DbConnector {
 
     static ResultSet rs;
 
     /**
      * Method for the query to get the user out if the database.
+     *
      * @param userName - this user should be got
      * @return userToGet - returns the user from the database
      */
@@ -19,17 +20,20 @@ public class DbCallerUser extends DbConnector{
 
         try {
             rs = stmt.executeQuery("SELECT * FROM USER WHERE USER_NAME = '" + userName + "'");
-            rs.first();
-            userName = rs.getString("USER_NAME");
-            String password = rs.getString("PASSWORD");
-            boolean isInitial = rs.getBoolean("IS_INITIAL");
-            boolean isAdmin = rs.getBoolean("IS_ADMIN");
-            String name = rs.getString("NAME");
-            String surname = rs.getString("SURNAME");
+            if (rs.first()) {
+                userName = rs.getString("USER_NAME");
+                String password = rs.getString("PASSWORD");
+                boolean isInitial = rs.getBoolean("IS_INITIAL");
+                boolean isAdmin = rs.getBoolean("IS_ADMIN");
+                String name = rs.getString("NAME");
+                String surname = rs.getString("SURNAME");
 
-            User userToGet = new User(userName, password, isInitial, isAdmin, name, surname);
+                User userToGet = new User(userName, password, isInitial, isAdmin, name, surname);
 
-            return userToGet;
+                return userToGet;
+            } else {
+                return null;
+            }
         } catch (SQLException getFailed) {
             getFailed.printStackTrace();
             return null;
@@ -38,6 +42,7 @@ public class DbCallerUser extends DbConnector{
 
     /**
      * Method to write a new user into the database.
+     *
      * @param userToCreate - this user should be saved
      * @return boolean - if true: user was saved, if false: user can´t be saved
      */
@@ -68,6 +73,7 @@ public class DbCallerUser extends DbConnector{
 
     /**
      * Method to update a user being saved in the database.
+     *
      * @param userToUpdate - this user should be updated
      * @return boolean - if true: user was updated, if false: user can´t be updated
      */
@@ -94,6 +100,7 @@ public class DbCallerUser extends DbConnector{
 
     /**
      * Method to delete user from the database.
+     *
      * @param userToDelete - this user should be deleted
      * @return boolean - if true: user was deleted, if false: user can´t be deleted
      */
@@ -104,7 +111,7 @@ public class DbCallerUser extends DbConnector{
             stmt.execute("DELETE FROM USER WHERE USER_NAME = '" + userName + "'");
 
             return true;
-        } catch (SQLException deleteFailed){
+        } catch (SQLException deleteFailed) {
             deleteFailed.printStackTrace();
 
             return false;

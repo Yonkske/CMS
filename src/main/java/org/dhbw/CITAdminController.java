@@ -54,6 +54,7 @@ public class CITAdminController extends Controller {
     public void swapToStartpageAdmin(ActionEvent actionEvent) throws IOException {
        // FXMLFactory.setRoot("StartpageAdmin.fxml");
         // Laden der neuen Scene Startseite
+        /*
         FXMLLoader loader = new FXMLLoader(getClass().getResource("StartpageAdmin.fxml"));
         Parent root = loader.load();
         Stage stage1 = new Stage();
@@ -66,10 +67,13 @@ public class CITAdminController extends Controller {
         Stage stClose = new Stage();
         stClose = (Stage) startpageBtn.getScene().getWindow();
         stClose.close();
+         */
+        FXMLFactory.setRoot("StartpageAdmin");
 
     }
 
     public void swapToCITAdmin(ActionEvent actionEvent) throws IOException{
+        /*
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CITAdmin.fxml"));
         Parent root = loader.load();
         Stage stage1 = new Stage();
@@ -82,9 +86,12 @@ public class CITAdminController extends Controller {
         Stage stClose = new Stage();
         stClose = (Stage) startpageBtn.getScene().getWindow();
         stClose.close();
+        */
+         FXMLFactory.setRoot("CITAdmin");
     }
 
     public void swapToStatisticAdmin(ActionEvent actionEvent) throws IOException {
+        /*
         FXMLLoader loader = new FXMLLoader(getClass().getResource("StatisticAdmin.fxml"));
         Parent root = loader.load();
         Stage stage1 = new Stage();
@@ -97,6 +104,8 @@ public class CITAdminController extends Controller {
         Stage stClose = new Stage();
         stClose = (Stage) startpageBtn.getScene().getWindow();
         stClose.close();
+        */
+        FXMLFactory.setRoot("StatisticAdmin");
     }
 
     public void swapToCITAdd(ActionEvent actionEvent) throws IOException {

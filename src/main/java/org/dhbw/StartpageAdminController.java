@@ -127,8 +127,8 @@ public class StartpageAdminController extends Controller implements Initializabl
     @FXML
     public void openDeleteCitPopup() throws IOException {
         // FIXME
-        NotificationController notificationController = new NotificationController(cirTable.getSelectionModel().getSelectedItem().getCit());
-        //NotificationController notificationController = new NotificationController();
+        //NotificationController notificationController = new NotificationController(cirTable.getSelectionModel().getSelectedItem().getCit());
+        NotificationController notificationController = new NotificationController();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Notification.fxml"));
         loader.setController(notificationController);
         Parent root = loader.load();
@@ -147,8 +147,8 @@ public class StartpageAdminController extends Controller implements Initializabl
     @FXML
     public void openDeleteCirPopup() throws IOException {
         // FIXME
-        NotificationController notificationController = new NotificationController(cirTable.getSelectionModel().getSelectedItem());
-        //NotificationController notificationController = new NotificationController();
+        //NotificationController notificationController = new NotificationController(cirTable.getSelectionModel().getSelectedItem());
+        NotificationController notificationController = new NotificationController();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Notification.fxml"));
         loader.setController(notificationController);
         Parent root = loader.load();

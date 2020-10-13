@@ -2,9 +2,10 @@ package org.dhbw;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class ChangePasswordController extends Controller {
@@ -27,6 +28,6 @@ public class ChangePasswordController extends Controller {
     public Button submitBtn;
 
     public void switchToStartpage(ActionEvent actionEvent) throws IOException {
-        FXMLFactory.setRoot("Startpage");
+        FXMLFactory.setRoot("StartpageAdmin");
     }
 }
