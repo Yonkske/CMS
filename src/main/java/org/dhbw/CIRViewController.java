@@ -1,12 +1,29 @@
 package org.dhbw;
 
+import backend.usability.Cir;
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 
-public class CIRViewController extends Controller {
+public class CIRViewController extends Controller implements Initializable  {
+    private static Scene scene;
+
     @FXML public Label idLbl;
     @FXML public Label citLbl;
     @FXML public Label nameLbl;
@@ -30,4 +47,116 @@ public class CIRViewController extends Controller {
     @FXML public TextField attribut7Tf;
     @FXML public Button deleteBtn;
     @FXML public Button editCirBtn;
+
+    private Cir cir;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        // Atrribute des Cir Übergeben und in der View ausgeben
+        idTf.setText(String.valueOf(cir.getCirID()));
+        //todo: Change CIT Int to CIT Type
+        citTf.setText(String.valueOf(cir.getCitID()));
+        nameTf.setText(cir.getCirName());
+        attribut1Tf.setText(cir.getCirAttributes()[0]);
+        attribut2Tf.setText(cir.getCirAttributes()[1]);
+        attribut3Tf.setText(cir.getCirAttributes()[2]);
+        attribut4Tf.setText(cir.getCirAttributes()[3]);
+        attribut5Tf.setText(cir.getCirAttributes()[4]);
+        attribut6Tf.setText(cir.getCirAttributes()[5]);
+        attribut7Tf.setText(cir.getCirAttributes()[6]);
+
+        // Action Event bearbeiten Button
+        editCirBtn.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                try {
+                    // Aufrufen von View CIR Edit
+                    openPopUpCirEdit(cir);
+                    // Aktuelle View schließen
+                    Stage stClose = new Stage();
+                    stClose = (Stage) editCirBtn.getScene().getWindow();
+                    stClose.close();
+
+                }
+                //Fixme: Error Handling
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        deleteBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                try {
+                    //todo: einbinden der Notification vor dem löschen
+                   // openPopUpNotification("Cir Löschen?");
+                     deleteSelectedCir(cir);
+                }
+                //Fixme: Error Handling
+                catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+
+            }
+        });
+    }
+
+    /**
+     *   open the Cir Edit View
+     *
+     * @param selectedCir - Cir Objekt
+     * @throws IOException
+     */
+    private void openPopUpCirEdit(Cir selectedCir) throws IOException {
+        // Aufruf View CIREdit
+        CIREditController CIREditController = new CIREditController(selectedCir);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CIREdit.fxml"));
+        loader.setController(CIREditController);
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        // View an Fenster anpassen
+        stage.setScene(scene);
+        scene.getWindow().sizeToScene();
+        stage.show();
+
+
+    }
+
+    /**
+     *  Delete of the Cir over the CirView
+     *
+     * @param selectedCir - Cir Objekt
+     * @throws SQLException
+     */
+    private void deleteSelectedCir(Cir selectedCir) throws SQLException {
+       // openPopUpNotification("Soll das Cir Objekt gelöscht werden?");
+        int iSelectedCir = selectedCir.getCirID();
+        Cir.delete(iSelectedCir);
+
+    }
+
+    /**
+     * Open PoP Up Notification
+     *
+     * @param message
+     */
+    private void openPopUpNotification(String message)
+    {
+        //todo: Einbinden sobald NotificationController start vorhanden ist
+       // NotificationController.start(message);
+    }
+
+    /**
+     * Kontrktor of the Method CIRViewController
+     *
+     * @param cir - CIR Objekt
+     */
+    public CIRViewController(Cir cir) {
+        this.cir = cir;
+    }
+
 }
