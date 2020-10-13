@@ -72,8 +72,9 @@ public class CIRViewController extends Controller implements Initializable  {
             @Override
             public void handle(ActionEvent actionEvent) {
                 try {
+                    // Aufrufen von View CIR Edit
                     openPopUpCirEdit(cir);
-
+                    // Aktuelle View schließen
                     Stage stClose = new Stage();
                     stClose = (Stage) editCirBtn.getScene().getWindow();
                     stClose.close();
@@ -106,25 +107,19 @@ public class CIRViewController extends Controller implements Initializable  {
      * @throws IOException
      */
     private void openPopUpCirEdit(Cir selectedCir) throws IOException {
-        //todo: Jan fragen ?
-        //scene = new Scene(loadFXML("CIREdit"));
+        // Aufruf View CIREdit
         CIREditController CIREditController = new CIREditController(selectedCir);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CIREdit.fxml"));
         loader.setController(CIREditController);
         Parent root = loader.load();
         Stage stage1 = new Stage();
         Scene scene = new Scene(root);
-
+        // View an Fenster anpassen
         stage1.setScene(scene);
         scene.getWindow().sizeToScene();
         stage1.show();
 
 
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
     }
 
     /**
@@ -141,6 +136,7 @@ public class CIRViewController extends Controller implements Initializable  {
     }
 
     /**
+     * Open PoP Up Notification
      *
      * @param message
      */
@@ -150,7 +146,11 @@ public class CIRViewController extends Controller implements Initializable  {
        // NotificationController.start(message);
     }
 
-
+    /**
+     * Kontrktor of the Method CIRViewController
+     *
+     * @param cir - CIR Objekt
+     */
     public CIRViewController(Cir cir) {
         this.cir = cir;
     }

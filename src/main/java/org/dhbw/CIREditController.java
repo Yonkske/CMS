@@ -62,36 +62,46 @@ public class CIREditController extends Controller implements Initializable {
         attribut6Tf.setText(cir.getCirAttributes()[5]);
         attribut7Tf.setText(cir.getCirAttributes()[6]);
 
-
+        // Button Speichern
         submitBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 try {
+                    // Cir Ändern in der Datenbank
                     updateStatus();
+                    // CIR View wird geladen und CirEdit wird geschlossen
                     loadViewCir();
-
-
-
                 } catch (SQLException | IOException throwables) {
                     throwables.printStackTrace();
                 }
 
             }
         });
+
+        // Button Abbrechen
         cancelBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 try {
+                    // CIR View wird geladen und CirEdit wird geschlossen
                     loadViewCir();
-                 } catch (SQLException | IOException throwables) {
-                throwables.printStackTrace();
-            }
+                 }
+                catch (SQLException | IOException throwables) {
+                     throwables.printStackTrace();
+                 }
             }
         });
 
     }
 
+    /**
+     * Update of the CIR over the Cir change method
+     *
+     * @throws SQLException
+     */
     private void  updateStatus() throws SQLException {
+
+        // Attribute an String Array größe 10 Übergeben
         String[] sAttributeCir = new String[10];
         //todo: Integer in CIT Type ändern
         int iCirId = Integer.parseInt(idTf.getText());
@@ -110,7 +120,14 @@ public class CIREditController extends Controller implements Initializable {
         Cir.change(sAttributeCir, iCirId);
     }
 
+    /**
+     * load of the ControllerCirView
+     *
+     * @throws SQLException
+     * @throws IOException
+     */
     public void loadViewCir() throws SQLException, IOException {
+        // loadViewCir
         cir = Cir.showCir(Integer.parseInt(idTf.getText()));
         CIRViewController CIRViewController = new CIRViewController(cir);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CIRView.fxml"));
@@ -118,15 +135,21 @@ public class CIREditController extends Controller implements Initializable {
         Parent root = loader.load();
         Stage stage1 = new Stage();
         Scene scene = new Scene(root);
-
+        // Neue View an Fenster anpassen
         stage1.setScene(scene);
         scene.getWindow().sizeToScene();
         stage1.show();
-
+        // Aktuele View schließen
         Stage stClose = new Stage();
         stClose = (Stage) submitBtn.getScene().getWindow();
         stClose.close();
     }
+
+    /**
+     *  Konstruktor CIREditController
+     *
+     * @param selectedCir - Cir Obejekt
+     */
     public CIREditController(Cir selectedCir){
         this.cir = selectedCir;
     }
