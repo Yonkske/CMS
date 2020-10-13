@@ -11,10 +11,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
 
 public class LoginController extends Controller {
 
@@ -29,21 +35,33 @@ public class LoginController extends Controller {
     /**
      * This method is for a user logIn, it is checked whether the user is a admin.
      */
-    public void logIn() {
+    public void logIn() throws IOException {
         // TODO: Check for ADMIN, Hashing the PW
 
         String givenName = usernameTf.getText();
         String givenPassword = passwordField.getText();
-        System.out.println(givenName + " " + givenPassword);
-        if (CB_CALLER_USER.checkUser(givenName, givenPassword) == true) {
-            try {
-                switchToStartpage(User.getUser(givenName));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+
+        User user = CB_CALLER_USER.getUser(givenName);
+
+        if (CB_CALLER_USER.checkUser(givenName, givenPassword) == true & user.getIsInitial() == true) {
+            openPopUpEditPassword(User.getUser(givenName));
+        } else if (CB_CALLER_USER.checkUser(givenName, givenPassword) == true & user.getIsInitial() == false){
+            switchToStartpage(User.getUser(givenName));
         } else {
             showError();
         }
+    }
+
+    public String verschlüsseltPasswort (String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
+        SecureRandom random = new SecureRandom();
+        byte[] salt = new byte[16];
+
+        random.nextBytes(salt);
+        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 128);
+
+        SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+        String hash = String.valueOf(factory.generateSecret(spec).getEncoded());
+        return hash;
     }
 
     @FXML
@@ -67,8 +85,8 @@ public class LoginController extends Controller {
     /**
      *
      */
-    private void openPopUpEditPassword(User user) {
-
+    private void openPopUpEditPassword(User user) throws IOException {
+        FXMLFactory.setRoot("ChancePassword");
     }
 
     @FXML
