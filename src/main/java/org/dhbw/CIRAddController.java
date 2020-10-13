@@ -1,7 +1,5 @@
 package org.dhbw;
 
-import backend.database.DbCallerCir;
-import backend.database.DbCallerCit;
 import backend.usability.Cir;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
