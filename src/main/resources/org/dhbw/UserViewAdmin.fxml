@@ -5,100 +5,112 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.UserViewAdminController">
+<AnchorPane prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.dhbw.UserViewAdminController">
     <children>
-        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <HBox alignment="CENTER" cache="true" spacing="5.0">
                     <Label fx:id="surnameLbl" alignment="BOTTOM_LEFT" prefWidth="100.0" text="Vorname:">
                         <HBox.margin>
-                            <Insets />
+                            <Insets/>
                         </HBox.margin>
                         <font>
-                            <Font size="14.0" />
-                        </font></Label>
+                            <Font size="14.0"/>
+                        </font>
+                    </Label>
                     <TextField fx:id="surnameTf" editable="false" prefWidth="210.0">
                         <HBox.margin>
-                            <Insets />
+                            <Insets/>
                         </HBox.margin>
                         <font>
-                            <Font size="14.0" />
-                        </font></TextField>
+                            <Font size="14.0"/>
+                        </font>
+                    </TextField>
                     <VBox.margin>
-                        <Insets bottom="5.0" top="40.0" />
+                        <Insets bottom="5.0" top="40.0"/>
                     </VBox.margin>
                     <opaqueInsets>
-                        <Insets />
+                        <Insets/>
                     </opaqueInsets>
                 </HBox>
                 <HBox alignment="CENTER" spacing="5.0">
                     <Label fx:id="nameLbl" alignment="BOTTOM_LEFT" prefWidth="100.0" text="Nachname:">
                         <HBox.margin>
-                            <Insets />
+                            <Insets/>
                         </HBox.margin>
                         <font>
-                            <Font size="14.0" />
-                        </font></Label>
+                            <Font size="14.0"/>
+                        </font>
+                    </Label>
                     <TextField fx:id="nameTf" editable="false" prefWidth="210.0">
                         <HBox.margin>
-                            <Insets />
+                            <Insets/>
                         </HBox.margin>
                         <font>
-                            <Font size="14.0" />
-                        </font></TextField>
+                            <Font size="14.0"/>
+                        </font>
+                    </TextField>
                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
+                        <Insets bottom="5.0" top="5.0"/>
                     </VBox.margin>
                 </HBox>
                 <HBox alignment="CENTER" spacing="5.0">
                     <Label fx:id="usernameLbl" alignment="BOTTOM_LEFT" prefWidth="100.0" text="Benutzername:">
                         <HBox.margin>
-                            <Insets />
+                            <Insets/>
                         </HBox.margin>
                         <font>
-                            <Font size="14.0" />
-                        </font></Label>
+                            <Font size="14.0"/>
+                        </font>
+                    </Label>
                     <TextField fx:id="usernameTf" editable="false" prefWidth="210.0">
                         <HBox.margin>
-                            <Insets />
+                            <Insets/>
                         </HBox.margin>
                         <font>
-                            <Font size="14.0" />
-                        </font></TextField>
+                            <Font size="14.0"/>
+                        </font>
+                    </TextField>
                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
+                        <Insets bottom="5.0" top="5.0"/>
                     </VBox.margin>
                 </HBox>
                 <HBox alignment="CENTER" spacing="5.0">
                     <Label fx:id="authorizationLbl" alignment="BOTTOM_LEFT" prefWidth="100.0" text="Rechte:">
                         <HBox.margin>
-                            <Insets />
+                            <Insets/>
                         </HBox.margin>
                         <font>
-                            <Font size="14.0" />
-                        </font></Label>
+                            <Font size="14.0"/>
+                        </font>
+                    </Label>
                     <TextField fx:id="authorizationTf" editable="false" prefWidth="210.0">
                         <HBox.margin>
-                            <Insets />
+                            <Insets/>
                         </HBox.margin>
                         <font>
-                            <Font size="14.0" />
-                        </font></TextField>
+                            <Font size="14.0"/>
+                        </font>
+                    </TextField>
                     <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
+                        <Insets bottom="5.0" top="5.0"/>
                     </VBox.margin>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" spacing="10.0">
                     <children>
-                        <Button fx:id="editUserBtn" mnemonicParsing="false" text="Bearbeiten" onAction="#switchToUserEditAdmin"/>
-                        <Button fx:id="editPasswordBtn" mnemonicParsing="false" text="Passwort ändern" onAction="#switchToPasswordEditAdmin"/>
-                  <Button fx:id="deleteUserBtn" mnemonicParsing="false" text="Löschen" onAction="#deleteUser"/>
+                        <Button fx:id="editUserBtn" mnemonicParsing="false" text="Bearbeiten"
+                                onAction="#switchToUserEditAdmin"/>
+                        <Button fx:id="editPasswordBtn" mnemonicParsing="false" text="Passwort ändern"
+                                onAction="#switchToPasswordEditAdmin"/>
+                        <Button fx:id="deleteUserBtn" mnemonicParsing="false" text="Löschen" onAction="#deleteUser"/>
                     </children>
                     <VBox.margin>
-                        <Insets bottom="40.0" />
+                        <Insets bottom="40.0"/>
                     </VBox.margin>
                     <padding>
-                        <Insets right="35.0" top="10.0" />
+                        <Insets right="35.0" top="10.0"/>
                     </padding>
                 </HBox>
             </children>

@@ -20,6 +20,7 @@ public class Controller {
 
     }
 
+    // This method close a PopUp
     public void closeScene(){
 
     }
