@@ -105,6 +105,11 @@ public class StartpageAdminController extends Controller implements Initializabl
         FXMLFactory.setRoot("UserAdmin");
     }
 
+    /**
+     * Opens the CITAdd Popup on button click
+     *
+     * @throws IOException
+     */
     @FXML
     public void openAddCit() throws IOException {
         CITAddController citAddController = new CITAddController();
@@ -118,6 +123,11 @@ public class StartpageAdminController extends Controller implements Initializabl
         stage1.show();
     }
 
+    /**
+     * Opens the Notification Popup on button click and gives the selected Cit that has to be deleted
+     *
+     * @throws IOException
+     */
     @FXML
     public void openDeleteCitPopup() throws IOException {
         // FIXME
@@ -133,6 +143,11 @@ public class StartpageAdminController extends Controller implements Initializabl
         stage1.show();
     }
 
+    /**
+     * Opens the Notification Popup on button click and gives the selected Cir that has to be deleted
+     *
+     * @throws IOException
+     */
     @FXML
     public void openDeleteCirPopup() throws IOException {
         // FIXME
@@ -148,6 +163,11 @@ public class StartpageAdminController extends Controller implements Initializabl
         stage1.show();
     }
 
+    /**
+     * Opens the CIRAdd Popup on button click
+     *
+     * @throws IOException
+     */
     @FXML
     public void openAddCir() throws IOException {
         CIRAddController cirAddController = new CIRAddController();
@@ -162,7 +182,7 @@ public class StartpageAdminController extends Controller implements Initializabl
     }
 
     /**
-     * Opens the
+     * Opens the CIREdit Popup on button click and gives the selected cir that has to be edited
      *
      * @throws IOException
      */
