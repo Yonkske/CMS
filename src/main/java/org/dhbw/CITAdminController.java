@@ -1,12 +1,11 @@
 package org.dhbw;
 
+import backend.database.DbCallerCit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -44,10 +43,11 @@ public class CITAdminController extends Controller {
 
     public void initialize() throws SQLException {
 
+        DbCallerCit dbc = new DbCallerCit();
         ArrayList<String> citStringListe = new ArrayList<String>();
         citStringListe.add("1");
         citStringListe.add("Weitere Test Daten, CIT nicht eingebunden");
-
+        ArrayList<String> citNameListe = new ArrayList<String>();
         choiceBox.getItems().addAll(citStringListe);
     }
 
@@ -85,7 +85,7 @@ public class CITAdminController extends Controller {
     }
 
     public void swapToStatisticAdmin(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("StatisticAdmin"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("StatisticAdmin.fxml"));
         Parent root = loader.load();
         Stage stage1 = new Stage();
         Scene scene = new Scene(root);
@@ -100,7 +100,7 @@ public class CITAdminController extends Controller {
     }
 
     public void swapToCITAdd(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("CITAdd"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CITAdd.fxml"));
         Parent root = loader.load();
         Stage stage1 = new Stage();
         Scene scene = new Scene(root);

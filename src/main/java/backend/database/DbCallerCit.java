@@ -136,6 +136,7 @@ public class DbCallerCit extends DbConnector{
         while(rs.next()){
             for(int i = 0; i<getCitCount(); i++ ){
                 citNameList.add(rs.getString("TYPE_NAME"));
+                System.out.println(citNameList);
             }
         }
         stmt.close();
