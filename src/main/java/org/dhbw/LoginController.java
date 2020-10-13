@@ -1,21 +1,15 @@
 package org.dhbw;
 
-import backend.database.DbCallerUser;
 import backend.usability.User;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -47,6 +41,12 @@ public class LoginController extends Controller {
             openPopUpEditPassword(User.getUser(givenName));
         } else if (CB_CALLER_USER.checkUser(givenName, givenPassword) == true & user.getIsInitial() == false){
             switchToStartpage(User.getUser(givenName));
+        } else if (givenName.length() == 0 & givenPassword.length() == 0) {
+            showError();
+        } else if (givenName.length() == 0) {
+            showError();
+        } else if (givenPassword.length() == 0) {
+            showError();
         } else {
             showError();
         }
@@ -86,7 +86,7 @@ public class LoginController extends Controller {
      *
      */
     private void openPopUpEditPassword(User user) throws IOException {
-        FXMLFactory.setRoot("ChancePassword");
+        FXMLFactory.setRoot("ChangePassword");
     }
 
     @FXML
