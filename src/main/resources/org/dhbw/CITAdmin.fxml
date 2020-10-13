@@ -36,7 +36,7 @@
 
                   <HBox alignment="CENTER" prefHeight="54.0" prefWidth="389.0">
 
-                        <ComboBox prefWidth="150.0" />
+                        <ComboBox prefWidth="150.0" onAction="#fillComboBox"/>
                         <Button fx:id="searchBtn" mnemonicParsing="false" text="Suche" />
                  </HBox>
                   <HBox alignment="CENTER" spacing="5.0">

@@ -25,7 +25,7 @@ public class Cit {
         attributes[1] = "Name";                                 //Das Attribut Name gibt es in jedem CIT
 
         for (int i = 2; i <= attributeList.length; i++) {       //Alle anderen Attribute werden über den Übergabeparameter weitergegeben.
-            this.attributes[i] = attributeList[i-1];
+            this.attributes[i] = attributeList[i-2];
             System.out.println(attributes[i]);                  //Hilfestellung zur Überprüfung der Attribute
         }
     }
