@@ -73,6 +73,11 @@ public class CIRViewController extends Controller implements Initializable  {
             public void handle(ActionEvent actionEvent) {
                 try {
                     openPopUpCirEdit(cir);
+
+                    Stage stClose = new Stage();
+                    stClose = (Stage) editCirBtn.getScene().getWindow();
+                    stClose.close();
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -113,6 +118,7 @@ public class CIRViewController extends Controller implements Initializable  {
         stage1.setScene(scene);
         scene.getWindow().sizeToScene();
         stage1.show();
+
 
     }
 
