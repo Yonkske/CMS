@@ -2,6 +2,7 @@ package org.dhbw;
 
 import backend.usability.Cir;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -47,61 +48,50 @@ public class CIRViewController extends Controller implements Initializable  {
     @FXML public Button deleteBtn;
     @FXML public Button editCirBtn;
 
+    private Cir cir;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-    }
-
-    /**
-     *  start of the CIR View
-     *
-     * @param stage - Stage
-     * @param selectedCir - Cir Objekt
-     * @throws IOException
-     */
-    public void start(Stage stage, Cir selectedCir) throws IOException {
-        scene = new Scene(loadFXML("CIRView"));
-        stage.setScene(scene);
-        // Setzen der Attribut Werte
-        idTf.setText(String.valueOf(selectedCir.getCirID()));
+        // Atrribute des Cir Übergeben und in der View ausgeben
+        idTf.setText(String.valueOf(cir.getCirID()));
         //todo: Change CIT Int to CIT Type
-        citTf.setText(String.valueOf(selectedCir.getCitID()));
-        nameTf.setText(selectedCir.getCirName());
-        attribut1Tf.setText(selectedCir.getCirAttributes()[0]);
-        attribut2Tf.setText(selectedCir.getCirAttributes()[1]);
-        attribut3Tf.setText(selectedCir.getCirAttributes()[2]);
-        attribut4Tf.setText(selectedCir.getCirAttributes()[3]);
-        attribut5Tf.setText(selectedCir.getCirAttributes()[4]);
-        attribut6Tf.setText(selectedCir.getCirAttributes()[5]);
-        attribut7Tf.setText(selectedCir.getCirAttributes()[6]);
+        citTf.setText(String.valueOf(cir.getCitID()));
+        nameTf.setText(cir.getCirName());
+        attribut1Tf.setText(cir.getCirAttributes()[0]);
+        attribut2Tf.setText(cir.getCirAttributes()[1]);
+        attribut3Tf.setText(cir.getCirAttributes()[2]);
+        attribut4Tf.setText(cir.getCirAttributes()[3]);
+        attribut5Tf.setText(cir.getCirAttributes()[4]);
+        attribut6Tf.setText(cir.getCirAttributes()[5]);
+        attribut7Tf.setText(cir.getCirAttributes()[6]);
 
+        // Action Event bearbeiten Button
         editCirBtn.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent actionEvent) {
                 try {
-                    Cir selectedCir = Cir.showCir(Integer.parseInt(idTf.getText()));
-                    openPopUpCirEdit(selectedCir);
-                } catch (IOException | SQLException e) {
+                    openPopUpCirEdit(cir);
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         });
 
-        stage.show();
-    }
+        deleteBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                try {
+                    //todo: einbinden der Notification vor dem löschen
+                   // openPopUpNotification("Cir Löschen?");
+                     deleteSelectedCir(cir);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
 
-    /**
-     *  start of cirView, load the FXML
-     *
-     * @param cirView - String name of the cirView
-     * @return - The CirEdit View
-     * @throws IOException
-     */
-    private Parent loadFXML(String cirView) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(cirView + ".fxml"));
-        return fxmlLoader.load();
+            }
+        });
     }
 
     /**
@@ -112,8 +102,12 @@ public class CIRViewController extends Controller implements Initializable  {
      */
     private void openPopUpCirEdit(Cir selectedCir) throws IOException {
         //todo: Jan fragen ?
-        FXMLFactory.setRoot("CIREdit");
+        scene = new Scene(loadFXML("CIREdit"));
+    }
 
+    private static Parent loadFXML(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        return fxmlLoader.load();
     }
 
     /**
@@ -123,7 +117,7 @@ public class CIRViewController extends Controller implements Initializable  {
      * @throws SQLException
      */
     private void deleteSelectedCir(Cir selectedCir) throws SQLException {
-        openPopUpNotification("Soll das Cir Objekt gelöscht werden?");
+       // openPopUpNotification("Soll das Cir Objekt gelöscht werden?");
         int iSelectedCir = selectedCir.getCirID();
         Cir.delete(iSelectedCir);
 
@@ -140,5 +134,8 @@ public class CIRViewController extends Controller implements Initializable  {
     }
 
 
+    public CIRViewController(Cir cir) {
+        this.cir = cir;
+    }
 
 }
