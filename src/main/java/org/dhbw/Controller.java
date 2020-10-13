@@ -3,7 +3,6 @@ package org.dhbw;
 import backend.database.DbCallerCir;
 import backend.database.DbCallerCit;
 import backend.database.DbCallerUser;
-import backend.database.DbConnector;
 import backend.usability.User;
 
 public class Controller {

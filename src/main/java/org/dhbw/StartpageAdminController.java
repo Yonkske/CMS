@@ -2,16 +2,7 @@ package org.dhbw;
 
 import backend.usability.Cir;
 import backend.usability.User;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import java.io.IOException;
-import java.net.URL;
-import java.sql.SQLException;
-import java.util.ResourceBundle;
-
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -22,6 +13,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 public class StartpageAdminController extends Controller implements Initializable {
 
@@ -116,11 +112,11 @@ public class StartpageAdminController extends Controller implements Initializabl
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CITAdd.fxml"));
         loader.setController(citAddController);
         Parent root = loader.load();
-        Stage stage1 = new Stage();
+        Stage stage = new Stage();
         Scene scene = new Scene(root);
-        stage1.setScene(scene);
+        stage.setScene(scene);
         scene.getWindow().sizeToScene();
-        stage1.show();
+        stage.show();
     }
 
     /**
@@ -136,11 +132,11 @@ public class StartpageAdminController extends Controller implements Initializabl
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Notification.fxml"));
         loader.setController(notificationController);
         Parent root = loader.load();
-        Stage stage1 = new Stage();
+        Stage stage = new Stage();
         Scene scene = new Scene(root);
-        stage1.setScene(scene);
+        stage.setScene(scene);
         scene.getWindow().sizeToScene();
-        stage1.show();
+        stage.show();
     }
 
     /**
@@ -156,11 +152,11 @@ public class StartpageAdminController extends Controller implements Initializabl
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Notification.fxml"));
         loader.setController(notificationController);
         Parent root = loader.load();
-        Stage stage1 = new Stage();
+        Stage stage = new Stage();
         Scene scene = new Scene(root);
-        stage1.setScene(scene);
+        stage.setScene(scene);
         scene.getWindow().sizeToScene();
-        stage1.show();
+        stage.show();
     }
 
     /**
@@ -174,11 +170,11 @@ public class StartpageAdminController extends Controller implements Initializabl
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CIRAdd.fxml"));
         loader.setController(cirAddController);
         Parent root = loader.load();
-        Stage stage1 = new Stage();
+        Stage stage = new Stage();
         Scene scene = new Scene(root);
-        stage1.setScene(scene);
+        stage.setScene(scene);
         scene.getWindow().sizeToScene();
-        stage1.show();
+        stage.show();
     }
 
     /**
@@ -194,11 +190,11 @@ public class StartpageAdminController extends Controller implements Initializabl
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CIREdit.fxml"));
         loader.setController(CIREditController);
         Parent root = loader.load();
-        Stage stage1 = new Stage();
+        Stage stage = new Stage();
         Scene scene = new Scene(root);
-        stage1.setScene(scene);
+        stage.setScene(scene);
         scene.getWindow().sizeToScene();
-        stage1.show();
+        stage.show();
     }
 
 }

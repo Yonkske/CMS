@@ -83,7 +83,7 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="citDeleteBtn" mnemonicParsing="false" text="CIT löschen" onAction="#openDeletePopup">
+                        <Button fx:id="citDeleteBtn" mnemonicParsing="false" text="CIT löschen" onAction="#openDeleteCitPopup">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
@@ -105,7 +105,7 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="cirDeleteBtn" mnemonicParsing="false" text="CIR löschen" onAction="#openDeletePopup">
+                        <Button fx:id="cirDeleteBtn" mnemonicParsing="false" text="CIR löschen" onAction="#openDeleteCirPopup">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
