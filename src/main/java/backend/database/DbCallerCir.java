@@ -40,7 +40,7 @@ public class DbCallerCir extends DbConnector{
      * @return bWorks - Boolean
      * @throws SQLException
      */
-    public boolean insertCir(Cir cirName) throws SQLException {
+    public static boolean insertCir(Cir cirName) throws SQLException {
         String[] sCirAttributes = cirName.getCirAttributes();
         boolean bWorks;
         try{
