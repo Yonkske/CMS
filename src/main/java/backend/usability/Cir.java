@@ -1,6 +1,7 @@
 package backend.usability;
 
 import backend.database.DbCallerCir;
+import backend.database.DbCallerCit;
 import backend.database.DbConnector;
 import javafx.css.converter.StringConverter;
 
@@ -11,28 +12,35 @@ import java.util.Arrays;
 public class Cir {
 
     // FIXME: change DbCallers to non-static
-  private int id;
-  private Cit cit;
-  private String[] attribute;
-  private String name;
-  private String type; // TODO: change to Cit
+    private int id;
+    private Cit cit;
+    private String[] attribute;
+    private String name;
+    private String type; // TODO: change to Cit
 
     /**
      * constructor creates the CIR object
      *
      * @param attributes - Sting Array with a length of 10
      */
-    public Cir(String[] attributes){
+    public Cir(String[] attributes) {
         attribute = new String[7];
 
         // TODO: figure out if cit comes as object or String
-        id =  Integer.parseInt(attributes[0]);
+        id = Integer.parseInt(attributes[0]);
         type = attributes[1];
         name = attributes[2];
 
-        for(int i=3;i<attributes.length;i++)
-        {
-            attribute[i-3] = attributes[i];
+        // FIXME: Exception handling
+        try {
+            new DbConnector().startConnection();
+            cit = new DbCallerCit().getCit(Integer.parseInt(type));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        for (int i = 3; i < attributes.length; i++) {
+            attribute[i - 3] = attributes[i];
         }
     }
 
@@ -41,9 +49,8 @@ public class Cir {
      *
      * @param attributes - Sting Array with a length of 10
      * @return cirName - CIR Objekt
-     *
-     * */
-    public static Cir create(String[] attributes){
+     */
+    public static Cir create(String[] attributes) {
 
         Cir cirName = new Cir(attributes);
 
@@ -67,7 +74,7 @@ public class Cir {
      * Compares if data has changed and transfers the changes to the database with a DBCallerCIR call
      *
      * @param attributes - String Array with a length of 10 of the change CIR
-     * @param id - Iteger id of the CIR
+     * @param id         - Iteger id of the CIR
      * @return bTest - True if the CIR has changed or false if it contains the same data
      * @throws SQLException
      */
@@ -76,9 +83,8 @@ public class Cir {
         boolean bTest; //Variablen für die Methode
         Cir cirName = showCir(id); //Über die ID das alte Cir aus der Datenbank holen
         cirName.name = attributes[2];
-        for(int i=3;i<attributes.length;i++)
-        {
-            cirName.attribute[i-3] = attributes[i];
+        for (int i = 3; i < attributes.length; i++) {
+            cirName.attribute[i - 3] = attributes[i];
         }
 
 
@@ -151,8 +157,7 @@ public class Cir {
      *
      * @return id - CirId
      */
-    public int getCirID()
-    {
+    public int getCirID() {
         return id;
     }
 
@@ -161,8 +166,7 @@ public class Cir {
      *
      * @return type - Cit name as String
      */
-    public String getCitID()
-    {
+    public String getCitID() {
         return type;
     }
 
@@ -171,8 +175,7 @@ public class Cir {
      *
      * @return attrubute - Cir Attribites in a String Array
      */
-    public String[] getCirAttributes()
-    {
+    public String[] getCirAttributes() {
         return attribute;
     }
 
@@ -181,19 +184,35 @@ public class Cir {
      *
      * @return name - CirName as String
      */
-    public String getCirName()
-    {
+    public String getCirName() {
         return name;
     }
 
     /**
-     *This method is only used for testing and should never be used otherwise
+     * This method is only used for testing and should never be used otherwise
      *
-     *  @param id - int of the new Cir ID
+     * @param id - int of the new Cir ID
      */
-    public void setCirID(int id)
-    {
+    public void setCirID(int id) {
         this.id = id;
+    }
+
+    /**
+     * Gets the name of the associated CIT
+     *
+     * @return String - name of the CIT
+     */
+    public String getCitName() {
+        return this.cit.getCitName();
+    }
+
+    /**
+     * Returns the the associated CIT
+     *
+     * @return Cit - the CIT associated with this cir
+     */
+    public Cit getCit() {
+        return this.cit;
     }
 
 } //Cir

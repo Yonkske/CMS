@@ -18,13 +18,13 @@ public class DbCallerCit extends DbConnector{
      */
     public Cit getCit(int id) throws SQLException{
 
-        String[] sCitArray = new String[10]; // String zum Speichern der Resultset Daten
+        String[] sCitArray = new String[8]; // String zum Speichern der Resultset Daten
         ResultSet rs = stmt.executeQuery("SELECT * FROM CIT WHERE TYPE_ID = " + id); // SQL Abfrage
 
         rs.first();
-       for(int i= 1; i <= 9; i++) // Übertragen des Result Sets auf ein Array
+       for(int i= 0; i < sCitArray.length; i++) // Übertragen des Result Sets auf ein Array
         {
-            sCitArray[i] = rs.getString(i+1);
+            sCitArray[i] = rs.getString(i+2);
         }
 
         Cit citName; // initialisieren eines neuen Cit's
@@ -107,9 +107,7 @@ public class DbCallerCit extends DbConnector{
      * @return a list of CIT records in table
      */
     public ArrayList<Cit> getAllCits() throws SQLException{
-        Cit citName;
         int iIDCit;
-        int iZaehler = 0;
         new DbConnector().startConnection(); // Warum???!
         ArrayList<Cit>  citListe= new ArrayList<Cit>();
         ResultSet rs = stmt.executeQuery("Select * From CIT");
