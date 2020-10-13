@@ -19,4 +19,8 @@ public class Controller {
         DB_CALLER_CIT = new DbCallerCit();
 
     }
+
+    public void closeScene(){
+
+    }
 }

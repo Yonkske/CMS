@@ -3,11 +3,14 @@ package org.dhbw;
 
 import backend.usability.User;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -23,7 +26,9 @@ public class UserViewAdminController extends Controller {
     private TextField usernameTf;
 
     @FXML
-    private Button deleteBtn;
+    private Button yesBtn;
+    @FXML
+    private Button noBtn;
 
     public void fillTextfields(User user) {
 
@@ -43,20 +48,38 @@ public class UserViewAdminController extends Controller {
     }
 
 
-    public void deleteUser (ActionEvent actionEvent) throws IOException {
+    public void deleteUser(ActionEvent actionEvent) throws IOException {
         String userName = usernameTf.getText();
-        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("Notification.fxml"));
-        Parent root = (Parent)fxmlLoader.load();
 
-        CB_CALLER_USER.deleteUser(CB_CALLER_USER.getUser(userName));
+        NotificationController NotificationController = new NotificationController();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Notification.fxml"));
+        loader.setController(NotificationController);
+
+        yesBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                CB_CALLER_USER.deleteUser(CB_CALLER_USER.getUser(userName));
+                new Controller().closeScene();
+            }
+        });
+
+        noBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                new Controller().closeScene();
+            }
+        });
+
     }
 
-    public void switchToUserEditAdmin (ActionEvent actionEvent) throws IOException {
+    public void switchToUserEditAdmin(ActionEvent actionEvent) throws IOException {
         FXMLFactory.setRoot("UserEditAdmin");
     }
 
     public void switchToPasswordEditAdmin(ActionEvent actionEvent) throws IOException {
         FXMLFactory.setRoot("PasswordEditAdmin");
     }
+
 }
+
 
