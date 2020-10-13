@@ -102,7 +102,18 @@ public class CIRViewController extends Controller implements Initializable  {
      */
     private void openPopUpCirEdit(Cir selectedCir) throws IOException {
         //todo: Jan fragen ?
-        scene = new Scene(loadFXML("CIREdit"));
+        //scene = new Scene(loadFXML("CIREdit"));
+        CIREditController CIREditController = new CIREditController(selectedCir);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CIREdit.fxml"));
+        loader.setController(CIREditController);
+        Parent root = loader.load();
+        Stage stage1 = new Stage();
+        Scene scene = new Scene(root);
+
+        stage1.setScene(scene);
+        scene.getWindow().sizeToScene();
+        stage1.show();
+
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
