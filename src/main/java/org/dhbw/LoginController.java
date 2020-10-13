@@ -47,6 +47,12 @@ public class LoginController extends Controller {
             openPopUpEditPassword(User.getUser(givenName));
         } else if (CB_CALLER_USER.checkUser(givenName, givenPassword) == true & user.getIsInitial() == false){
             switchToStartpage(User.getUser(givenName));
+        } else if (givenName.length() == 0 & givenPassword.length() == 0) {
+            showError();
+        } else if (givenName.length() == 0) {
+            showError();
+        } else if (givenPassword.length() == 0) {
+            showError();
         } else {
             showError();
         }
