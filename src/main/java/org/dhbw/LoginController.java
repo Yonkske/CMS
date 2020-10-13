@@ -100,5 +100,4 @@ public class LoginController extends Controller {
     public void exit(ActionEvent event) {
         Platform.exit();
     }
-
 }

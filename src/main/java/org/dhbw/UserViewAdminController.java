@@ -81,7 +81,7 @@ public class UserViewAdminController extends Controller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("UserEditAdmin.fxml"));
         loader.setController(UserEditAdminController);
 
-        UserEditAdminController.showUser(user);
+ //       UserEditAdminController.showUser(user);
     }
 
     public void switchToPasswordEditAdmin(ActionEvent actionEvent) throws IOException {
@@ -92,7 +92,7 @@ public class UserViewAdminController extends Controller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PasswordEditAdmin.fxml"));
         loader.setController(PasswordEditAdminController);
 
-        PasswordEditAdminController.showUserName(user);
+ //       PasswordEditAdminController.showUserName(user);
 
     }
 
