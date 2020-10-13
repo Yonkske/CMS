@@ -1,7 +1,8 @@
-package backend.usability;
+package backend.database;
 
 import backend.database.DbCallerUser;
 import backend.database.DbConnector;
+import backend.usability.User;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -17,12 +18,13 @@ public class UserCallerTest {
         new DbConnector().startConnection();
         Assert.assertNotNull(new DbCallerUser().getUser("admin"));
     } //is the function running without any failures?
-
+/*
     @Test
     public void testInsertUser() throws SQLException {
         new DbConnector().startConnection();
         Assert.assertEquals(true, new DbCallerUser().insertUser(testUser1));
     } //is the function running without any failures?
+ */
 
     @Test
     public void testUpdateUser() throws SQLException {
@@ -34,5 +36,11 @@ public class UserCallerTest {
     public void testDeleteUser() throws SQLException {
         new DbConnector().startConnection();
         Assert.assertEquals(true, new DbCallerUser().deleteUser(testUser2));
+    } //is the function running without any failures?
+
+    @Test
+    public void testCheckUser() throws SQLException {
+        new DbConnector().startConnection();
+        Assert.assertEquals(true, new DbCallerUser().checkUser("admin", "admin"));
     } //is the function running without any failures?
 }

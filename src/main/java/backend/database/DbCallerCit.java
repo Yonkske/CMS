@@ -3,6 +3,8 @@ package backend.database;
 import backend.usability.Cir;
 import backend.usability.Cit;
 import com.sun.javafx.scene.layout.region.Margins;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.awt.*;
 import java.io.Console;
@@ -18,13 +20,13 @@ public class DbCallerCit extends DbConnector{
      */
     public Cit getCit(int id) throws SQLException{
 
-        String[] sCitArray = new String[10]; // String zum Speichern der Resultset Daten
+        String[] sCitArray = new String[8]; // String zum Speichern der Resultset Daten
         ResultSet rs = stmt.executeQuery("SELECT * FROM CIT WHERE TYPE_ID = " + id); // SQL Abfrage
 
         rs.first();
-       for(int i= 1; i <= 9; i++) // Übertragen des Result Sets auf ein Array
+       for(int i= 0; i < sCitArray.length; i++) // Übertragen des Result Sets auf ein Array
         {
-            sCitArray[i] = rs.getString(i+1);
+            sCitArray[i] = rs.getString(i+2);
         }
 
         Cit citName; // initialisieren eines neuen Cit's
@@ -107,9 +109,7 @@ public class DbCallerCit extends DbConnector{
      * @return a list of CIT records in table
      */
     public ArrayList<Cit> getAllCits() throws SQLException{
-        Cit citName;
         int iIDCit;
-        int iZaehler = 0;
         new DbConnector().startConnection(); // Warum???!
         ArrayList<Cit>  citListe= new ArrayList<Cit>();
         ResultSet rs = stmt.executeQuery("Select * From CIT");
@@ -125,6 +125,23 @@ public class DbCallerCit extends DbConnector{
         }
 
         return citListe;
+    }
+
+    public String[] getCitNamelist() throws SQLException {
+        final ObservableList citNameList = FXCollections.observableArrayList();
+        ResultSet rs = stmt.executeQuery("Select TYPE_NAME from CIT");
+        String[] citNames = new String[getCitCount()];
+        while(rs.next()){
+            for(int i = 0; i<getCitCount(); i++ ){
+                citNameList.add(rs.getString("TYPE_NAME"));
+                System.out.println(citNameList);
+            }
+        }
+        stmt.close();
+        rs.close();
+        return citNames;
+
+
     }
 
     /**Database Query to get sum of all CIT in table

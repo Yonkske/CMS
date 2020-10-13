@@ -17,7 +17,7 @@
                         <font>
                             <Font size="14.0" />
                         </font></Label>
-                    <TextField fx:id="usernameTf" editable="false" prefWidth="210.0">
+                    <TextField fx:id="usernameTf" editable="true" prefWidth="210.0">
                         <HBox.margin>
                             <Insets />
                         </HBox.margin>
@@ -45,11 +45,11 @@
                     </VBox.margin>
                 </HBox>
                 <HBox alignment="TOP_CENTER" spacing="10.0">
-                    <Label fx:id="meldungLbl" alignment="BOTTOM_LEFT" prefWidth="130.0" style="-fx-border-color: #ff0000; -fx-border-radius: 3;" text="Ihr Benutzer oder Passwort ist falsch." textAlignment="CENTER" textFill="#fc0000" wrapText="true">
+                    <Label fx:id="meldungLbl" alignment="BOTTOM_LEFT" prefWidth="130.0" style="-fx-border-color: #ff0000; -fx-border-radius: 3;" text="Ihr Benutzer oder Passwort ist falsch." textAlignment="CENTER" textFill="#fc0000" wrapText="true" visible="false">
                         <HBox.margin>
                             <Insets />
                         </HBox.margin></Label>
-               <Button fx:id="loginBtn" mnemonicParsing="false" text="Anmelden" />
+               <Button fx:id="loginBtn" mnemonicParsing="false" text="Anmelden" onAction="#logIn"/>
                     <VBox.margin>
                         <Insets bottom="40.0" top="5.0" />
                     </VBox.margin>

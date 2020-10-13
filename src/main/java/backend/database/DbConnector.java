@@ -10,6 +10,7 @@ public class DbConnector {
     private static final String COMPLETE_PATH = System.getProperty("user.home") + "\\CMSdb\\" + FILE_NAME;
     private static final String URL = "jdbc:h2:file:\\" + COMPLETE_PATH + ";";
 
+
     /**
      * Starts the connection to the integrated h2-database
      *
