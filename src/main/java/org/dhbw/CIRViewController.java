@@ -79,7 +79,9 @@ public class CIRViewController extends Controller implements Initializable  {
                     stClose = (Stage) editCirBtn.getScene().getWindow();
                     stClose.close();
 
-                } catch (IOException e) {
+                }
+                //Fixme: Error Handling
+                catch (IOException e) {
                     e.printStackTrace();
                 }
             }
@@ -92,7 +94,9 @@ public class CIRViewController extends Controller implements Initializable  {
                     //todo: einbinden der Notification vor dem löschen
                    // openPopUpNotification("Cir Löschen?");
                      deleteSelectedCir(cir);
-                } catch (SQLException throwables) {
+                }
+                //Fixme: Error Handling
+                catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
 
@@ -112,12 +116,12 @@ public class CIRViewController extends Controller implements Initializable  {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CIREdit.fxml"));
         loader.setController(CIREditController);
         Parent root = loader.load();
-        Stage stage1 = new Stage();
+        Stage stage = new Stage();
         Scene scene = new Scene(root);
         // View an Fenster anpassen
-        stage1.setScene(scene);
+        stage.setScene(scene);
         scene.getWindow().sizeToScene();
-        stage1.show();
+        stage.show();
 
 
     }

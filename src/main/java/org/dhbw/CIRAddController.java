@@ -2,25 +2,19 @@ package org.dhbw;
 
 import backend.database.DbCallerCir;
 import backend.usability.Cir;
-import backend.usability.Cit;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -76,7 +70,7 @@ public class CIRAddController extends Controller implements Initializable {
 
             citChoicebox.getItems().addAll(citStringListe);
         }
-
+        //Fixme: Error Handling
         catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -101,8 +95,9 @@ public class CIRAddController extends Controller implements Initializable {
                 Cir cirName = Cir.create(sCirArray);
 
                 try {
+                    //Fixme: Error Handling
                     // Neues CIR Objekt in die Datenbank schreiben
-                    DbCallerCir.insertCir(cirName);
+                    DB_CALLER_CIR.insertCir(cirName);
 
                 } catch (SQLException throwables) {
 

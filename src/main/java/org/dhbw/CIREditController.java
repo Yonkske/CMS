@@ -71,7 +71,9 @@ public class CIREditController extends Controller implements Initializable {
                     updateStatus();
                     // CIR View wird geladen und CirEdit wird geschlossen
                     loadViewCir();
-                } catch (SQLException | IOException throwables) {
+                    //Fixme: Error Handling
+                }
+                catch (SQLException | IOException throwables) {
                     throwables.printStackTrace();
                 }
 
@@ -86,6 +88,7 @@ public class CIREditController extends Controller implements Initializable {
                     // CIR View wird geladen und CirEdit wird geschlossen
                     loadViewCir();
                  }
+                //Fixme: Error Handling
                 catch (SQLException | IOException throwables) {
                      throwables.printStackTrace();
                  }
@@ -133,12 +136,12 @@ public class CIREditController extends Controller implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CIRView.fxml"));
         loader.setController(CIRViewController);
         Parent root = loader.load();
-        Stage stage1 = new Stage();
+        Stage stage = new Stage();
         Scene scene = new Scene(root);
         // Neue View an Fenster anpassen
-        stage1.setScene(scene);
+        stage.setScene(scene);
         scene.getWindow().sizeToScene();
-        stage1.show();
+        stage.show();
         // Aktuele View schließen
         Stage stClose = new Stage();
         stClose = (Stage) submitBtn.getScene().getWindow();
