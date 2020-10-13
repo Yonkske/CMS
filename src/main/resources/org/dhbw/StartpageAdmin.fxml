@@ -78,12 +78,12 @@
                <children>
                   <HBox alignment="TOP_RIGHT" prefHeight="27.0" prefWidth="228.0">
                      <children>
-                        <Button fx:id="citEditBtn" mnemonicParsing="false" text=" CIT erstellen">
+                        <Button fx:id="citEditBtn" mnemonicParsing="false" text=" CIT erstellen" onAction="#openAddCit">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="citDeleteBtn" mnemonicParsing="false" text="CIT löschen">
+                        <Button fx:id="citDeleteBtn" mnemonicParsing="false" text="CIT löschen" onAction="#openDeletePopup">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
@@ -95,17 +95,17 @@
                   </HBox>
                   <HBox alignment="TOP_RIGHT" prefHeight="32.0" prefWidth="228.0">
                      <children>
-                        <Button fx:id="cirAddBtn" mnemonicParsing="false" text="CIR erstellen">
+                        <Button fx:id="cirAddBtn" mnemonicParsing="false" text="CIR erstellen" onAction="#openAddCir">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="cirEditBtn" mnemonicParsing="false" text="CIR bearbeiten">
+                        <Button fx:id="cirEditBtn" mnemonicParsing="false" text="CIR bearbeiten" onAction="#openEditCir">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="cirDeleteBtn" mnemonicParsing="false" text="CIR löschen">
+                        <Button fx:id="cirDeleteBtn" mnemonicParsing="false" text="CIR löschen" onAction="#openDeletePopup">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>

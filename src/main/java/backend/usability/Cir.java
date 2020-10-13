@@ -1,6 +1,7 @@
 package backend.usability;
 
 import backend.database.DbCallerCir;
+import backend.database.DbCallerCit;
 import backend.database.DbConnector;
 import javafx.css.converter.StringConverter;
 
@@ -29,6 +30,13 @@ public class Cir {
         id =  Integer.parseInt(attributes[0]);
         type = attributes[1];
         name = attributes[2];
+
+        try {
+            new DbConnector().startConnection();
+            cit = new DbCallerCit().getCit(Integer.parseInt(type));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         for(int i=3;i<attributes.length;i++)
         {
@@ -194,6 +202,24 @@ public class Cir {
     public void setCirID(int id)
     {
         this.id = id;
+    }
+
+    /**
+     * Gets the name of the associated CIT
+     *
+     * @return String - name of the CIT
+     */
+    public String getCitName() {
+        return this.cit.getCitName();
+    }
+
+    /**
+     * Returns the the associated CIT
+     *
+     * @return Cit - the CIT associated with this cir
+     */
+    public Cit getCit() {
+        return this.cit;
     }
 
 } //Cir
