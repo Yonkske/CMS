@@ -3,6 +3,8 @@ package backend.database;
 import backend.usability.Cir;
 import backend.usability.Cit;
 import com.sun.javafx.scene.layout.region.Margins;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.awt.*;
 import java.io.Console;
@@ -123,6 +125,23 @@ public class DbCallerCit extends DbConnector{
         }
 
         return citListe;
+    }
+
+    public String[] getCitNamelist() throws SQLException {
+        final ObservableList citNameList = FXCollections.observableArrayList();
+        ResultSet rs = stmt.executeQuery("Select TYPE_NAME from CIT");
+        String[] citNames = new String[getCitCount()];
+        while(rs.next()){
+            for(int i = 0; i<getCitCount(); i++ ){
+                citNameList.add(rs.getString("TYPE_NAME"));
+                System.out.println(citNameList);
+            }
+        }
+        stmt.close();
+        rs.close();
+        return citNames;
+
+
     }
 
     /**Database Query to get sum of all CIT in table

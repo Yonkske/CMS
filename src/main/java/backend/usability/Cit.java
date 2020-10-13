@@ -24,6 +24,7 @@ public class Cit {
         cit_bezeichnung = attributeList[0];                     //Die Bezeichnung des CIT steht an 2. Stelle im Array
         attributes[0] = "Name";                                 //Das Attribut Name gibt es in jedem CIT
 
+
         for (int i = 1; i < attributeList.length; i++) {       //Alle anderen Attribute werden über den Übergabeparameter weitergegeben.
             this.attributes[i] = attributeList[i];
             //System.out.println(attributes[i]);                  //Hilfestellung zur Überprüfung der Attribute
