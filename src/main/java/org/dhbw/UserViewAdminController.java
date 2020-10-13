@@ -31,6 +31,7 @@ public class UserViewAdminController extends Controller {
     private Button noBtn;
 
     public void fillTextfields(User user) {
+        // TODO: Methode testen
 
         String authorisation;
         if (user.getIsAdmin() == true) {
@@ -49,6 +50,7 @@ public class UserViewAdminController extends Controller {
 
 
     public void deleteUser(ActionEvent actionEvent) throws IOException {
+        // TODO: Test der Methode
         String userName = usernameTf.getText();
 
         NotificationController NotificationController = new NotificationController();
@@ -69,15 +71,29 @@ public class UserViewAdminController extends Controller {
                 new Controller().closeScene();
             }
         });
-
     }
 
     public void switchToUserEditAdmin(ActionEvent actionEvent) throws IOException {
-        FXMLFactory.setRoot("UserEditAdmin");
+        // TODO: Test der Methode
+        User user = User.getUser(usernameTf.getText());
+
+        UserEditAdminController UserEditAdminController = new UserEditAdminController();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("UserEditAdmin.fxml"));
+        loader.setController(UserEditAdminController);
+
+        UserEditAdminController.showUser(user);
     }
 
     public void switchToPasswordEditAdmin(ActionEvent actionEvent) throws IOException {
-        FXMLFactory.setRoot("PasswordEditAdmin");
+        // TODO: Methode testen
+        User user = User.getUser(usernameTf.getText());
+
+        PasswordEditAdminController PasswordEditAdminController = new PasswordEditAdminController();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("PasswordEditAdmin.fxml"));
+        loader.setController(PasswordEditAdminController);
+
+        PasswordEditAdminController.showUserName(user);
+
     }
 
 }
