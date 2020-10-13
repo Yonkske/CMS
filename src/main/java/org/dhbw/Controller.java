@@ -27,4 +27,9 @@ public class Controller {
         DB_CALLER_CIT = new DbCallerCit();
 
     }
+
+    // This method close a PopUp
+    public void closeScene(){
+
+    }
 }
