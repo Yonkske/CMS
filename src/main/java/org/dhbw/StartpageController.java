@@ -19,7 +19,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class StartpageAdminController extends Controller implements Initializable {
+public class StartpageController extends Controller implements Initializable {
 
     @FXML private TableView<Cir> cirTable;
     @FXML private TableColumn<Cir, String> citColumn;
