@@ -103,7 +103,6 @@ public class UserViewAdminController extends Controller  {
         //User userToGet = User.getUser(userName);
         User user1 = User.getUser("admin");
 
-
         UserEditAdminController UserEditAdminController = new UserEditAdminController(user1);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("UserEditAdmin.fxml"));
         loader.setController(UserEditAdminController);
@@ -124,19 +123,18 @@ public class UserViewAdminController extends Controller  {
      */
     public void switchToPasswordEditAdmin(ActionEvent actionEvent) throws IOException {
         // TODO: Methode testen
-        User user = User.getUser(usernameTf.getText());
+        User userToGet = User.getUser(usernameTf.getText());
 
-        //PasswordEditAdminController PasswordEditAdminController = new PasswordEditAdminController();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PasswordEditAdmin.fxml"));
-        //loader.setController(PasswordEditAdminController);
         Parent root = loader.load();
+        //PasswordEditAdminController.showUserName(PasswordEditAdminController);
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         scene.getWindow().sizeToScene();
         stage.show();
 
-        //PasswordEditAdminController.showUserName(user);
+
 
     }
 }
