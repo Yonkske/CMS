@@ -134,10 +134,10 @@ public class DbCallerUser extends DbConnector {
      * Method gives a list of all Users in database
      * @return
      */
-    /*public ArrayList<User> getAllUsers() {
+    public ArrayList<User> getAllUsers() {
     // TODO: make it work
 
-        User[] allUsers;
+        ArrayList<User> allUsers = new ArrayList<User>();
         User user = User.getUser("admin");
 
         try {
@@ -145,15 +145,20 @@ public class DbCallerUser extends DbConnector {
 
             while(rs.next())
             {
+                String userName = rs.getString(1);
+                String password = rs.getString(2);
+                boolean isInitial = rs.getBoolean(3);
+                boolean isAdmin = rs.getBoolean(4);
+                String name = rs.getString(5);
+                String surName = rs.getString(6);
 
+                User userToAddToList = new User(userName, password, isInitial, isAdmin, name, surName);
+                allUsers.add(userToAddToList);
             }
-
-
         } catch (SQLException throwables) {
-
             throwables.printStackTrace();
         }
-
+        System.out.println(allUsers);
         return allUsers;
-    }*/
+    }
 }
