@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <HBox alignment="CENTER" cache="true" spacing="5.0">
             <VBox.margin>
@@ -27,7 +27,7 @@
                 <Insets bottom="5.0" top="5.0" />
             </VBox.margin>
             <Label fx:id="attribut1Lbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Attribut1" />
-            <TextField fx:id="attribut1Tf" disable="true" editable="false" prefWidth="210.0"  text="Name"/>
+            <TextField fx:id="attribut1Tf" disable="true" editable="false" prefWidth="210.0" text="Name" />
         </HBox>
         <HBox alignment="CENTER" cache="true" spacing="5.0">
             <VBox.margin>
@@ -76,11 +76,11 @@
                 <Insets bottom="5.0" top="5.0" />
             </VBox.margin>
             <Label fx:id="attribut8Lbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="Attribut8" />
-            <TextField fx:id="attribut8Tf"  prefWidth="210.0"  />
+            <TextField fx:id="attribut8Tf" prefWidth="210.0" />
         </HBox>
-        <HBox alignment="CENTER_RIGHT" cache="true" spacing="5.0">
+        <HBox alignment="CENTER" cache="true" spacing="5.0">
             <VBox.margin>
-                <Insets bottom="5.0" right="10.0" top="5.0" />
+                <Insets bottom="20.0" left="100.0" top="5.0" />
             </VBox.margin>
             <Button fx:id="submitBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Speichern" />
             <Button fx:id="cancelBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Abbrechen" />
