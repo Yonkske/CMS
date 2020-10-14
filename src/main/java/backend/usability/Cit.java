@@ -21,7 +21,7 @@ public class Cit {
     public Cit(int cit_ID, String[] attributeList){
         id = cit_ID;                                            //id wird über Konstruktor zugeteilt
         attributes = new String[9];                             // Erzeugen des Attribute-Arrays
-        cit_bezeichnung = attributeList[0];                     //Die Bezeichnung des CIT steht an 2. Stelle im Array
+        cit_bezeichnung = attributeList[1];                     //Die Bezeichnung des CIT steht an 2. Stelle im Array
         attributes[0] = "Name";                                 //Das Attribut Name gibt es in jedem CIT
 
 
@@ -29,6 +29,19 @@ public class Cit {
             this.attributes[i] = attributeList[i];
             //System.out.println(attributes[i]);                  //Hilfestellung zur Überprüfung der Attribute
         }
+    }
+
+    /**
+     * Creates the CIT object and returns the reference
+     *
+     * @param attributes - id and Sting Array with a length of 9
+     * @return citName - CIT object
+     */
+    public static Cit create(int id, String[] attributes) {
+
+        Cit citName = new Cit(id, attributes);
+
+        return citName;
     }
 
     /**
@@ -87,6 +100,5 @@ public class Cit {
      */
     public String getCitName(){
         return cit_bezeichnung;
-
     }
 }

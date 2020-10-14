@@ -1,6 +1,8 @@
 package org.dhbw;
 
 import backend.database.DbCallerCit;
+import backend.usability.Cir;
+import backend.usability.Cit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import java.io.IOException;
@@ -13,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 
@@ -43,12 +46,17 @@ public class CITAdminController extends Controller {
 
     public void initialize() throws SQLException {
 
-        DbCallerCit dbc = new DbCallerCit();
+        ArrayList<Cit> alle = new ArrayList<Cit>();
+
+        alle = Cit.showAll();
+
         ArrayList<String> citStringListe = new ArrayList<String>();
-        citStringListe.add("1");
-        citStringListe.add("Weitere Test Daten, CIT nicht eingebunden");
-        ArrayList<String> citNameListe = new ArrayList<String>();
-        choiceBox.getItems().addAll(citNameListe);
+        Cit citObjekte;
+        for(int i= 0; i < alle.size(); i++){
+            citObjekte = alle.get(i);
+            citStringListe.add(citObjekte.getCitName());
+        }
+        choiceBox.getItems().addAll(citStringListe);
     }
 
     public void swapToStartpageAdmin(ActionEvent actionEvent) throws IOException {

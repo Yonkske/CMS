@@ -109,13 +109,13 @@ public class DbCallerCit extends DbConnector{
      * @return a list of CIT records in table
      */
     public ArrayList<Cit> getAllCits() throws SQLException{
-        int iIDCit;
-        new DbConnector().startConnection(); // Warum???!
-        ArrayList<Cit>  citListe= new ArrayList<Cit>();
-        ResultSet rs = stmt.executeQuery("Select * From CIT");
-        while(rs.next())
+        int iIDCit;                                                         //deklaration von der ID des CIT
+        new DbConnector().startConnection(); // Warum???!                   // Connection zur DB
+        ArrayList<Cit>  citListe= new ArrayList<Cit>();                     // deklaration einer neuen Liste mit CIT's
+        ResultSet rs = stmt.executeQuery("Select * From CIT");          // deklaration eines Resultsets rs und initialisierung mit query
+        while(rs.next())                                                    // Schleife zur weiterzählung des Resultsets.
         {
-            iIDCit = rs.getInt(1); // ID des ResultSet
+            iIDCit = rs.getInt(1);                               // ID des ResultSet
             String[] attributes = new String[8];
             for(int i = 0; i < attributes.length; i++) {
                 attributes[i] = rs.getString(i+1);
