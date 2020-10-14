@@ -6,12 +6,20 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.fxml.Initializable;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class UserViewAdminController extends Controller {
+
+public class UserViewAdminController extends Controller implements Initializable  {
 
     @FXML
     private TextField surnameTf;
@@ -27,6 +35,10 @@ public class UserViewAdminController extends Controller {
     @FXML
     private Button noBtn;
 
+    /**
+     *
+     * @param user
+     */
     public void fillTextfields(User user) {
         // TODO: Methode testen
 
@@ -46,6 +58,12 @@ public class UserViewAdminController extends Controller {
     }
 
 
+    @FXML
+    /**
+     *
+     * @param actionEvent
+     * @throws IOException
+     */
     public void deleteUser(ActionEvent actionEvent) throws IOException {
         // TODO: Test der Methode
         String userName = usernameTf.getText();
@@ -70,6 +88,11 @@ public class UserViewAdminController extends Controller {
         });
     }
 
+    /**
+     *
+     * @param actionEvent
+     * @throws IOException
+     */
     public void switchToUserEditAdmin(ActionEvent actionEvent) throws IOException {
         // TODO: Test der Methode
         User user = User.getUser(usernameTf.getText());
@@ -80,19 +103,33 @@ public class UserViewAdminController extends Controller {
 
  //       UserEditAdminController.showUser(user);
     }
-
-    public void switchToPasswordEditAdmin(ActionEvent actionEvent) throws IOException {
+    @FXML
+    /**
+     *
+     * @throws IOException
+     */
+    public void switchToPasswordEditAdmin() throws IOException {
         // TODO: Methode testen
-        User user = User.getUser(usernameTf.getText());
+        //User user = User.getUser(usernameTf.getText());
 
-        PasswordEditAdminController PasswordEditAdminController = new PasswordEditAdminController();
+        PasswordEditAdminController fenster = new PasswordEditAdminController();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PasswordEditAdmin.fxml"));
-        loader.setController(PasswordEditAdminController);
+        loader.setController(fenster);
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        scene.getWindow().sizeToScene();
+        stage.show();
 
  //       PasswordEditAdminController.showUserName(user);
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }
 
 
