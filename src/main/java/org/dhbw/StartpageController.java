@@ -252,7 +252,7 @@ public class StartpageController extends Controller implements Initializable {
      */
 
     /**
-     * Changes the content of the table depending on the selected filter in the combobox
+     * Changes the content of the table to fit the search and selected filter
      */
     @FXML
     public void setTableWithFilterAndSearch() {
