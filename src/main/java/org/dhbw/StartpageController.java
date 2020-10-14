@@ -19,7 +19,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class StartpageAdminController extends Controller implements Initializable {
+public class StartpageController extends Controller implements Initializable {
 
     @FXML private TableView<Cir> cirTable;
     @FXML private TableColumn<Cir, String> citColumn;
@@ -68,7 +68,7 @@ public class StartpageAdminController extends Controller implements Initializabl
      */
     @FXML
     public void swapToStartpage() throws IOException {
-        FXMLFactory.setRoot("StartpageAdmin");
+        FXMLFactory.setRoot("Startpage");
     }
 
     /**
@@ -78,7 +78,7 @@ public class StartpageAdminController extends Controller implements Initializabl
      */
     @FXML
     public void swapToCitAdmin() throws IOException {
-        FXMLFactory.setRoot("CITAdmin");
+        FXMLFactory.setRoot("CIT");
     }
 
     /**
@@ -88,7 +88,7 @@ public class StartpageAdminController extends Controller implements Initializabl
      */
     @FXML
     public void swapToStatisticAdmin() throws IOException {
-        FXMLFactory.setRoot("StatisticAdmin");
+        FXMLFactory.setRoot("Statistic");
     }
 
     /**

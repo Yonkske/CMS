@@ -82,7 +82,7 @@ public class LoginController extends Controller {
      */
     private void switchToStartpage(User user) throws IOException {
 
-        FXMLFactory.setRoot("StartpageAdmin");
+        FXMLFactory.setRoot("Startpage");
     }
 
     @FXML
