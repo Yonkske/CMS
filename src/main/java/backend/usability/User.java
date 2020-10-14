@@ -74,7 +74,6 @@ public class User {
         }
     } // TODO: NEEDED?!
 
-
     /**
      * Within this method the user can change his own password.
      * @param userName - username of the user whose password should be changed
