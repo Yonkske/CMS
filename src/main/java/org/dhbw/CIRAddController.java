@@ -1,6 +1,7 @@
 package org.dhbw;
 
 import backend.usability.Cir;
+import backend.usability.Cit;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -50,23 +51,24 @@ public class CIRAddController extends Controller implements Initializable {
             idTf.setText(String.valueOf(DB_CALLER_CIR.getMaxItemId() + 1));
 
           //todo: Liste von CIT's als String Liste
-           // ArrayList<Cit> citListe = new ArrayList<Cit>();
-            /*
+           ArrayList<Cit> citListe = new ArrayList<Cit>();
+
             citListe = Cit.showAll();
-            System.out.println(citListe);
+
             ArrayList<String> citStringListe = new ArrayList<String>();
-           Cit citObejekt;
-           for(int i = 0; i <= citListe.size(); i++)
+           Cit citObjekt;
+
+           for(int i = 0; i < citListe.size(); i++)
            {
-               citObejekt = citListe.get(i);
-               citStringListe.add(citObejekt.getCitName());
-               System.out.println(citStringListe);
+               citObjekt = citListe.get(i);
+               citStringListe.add(citObjekt.getCitName());
            }
-           */
+
          //todo: Testdaten durch richtige ersetzen
-            ArrayList<String> citStringListe = new ArrayList<String>();
+
+         /*   ArrayList<String> citStringListe = new ArrayList<String>();
             citStringListe.add("1");
-            citStringListe.add("Weitere Test Daten, CIT nicht eingebunden");
+            citStringListe.add("Weitere Test Daten, CIT nicht eingebunden");*/
 
             citChoicebox.getItems().addAll(citStringListe);
         }

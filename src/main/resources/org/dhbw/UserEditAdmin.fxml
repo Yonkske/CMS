@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.UserEditAdminController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="266.8" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.UserEditAdminController">
     <children>
         <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -97,8 +97,8 @@
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" spacing="10.0">
                     <children>
-                        <Button fx:id="submitBtn" mnemonicParsing="false" text="Speichern" />
-                        <Button fx:id="cancelBtn" mnemonicParsing="false" text="Abbrechen" />
+                        <Button fx:id="submitBtn" mnemonicParsing="false" text="Speichern" onAction="#submit"/>
+                        <Button fx:id="cancelBtn" mnemonicParsing="false" text="Abbrechen" onAction="#cancel" />
                     </children>
                     <VBox.margin>
                         <Insets bottom="40.0" />

@@ -101,9 +101,9 @@ public class UserViewAdminController extends Controller  {
         // TODO: Test der Methode
         String userName = usernameTf.getText();
 
-        //UserEditAdminController UserEditAdminController = new UserEditAdminController();
+        UserEditAdminController UserEditAdminController = new UserEditAdminController();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("UserEditAdmin.fxml"));
-        //loader.setController(UserEditAdminController);
+        UserEditAdminController.fillFields(user);
         Parent root = loader.load();
         Stage stage = new Stage();
         Scene scene = new Scene(root);
