@@ -2,10 +2,7 @@ package backend.database;
 
 import backend.usability.Cir;
 import backend.usability.Cit;
-import com.sun.javafx.scene.layout.region.Margins;
 
-import java.awt.*;
-import java.io.Console;
 import java.sql.*;
 import java.util.ArrayList;
 

@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class StartpageController extends Controller implements Initializable {
@@ -43,13 +42,12 @@ public class StartpageController extends Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         try {
-            //cirTable.getItems().setAll(DB_CALLER_CIR.getAll());
-            //citColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CitName"));
-            //cirNameColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CirName"));
             setTableContent(DB_CALLER_CIR.getAll());
 
-            filterCitCb.getItems().add(new Cit(0,new String[]{"CIT", null, null, null, null, null, null, null}));
+            Cit placeholder = new Cit(0,new String[]{"CIT", null, null, null, null, null, null, null});
+            filterCitCb.getItems().add(placeholder);
             filterCitCb.getItems().addAll(DB_CALLER_CIT.getAllCits());
+            filterCitCb.setValue(placeholder);
             // DO IT!
         } catch (SQLException e) {
             e.printStackTrace();
