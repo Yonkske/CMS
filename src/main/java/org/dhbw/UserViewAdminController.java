@@ -26,10 +26,10 @@ public class UserViewAdminController extends Controller  {
     @FXML
     private TextField usernameTf;
 
-    @FXML
+    /*@FXML
     private Button yesBtn;
     @FXML
-    private Button noBtn;
+    private Button noBtn;*/
 
     /**
      *
@@ -101,9 +101,7 @@ public class UserViewAdminController extends Controller  {
         // TODO: Test der Methode
         String userName = usernameTf.getText();
 
-        //UserEditAdminController UserEditAdminController = new UserEditAdminController();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("UserEditAdmin.fxml"));
-        //loader.setController(UserEditAdminController);
         Parent root = loader.load();
         Stage stage = new Stage();
         Scene scene = new Scene(root);
@@ -111,7 +109,6 @@ public class UserViewAdminController extends Controller  {
         scene.getWindow().sizeToScene();
         stage.show();
 
-        // user = User.getUser(usernameTf.getText());
         //UserEditAdminController.showUser(user);
     }
 
@@ -125,9 +122,7 @@ public class UserViewAdminController extends Controller  {
         // TODO: Methode testen
         User user = User.getUser(usernameTf.getText());
 
-        //PasswordEditAdminController PasswordEditAdminController = new PasswordEditAdminController();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PasswordEditAdmin.fxml"));
-        //loader.setController(PasswordEditAdminController);
         Parent root = loader.load();
         Stage stage = new Stage();
         Scene scene = new Scene(root);
