@@ -203,6 +203,9 @@ public class StartpageController extends Controller implements Initializable {
         stage.show();
     }
 
+    /**
+     * Changes the content of the table depending on the selected filter in the combobox
+     */
     @FXML
     public void setFilterForTable() {
         // TODO: get selected Cit
@@ -220,6 +223,9 @@ public class StartpageController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Changes the content of the table depending on the selected filter in the combobox and the search input
+     */
     @FXML
     public void searchCirOrCit() {
         // TODO: get content of searchTf
@@ -230,6 +236,11 @@ public class StartpageController extends Controller implements Initializable {
 
     }
 
+    /**
+     * Sets the content of the table to the given list of cirs
+     *
+     * @param cirs - ArrayList with cirs to be shown in the table
+     */
     private void setTableContent(ArrayList<Cir> cirs) {
         cirTable.getItems().setAll(cirs);
         citColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CitName"));
