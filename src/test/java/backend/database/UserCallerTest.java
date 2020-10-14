@@ -43,4 +43,10 @@ public class UserCallerTest {
         new DbConnector().startConnection();
         Assert.assertEquals(true, new DbCallerUser().checkUser("admin", "admin"));
     } //is the function running without any failures?
+
+    @Test
+    public void testGetAllUsers() throws SQLException {
+        new DbConnector().startConnection();
+        Assert.assertNotNull(new DbCallerUser().getAllUsers());
+    } //is the function running without any failures?
 }
