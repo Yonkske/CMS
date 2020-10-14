@@ -65,7 +65,7 @@
                         <font>
                             <Font size="14.0" />
                         </font></Label>
-                    <TextField fx:id="usernameTf" prefWidth="210.0">
+                    <TextField fx:id="usernameTf" prefWidth="210.0" editable="false">
                         <HBox.margin>
                             <Insets />
                         </HBox.margin>
