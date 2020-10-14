@@ -46,8 +46,8 @@ public class StartpageController extends Controller implements Initializable {
             citColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CitName"));
             cirNameColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CirName"));
 
-            filterCitCb.getItems().setAll(DB_CALLER_CIT.getAllCits());
-
+            filterCitCb.getItems().add(new Cit(0,new String[]{"CIT", null, null, null, null, null, null, null}));
+            filterCitCb.getItems().addAll(DB_CALLER_CIT.getAllCits());
             // DO IT!
         } catch (SQLException e) {
             e.printStackTrace();
@@ -204,7 +204,20 @@ public class StartpageController extends Controller implements Initializable {
     }
 
     @FXML
+    public void setFilterForTable() {
+        // TODO: get selected Cit
+
+        // TODO: set filter for selected Cit
+
+    }
+
+    @FXML
     public void searchCirOrCit() {
+        // TODO: get content of searchTf
+
+        /* TODO: change table content to show only Cirs that contain input of searchTf
+           in either citName or cirName
+         */
 
     }
 }
