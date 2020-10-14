@@ -48,7 +48,7 @@ public class CITAdminController extends Controller {
         citStringListe.add("1");
         citStringListe.add("Weitere Test Daten, CIT nicht eingebunden");
         ArrayList<String> citNameListe = new ArrayList<String>();
-        choiceBox.getItems().addAll(citStringListe);
+        choiceBox.getItems().addAll(citNameListe);
     }
 
     public void swapToStartpageAdmin(ActionEvent actionEvent) throws IOException {
@@ -109,18 +109,15 @@ public class CITAdminController extends Controller {
     }
 
     public void swapToCITAdd(ActionEvent actionEvent) throws IOException {
+        CITAddController citAddController = new CITAddController();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CITAdd.fxml"));
+        loader.setController(citAddController);
         Parent root = loader.load();
-        Stage stage1 = new Stage();
+        Stage stage = new Stage();
         Scene scene = new Scene(root);
-
-        stage1.setScene(scene);
+        stage.setScene(scene);
         scene.getWindow().sizeToScene();
-        stage1.show();
-        // schließen der aktuellen view
-        Stage stClose = new Stage();
-        stClose = (Stage) startpageBtn.getScene().getWindow();
-        stClose.close();
+        stage.show();
     }
 
 
