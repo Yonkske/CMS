@@ -259,4 +259,21 @@ public class DbCallerCir extends DbConnector{
 
         return allCirs;
     }
+
+    /**
+     * Get the highest item_id from the database
+     *
+     * @return the highest item_id if there are entries, 0 if there are no entires in the db
+     * @throws SQLException
+     */
+    public int getMaxItemId() throws SQLException {
+        startConnection();
+        ResultSet rs = stmt.executeQuery("Select max(ITEM_ID) FROM CIR");
+
+        if(rs.first()) {
+            return rs.getInt(1);
+        } else {
+            return 0;
+        }
+    }
 }
