@@ -72,13 +72,17 @@ public class UserViewAdminController extends Controller {
 
     public void switchToUserEditAdmin(ActionEvent actionEvent) throws IOException {
         // TODO: Test der Methode
-        User user = User.getUser(usernameTf.getText());
+        //User user = User.getUser(usernameTf.getText());
+        User user = User.getUser("123");
+        System.out.println(user.getUserName());
+
 
         UserEditAdminController UserEditAdminController = new UserEditAdminController();
+        UserEditAdminController.fillFields(user);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("UserEditAdmin.fxml"));
         loader.setController(UserEditAdminController);
 
- //       UserEditAdminController.showUser(user);
+
     }
 
     public void switchToPasswordEditAdmin(ActionEvent actionEvent) throws IOException {
