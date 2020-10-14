@@ -20,7 +20,7 @@ public class DbCallerCit extends DbConnector{
      */
     public Cit getCit(int id) throws SQLException{
 
-        String[] sCitArray = new String[8]; // String zum Speichern der Resultset Daten
+        String[] sCitArray = new String[10]; // String zum Speichern der Resultset Daten
         ResultSet rs = stmt.executeQuery("SELECT * FROM CIT WHERE TYPE_ID = " + id); // SQL Abfrage
 
         rs.first();
@@ -119,7 +119,7 @@ public class DbCallerCit extends DbConnector{
             for(int i = 0; i < attributes.length; i++) {
                 attributes[i] = rs.getString(i+1);
             }
-            citListe.add(new Cit(iIDCit, attributes)); // CIR Objekt in Liste eintragen
+            citListe.add(new Cit(iIDCit, attributes)); // CIT Objekt in Liste eintragen
 
         }
 
@@ -169,8 +169,8 @@ public class DbCallerCit extends DbConnector{
         return iCountCIT;
     }
 
-    public int converterNametoID(String name) throws SQLException{
-        ResultSet rs = stmt.executeQuery("Select TYPE_ID from CIT where TYPE_NAME="+name);
-        return Integer.parseInt(rs.getString(1));
+    public static int converterNametoID(String name) throws SQLException{
+        ResultSet rs = stmt.executeQuery("Select TYPE_ID from CIT where TYPE_NAME='"+name+"'");
+        return rs.getInt(0);
     }
 }

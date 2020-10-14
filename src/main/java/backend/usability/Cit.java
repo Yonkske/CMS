@@ -3,7 +3,6 @@ package backend.usability;
 
 import backend.database.DbCallerCit;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -11,7 +10,7 @@ public class Cit {
 
     // FIXME: change DbCallers to non-static
     private int id;
-    private String cit_bezeichnung;
+    private String typename;
     private String[] attributes;
 
     /** Constructor to create an object of CIT
@@ -21,14 +20,15 @@ public class Cit {
      */
     public Cit(int cit_ID, String[] attributeList){
         id = cit_ID;                                            //id wird über Konstruktor zugeteilt
-        attributes = new String[9];                             // Erzeugen des Attribute-Arrays
-        cit_bezeichnung = attributeList[1];                     //Die Bezeichnung des CIT steht an 2. Stelle im Array
+        attributes = new String[10];                        // Erzeugen des Attribute-Arrays
+        typename = attributeList[1];                     //Die Bezeichnung des CIT steht an 2. Stelle im Array
         attributes[0] = "Name";                                 //Das Attribut Name gibt es in jedem CIT
 
 
-        for (int i = 1; i < attributeList.length; i++) {       //Alle anderen Attribute werden über den Übergabeparameter weitergegeben.
+        for (int i = 2; i < attributeList.length; i++) {//Alle anderen Attribute werden über den Übergabeparameter weitergegeben.
+           System.out.println(attributeList.length);
             this.attributes[i] = attributeList[i];
-            //System.out.println(attributes[i]);                  //Hilfestellung zur Überprüfung der Attribute
+                           //Hilfestellung zur Überprüfung der Attribute
         }
     }
 
@@ -100,7 +100,7 @@ public class Cit {
      * @return name of CIT
      */
     public String getCitName(){
-        return cit_bezeichnung;
+        return typename;
     }
 
     /**Convert the name of the Choice Box into the id to get CIT
@@ -111,6 +111,10 @@ public class Cit {
      */
     public int converterNametoID(String name) throws SQLException{
         return new DbCallerCit().converterNametoID(name);}
+
+        public String toString() {
+        return typename;
+        }
 
 
 }

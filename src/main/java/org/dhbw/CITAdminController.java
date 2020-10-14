@@ -3,6 +3,8 @@ package org.dhbw;
 import backend.database.DbCallerCit;
 import backend.usability.Cir;
 import backend.usability.Cit;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import java.io.IOException;
@@ -17,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import org.h2.engine.SysProperties;
 
 
 public class CITAdminController extends Controller {
@@ -24,7 +27,7 @@ public class CITAdminController extends Controller {
     @FXML public Button startpageBtn;
     @FXML public Button citBtn;
     @FXML public Button statisticBtn;
-    @FXML public ChoiceBox choiceBox;
+    @FXML public ChoiceBox<Cit> choiceBox;
     @FXML public Button searchBtn;
     @FXML public Label idLbl;
     @FXML public TextField idTf;
@@ -46,93 +49,31 @@ public class CITAdminController extends Controller {
 
     private Cit cit;
 
+    public void CITAdminController(Cit cit){
+        this.cit =cit;
+    }
+
     public void initialize() throws SQLException {
 
-        ArrayList<Cit> allCit = new ArrayList<Cit>();
-
-        allCit = Cit.showAll();
-
-        ArrayList<String> citStringListe = new ArrayList<String>();
-        Cit citObjekte;
-        for(int i= 0; i < allCit.size(); i++){
-            citObjekte = allCit.get(i);
-            citStringListe.add(citObjekte.getCitName());
-        }
-        choiceBox.getItems().addAll(citStringListe);
+        ObservableList<Cit> list = FXCollections.observableArrayList();
+        choiceBox.setItems(list);
+        list.addAll(Cit.showAll());
         }
 
     public void swapToStartpageAdmin(ActionEvent actionEvent) throws IOException {
-       // FXMLFactory.setRoot("StartpageAdmin.fxml");
-        // Laden der neuen Scene Startseite
-        /*
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("StartpageAdmin.fxml"));
-        Parent root = loader.load();
-        Stage stage1 = new Stage();
-        Scene scene = new Scene(root);
-
-        stage1.setScene(scene);
-        scene.getWindow().sizeToScene();
-        stage1.show();
-        // schließen der aktuellen view
-        Stage stClose = new Stage();
-        stClose = (Stage) startpageBtn.getScene().getWindow();
-        stClose.close();
-         */
         FXMLFactory.setRoot("StartpageAdmin");
 
     }
 
     public void swapToCITAdmin(ActionEvent actionEvent) throws IOException{
-        /*
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("CITAdmin.fxml"));
-        Parent root = loader.load();
-        Stage stage1 = new Stage();
-        Scene scene = new Scene(root);
-
-        stage1.setScene(scene);
-        scene.getWindow().sizeToScene();
-        stage1.show();
-        // schließen der aktuellen view
-        Stage stClose = new Stage();
-        stClose = (Stage) startpageBtn.getScene().getWindow();
-        stClose.close();
-        */
-         FXMLFactory.setRoot("CITAdmin");
+        FXMLFactory.setRoot("CITAdmin");
     }
 
     public void swapToStatisticAdmin(ActionEvent actionEvent) throws IOException {
-        /*
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("StatisticAdmin.fxml"));
-        Parent root = loader.load();
-        Stage stage1 = new Stage();
-        Scene scene = new Scene(root);
-
-        stage1.setScene(scene);
-        scene.getWindow().sizeToScene();
-        stage1.show();
-        // schließen der aktuellen view
-        Stage stClose = new Stage();
-        stClose = (Stage) startpageBtn.getScene().getWindow();
-        stClose.close();
-        */
         FXMLFactory.setRoot("StatisticAdmin");
     }
 
     public void swapToBenutzer(ActionEvent actionEvent) throws IOException {
-        /*
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("StatisticAdmin.fxml"));
-        Parent root = loader.load();
-        Stage stage1 = new Stage();
-        Scene scene = new Scene(root);
-
-        stage1.setScene(scene);
-        scene.getWindow().sizeToScene();
-        stage1.show();
-        // schließen der aktuellen view
-        Stage stClose = new Stage();
-        stClose = (Stage) startpageBtn.getScene().getWindow();
-        stClose.close();
-        */
         FXMLFactory.setRoot("UserAdmin");
     }
 
@@ -150,22 +91,23 @@ public class CITAdminController extends Controller {
 
     public void fillingIn(ActionEvent actionEvent) throws IOException, SQLException {
 
-        String nameFromChoiceBox = new String();
-        nameFromChoiceBox = String.valueOf(choiceBox.getValue()); //bis hier funktioniert es
+        Cit cit = choiceBox.getSelectionModel().getSelectedItem();
+        System.out.println(cit.getCitName());
 
-        int id = cit.converterNametoID(nameFromChoiceBox);          //ab hier macht es probleme
-        System.out.println(id);
-        /*
-        citTf.setText(String.valueOf( cit.show(id).getCitID()));
-        /*
+        idTf.setText(String.valueOf(cit.getCitID()));
+        citTf.setText(cit.getCitName());
+
         attribut1Tf.setText(cit.getCitAttributes()[0]);
-        attribut2Tf.setText(cit.getCitAttributes()[1]);
-        attribut3Tf.setText(cit.getCitAttributes()[2]);
-        attribut4Tf.setText(cit.getCitAttributes()[3]);
-        attribut5Tf.setText(cit.getCitAttributes()[4]);
-        attribut6Tf.setText(cit.getCitAttributes()[5]);
-        attribut7Tf.setText(cit.getCitAttributes()[6]);
-    */
+        attribut2Tf.setText(cit.getCitAttributes()[2]);
+        attribut3Tf.setText(cit.getCitAttributes()[3]);
+        attribut4Tf.setText(cit.getCitAttributes()[4]);
+        attribut5Tf.setText(cit.getCitAttributes()[5]);
+        attribut6Tf.setText(cit.getCitAttributes()[6]);
+        attribut7Tf.setText(cit.getCitAttributes()[7]);
+        attribut8Tf.setText(cit.getCitAttributes()[8]);
+
+
+
     }
 
 
