@@ -60,7 +60,7 @@
                     <columns>
                       <TableColumn fx:id="citColumn" editable="false" prefWidth="135.0" text="CIT">
                            <graphic>
-                              <ComboBox fx:id="filterCitCb" prefHeight="25.0" prefWidth="135.0" promptText="CIT" />
+                              <ComboBox fx:id="filterCitCb" prefHeight="25.0" prefWidth="135.0" promptText="CIT" onAction="#setFilterForTable" />
                            </graphic>
                         </TableColumn>
                       <TableColumn fx:id="cirNameColumn" editable="false" prefWidth="135.0" text="CIR-Bezeichnung" />

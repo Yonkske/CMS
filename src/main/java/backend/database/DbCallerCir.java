@@ -1,6 +1,7 @@
 package backend.database;
 
 import backend.usability.Cir;
+import backend.usability.Cit;
 import com.sun.javafx.scene.layout.region.Margins;
 
 import java.awt.*;
@@ -160,7 +161,6 @@ public class DbCallerCir extends DbConnector{
     public static ArrayList<Cir> getAllCirForType(String sCit) throws SQLException {
         Cir cirName;
         int iIDCir;
-        int iZaehler = 0;
         int iCit = Integer.parseInt(sCit); // Muss später gelöscht werden
         ArrayList<Cir> cirListe = new ArrayList<Cir>(); // Erzeugen einer Cir Liste
         ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE TYPE_ID = "+iCit); // DB Abfrage
@@ -170,9 +170,37 @@ public class DbCallerCir extends DbConnector{
         {
             iIDCir = rs.getInt(1); // ID des ResultSet
             cirName = Cir.showCir(iIDCir); // Über die ID ein CIR Objekt erzeugen
-            cirListe.add(iZaehler, cirName); // CIR Objekt in Liste eintragen
-            iZaehler++;
+            cirListe.add(cirName); // CIR Objekt in Liste eintragen
 
+        }
+
+        return cirListe;
+    }
+
+    /**
+     * Returns all CIR's from a given CIT as CIR list
+     *
+     * @param sCit -String later CIT type
+     * @return cirListe - List of all Cirs of a given CIT
+     * @throws SQLException
+     */
+    //todo: Ersetzen von String sCit durch Type CIT
+    public ArrayList<Cir> getAllCirForType(Cit cit) throws SQLException {
+        ArrayList<Cir> cirListe = new ArrayList<Cir>();
+
+        ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE TYPE_ID = "+ cit.getCitID()); // DB Abfrage
+
+        //FIXME: FIXEN new DbConnector...
+        new DbConnector().startConnection(); // Warum???!
+        while(rs.next())
+        {
+            String[] attributes = new String[10];
+
+            for(int i = 0; i < attributes.length; i++) {
+                attributes[i] = rs.getString(i+1);
+            }
+
+            cirListe.add(new Cir(attributes));
         }
 
         return cirListe;

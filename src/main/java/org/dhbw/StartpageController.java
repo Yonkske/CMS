@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -42,9 +43,10 @@ public class StartpageController extends Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         try {
-            cirTable.getItems().setAll(DB_CALLER_CIR.getAll());
-            citColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CitName"));
-            cirNameColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CirName"));
+            //cirTable.getItems().setAll(DB_CALLER_CIR.getAll());
+            //citColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CitName"));
+            //cirNameColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CirName"));
+            setTableContent(DB_CALLER_CIR.getAll());
 
             filterCitCb.getItems().add(new Cit(0,new String[]{"CIT", null, null, null, null, null, null, null}));
             filterCitCb.getItems().addAll(DB_CALLER_CIT.getAllCits());
@@ -206,9 +208,18 @@ public class StartpageController extends Controller implements Initializable {
     @FXML
     public void setFilterForTable() {
         // TODO: get selected Cit
-
+        Cit selectedCit = filterCitCb.getSelectionModel().getSelectedItem();
         // TODO: set filter for selected Cit
-
+        try {
+            if (selectedCit.getCitID() == 0)
+            {
+                setTableContent(DB_CALLER_CIR.getAll());
+            } else {
+                setTableContent(DB_CALLER_CIR.getAllCirForType(selectedCit));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -219,5 +230,11 @@ public class StartpageController extends Controller implements Initializable {
            in either citName or cirName
          */
 
+    }
+
+    private void setTableContent(ArrayList<Cir> cirs) {
+        cirTable.getItems().setAll(cirs);
+        citColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CitName"));
+        cirNameColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CirName"));
     }
 }
