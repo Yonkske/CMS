@@ -59,7 +59,7 @@ public class CITAdminController extends Controller {
             citStringListe.add(citObjekte.getCitName());
         }
         choiceBox.getItems().addAll(citStringListe);
-    }
+        }
 
     public void swapToStartpageAdmin(ActionEvent actionEvent) throws IOException {
        // FXMLFactory.setRoot("StartpageAdmin.fxml");
@@ -148,14 +148,16 @@ public class CITAdminController extends Controller {
         stage.show();
     }
 
-    public void fillingIn(ActionEvent actionEvent) throws IOException{
-        //Atrribute des Cit Übergeben und in der View ausgeben
-        //todo: Change CIT Int to CIT Type
-        /*String name = new String();
-        name = choiceBox.getOnShown();
+    public void fillingIn(ActionEvent actionEvent) throws IOException, SQLException {
 
+        String nameFromChoiceBox = new String();
+        nameFromChoiceBox = String.valueOf(choiceBox.getValue()); //bis hier funktioniert es
 
-        citTf.setText(String.valueOf(cit.getCitID()));
+        int id = cit.converterNametoID(nameFromChoiceBox);          //ab hier macht es probleme
+        System.out.println(id);
+        /*
+        citTf.setText(String.valueOf( cit.show(id).getCitID()));
+        /*
         attribut1Tf.setText(cit.getCitAttributes()[0]);
         attribut2Tf.setText(cit.getCitAttributes()[1]);
         attribut3Tf.setText(cit.getCitAttributes()[2]);
@@ -163,7 +165,7 @@ public class CITAdminController extends Controller {
         attribut5Tf.setText(cit.getCitAttributes()[4]);
         attribut6Tf.setText(cit.getCitAttributes()[5]);
         attribut7Tf.setText(cit.getCitAttributes()[6]);
-        */
+    */
     }
 
 

@@ -3,6 +3,7 @@ package backend.usability;
 
 import backend.database.DbCallerCit;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -52,7 +53,7 @@ public class Cit {
      */
     public Cit show(int id) throws SQLException { return new DbCallerCit().getCit(id);}                            //Methode des DBCallerCit wird aufgerufen um Eintrag zu holen.
 
-    /**
+     /**
      *Delete the CIT of the given ID
      *
      * @param citToDelete - the CIT to be deleted
@@ -101,4 +102,15 @@ public class Cit {
     public String getCitName(){
         return cit_bezeichnung;
     }
+
+    /**Convert the name of the Choice Box into the id to get CIT
+     *
+     * @param name chosen content of the Choice Box String
+     * @return id of chosen CIT
+     * @throws SQLException
+     */
+    public int converterNametoID(String name) throws SQLException{
+        return new DbCallerCit().converterNametoID(name);}
+
+
 }

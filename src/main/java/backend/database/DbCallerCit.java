@@ -36,7 +36,6 @@ public class DbCallerCit extends DbConnector{
 
 
 
-
     /**Database Query to create a new CIT
      *
      * @param type which should be created
@@ -170,4 +169,8 @@ public class DbCallerCit extends DbConnector{
         return iCountCIT;
     }
 
+    public int converterNametoID(String name) throws SQLException{
+        ResultSet rs = stmt.executeQuery("Select TYPE_ID from CIT where TYPE_NAME="+name);
+        return Integer.parseInt(rs.getString(1));
+    }
 }
