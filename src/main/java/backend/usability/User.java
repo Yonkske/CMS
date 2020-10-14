@@ -58,22 +58,6 @@ public class User {
     }
 
     /**
-     * Within this method the authorisation of that user could be changed.
-     * @param userName - username of the user whose authorisation should be changed
-     * @param isAdmin - former state of authorisation (expected: false = no admin)
-     * @return isAdmin - new state of authorisation (expected: true = admin)
-     */
-    public static boolean changeAdmin(String userName, boolean isAdmin) {
-
-        User userToChange = getUser(userName);
-        userToChange.isAdmin = isAdmin;
-
-        new DbCallerUser().updateUser(userToChange);
-
-        return userToChange.isAdmin;
-    } // TODO: NEEDED?!
-
-    /**
      * Within this method a user could be deleted from the database.
      * @param userName - username of the user which should be deleted
      * @return true - if true returns the user was deleted, if false returns the user could not be deleted
