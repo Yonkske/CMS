@@ -68,7 +68,7 @@ public class StartpageController extends Controller implements Initializable {
      */
     @FXML
     public void swapToStartpage() throws IOException {
-        FXMLFactory.setRoot("StartpageAdmin");
+        FXMLFactory.setRoot("Startpage");
     }
 
     /**
@@ -78,7 +78,7 @@ public class StartpageController extends Controller implements Initializable {
      */
     @FXML
     public void swapToCitAdmin() throws IOException {
-        FXMLFactory.setRoot("CITAdmin");
+        FXMLFactory.setRoot("CIT");
     }
 
     /**
@@ -88,7 +88,7 @@ public class StartpageController extends Controller implements Initializable {
      */
     @FXML
     public void swapToStatisticAdmin() throws IOException {
-        FXMLFactory.setRoot("StatisticAdmin");
+        FXMLFactory.setRoot("Statistic");
     }
 
     /**

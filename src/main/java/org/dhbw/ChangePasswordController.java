@@ -28,6 +28,6 @@ public class ChangePasswordController extends Controller {
     public Button submitBtn;
 
     public void switchToStartpage(ActionEvent actionEvent) throws IOException {
-        FXMLFactory.setRoot("StartpageAdmin");
+        FXMLFactory.setRoot("Startpage");
     }
 }

@@ -68,7 +68,7 @@ public class CITAdmin extends Controller {
         stClose = (Stage) startpageBtn.getScene().getWindow();
         stClose.close();
          */
-        FXMLFactory.setRoot("StartpageAdmin");
+        FXMLFactory.setRoot("Startpage");
 
     }
 
@@ -87,7 +87,7 @@ public class CITAdmin extends Controller {
         stClose = (Stage) startpageBtn.getScene().getWindow();
         stClose.close();
         */
-         FXMLFactory.setRoot("CITAdmin");
+         FXMLFactory.setRoot("CIT");
     }
 
     public void swapToStatisticAdmin(ActionEvent actionEvent) throws IOException {
@@ -105,7 +105,7 @@ public class CITAdmin extends Controller {
         stClose = (Stage) startpageBtn.getScene().getWindow();
         stClose.close();
         */
-        FXMLFactory.setRoot("StatisticAdmin");
+        FXMLFactory.setRoot("Statistic");
     }
 
     public void swapToCITAdd(ActionEvent actionEvent) throws IOException {
