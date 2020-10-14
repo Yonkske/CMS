@@ -59,19 +59,6 @@ public class CITAdminController extends Controller {
             citStringListe.add(citObjekte.getCitName());
         }
         choiceBox.getItems().addAll(citStringListe);
-
-        // Atrribute des Cit Übergeben und in der View ausgeben
-        //todo: Change CIT Int to CIT Type
-        /*
-        citTf.setText(String.valueOf(cit.getCitID()));
-        attribut1Tf.setText(cit.getCitAttributes()[0]);
-        attribut2Tf.setText(cit.getCitAttributes()[1]);
-        attribut3Tf.setText(cit.getCitAttributes()[2]);
-        attribut4Tf.setText(cit.getCitAttributes()[3]);
-        attribut5Tf.setText(cit.getCitAttributes()[4]);
-        attribut6Tf.setText(cit.getCitAttributes()[5]);
-        attribut7Tf.setText(cit.getCitAttributes()[6]);
-        */
     }
 
     public void swapToStartpageAdmin(ActionEvent actionEvent) throws IOException {
@@ -131,6 +118,24 @@ public class CITAdminController extends Controller {
         FXMLFactory.setRoot("StatisticAdmin");
     }
 
+    public void swapToBenutzer(ActionEvent actionEvent) throws IOException {
+        /*
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("StatisticAdmin.fxml"));
+        Parent root = loader.load();
+        Stage stage1 = new Stage();
+        Scene scene = new Scene(root);
+
+        stage1.setScene(scene);
+        scene.getWindow().sizeToScene();
+        stage1.show();
+        // schließen der aktuellen view
+        Stage stClose = new Stage();
+        stClose = (Stage) startpageBtn.getScene().getWindow();
+        stClose.close();
+        */
+        FXMLFactory.setRoot("UserAdmin");
+    }
+
     public void swapToCITAdd(ActionEvent actionEvent) throws IOException {
         CITAddController citAddController = new CITAddController();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CITAdd.fxml"));
@@ -142,8 +147,23 @@ public class CITAdminController extends Controller {
         scene.getWindow().sizeToScene();
         stage.show();
     }
-    public void fillingIn(ActionEvent actionEvent) throws IOException{
 
+    public void fillingIn(ActionEvent actionEvent) throws IOException{
+        //Atrribute des Cit Übergeben und in der View ausgeben
+        //todo: Change CIT Int to CIT Type
+        /*String name = new String();
+        name = choiceBox.getOnShown();
+
+
+        citTf.setText(String.valueOf(cit.getCitID()));
+        attribut1Tf.setText(cit.getCitAttributes()[0]);
+        attribut2Tf.setText(cit.getCitAttributes()[1]);
+        attribut3Tf.setText(cit.getCitAttributes()[2]);
+        attribut4Tf.setText(cit.getCitAttributes()[3]);
+        attribut5Tf.setText(cit.getCitAttributes()[4]);
+        attribut6Tf.setText(cit.getCitAttributes()[5]);
+        attribut7Tf.setText(cit.getCitAttributes()[6]);
+        */
     }
 
 

@@ -15,29 +15,34 @@
 
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
 
-                  <Button fx:id="startpageBtn" minWidth="65.6" mnemonicParsing="false" prefWidth="78.0" text="Startseite" onAction="#swapToStartpageAdmin">
+                  <Button fx:id="startpageBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStartpageAdmin" prefWidth="78.0" text="Startseite">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" prefWidth="78.0" text="CIT" onAction="#swapToCITAdmin">
+                  <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToCITAdmin" prefWidth="78.0" text="CIT">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="statisticBtn" minWidth="65.6" mnemonicParsing="false" prefWidth="78.0" text="Statistik" onAction="#swapToStatisticAdmin">
+                  <Button fx:id="statisticBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStatisticAdmin" prefWidth="78.0" text="Statistik">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
+                <Button fx:id="userBtn" minWidth="65.6" mnemonicParsing="false" text="Benutzer" onAction="#swapToBenutzer">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
+                </Button>
 
             </VBox>
             <VBox prefHeight="383.0" prefWidth="389.0">
 
                   <HBox alignment="CENTER" prefHeight="54.0" prefWidth="389.0">
 
-                        <ChoiceBox fx:id="choiceBox" prefWidth="150.0"/>
-                        <Button fx:id="searchBtn" mnemonicParsing="false" text="Suche" />
+                        <ChoiceBox fx:id="choiceBox" prefWidth="150.0" />
+                        <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#fillingIn" text="Suche" />
                  </HBox>
                   <HBox alignment="CENTER" spacing="5.0">
 
@@ -175,13 +180,13 @@
          <HBox alignment="CENTER" prefHeight="47.0" prefWidth="396.0">
             <children>
                <Label fx:id="numberCIRLbl" prefHeight="17.0" prefWidth="80.0" text="Anzahl CIR: " />
-               <TextField fx:id="numberCIRTf" alignment="BOTTOM_RIGHT" prefHeight="25.0" prefWidth="82.0" disable="true" />
+               <TextField fx:id="numberCIRTf" alignment="BOTTOM_RIGHT" disable="true" prefHeight="25.0" prefWidth="82.0" />
             </children>
          </HBox>
                 <HBox alignment="CENTER" prefHeight="47.0" prefWidth="396.0">
             <children>
                <Button fx:id="deleteBtn" mnemonicParsing="false" text="Löschen" />
-               <Button fx:id="citaddBtn" mnemonicParsing="false" text="CIT erstellen" onAction="#swapToCITAdd"/>
+               <Button fx:id="citaddBtn" mnemonicParsing="false" onAction="#swapToCITAdd" text="CIT erstellen" />
             </children></HBox>
             </VBox>
 
