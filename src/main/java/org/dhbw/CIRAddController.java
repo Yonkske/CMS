@@ -48,7 +48,8 @@ public class CIRAddController extends Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            idTf.setText(String.valueOf(Cir.getCount()+2));
+            //idTf.setText(String.valueOf(Cir.getCount()+2));
+            idTf.setText(String.valueOf(DB_CALLER_CIR.getMaxItemId() + 1));
 
           //todo: Liste von CIT's als String Liste
            // ArrayList<Cit> citListe = new ArrayList<Cit>();
