@@ -1,6 +1,7 @@
 package backend.database;
 
 
+import backend.usability.Cit;
 import backend.usability.User;
 
 import java.sql.*;
@@ -137,9 +138,15 @@ public class DbCallerUser extends DbConnector {
     // TODO: make it work
 
         User[] allUsers;
+        User user = User.getUser("admin");
 
         try {
             rs = stmt.executeQuery("SELECT * FROM USER");
+
+            while(rs.next())
+            {
+
+            }
 
 
         } catch (SQLException throwables) {
