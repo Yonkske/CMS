@@ -100,10 +100,8 @@
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" spacing="10.0">
                     <children>
-                        <Button fx:id="editUserBtn" mnemonicParsing="false" text="Bearbeiten"
-                                onAction="#switchToUserEditAdmin"/>
-                        <Button fx:id="editPasswordBtn" mnemonicParsing="false" text="Passwort ändern"
-                                onAction="#switchToPasswordEditAdmin"/>
+                        <Button fx:id="editUserBtn" mnemonicParsing="false" text="Bearbeiten" onAction="#switchToUserEditAdmin"/>
+                        <Button fx:id="editPasswordBtn" mnemonicParsing="false" text="Passwort ändern" onAction="#switchToPasswordEditAdmin"/>
                         <Button fx:id="deleteUserBtn" mnemonicParsing="false" text="Löschen" onAction="#deleteUser"/>
                     </children>
                     <VBox.margin>
