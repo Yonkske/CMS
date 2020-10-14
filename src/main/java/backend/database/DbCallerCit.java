@@ -118,7 +118,7 @@ public class DbCallerCit extends DbConnector{
             iIDCit = rs.getInt(1); // ID des ResultSet
             String[] attributes = new String[8];
             for(int i = 0; i < attributes.length; i++) {
-                attributes[i] = rs.getString(i+1);
+                attributes[i] = rs.getString(i+2);
             }
             citListe.add(new Cit(iIDCit, attributes)); // CIR Objekt in Liste eintragen
 

@@ -46,10 +46,7 @@ public class StartpageController extends Controller implements Initializable {
             citColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CitName"));
             cirNameColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CirName"));
 
-            // TODO: add filling the combobox
             filterCitCb.getItems().setAll(DB_CALLER_CIT.getAllCits());
-
-            //filterCitCb.setCellValueFactory(new PropertyValueFactory<Cit, String>("CitName"));
 
             // DO IT!
         } catch (SQLException e) {

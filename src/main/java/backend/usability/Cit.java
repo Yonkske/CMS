@@ -89,4 +89,9 @@ public class Cit {
         return cit_bezeichnung;
 
     }
+
+    @Override
+    public String toString() {
+        return cit_bezeichnung;
+    }
 }
