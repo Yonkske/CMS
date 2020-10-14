@@ -19,12 +19,12 @@ public class Cit {
      */
     public Cit(int cit_ID, String[] attributeList){
         id = cit_ID;                                            //id wird über Konstruktor zugeteilt
-        attributes = new String[10];                             // Erzeugen des Attribute-Arrays
-        typename = attributeList[1];                     //Die Bezeichnung des CIT steht an 2. Stelle im Array
+        attributes = new String[8];                             // Erzeugen des Attribute-Arrays
+        typename = attributeList[0];                     //Die Bezeichnung des CIT steht an 2. Stelle im Array
         attributes[0] = "Name";                                 //Das Attribut Name gibt es in jedem CIT
 
 
-        for (int i = 2; i < attributeList.length; i++) {       //Alle anderen Attribute werden über den Übergabeparameter weitergegeben.
+        for (int i = 1; i < attributeList.length; i++) {       //Alle anderen Attribute werden über den Übergabeparameter weitergegeben.
             this.attributes[i] = attributeList[i];
             }
     }

@@ -50,7 +50,7 @@ public class CITController extends Controller {
     public void initialize() throws SQLException {
         ObservableList<Cit> list = FXCollections.observableArrayList();
         choiceBox.setItems(list);
-        list.addAll(Cit.showAll());
+        list.addAll(DB_CALLER_CIT.getAllCits());
 
     }
 
@@ -91,13 +91,13 @@ public class CITController extends Controller {
         citTf.setText(cit.getCitName());
 
         attribut1Tf.setText(cit.getCitAttributes()[0]);
-        attribut2Tf.setText(cit.getCitAttributes()[2]);
-        attribut3Tf.setText(cit.getCitAttributes()[3]);
-        attribut4Tf.setText(cit.getCitAttributes()[4]);
-        attribut5Tf.setText(cit.getCitAttributes()[5]);
-        attribut6Tf.setText(cit.getCitAttributes()[6]);
-        attribut7Tf.setText(cit.getCitAttributes()[7]);
-        attribut8Tf.setText(cit.getCitAttributes()[8]);
+        attribut2Tf.setText(cit.getCitAttributes()[1]);
+        attribut3Tf.setText(cit.getCitAttributes()[2]);
+        attribut4Tf.setText(cit.getCitAttributes()[3]);
+        attribut5Tf.setText(cit.getCitAttributes()[4]);
+        attribut6Tf.setText(cit.getCitAttributes()[5]);
+        attribut7Tf.setText(cit.getCitAttributes()[6]);
+        attribut8Tf.setText(cit.getCitAttributes()[7]);
     }
 
 
