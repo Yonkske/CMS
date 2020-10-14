@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.LoginController">
     <children>
         <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -45,11 +45,11 @@
                     </VBox.margin>
                 </HBox>
                 <HBox alignment="TOP_CENTER" spacing="10.0">
-                    <Label fx:id="meldungLbl" alignment="BOTTOM_LEFT" prefWidth="130.0" style="-fx-border-color: #ff0000; -fx-border-radius: 3;" text="Ihr Benutzer oder Passwort ist falsch." textAlignment="CENTER" textFill="#fc0000" wrapText="true" visible="false">
+                    <Label fx:id="meldungLbl" alignment="BOTTOM_LEFT" prefWidth="130.0" style="-fx-border-color: #ff0000; -fx-border-radius: 3;" text="Ihr Benutzer oder Passwort ist falsch." textAlignment="CENTER" textFill="#fc0000" visible="false" wrapText="true">
                         <HBox.margin>
                             <Insets />
                         </HBox.margin></Label>
-               <Button fx:id="loginBtn" mnemonicParsing="false" text="Anmelden" onAction="#logIn"/>
+               <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#logIn" text="Anmelden" />
                     <VBox.margin>
                         <Insets bottom="40.0" top="5.0" />
                     </VBox.margin>
