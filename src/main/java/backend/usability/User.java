@@ -74,18 +74,6 @@ public class User {
     } // TODO: NEEDED?!
 
     /**
-     * Within this method it can be checked whether the user is an admin or not.
-     * @param userName - username of the user whose authorisation should be checked
-     * @return true - if true returns he is admin, if false returns he is just a normal user
-     */
-    public static boolean checkIsAdmin(String userName) {
-
-        User userToCheckAdmin = getUser(userName);
-
-        return userToCheckAdmin.isAdmin;
-    } // TODO: NEEDED?! Is covered by getIsAdmin...
-
-    /**
      * Within this method a user could be deleted from the database.
      * @param userName - username of the user which should be deleted
      * @return true - if true returns the user was deleted, if false returns the user could not be deleted

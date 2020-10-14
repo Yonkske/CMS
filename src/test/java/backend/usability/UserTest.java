@@ -29,12 +29,6 @@ public class UserTest {
     } //is the function running without any failures?
 
     @Test
-    public void checkIsAdmin() throws SQLException {
-        new DbConnector().startConnection();
-        Assert.assertEquals(true, User.checkIsAdmin("creation"));
-    } //is the function running without any failures?
-
-    @Test
     public void testDeleteUser() throws SQLException {
         new DbConnector().startConnection();
         Assert.assertEquals(true, User.deleteUser("creation"));
