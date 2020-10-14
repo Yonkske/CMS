@@ -305,8 +305,8 @@ public class DbCallerCir extends DbConnector{
     /**
      * Returns all CIR's as a result of a search (case sensitive, has to be changed to case insensitive )
      *
-     * @param searchValue -String later CIT type
-     * @return cirListe - List of all Cirs of a search
+     * @param searchValue - String that has to be searched for
+     * @return cirListe - List of all cirs that are the result of the search
      * @throws SQLException
      */
     public ArrayList<Cir> getAllCirSearchValue(String searchValue) throws SQLException {
