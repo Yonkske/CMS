@@ -92,8 +92,6 @@ public class CITAdminController extends Controller {
     public void fillingIn(ActionEvent actionEvent) throws IOException, SQLException {
 
         Cit cit = choiceBox.getSelectionModel().getSelectedItem();
-        System.out.println(cit.getCitName());
-
         idTf.setText(String.valueOf(cit.getCitID()));
         citTf.setText(cit.getCitName());
 

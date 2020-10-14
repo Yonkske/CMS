@@ -115,7 +115,7 @@ public class DbCallerCit extends DbConnector{
         while(rs.next())                                                    // Schleife zur weiterzählung des Resultsets.
         {
             iIDCit = rs.getInt(1);                               // ID des ResultSet
-            String[] attributes = new String[8];
+            String[] attributes = new String[9];
             for(int i = 0; i < attributes.length; i++) {
                 attributes[i] = rs.getString(i+1);
             }

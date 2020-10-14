@@ -26,9 +26,7 @@ public class Cit {
 
 
         for (int i = 2; i < attributeList.length; i++) {//Alle anderen Attribute werden über den Übergabeparameter weitergegeben.
-           System.out.println(attributeList.length);
-            this.attributes[i] = attributeList[i];
-                           //Hilfestellung zur Überprüfung der Attribute
+           this.attributes[i] = attributeList[i];           //Hilfestellung zur Überprüfung der Attribute
         }
     }
 
