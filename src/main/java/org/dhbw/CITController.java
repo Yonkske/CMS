@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
-public class CITAdmin extends Controller {
+public class CITController extends Controller {
     @FXML public Label adminLbl;
     @FXML public Button startpageBtn;
     @FXML public Button citBtn;
