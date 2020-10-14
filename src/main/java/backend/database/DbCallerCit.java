@@ -1,13 +1,8 @@
 package backend.database;
 
-import backend.usability.Cir;
 import backend.usability.Cit;
-import com.sun.javafx.scene.layout.region.Margins;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import java.awt.*;
-import java.io.Console;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -20,7 +15,7 @@ public class DbCallerCit extends DbConnector{
      */
     public Cit getCit(int id) throws SQLException{
 
-        String[] sCitArray = new String[8]; // String zum Speichern der Resultset Daten
+        String[] sCitArray = new String[10]; // String zum Speichern der Resultset Daten
         ResultSet rs = stmt.executeQuery("SELECT * FROM CIT WHERE TYPE_ID = " + id); // SQL Abfrage
 
         rs.first();
@@ -110,17 +105,16 @@ public class DbCallerCit extends DbConnector{
      */
     public ArrayList<Cit> getAllCits() throws SQLException{
         int iIDCit;
-        new DbConnector().startConnection(); // Warum???!
         ArrayList<Cit>  citListe= new ArrayList<Cit>();
         ResultSet rs = stmt.executeQuery("Select * From CIT");
         while(rs.next())
         {
             iIDCit = rs.getInt(1); // ID des ResultSet
-            String[] attributes = new String[8];
+            String[] attributes = new String[9];
             for(int i = 0; i < attributes.length; i++) {
                 attributes[i] = rs.getString(i+1);
             }
-            citListe.add(new Cit(iIDCit, attributes)); // CIR Objekt in Liste eintragen
+            citListe.add(new Cit(iIDCit, attributes)); // CIT object in Liste eintragen
 
         }
 
