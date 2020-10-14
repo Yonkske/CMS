@@ -229,8 +229,8 @@ public class StartpageController extends Controller implements Initializable {
     @FXML
     public void searchCirOrCit() {
         // TODO: get content of searchTf
-
-        /* TODO: change table content to show only Cirs that contain input of searchTf
+          String searchValue = searchTf.getText();
+        /* TODO: change tabl e content to show only Cirs that contain input of searchTf
            in either citName or cirName
          */
 

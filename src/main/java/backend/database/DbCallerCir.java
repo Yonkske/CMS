@@ -177,7 +177,7 @@ public class DbCallerCir extends DbConnector{
     /**
      * Returns all CIR's from a given CIT as CIR list
      *
-     * @param sCit -String later CIT type
+     * @param cit -String later CIT type
      * @return cirListe - List of all Cirs of a given CIT
      * @throws SQLException
      */
@@ -300,5 +300,33 @@ public class DbCallerCir extends DbConnector{
         } else {
             return 0;
         }
+    }
+
+    /**
+     * Returns all CIR's from a given CIT as CIR list
+     *
+     * @param searchValue -String later CIT type
+     * @return cirListe - List of all Cirs of a given CIT
+     * @throws SQLException
+     */
+    public ArrayList<Cir> getAllCirSearchValue(String searchValue) throws SQLException {
+        ArrayList<Cir> cirListe = new ArrayList<Cir>();
+
+        ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE RECORD_NAME = '%"+ searchValue + "%'"); // DB Abfrage
+
+        //FIXME: FIXEN new DbConnector...
+        new DbConnector().startConnection(); // Warum???!
+        while(rs.next())
+        {
+            String[] attributes = new String[10];
+
+            for(int i = 0; i < attributes.length; i++) {
+                attributes[i] = rs.getString(i+1);
+            }
+
+            cirListe.add(new Cir(attributes));
+        }
+
+        return cirListe;
     }
 }
