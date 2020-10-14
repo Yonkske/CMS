@@ -6,7 +6,7 @@ import backend.usability.Cit;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class DbCallerCir extends DbConnector{
+public class DbCallerCir extends DbConnector {
 
     /**
      * Reads the CIR object from the database, needs the CIR ID
@@ -21,9 +21,9 @@ public class DbCallerCir extends DbConnector{
         ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE ITEM_ID = " + id); // SQL Abfrage
 
         rs.first();
-        for(int i= 0; i <= 9; i++) // Übertragen des Result Sets auf ein Array
+        for (int i = 0; i <= 9; i++) // Übertragen des Result Sets auf ein Array
         {
-            sCirArray[i] = rs.getString(i+1);
+            sCirArray[i] = rs.getString(i + 1);
         }
 
         Cir cirName; // initialisieren eines neuen Cir's
@@ -41,30 +41,26 @@ public class DbCallerCir extends DbConnector{
     public boolean insertCir(Cir cirName) throws SQLException {
         String[] sCirAttributes = cirName.getCirAttributes();
         boolean bWorks;
-        try{
+        try {
             PreparedStatement prepStmt = con.prepareStatement
                     ("INSERT INTO CIR VALUES (?,?,?,?,?,?,?,?,?,?)"); // SQL Statement
 
-            prepStmt.setInt(1,cirName.getCirID());
+            prepStmt.setInt(1, cirName.getCirID());
             prepStmt.setString(2, cirName.getCitID()); //todo: change String to CIT type
-            prepStmt.setString(3,cirName.getCirName());
-            prepStmt.setString(4,sCirAttributes[0]);
-            prepStmt.setString(5,sCirAttributes[1]);
-            prepStmt.setString(6,sCirAttributes[2]);
-            prepStmt.setString(7,sCirAttributes[3]);
-            prepStmt.setString(8,sCirAttributes[4]);
-            prepStmt.setString(9,sCirAttributes[5]);
-            prepStmt.setString(10,sCirAttributes[6]);
+            prepStmt.setString(3, cirName.getCirName());
+            prepStmt.setString(4, sCirAttributes[0]);
+            prepStmt.setString(5, sCirAttributes[1]);
+            prepStmt.setString(6, sCirAttributes[2]);
+            prepStmt.setString(7, sCirAttributes[3]);
+            prepStmt.setString(8, sCirAttributes[4]);
+            prepStmt.setString(9, sCirAttributes[5]);
+            prepStmt.setString(10, sCirAttributes[6]);
             prepStmt.executeUpdate();
             prepStmt.close();
             bWorks = true;
-        }
-        catch(SQLSyntaxErrorException a)
-        {
+        } catch (SQLSyntaxErrorException a) {
             bWorks = false;
-        }
-        catch (SQLIntegrityConstraintViolationException b)
-        {
+        } catch (SQLIntegrityConstraintViolationException b) {
             bWorks = false;
         }
 
@@ -79,10 +75,10 @@ public class DbCallerCir extends DbConnector{
      * @return bUpdateCir - Boolean with true/false
      * @throws SQLException
      */
-    public boolean updateCir(Cir cirName) throws SQLException  {
+    public boolean updateCir(Cir cirName) throws SQLException {
         boolean bUpdateCir;
         String[] sCirAttributes = cirName.getCirAttributes();
-        try{
+        try {
             PreparedStatement prepStmt = con.prepareStatement
                     ("UPDATE CIR SET RECORD_NAME = ?," +
                             "ATTRIBUTE_VALUE_1 = ?," +
@@ -92,26 +88,22 @@ public class DbCallerCir extends DbConnector{
                             "ATTRIBUTE_VALUE_5 = ?," +
                             "ATTRIBUTE_VALUE_6 = ? ," +
                             "ATTRIBUTE_VALUE_7 = ?" +
-                            "WHERE ITEM_ID ="+ cirName.getCirID()); // SQL Statement
+                            "WHERE ITEM_ID =" + cirName.getCirID()); // SQL Statement
 
-            prepStmt.setString(1,cirName.getCirName());
-            prepStmt.setString(2,sCirAttributes[0]);
-            prepStmt.setString(3,sCirAttributes[1]);
-            prepStmt.setString(4,sCirAttributes[2]);
-            prepStmt.setString(5,sCirAttributes[3]);
-            prepStmt.setString(6,sCirAttributes[4]);
-            prepStmt.setString(7,sCirAttributes[5]);
-            prepStmt.setString(8,sCirAttributes[6]);
+            prepStmt.setString(1, cirName.getCirName());
+            prepStmt.setString(2, sCirAttributes[0]);
+            prepStmt.setString(3, sCirAttributes[1]);
+            prepStmt.setString(4, sCirAttributes[2]);
+            prepStmt.setString(5, sCirAttributes[3]);
+            prepStmt.setString(6, sCirAttributes[4]);
+            prepStmt.setString(7, sCirAttributes[5]);
+            prepStmt.setString(8, sCirAttributes[6]);
             prepStmt.executeUpdate();
             prepStmt.close();
             bUpdateCir = true;
-        }
-        catch(SQLSyntaxErrorException a)
-        {
+        } catch (SQLSyntaxErrorException a) {
             bUpdateCir = false;
-        }
-        catch (SQLIntegrityConstraintViolationException b)
-        {
+        } catch (SQLIntegrityConstraintViolationException b) {
             bUpdateCir = false;
         }
 
@@ -119,7 +111,7 @@ public class DbCallerCir extends DbConnector{
     }
 
     /**
-     *  Deletes the CIR object from the database, needs the CIR Objekt
+     * Deletes the CIR object from the database, needs the CIR Objekt
      *
      * @param cirName - CIR Objekt
      * @return bDeleteCir - boolean
@@ -127,20 +119,14 @@ public class DbCallerCir extends DbConnector{
      */
     static public boolean deleteCir(Cir cirName) throws SQLException {
         boolean bDeleteCir;
-        try{
+        try {
             stmt.execute("DELETE FROM CIR WHERE ITEM_ID = " + cirName.getCirID()); // SQL Abfrage
             bDeleteCir = true;
-        }
-        catch(SQLSyntaxErrorException a)
-        {
+        } catch (SQLSyntaxErrorException a) {
             bDeleteCir = false;
-        }
-        catch(SQLIntegrityConstraintViolationException b)
-        {
+        } catch (SQLIntegrityConstraintViolationException b) {
             bDeleteCir = false;
-        }
-        catch (SQLNonTransientException c)
-        {
+        } catch (SQLNonTransientException c) {
             bDeleteCir = false;
         }
 
@@ -160,11 +146,10 @@ public class DbCallerCir extends DbConnector{
         int iIDCir;
         int iCit = Integer.parseInt(sCit); // Muss später gelöscht werden
         ArrayList<Cir> cirListe = new ArrayList<Cir>(); // Erzeugen einer Cir Liste
-        ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE TYPE_ID = "+iCit); // DB Abfrage
+        ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE TYPE_ID = " + iCit); // DB Abfrage
         //FIXME: FIXEN new DbConnector...
         new DbConnector().startConnection(); // Warum???!
-        while(rs.next())
-        {
+        while (rs.next()) {
             iIDCir = rs.getInt(1); // ID des ResultSet
             cirName = Cir.showCir(iIDCir); // Über die ID ein CIR Objekt erzeugen
             cirListe.add(cirName); // CIR Objekt in Liste eintragen
@@ -185,16 +170,15 @@ public class DbCallerCir extends DbConnector{
     public ArrayList<Cir> getAllCirForType(Cit cit) throws SQLException {
         ArrayList<Cir> cirListe = new ArrayList<Cir>();
 
-        ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE TYPE_ID = "+ cit.getCitID()); // DB Abfrage
+        ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE TYPE_ID = " + cit.getCitID()); // DB Abfrage
 
         //FIXME: FIXEN new DbConnector...
         new DbConnector().startConnection(); // Warum???!
-        while(rs.next())
-        {
+        while (rs.next()) {
             String[] attributes = new String[10];
 
-            for(int i = 0; i < attributes.length; i++) {
-                attributes[i] = rs.getString(i+1);
+            for (int i = 0; i < attributes.length; i++) {
+                attributes[i] = rs.getString(i + 1);
             }
 
             cirListe.add(new Cir(attributes));
@@ -211,21 +195,15 @@ public class DbCallerCir extends DbConnector{
      */
     public static int getCirCount() throws SQLException {
         int iCirCount;
-        try{
+        try {
             ResultSet rs = stmt.executeQuery("SELECT count(ITEM_ID) FROM CIR");
             rs.first();
             iCirCount = rs.getInt(1);
-        }
-        catch (SQLSyntaxErrorException a)
-        {
+        } catch (SQLSyntaxErrorException a) {
             iCirCount = 0;
-        }
-        catch (SQLIntegrityConstraintViolationException b)
-        {
+        } catch (SQLIntegrityConstraintViolationException b) {
             iCirCount = 0;
-        }
-        catch (SQLNonTransientException c)
-        {
+        } catch (SQLNonTransientException c) {
             iCirCount = 0;
         }
         return iCirCount;
@@ -241,21 +219,15 @@ public class DbCallerCir extends DbConnector{
     public static int getCirCountForType(String sCit) throws SQLException {
         int iCountCIRofCIT;
         int iCit = Integer.parseInt(sCit);
-        try{
-            ResultSet rs = stmt.executeQuery("SELECT count(ITEM_ID) FROM CIR WHERE TYPE_ID ="+iCit);
+        try {
+            ResultSet rs = stmt.executeQuery("SELECT count(ITEM_ID) FROM CIR WHERE TYPE_ID =" + iCit);
             rs.first();
             iCountCIRofCIT = rs.getInt(1);
-        }
-        catch (SQLSyntaxErrorException a)
-        {
+        } catch (SQLSyntaxErrorException a) {
             iCountCIRofCIT = 0;
-        }
-        catch (SQLIntegrityConstraintViolationException b)
-        {
+        } catch (SQLIntegrityConstraintViolationException b) {
             iCountCIRofCIT = 0;
-        }
-        catch (SQLNonTransientException c)
-        {
+        } catch (SQLNonTransientException c) {
             iCountCIRofCIT = 0;
         }
         return iCountCIRofCIT;
@@ -275,9 +247,9 @@ public class DbCallerCir extends DbConnector{
         ResultSet rs = stmt.executeQuery("Select * from CIR");
 
         while (rs.next()) {
-            String[] attributes =  new String[10];
-            for(int i = 0; i < attributes.length; i++) {
-                attributes[i] = rs.getString(i+1);
+            String[] attributes = new String[10];
+            for (int i = 0; i < attributes.length; i++) {
+                attributes[i] = rs.getString(i + 1);
             }
             allCirs.add(new Cir(attributes));
         }
@@ -295,7 +267,7 @@ public class DbCallerCir extends DbConnector{
         startConnection();
         ResultSet rs = stmt.executeQuery("Select max(ITEM_ID) FROM CIR");
 
-        if(rs.first()) {
+        if (rs.first()) {
             return rs.getInt(1);
         } else {
             return 0;
@@ -312,16 +284,40 @@ public class DbCallerCir extends DbConnector{
     public ArrayList<Cir> getAllCirSearchValue(String searchValue) throws SQLException {
         ArrayList<Cir> cirListe = new ArrayList<Cir>();
 
-        ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE RECORD_NAME LIKE '%"+ searchValue + "%'"); // DB Abfrage
+        //ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE RECORD_NAME LIKE '%"+ searchValue + "%'"); // DB Abfrage
+        ResultSet rs = stmt.executeQuery("select R.* From CIR R JOIN CIT T on T.TYPE_ID = R.TYPE_ID WHERE R.RECORD_NAME LIKE '%" + searchValue + "%' OR T.TYPE_NAME LIKE '%" + searchValue + "%'");
 
         //FIXME: FIXEN new DbConnector...
         new DbConnector().startConnection(); // Warum???!
-        while(rs.next())
-        {
+        while (rs.next()) {
             String[] attributes = new String[10];
 
-            for(int i = 0; i < attributes.length; i++) {
-                attributes[i] = rs.getString(i+1);
+            for (int i = 0; i < attributes.length; i++) {
+                attributes[i] = rs.getString(i + 1);
+            }
+
+            cirListe.add(new Cir(attributes));
+        }
+
+        return cirListe;
+    }
+
+    public ArrayList<Cir> getAllWithFilterAndSearch(Cit selectedCit, String searchValue) throws SQLException {
+        ArrayList<Cir> cirListe = new ArrayList<Cir>();
+
+        String query = "select R.* From CIR R JOIN CIT T on T.TYPE_ID = R.TYPE_ID WHERE R.TYPE_ID = "
+                + selectedCit.getCitID() + " AND (R.RECORD_NAME LIKE '%"
+                + searchValue + "%' OR T.TYPE_NAME LIKE '%" + searchValue + "%')";
+
+        ResultSet rs = stmt.executeQuery(query);
+
+        //FIXME: FIXEN new DbConnector...
+        new DbConnector().startConnection(); // Warum???!
+        while (rs.next()) {
+            String[] attributes = new String[10];
+
+            for (int i = 0; i < attributes.length; i++) {
+                attributes[i] = rs.getString(i + 1);
             }
 
             cirListe.add(new Cir(attributes));

@@ -252,6 +252,28 @@ public class StartpageController extends Controller implements Initializable {
      * @param cirs - ArrayList with cirs to be shown in the table
      */
 
+    /**
+     * Changes the content of the table depending on the selected filter in the combobox
+     */
+    @FXML
+    public void setTableWithFilterAndSearch() {
+        // TODO: get selected Cit
+        Cit selectedCit = filterCitCb.getSelectionModel().getSelectedItem();
+        String searchValue = searchTf.getText();
+        // TODO: set filter for selected Cit
+        try {
+            if (selectedCit.getCitID() == 0) {
+                //setTableContent(DB_CALLER_CIR.getAll());
+                setTableContent(DB_CALLER_CIR.getAllCirSearchValue(searchValue));
+            } else {
+                //setTableContent(DB_CALLER_CIR.getAllCirForType(selectedCit));
+                setTableContent(DB_CALLER_CIR.getAllWithFilterAndSearch(selectedCit, searchValue));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void setTableContent(ArrayList <Cir> cirs){
         cirTable.getItems().setAll(cirs);
         citColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CitName"));
