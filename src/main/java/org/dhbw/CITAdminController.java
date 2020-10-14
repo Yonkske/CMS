@@ -44,19 +44,34 @@ public class CITAdminController extends Controller {
     @FXML public Button deleteBtn;
     @FXML public Button citaddBtn;
 
+    private Cit cit;
+
     public void initialize() throws SQLException {
 
-        ArrayList<Cit> alle = new ArrayList<Cit>();
+        ArrayList<Cit> allCit = new ArrayList<Cit>();
 
-        alle = Cit.showAll();
+        allCit = Cit.showAll();
 
         ArrayList<String> citStringListe = new ArrayList<String>();
         Cit citObjekte;
-        for(int i= 0; i < alle.size(); i++){
-            citObjekte = alle.get(i);
+        for(int i= 0; i < allCit.size(); i++){
+            citObjekte = allCit.get(i);
             citStringListe.add(citObjekte.getCitName());
         }
         choiceBox.getItems().addAll(citStringListe);
+
+        // Atrribute des Cit Übergeben und in der View ausgeben
+        //todo: Change CIT Int to CIT Type
+        /*
+        citTf.setText(String.valueOf(cit.getCitID()));
+        attribut1Tf.setText(cit.getCitAttributes()[0]);
+        attribut2Tf.setText(cit.getCitAttributes()[1]);
+        attribut3Tf.setText(cit.getCitAttributes()[2]);
+        attribut4Tf.setText(cit.getCitAttributes()[3]);
+        attribut5Tf.setText(cit.getCitAttributes()[4]);
+        attribut6Tf.setText(cit.getCitAttributes()[5]);
+        attribut7Tf.setText(cit.getCitAttributes()[6]);
+        */
     }
 
     public void swapToStartpageAdmin(ActionEvent actionEvent) throws IOException {
@@ -126,6 +141,9 @@ public class CITAdminController extends Controller {
         stage.setScene(scene);
         scene.getWindow().sizeToScene();
         stage.show();
+    }
+    public void fillingIn(ActionEvent actionEvent) throws IOException{
+
     }
 
 

@@ -46,7 +46,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="idTf">
+                        <TextField fx:id="idTf" disable="true">
                            <HBox.margin>
                               <Insets left="30.0" />
                            </HBox.margin>
@@ -63,7 +63,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="citTf">
+                        <TextField fx:id="citTf" disable="true">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -80,7 +80,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="attribut1Tf">
+                        <TextField fx:id="attribut1Tf" disable="true">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -97,7 +97,7 @@
                             <Insets />
                         </HBox.margin>
                     </Label>
-                    <TextField fx:id="attribut2Tf">
+                    <TextField fx:id="attribut2Tf" disable="true">
                         <HBox.margin>
                             <Insets />
                         </HBox.margin>
@@ -110,7 +110,7 @@
                   <HBox alignment="CENTER" prefHeight="27.0" prefWidth="282.0" spacing="20.0">
             <Label prefHeight="17.0" prefWidth="49.0" />
            
-                        <TextField fx:id="attribut3Tf">
+                        <TextField fx:id="attribut3Tf" disable="true">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -121,7 +121,7 @@
             <Label prefHeight="17.0" prefWidth="29.0" />
             <Label />
 
-                        <TextField fx:id="attribut4Tf">
+                        <TextField fx:id="attribut4Tf" disable="true">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -131,7 +131,7 @@
                   <HBox alignment="CENTER" spacing="20.0">
             <Label prefHeight="17.0" prefWidth="44.0" />
 
-                        <TextField fx:id="attribut5Tf">
+                        <TextField fx:id="attribut5Tf" disable="true">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -142,7 +142,7 @@
             <Label prefHeight="17.0" prefWidth="41.0" />
 
 
-                        <TextField fx:id="attribut6Tf">
+                        <TextField fx:id="attribut6Tf" disable="true">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -153,7 +153,7 @@
             <Label prefHeight="17.0" prefWidth="40.0" />
 
 
-                        <TextField fx:id="attribut7Tf">
+                        <TextField fx:id="attribut7Tf" disable="true">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -165,7 +165,7 @@
 
 
 
-                        <TextField fx:id="attribut8Tf">
+                        <TextField fx:id="attribut8Tf" disable="true">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -175,7 +175,7 @@
          <HBox alignment="CENTER" prefHeight="47.0" prefWidth="396.0">
             <children>
                <Label fx:id="numberCIRLbl" prefHeight="17.0" prefWidth="80.0" text="Anzahl CIR: " />
-               <TextField fx:id="numberCIRTf" alignment="BOTTOM_RIGHT" prefHeight="25.0" prefWidth="82.0" />
+               <TextField fx:id="numberCIRTf" alignment="BOTTOM_RIGHT" prefHeight="25.0" prefWidth="82.0" disable="true" />
             </children>
          </HBox>
                 <HBox alignment="CENTER" prefHeight="47.0" prefWidth="396.0">
