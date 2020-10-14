@@ -1,5 +1,6 @@
 package org.dhbw;
 
+import backend.database.DbCallerCir;
 import backend.usability.Cir;
 import backend.usability.Cit;
 import backend.usability.User;
@@ -20,16 +21,26 @@ import java.util.ResourceBundle;
 
 public class StartpageController extends Controller implements Initializable {
 
-    @FXML private TableView<Cir> cirTable;
-    @FXML private TableColumn<Cir, String> citColumn;
-    @FXML private TableColumn<Cir, String> cirNameColumn;
-    @FXML private Label adminLbl;
-    @FXML private Button userBtn;
-    @FXML private Button citEditBtn;
-    @FXML private Button citDeleteBtn;
-    @FXML private Button searchBtn;
-    @FXML private TextField searchTf;
-    @FXML private ComboBox<Cit> filterCitCb;
+    @FXML
+    private TableView<Cir> cirTable;
+    @FXML
+    private TableColumn<Cir, String> citColumn;
+    @FXML
+    private TableColumn<Cir, String> cirNameColumn;
+    @FXML
+    private Label adminLbl;
+    @FXML
+    private Button userBtn;
+    @FXML
+    private Button citEditBtn;
+    @FXML
+    private Button citDeleteBtn;
+    @FXML
+    private Button searchBtn;
+    @FXML
+    private TextField searchTf;
+    @FXML
+    private ComboBox<Cit> filterCitCb;
 
     /**
      * Methode from the interface Initializable that auto generates the page on
@@ -44,7 +55,7 @@ public class StartpageController extends Controller implements Initializable {
         try {
             setTableContent(DB_CALLER_CIR.getAll());
 
-            Cit placeholder = new Cit(0,new String[]{"CIT", null, null, null, null, null, null, null});
+            Cit placeholder = new Cit(0, new String[]{"CIT", null, null, null, null, null, null, null});
             filterCitCb.getItems().add(placeholder);
             filterCitCb.getItems().addAll(DB_CALLER_CIT.getAllCits());
             filterCitCb.setValue(placeholder);
@@ -57,13 +68,13 @@ public class StartpageController extends Controller implements Initializable {
         super.user = new User("foobar", "foobar", false, true, "Simon", "Froehner");
 
 
-        if(!super.user.getIsAdmin()) {
-            adminLbl.setText(super.user.getSurName()+", "+super.user.getName());
+        if (!super.user.getIsAdmin()) {
+            adminLbl.setText(super.user.getSurName() + ", " + super.user.getName());
             userBtn.setVisible(false);
             citEditBtn.setVisible(false);
             citDeleteBtn.setVisible(false);
         } else {
-            adminLbl.setText(super.user.getSurName()+", "+super.user.getName()+" (Admin)");
+            adminLbl.setText(super.user.getSurName() + ", " + super.user.getName() + " (Admin)");
         }
     }
 
@@ -103,7 +114,7 @@ public class StartpageController extends Controller implements Initializable {
      * @throws IOException
      */
     @FXML
-    public void swapToUserAdmin() throws IOException{
+    public void swapToUserAdmin() throws IOException {
         FXMLFactory.setRoot("UserAdmin");
     }
 
@@ -212,8 +223,7 @@ public class StartpageController extends Controller implements Initializable {
         Cit selectedCit = filterCitCb.getSelectionModel().getSelectedItem();
         // TODO: set filter for selected Cit
         try {
-            if (selectedCit.getCitID() == 0)
-            {
+            if (selectedCit.getCitID() == 0) {
                 setTableContent(DB_CALLER_CIR.getAll());
             } else {
                 setTableContent(DB_CALLER_CIR.getAllCirForType(selectedCit));
@@ -229,11 +239,15 @@ public class StartpageController extends Controller implements Initializable {
     @FXML
     public void searchCirOrCit() {
         // TODO: get content of searchTf
-          String searchValue = searchTf.getText();
-        /* TODO: change tabl e content to show only Cirs that contain input of searchTf
+        String searchValue = searchTf.getText();
+        /* TODO: change table content to show only Cirs that contain input of searchTf
            in either citName or cirName
          */
-
+        try {
+            setTableContent(DB_CALLER_CIR.getAllCirSearchValue(searchValue));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -241,7 +255,8 @@ public class StartpageController extends Controller implements Initializable {
      *
      * @param cirs - ArrayList with cirs to be shown in the table
      */
-    private void setTableContent(ArrayList<Cir> cirs) {
+
+    private void setTableContent(ArrayList <Cir> cirs){
         cirTable.getItems().setAll(cirs);
         citColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CitName"));
         cirNameColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CirName"));

@@ -303,16 +303,16 @@ public class DbCallerCir extends DbConnector{
     }
 
     /**
-     * Returns all CIR's from a given CIT as CIR list
+     * Returns all CIR's as a result of a search (case sensitive, has to be changed to case insensitive )
      *
      * @param searchValue -String later CIT type
-     * @return cirListe - List of all Cirs of a given CIT
+     * @return cirListe - List of all Cirs of a search
      * @throws SQLException
      */
     public ArrayList<Cir> getAllCirSearchValue(String searchValue) throws SQLException {
         ArrayList<Cir> cirListe = new ArrayList<Cir>();
 
-        ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE RECORD_NAME = '%"+ searchValue + "%'"); // DB Abfrage
+        ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE RECORD_NAME LIKE '%"+ searchValue + "%'"); // DB Abfrage
 
         //FIXME: FIXEN new DbConnector...
         new DbConnector().startConnection(); // Warum???!
