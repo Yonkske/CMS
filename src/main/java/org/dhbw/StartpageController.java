@@ -1,22 +1,21 @@
 package org.dhbw;
 
 import backend.usability.Cir;
+import backend.usability.Cit;
 import backend.usability.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class StartpageController extends Controller implements Initializable {
@@ -28,6 +27,9 @@ public class StartpageController extends Controller implements Initializable {
     @FXML private Button userBtn;
     @FXML private Button citEditBtn;
     @FXML private Button citDeleteBtn;
+    @FXML private Button searchBtn;
+    @FXML private TextField searchTf;
+    @FXML private ComboBox<Cit> filterCitCb;
 
     /**
      * Methode from the interface Initializable that auto generates the page on
@@ -43,6 +45,13 @@ public class StartpageController extends Controller implements Initializable {
             cirTable.getItems().setAll(DB_CALLER_CIR.getAll());
             citColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CitName"));
             cirNameColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CirName"));
+
+            // TODO: add filling the combobox
+            filterCitCb.getItems().setAll(DB_CALLER_CIT.getAllCits());
+
+            //filterCitCb.setCellValueFactory(new PropertyValueFactory<Cit, String>("CitName"));
+
+            // DO IT!
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -197,4 +206,8 @@ public class StartpageController extends Controller implements Initializable {
         stage.show();
     }
 
+    @FXML
+    public void searchCirOrCit() {
+
+    }
 }
