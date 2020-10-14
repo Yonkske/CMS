@@ -71,7 +71,7 @@ public class User {
         new DbCallerUser().updateUser(userToChange);
 
         return userToChange.isAdmin;
-    }
+    } // TODO: NEEDED?!
 
     /**
      * Within this method it can be checked whether the user is an admin or not.
@@ -83,7 +83,7 @@ public class User {
         User userToCheckAdmin = getUser(userName);
 
         return userToCheckAdmin.isAdmin;
-    }
+    } // TODO: NEEDED?! Is covered by getIsAdmin...
 
     /**
      * Within this method a user could be deleted from the database.
@@ -100,52 +100,27 @@ public class User {
         else {
             return false;
         }
-    }
+    } // TODO: NEEDED?!
 
-    /**
-     * Within this method the admin can give a new password to the user if he forgot his.
-     * @param userName - username of the user whose password should be changed
-     * @param newPassword - new password given by the admin
-     * @return boolean - if the password was changed: true, else: false
-     */
-    public static boolean changePassword(String userName, String newPassword) {
-    // TODO: do functionality
-
-        User userToChangePwByAdmin = getUser(userName);
-
-        if (userToChangePwByAdmin.userName == userName) {
-            userToChangePwByAdmin.password = newPassword;
-            userToChangePwByAdmin.isInitial = true;
-
-            new DbCallerUser().updateUser(userToChangePwByAdmin);
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     /**
      * Within this method the user can change his own password.
      * @param userName - username of the user whose password should be changed
-     * @param oldPassword - the old password that should be changed
      * @param newPassword - the new password
      * @return boolean - if true returns the password was changed, if false returns the password could not be changed
      */
-    public static boolean changePassword(String userName, String oldPassword, String newPassword) {
-    // TODO: functionality when oldPassword != userToChangePw.password
-    // TODO: do functionality
+    public static boolean changePassword(String userName, String newPassword) {
+        // TODO: Abfrage ob Passwort geändert werden darf in aufrufender Methode implementieren.
 
         User userToChangePw = getUser(userName);
 
-        if (userToChangePw.userName == userName & userToChangePw.password == oldPassword) {
-            userToChangePw.password = newPassword;
+        userToChangePw.password = newPassword;
 
-            new DbCallerUser().updateUser(userToChangePw);
+        if (new DbCallerUser().updateUser(userToChangePw)) {
             return true;
         } else {
             return false;
         }
-
     }
 
     public String getUserName() {
