@@ -2,7 +2,6 @@
 package backend.usability;
 
 import backend.database.DbCallerCit;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -26,21 +25,9 @@ public class Cit {
 
 
         for (int i = 2; i < attributeList.length; i++) {//Alle anderen Attribute werden über den Übergabeparameter weitergegeben.
-           this.attributes[i] = attributeList[i];           //Hilfestellung zur Überprüfung der Attribute
+            this.attributes[i] = attributeList[i];
+                           //Hilfestellung zur Überprüfung der Attribute
         }
-    }
-
-    /**
-     * Creates the CIT object and returns the reference
-     *
-     * @param attributes - id and Sting Array with a length of 9
-     * @return citName - CIT object
-     */
-    public static Cit create(int id, String[] attributes) {
-
-        Cit citName = new Cit(id, attributes);
-
-        return citName;
     }
 
     /**
@@ -101,18 +88,11 @@ public class Cit {
         return typename;
     }
 
-    /**Convert the name of the Choice Box into the id to get CIT
-     *
-     * @param name chosen content of the Choice Box String
-     * @return id of chosen CIT
-     * @throws SQLException
-     */
-    public int converterNametoID(String name) throws SQLException{
-        return new DbCallerCit().converterNametoID(name);}
 
-        public String toString() {
-        return typename;
-        }
+
+    public String toString() {
+    return typename;
+    }
 
 
 }

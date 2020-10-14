@@ -1,7 +1,5 @@
 package org.dhbw;
 
-import backend.database.DbCallerCit;
-import backend.usability.Cir;
 import backend.usability.Cit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,7 +7,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,9 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import org.h2.engine.SysProperties;
 
 
 public class CITAdminController extends Controller {
@@ -46,6 +41,7 @@ public class CITAdminController extends Controller {
     @FXML public TextField numberCIRLTf;
     @FXML public Button deleteBtn;
     @FXML public Button citaddBtn;
+
 
     private Cit cit;
 

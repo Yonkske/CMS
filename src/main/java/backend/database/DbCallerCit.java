@@ -1,13 +1,9 @@
 package backend.database;
 
-import backend.usability.Cir;
+
 import backend.usability.Cit;
-import com.sun.javafx.scene.layout.region.Margins;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import java.awt.*;
-import java.io.Console;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -109,7 +105,6 @@ public class DbCallerCit extends DbConnector{
      */
     public ArrayList<Cit> getAllCits() throws SQLException{
         int iIDCit;                                                         //deklaration von der ID des CIT
-        new DbConnector().startConnection(); // Warum???!                   // Connection zur DB
         ArrayList<Cit>  citListe= new ArrayList<Cit>();                     // deklaration einer neuen Liste mit CIT's
         ResultSet rs = stmt.executeQuery("Select * From CIT");          // deklaration eines Resultsets rs und initialisierung mit query
         while(rs.next())                                                    // Schleife zur weiterzählung des Resultsets.
@@ -167,10 +162,5 @@ public class DbCallerCit extends DbConnector{
             iCountCIT = 0;
         }
         return iCountCIT;
-    }
-
-    public static int converterNametoID(String name) throws SQLException{
-        ResultSet rs = stmt.executeQuery("Select TYPE_ID from CIT where TYPE_NAME='"+name+"'");
-        return rs.getInt(0);
     }
 }
