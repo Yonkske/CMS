@@ -46,9 +46,4 @@ public class UserTest {
         Assert.assertEquals(true, User.changePassword("creation", "true"));
     } //is the function running without any failures?
 
-    @Test
-    public void testChangePwByAdmin() throws SQLException {
-        new DbConnector().startConnection();
-        Assert.assertEquals(true, User.changePassword("creation", "true", "false"));
-    } //is the function running without any failures?
 }
