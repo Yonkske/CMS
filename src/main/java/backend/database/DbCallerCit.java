@@ -2,6 +2,7 @@ package backend.database;
 
 import backend.usability.Cit;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import java.sql.*;
 import java.util.ArrayList;
@@ -163,5 +164,4 @@ public class DbCallerCit extends DbConnector{
         }
         return iCountCIT;
     }
-
 }

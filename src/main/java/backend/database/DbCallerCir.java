@@ -1,6 +1,7 @@
 package backend.database;
 
 import backend.usability.Cir;
+import backend.usability.Cit;
 import com.sun.javafx.scene.layout.region.Margins;
 
 import java.awt.*;
@@ -232,6 +233,38 @@ public class DbCallerCir extends DbConnector{
         catch (SQLNonTransientException c)
         {
             iCountCIRofCIT = 0;
+        }
+        return iCountCIRofCIT;
+
+    }
+    /**
+     * The Number of all Cir's from a specific Cit
+     *
+     * @param type which should
+     * @return  count of Cir form a specific CIT
+     * @throws SQLException
+     */
+    public int getCirCountForType(Cit type) throws SQLException {
+        int iCountCIRofCIT;
+        try{
+            ResultSet rs = stmt.executeQuery("SELECT count(ITEM_ID) FROM CIR WHERE TYPE_ID ="+type.getCitID());
+            rs.first();
+            iCountCIRofCIT = rs.getInt(1);
+        }
+        catch (SQLSyntaxErrorException a)
+        {
+            iCountCIRofCIT = 0;
+            a.printStackTrace();
+        }
+        catch (SQLIntegrityConstraintViolationException b)
+        {
+            iCountCIRofCIT = 0;
+            b.printStackTrace();
+        }
+        catch (SQLNonTransientException c)
+        {
+            iCountCIRofCIT = 0;
+            c.printStackTrace();
         }
         return iCountCIRofCIT;
 
