@@ -56,37 +56,30 @@ public class UserAdminController extends Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        editBtn.setDisable(false);
-        deleteBtn.setDisable(false);
-
         try {
             userTable.getItems().setAll(CB_CALLER_USER.getAllUsers());
-            userColumn.setCellValueFactory(new PropertyValueFactory<User, String>("User"));
-            rightColumn.setCellValueFactory(new PropertyValueFactory<User, String>("Rechte"));
+            userColumn.setCellValueFactory(new PropertyValueFactory<User, String>("UserName"));
+            rightColumn.setCellValueFactory(new PropertyValueFactory<User, String>("Right"));
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        // FIXME: For test purposes only
-        super.user = new User("foobar", "foobar", false, true, "Simon", "Froehner");
+        adminLbl.setText(super.user.getSurName() + ", " + super.user.getName() + " (Admin)");
 
-        adminLbl.setText(super.user.getSurName()+", "+super.user.getName()+" (Admin)");
+    }
+    @FXML
+    public void clickAction(MouseEvent mouseEvent) {
 
-        userTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                if (mouseEvent.getClickCount() == 1) {
-                    editBtn.setDisable(true);
-                    deleteBtn.setDisable(true);
-                } else if (mouseEvent.getClickCount() == 2) {
-                    try {
-                        showUser();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
+        if (mouseEvent.getClickCount() == 1) {
+            editBtn.setDisable(true);
+            deleteBtn.setDisable(true);
+        } else if (mouseEvent.getClickCount() == 2) {
+            try {
+                showUser();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        });
+        }
     }
 
 
@@ -170,7 +163,7 @@ public class UserAdminController extends Controller implements Initializable {
         FXMLFactory.setRoot("Startpage");
     }
 
-    public void swapToCIT(ActionEvent actionEvent) throws IOException{
+    public void swapToCIT(ActionEvent actionEvent) throws IOException {
         FXMLFactory.setRoot("CIT");
     }
 

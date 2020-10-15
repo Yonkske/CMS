@@ -49,7 +49,7 @@
                      <children>
                         <ScrollPane prefHeight="164.0" prefWidth="240.0">
                            <content>
-                              <TableView fx:id="userTable" prefHeight="194.0" prefWidth="240.0">
+                              <TableView fx:id="userTable" prefHeight="194.0" prefWidth="240.0" onMouseClicked="#clickAction">
                                 <columns>
                                   <TableColumn fx:id="userColumn" prefWidth="120.0" text="Benutzer" />
                                   <TableColumn fx:id="rightColumn" prefWidth="120.0" text="Rechte" />

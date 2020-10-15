@@ -118,6 +118,18 @@ public class User {
         return this.isInitial;
     }
 
+    public String getRight() {
+        String right;
+        if(getIsAdmin()) {
+            right = "Admin";
+        } else {
+         right = "User";
+        }
+        return right;
+    }
+
+
+
     /**
      * With this method the user can log out.
      * @return true

@@ -46,12 +46,12 @@ public class LoginController extends Controller {
                 showError();
             } else if (givenPassword.length() == 0) {
                 showError();
-            } else if (CB_CALLER_USER.checkUser(givenName, givenPassword) == true & user.getIsInitial() == true) {
+            } else if (CB_CALLER_USER.checkUser(givenName, givenPassword) & user.getIsInitial()) {
                 openPopUpEditPassword(User.getUser(givenName));
-                new Controller().setUser(User.getUser(givenName));
-            } else if (CB_CALLER_USER.checkUser(givenName, givenPassword) == true & user.getIsInitial() == false) {
+                super.user = User.getUser(givenName) ;
+            } else if (CB_CALLER_USER.checkUser(givenName, givenPassword) & !user.getIsInitial()) {
                 switchToStartpage(User.getUser(givenName));
-                new Controller().setUser(User.getUser(givenName));
+                super.user = User.getUser(givenName);
             } else {
                 showError();
             }
