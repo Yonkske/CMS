@@ -143,6 +143,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" spacing="10.0">
                <children>
+
                   <Label fx:id="meldungLbl" contentDisplay="CENTER" prefHeight="36.0" prefWidth="105.0" style="-fx-border-color: #cf0000;" text="Eingaben überpfüfen!" textAlignment="CENTER" textFill="#cf0000" wrapText="true">
                      <HBox.margin>
                         <Insets />
