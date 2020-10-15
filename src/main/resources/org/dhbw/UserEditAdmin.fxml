@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
 <AnchorPane prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -99,14 +98,14 @@
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" spacing="10.0">
                     <children>
-                        <Button fx:id="submitBtn" mnemonicParsing="false" style="-fx-background-color: #ccebc5;" text="Speichern">
+                        <Button fx:id="submitBtn" mnemonicParsing="false" style="-fx-background-color: #ccebc5;" text="Speichern" onAction="#submit">
                         <graphic>
                             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
                                     <Image url="@icons/speichern.png" />
                                 </image></ImageView>
                         </graphic></Button>
-                        <Button fx:id="cancelBtn" mnemonicParsing="false" prefHeight="32.0" prefWidth="96.4" style="-fx-background-color: #f5a9a9;" text="Abbrechen">
+                        <Button fx:id="cancelBtn" mnemonicParsing="false" prefHeight="32.0" prefWidth="96.4" style="-fx-background-color: #f5a9a9;" text="Abbrechen" onAction="#cancel">
                         <graphic>
                             <ImageView fitHeight="15.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
