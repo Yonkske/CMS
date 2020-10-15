@@ -3,15 +3,19 @@ package org.dhbw;
 
 import backend.usability.User;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class UserViewAdminController extends Controller {
+
+
+public class UserViewAdminController extends Controller  {
 
     @FXML
     private TextField surnameTf;
@@ -23,12 +27,18 @@ public class UserViewAdminController extends Controller {
     private TextField usernameTf;
 
     @FXML
-    private Button yesBtn;
+    private User currentUser;
     @FXML
-    private Button noBtn;
+    private final String PAGE_NAME = "UserAdmin";
 
+    /**
+     *
+     * @param user
+     */
     public void fillTextfields(User user) {
         // TODO: Methode testen
+
+        this.currentUser = user;
 
         String authorisation;
         if (user.getIsAdmin() == true) {
@@ -46,53 +56,72 @@ public class UserViewAdminController extends Controller {
     }
 
 
+    @FXML
+    /**
+     *
+     * @param actionEvent
+     * @throws IOException
+     */
     public void deleteUser(ActionEvent actionEvent) throws IOException {
         // TODO: Test der Methode
-        String userName = usernameTf.getText();
 
-        NotificationController NotificationController = new NotificationController();
+        NotificationController notificationController = new NotificationController(currentUser, PAGE_NAME);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Notification.fxml"));
-        loader.setController(NotificationController);
-
-        yesBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                CB_CALLER_USER.deleteUser(CB_CALLER_USER.getUser(userName));
-                new Controller().closeScene();
-            }
-        });
-
-        noBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                new Controller().closeScene();
-            }
-        });
+        loader.setController(notificationController);
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        scene.getWindow().sizeToScene();
+        stage.show();
     }
 
+    @FXML
+    /**
+     *
+     * @param actionEvent
+     * @throws IOException
+     */
     public void switchToUserEditAdmin(ActionEvent actionEvent) throws IOException {
         // TODO: Test der Methode
-        User user = User.getUser(usernameTf.getText());
+        String userName = usernameTf.getText();
+        //User userToGet = User.getUser(userName);
+        User user1 = User.getUser("admin");
 
-        UserEditAdminController UserEditAdminController = new UserEditAdminController();
+        UserEditAdminController UserEditAdminController = new UserEditAdminController(user1);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("UserEditAdmin.fxml"));
         loader.setController(UserEditAdminController);
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        scene.getWindow().sizeToScene();
+        stage.show();
 
- //       UserEditAdminController.showUser(user);
     }
 
+    @FXML
+    /**
+     *
+     * @param actionEvent
+     * @throws IOException
+     */
     public void switchToPasswordEditAdmin(ActionEvent actionEvent) throws IOException {
         // TODO: Methode testen
-        User user = User.getUser(usernameTf.getText());
+        User userToGet = User.getUser(usernameTf.getText());
 
-        PasswordEditAdminController PasswordEditAdminController = new PasswordEditAdminController();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PasswordEditAdmin.fxml"));
-        loader.setController(PasswordEditAdminController);
+        Parent root = loader.load();
+        //PasswordEditAdminController.showUserName(PasswordEditAdminController);
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        scene.getWindow().sizeToScene();
+        stage.show();
 
- //       PasswordEditAdminController.showUserName(user);
+
 
     }
-
 }
 
 

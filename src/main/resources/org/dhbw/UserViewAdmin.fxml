@@ -98,9 +98,9 @@
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" spacing="10.0">
                     <children>
-                        <Button fx:id="editUserBtn" mnemonicParsing="false" onAction="#switchToUserEditAdmin" text="Bearbeiten" />
-                        <Button fx:id="editPasswordBtn" mnemonicParsing="false" onAction="#switchToPasswordEditAdmin" text="Passwort ändern" />
-                        <Button fx:id="deleteUserBtn" mnemonicParsing="false" onAction="#deleteUser" text="Löschen" />
+                        <Button fx:id="editUserBtn" mnemonicParsing="false" text="Bearbeiten" onAction="#switchToUserEditAdmin"/>
+                        <Button fx:id="editPasswordBtn" mnemonicParsing="false" text="Passwort ändern" onAction="#switchToPasswordEditAdmin"/>
+                        <Button fx:id="deleteUserBtn" mnemonicParsing="false" text="Löschen" onAction="#deleteUser"/>
                     </children>
                     <VBox.margin>
                         <Insets bottom="40.0" />

@@ -1,6 +1,7 @@
 package org.dhbw;
 
 import backend.usability.Cir;
+import backend.usability.Cit;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -47,6 +48,7 @@ public class CIRViewController extends Controller implements Initializable  {
     @FXML public Button editCirBtn;
 
     private Cir cir;
+    private final String PAGE_NAME = "Startpage";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -63,6 +65,17 @@ public class CIRViewController extends Controller implements Initializable  {
         attribut5Tf.setText(cir.getCirAttributes()[4]);
         attribut6Tf.setText(cir.getCirAttributes()[5]);
         attribut7Tf.setText(cir.getCirAttributes()[6]);
+
+
+        // Cit Labels setzen
+        Cit cit = cir.getCit();
+        attribut1Lbl.setText(cit.getCitAttributes()[1]);
+        attribut2Lbl.setText(cit.getCitAttributes()[2]);
+        attribut3Lbl.setText(cit.getCitAttributes()[3]);
+        attribut4Lbl.setText(cit.getCitAttributes()[4]);
+        attribut5Lbl.setText(cit.getCitAttributes()[5]);
+        attribut6Lbl.setText(cit.getCitAttributes()[6]);
+        attribut7Lbl.setText(cit.getCitAttributes()[7]);
 
         // Action Event bearbeiten Button
         editCirBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -90,11 +103,11 @@ public class CIRViewController extends Controller implements Initializable  {
             public void handle(ActionEvent actionEvent) {
                 try {
                     //todo: einbinden der Notification vor dem löschen
-                   // openPopUpNotification("Cir Löschen?");
-                     deleteSelectedCir(cir);
+                    openPopUpNotification(cir);
+                    //deleteSelectedCir(cir);
                 }
                 //Fixme: Error Handling
-                catch (SQLException throwables) {
+                catch (IOException throwables) {
                     throwables.printStackTrace();
                 }
 
@@ -125,27 +138,21 @@ public class CIRViewController extends Controller implements Initializable  {
     }
 
     /**
-     *  Delete of the Cir over the CirView
+     * Opens the popup to delete the selected cir
      *
-     * @param selectedCir - Cir Objekt
-     * @throws SQLException
+     * @param selectedCir
+     * @throws IOException
      */
-    private void deleteSelectedCir(Cir selectedCir) throws SQLException {
-       // openPopUpNotification("Soll das Cir Objekt gelöscht werden?");
-        int iSelectedCir = selectedCir.getCirID();
-        Cir.delete(iSelectedCir);
-
-    }
-
-    /**
-     * Open PoP Up Notification
-     *
-     * @param message
-     */
-    private void openPopUpNotification(String message)
-    {
-        //todo: Einbinden sobald NotificationController start vorhanden ist
-       // NotificationController.start(message);
+    private void openPopUpNotification(Cir selectedCir) throws IOException {
+        NotificationController notificationController = new NotificationController(selectedCir, PAGE_NAME);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Notification.fxml"));
+        loader.setController(notificationController);
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        scene.getWindow().sizeToScene();
+        stage.show();
     }
 
     /**

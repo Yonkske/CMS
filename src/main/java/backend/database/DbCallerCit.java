@@ -1,13 +1,8 @@
 package backend.database;
 
-import backend.usability.Cir;
 import backend.usability.Cit;
-import com.sun.javafx.scene.layout.region.Margins;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import java.awt.*;
-import java.io.Console;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -110,7 +105,6 @@ public class DbCallerCit extends DbConnector{
      */
     public ArrayList<Cit> getAllCits() throws SQLException{
         int iIDCit;
-        new DbConnector().startConnection(); // Warum???!
         ArrayList<Cit>  citListe= new ArrayList<Cit>();
         ResultSet rs = stmt.executeQuery("Select * From CIT");
         while(rs.next())
@@ -120,7 +114,7 @@ public class DbCallerCit extends DbConnector{
             for(int i = 0; i < attributes.length; i++) {
                 attributes[i] = rs.getString(i+2);
             }
-            citListe.add(new Cit(iIDCit, attributes)); // CIR Objekt in Liste eintragen
+            citListe.add(new Cit(iIDCit, attributes)); // CIT object in Liste eintragen
 
         }
 

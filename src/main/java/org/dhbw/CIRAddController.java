@@ -1,16 +1,23 @@
 package org.dhbw;
 
 import backend.usability.Cir;
+import backend.usability.Cit;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -46,29 +53,10 @@ public class CIRAddController extends Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            //idTf.setText(String.valueOf(Cir.getCount()+2));
             idTf.setText(String.valueOf(DB_CALLER_CIR.getMaxItemId() + 1));
-
-          //todo: Liste von CIT's als String Liste
-           // ArrayList<Cit> citListe = new ArrayList<Cit>();
-            /*
-            citListe = Cit.showAll();
-            System.out.println(citListe);
-            ArrayList<String> citStringListe = new ArrayList<String>();
-           Cit citObejekt;
-           for(int i = 0; i <= citListe.size(); i++)
-           {
-               citObejekt = citListe.get(i);
-               citStringListe.add(citObejekt.getCitName());
-               System.out.println(citStringListe);
-           }
-           */
-         //todo: Testdaten durch richtige ersetzen
-            ArrayList<String> citStringListe = new ArrayList<String>();
-            citStringListe.add("1");
-            citStringListe.add("Weitere Test Daten, CIT nicht eingebunden");
-
-            citChoicebox.getItems().addAll(citStringListe);
+            ObservableList<Cit> list = FXCollections.observableArrayList();
+            citChoicebox.setItems(list);
+            list.addAll(DB_CALLER_CIT.getAllCits());
         }
         //Fixme: Error Handling
         catch (SQLException throwables) {
@@ -80,9 +68,10 @@ public class CIRAddController extends Controller implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 //Auslesen der Textfelder und speichern in einem String
+                Cit cit = (Cit) citChoicebox.getSelectionModel().getSelectedItem();
                 String[] sCirArray = new String[10];
                 sCirArray[0] = idTf.getText();
-                sCirArray[1] = String.valueOf(citChoicebox.getValue());
+                sCirArray[1] = String.valueOf(cit.getCitID());
                 sCirArray[2] = nameTf.getText();
                 sCirArray[3] = attribut1Tf.getText();
                 sCirArray[4] = attribut2Tf.getText();
@@ -94,6 +83,8 @@ public class CIRAddController extends Controller implements Initializable {
                 // String übergeben und neues CIR Obejkt erzeugen
                 Cir cirName = Cir.create(sCirArray);
 
+
+
                 try {
                     //Fixme: Error Handling
                     // Neues CIR Objekt in die Datenbank schreiben
@@ -104,6 +95,23 @@ public class CIRAddController extends Controller implements Initializable {
                     throwables.printStackTrace();
 
                 }
+                try {
+                    // loadViewCir
+                    CIRViewController CIRViewController = new CIRViewController(cirName);
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("CIRView.fxml"));
+                    loader.setController(CIRViewController);
+                    Parent root = loader.load();
+                    Stage stage = new Stage();
+                    Scene scene = new Scene(root);
+                    // Neue View an Fenster anpassen
+                    stage.setScene(scene);
+                    scene.getWindow().sizeToScene();
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
                 // Methode Fenster schließen
                 fensterSchließen();
 
@@ -119,6 +127,22 @@ public class CIRAddController extends Controller implements Initializable {
 
             }
         });
+
+        // Abbrechen Button, schließt das Popup
+        citChoicebox.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Cit cit = (Cit) citChoicebox.getSelectionModel().getSelectedItem();
+                attribut1Lbl.setText(cit.getCitAttributes()[1]);
+                attribut2Lbl.setText(cit.getCitAttributes()[2]);
+                attribut3Lbl.setText(cit.getCitAttributes()[3]);
+                attribut4Lbl.setText(cit.getCitAttributes()[4]);
+                attribut5Lbl.setText(cit.getCitAttributes()[5]);
+                attribut6Lbl.setText(cit.getCitAttributes()[6]);
+                attribut7Lbl.setText(cit.getCitAttributes()[7]);
+            }
+        });
+
     }
 
     /**

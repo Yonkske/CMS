@@ -32,6 +32,7 @@ public class Cir {
         // FIXME: Exception handling
         try {
             new DbConnector().startConnection();
+            //Fixme: CIT benötigt Methode zum nt ID augeben über Sting tpye Name (String)
             cit = new DbCallerCit().getCit(Integer.parseInt(type));
         } catch (SQLException e) {
             e.printStackTrace();

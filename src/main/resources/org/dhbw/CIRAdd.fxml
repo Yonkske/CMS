@@ -11,7 +11,7 @@
             <Insets bottom="5.0" top="20.0" />
          </VBox.margin>
          <Label fx:id="idLbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="ID" />
-         <TextField fx:id="idTf" editable="false" prefWidth="210.0" />
+         <TextField fx:id="idTf" disable="true" editable="false" prefWidth="210.0" />
       </HBox>
       <HBox alignment="CENTER" cache="true" spacing="5.0">
          <VBox.margin>

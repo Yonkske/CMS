@@ -1,11 +1,12 @@
 package org.dhbw;
 
-import backend.database.DbCallerCit;
+import backend.usability.Cit;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,8 +22,8 @@ public class CITController extends Controller {
     @FXML public Button startpageBtn;
     @FXML public Button citBtn;
     @FXML public Button statisticBtn;
-    @FXML public ChoiceBox choiceBox;
-    @FXML public Button searchBtn;
+    @FXML public ChoiceBox<Cit> choiceBox;
+    @FXML public Button anzeigenBtn;
     @FXML public Label idLbl;
     @FXML public TextField idTf;
     @FXML public Label citLbl;
@@ -37,92 +38,86 @@ public class CITController extends Controller {
     @FXML public TextField attribut7Tf;
     @FXML public TextField attribut8Tf;
     @FXML public Label numberCIRLbl;
-    @FXML public TextField numberCIRLTf;
+    @FXML public TextField numberCIRTf;
     @FXML public Button deleteBtn;
     @FXML public Button citaddBtn;
 
-    public void initialize() throws SQLException {
+    private final String PAGE_NAME = "CIT";
 
-        DbCallerCit dbc = new DbCallerCit();
-        ArrayList<String> citStringListe = new ArrayList<String>();
-        citStringListe.add("1");
-        citStringListe.add("Weitere Test Daten, CIT nicht eingebunden");
-        ArrayList<String> citNameListe = new ArrayList<String>();
-        choiceBox.getItems().addAll(citStringListe);
+    private Cit cit;
+
+    public void CITController(Cit cit){
+        this.cit =cit;}
+
+    public void initialize() throws SQLException {
+        ObservableList<Cit> list = FXCollections.observableArrayList();
+        choiceBox.setItems(list);
+        list.addAll(DB_CALLER_CIT.getAllCits());
+
     }
 
-    public void swapToStartpageAdmin(ActionEvent actionEvent) throws IOException {
-       // FXMLFactory.setRoot("Startpage.fxml");
-        // Laden der neuen Scene Startseite
-        /*
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Startpage.fxml"));
-        Parent root = loader.load();
-        Stage stage1 = new Stage();
-        Scene scene = new Scene(root);
-
-        stage1.setScene(scene);
-        scene.getWindow().sizeToScene();
-        stage1.show();
-        // schließen der aktuellen view
-        Stage stClose = new Stage();
-        stClose = (Stage) startpageBtn.getScene().getWindow();
-        stClose.close();
-         */
+    public void swapToStartpage(ActionEvent actionEvent) throws IOException {
         FXMLFactory.setRoot("Startpage");
 
     }
 
-    public void swapToCITAdmin(ActionEvent actionEvent) throws IOException{
-        /*
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("CIT.fxml"));
-        Parent root = loader.load();
-        Stage stage1 = new Stage();
-        Scene scene = new Scene(root);
-
-        stage1.setScene(scene);
-        scene.getWindow().sizeToScene();
-        stage1.show();
-        // schließen der aktuellen view
-        Stage stClose = new Stage();
-        stClose = (Stage) startpageBtn.getScene().getWindow();
-        stClose.close();
-        */
-         FXMLFactory.setRoot("CIT");
+    public void swapToCIT(ActionEvent actionEvent) throws IOException{
+        FXMLFactory.setRoot("CIT");
     }
 
-    public void swapToStatisticAdmin(ActionEvent actionEvent) throws IOException {
-        /*
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Statistic.fxml"));
-        Parent root = loader.load();
-        Stage stage1 = new Stage();
-        Scene scene = new Scene(root);
-
-        stage1.setScene(scene);
-        scene.getWindow().sizeToScene();
-        stage1.show();
-        // schließen der aktuellen view
-        Stage stClose = new Stage();
-        stClose = (Stage) startpageBtn.getScene().getWindow();
-        stClose.close();
-        */
+    public void swapToStatistic(ActionEvent actionEvent) throws IOException {
         FXMLFactory.setRoot("Statistic");
     }
 
-    public void swapToCITAdd(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("CITAdd.fxml"));
-        Parent root = loader.load();
-        Stage stage1 = new Stage();
-        Scene scene = new Scene(root);
-
-        stage1.setScene(scene);
-        scene.getWindow().sizeToScene();
-        stage1.show();
-        // schließen der aktuellen view
-        Stage stClose = new Stage();
-        stClose = (Stage) startpageBtn.getScene().getWindow();
-        stClose.close();
+    public void swapToBenutzer(ActionEvent actionEvent) throws IOException {
+        FXMLFactory.setRoot("UserAdmin");
     }
 
+    public void swapToCITAdd(ActionEvent actionEvent) throws IOException {
+        CITAddController citAddController = new CITAddController();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CITAdd.fxml"));
+        loader.setController(citAddController);
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        scene.getWindow().sizeToScene();
+        stage.show();
+    }
+
+    public void fillingIn(ActionEvent actionEvent) throws IOException{
+        Cit cit = choiceBox.getSelectionModel().getSelectedItem();
+
+
+        idTf.setText(String.valueOf(cit.getCitID()));
+        citTf.setText(cit.getCitName());
+
+        attribut1Tf.setText(cit.getCitAttributes()[0]);
+        attribut2Tf.setText(cit.getCitAttributes()[1]);
+        attribut3Tf.setText(cit.getCitAttributes()[2]);
+        attribut4Tf.setText(cit.getCitAttributes()[3]);
+        attribut5Tf.setText(cit.getCitAttributes()[4]);
+        attribut6Tf.setText(cit.getCitAttributes()[5]);
+        attribut7Tf.setText(cit.getCitAttributes()[6]);
+        attribut8Tf.setText(cit.getCitAttributes()[7]);
+    }
+
+    /**
+     * Opens the popup to delete the selected cit
+     */
+    @FXML
+    public void openDeleteCitPopup() throws IOException {
+        // FIXME
+        NotificationController notificationController = new NotificationController(choiceBox.getSelectionModel().getSelectedItem(), PAGE_NAME);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Notification.fxml"));
+        loader.setController(notificationController);
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        scene.getWindow().sizeToScene();
+        stage.show();
+    }
 
 
 }

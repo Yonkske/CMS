@@ -19,8 +19,8 @@
             </Label>
             <HBox alignment="CENTER" spacing="10.0">
                <children>
-                  <Button fx:id="yesBtn" mnemonicParsing="false" prefWidth="41.0" text="Ja" />
-                  <Button fx:id="noBtn" mnemonicParsing="false" prefWidth="41.0" text="Nein" />
+                  <Button fx:id="yesBtn" mnemonicParsing="false" prefWidth="41.0" text="Ja"/>
+                  <Button fx:id="noBtn" mnemonicParsing="false" prefWidth="41.0" text="Nein"/>
                </children>
                <VBox.margin>
                   <Insets />
