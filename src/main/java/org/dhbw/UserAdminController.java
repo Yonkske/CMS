@@ -154,7 +154,6 @@ public class UserAdminController extends Controller implements Initializable {
         scene.getWindow().sizeToScene();
         stage.show();
 
-
         /*yesBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
