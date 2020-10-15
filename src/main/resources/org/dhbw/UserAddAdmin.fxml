@@ -144,11 +144,11 @@
             <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" spacing="10.0">
                <children>
 
-                  <Label fx:id="meldungLbl" contentDisplay="CENTER" prefHeight="36.0" prefWidth="105.0" style="-fx-border-color: #cf0000;" text="Eingaben überpfüfen!" textAlignment="CENTER" textFill="#cf0000" wrapText="true">
+                  <Label fx:id="meldungLbl" contentDisplay="CENTER" prefHeight="36.0" prefWidth="105.0" style="-fx-border-color: #cf0000;" text="Eingaben überpfüfen!" textAlignment="CENTER" textFill="#cf0000" wrapText="true" visible="false">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin></Label>
-                  <Button fx:id="submitBtn" mnemonicParsing="false" style="-fx-background-color: #ccebc5;" text="Speichern">
+                  <Button fx:id="submitBtn" mnemonicParsing="false" style="-fx-background-color: #ccebc5;" text="Speichern" onAction="#submit">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -158,7 +158,7 @@
                      <HBox.margin>
                         <Insets />
                      </HBox.margin></Button>
-                  <Button fx:id="cancelBtn" mnemonicParsing="false" prefHeight="32.0" prefWidth="96.4" style="-fx-background-color: #F5A9A9;" text="Abbrechen">
+                  <Button fx:id="cancelBtn" mnemonicParsing="false" prefHeight="32.0" prefWidth="96.4" style="-fx-background-color: #F5A9A9;" text="Abbrechen" onAction="#cancel">
                      <graphic>
                         <ImageView fitHeight="15.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>

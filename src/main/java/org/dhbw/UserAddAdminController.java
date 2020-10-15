@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -33,6 +34,8 @@ public class UserAddAdminController extends Controller implements Initializable 
     private Button cancelBtn;
     @FXML
     private Button submitBtn;
+    @FXML
+    private Label meldungLbl;
 
 
     @Override
@@ -78,13 +81,18 @@ public class UserAddAdminController extends Controller implements Initializable 
                 showError();
             } else if (userName.length() > 0 & passwordNotEncrypted.length() == 0 & passwortRepeated.length() == 0) {
                 showError();
+                clearPasswordAndUser();
             } else if (userName.length() == 0 & passwordNotEncrypted.length() > 0 & passwortRepeated.length() == 0) {
                 showError();
+                clearPasswordAndUser();
             } else if (userName.length() == 0 & passwordNotEncrypted.length() == 0 & passwortRepeated.length() > 0) {
                 showError();
+                clearPasswordAndUser();
             }
         } else {
             showError();
+            initialPasswordTf.setText("");
+            repeatInitialPasswordTf.setText("");
         }
     }
 
@@ -109,6 +117,13 @@ public class UserAddAdminController extends Controller implements Initializable 
      * When a error warning will be implemented this method will show it when needed.
      */
     public void showError() {
-        // meldungLbl.setVisible(true); // TODO: meldungLbl einfügen!
+        meldungLbl.setVisible(true); // TODO: meldungLbl einfügen!
     }
+    
+    public void clearPasswordAndUser() {
+        usernameTf.setText("");
+        initialPasswordTf.setText("");
+        repeatInitialPasswordTf.setText("");
+    }
+        
 }
