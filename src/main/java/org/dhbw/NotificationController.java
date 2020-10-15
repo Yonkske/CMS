@@ -30,14 +30,14 @@ public class NotificationController extends Controller implements Initializable 
     private String itemToDelete;
     private String callingPage;
 
-    // FIXME for test
     public NotificationController() {
     }
 
     /**
      * Creates a new NotificationController
      *
-     * @param inUser - the user that you want to delete
+     * @param inUser      - the user that you want to delete
+     * @param callingPage - name of the fxml file to be refreshed
      */
     public NotificationController(User inUser, String callingPage) {
         this.userToDelete = inUser;
@@ -48,7 +48,18 @@ public class NotificationController extends Controller implements Initializable 
     /**
      * Creates a new NotificationController
      *
-     * @param inCit - the cit that you want to delete
+     * @param inUser - the user that you want to delete
+     */
+    public NotificationController(User inUser) {
+        this.userToDelete = inUser;
+        this.itemToDelete = "user";
+    }
+
+    /**
+     * Creates a new NotificationController
+     *
+     * @param inCit       - the cit that you want to delete
+     * @param callingPage - name of the fxml file to be refreshed
      */
     public NotificationController(Cit inCit, String callingPage) {
         this.citToDelete = inCit;
@@ -59,12 +70,33 @@ public class NotificationController extends Controller implements Initializable 
     /**
      * Creates a new NotificationController
      *
-     * @param inCir - the cir that you want to delete
+     * @param inCit - the cit that you want to delete
+     */
+    public NotificationController(Cit inCit) {
+        this.citToDelete = inCit;
+        this.itemToDelete = "cit";
+    }
+
+    /**
+     * Creates a new NotificationController
+     *
+     * @param inCir       - the cir that you want to delete
+     * @param callingPage - name of the fxml file to be refreshed
      */
     public NotificationController(Cir inCir, String callingPage) {
         this.cirToDelete = inCir;
         this.itemToDelete = "cir";
         this.callingPage = callingPage;
+    }
+
+    /**
+     * Creates a new NotificationController
+     *
+     * @param inCir - the cir that you want to delete
+     */
+    public NotificationController(Cir inCir) {
+        this.cirToDelete = inCir;
+        this.itemToDelete = "cir";
     }
 
     @Override
@@ -99,7 +131,6 @@ public class NotificationController extends Controller implements Initializable 
      * Deletes the given cit, cir or user when the yesBtn is clicked
      */
     private void yesButtonClicked() {
-        System.out.println("Yes clicked");
 
         switch (itemToDelete) {
             case "cir":
@@ -124,7 +155,9 @@ public class NotificationController extends Controller implements Initializable 
         }
 
         try {
-            FXMLFactory.setRoot(callingPage);
+            if (callingPage != null) {
+                FXMLFactory.setRoot(callingPage);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
