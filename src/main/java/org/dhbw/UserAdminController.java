@@ -56,6 +56,14 @@ public class UserAdminController extends Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        getData();
+
+    }
+
+    private void getData() {
+        editBtn.setDisable(false);
+        deleteBtn.setDisable(false);
+
         try {
             userTable.getItems().setAll(CB_CALLER_USER.getAllUsers());
             userColumn.setCellValueFactory(new PropertyValueFactory<User, String>("UserName"));
@@ -65,12 +73,12 @@ public class UserAdminController extends Controller implements Initializable {
         }
 
         adminLbl.setText(super.user.getSurName() + ", " + super.user.getName() + " (Admin)");
-
     }
+
     @FXML
     public void clickAction(MouseEvent mouseEvent) {
 
-        if (mouseEvent.getClickCount() == 1) {
+        if (mouseEvent.getClickCount() > 2) {
             editBtn.setDisable(true);
             deleteBtn.setDisable(true);
         } else if (mouseEvent.getClickCount() == 2) {
@@ -94,6 +102,7 @@ public class UserAdminController extends Controller implements Initializable {
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setOnHiding(windowEvent -> getData());
         scene.getWindow().sizeToScene();
         stage.show();
     }

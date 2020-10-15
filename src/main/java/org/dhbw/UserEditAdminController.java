@@ -30,16 +30,7 @@ public class UserEditAdminController extends Controller implements Initializable
 
     @FXML
     public void fillFields() {
-        System.out.println(user.getName() + " Hallo");
-        surnameTf.setText(user.getSurName());
-        nameTf.setText(user.getName());
-        usernameTf.setText(user.getUserName());
-        authorizationChoiceBox.getItems().addAll("Admin", "User");
-        if (user.getIsAdmin()) {
-            authorizationChoiceBox.setValue("Admin");
-        } else {
-            authorizationChoiceBox.setValue("User");
-        }
+
 
     }
 
@@ -80,6 +71,15 @@ public class UserEditAdminController extends Controller implements Initializable
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        fillFields();
+        System.out.println(user.getName() + " Hallo");
+        surnameTf.setText(user.getSurName());
+        nameTf.setText(user.getName());
+        usernameTf.setText(user.getUserName());
+        authorizationChoiceBox.getItems().addAll("Admin", "User");
+        if (user.getIsAdmin()) {
+            authorizationChoiceBox.setValue("Admin");
+        } else {
+            authorizationChoiceBox.setValue("User");
+        }
     }
 }

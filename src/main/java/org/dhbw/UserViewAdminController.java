@@ -5,17 +5,20 @@ import backend.usability.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-
-public class UserViewAdminController extends Controller  {
+public class UserViewAdminController extends Controller implements Initializable {
 
     @FXML
     private TextField surnameTf;
@@ -31,32 +34,18 @@ public class UserViewAdminController extends Controller  {
     @FXML
     private Button noBtn;
 
+    private User userToEdit;
+
     public UserViewAdminController(User user) {
-        this.user = user;
+        this.userToEdit = user;
     }
 
-    /**
-     *
-     * @param user
-     */
-    public void fillTextfields(User user) {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         // TODO: Methode testen
 
-        String authorisation;
-        if (user.getIsAdmin() == true) {
-            authorisation = "Admin";
-        } else if (user.getIsAdmin() == false) {
-            authorisation = "User";
-        } else {
-            authorisation = "failure";
-        }
-
-        surnameTf.setText(user.getSurName());
-        nameTf.setText(user.getName());
-        authorizationTf.setText(authorisation);
-        usernameTf.setText(user.getUserName());
+        getData();
     }
-
 
     @FXML
     /**
@@ -82,7 +71,7 @@ public class UserViewAdminController extends Controller  {
         /*yesBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                CB_CALLER_USER.deleteUser(CB_CALLER_USER.getUser(userName));
+                CB_CALLER_USER.deleteUser(userToEdit); // TODO: Diese Zeile ausführen lassen.
                 new Controller().closeScene();
             }
         });
@@ -103,20 +92,34 @@ public class UserViewAdminController extends Controller  {
      */
     public void switchToUserEditAdmin(ActionEvent actionEvent) throws IOException {
         // TODO: Test der Methode
-        String userName = usernameTf.getText();
-        //User userToGet = User.getUser(userName);
-        User user1 = User.getUser("123");
-
-        UserEditAdminController UserEditAdminController = new UserEditAdminController(user1);
+        UserEditAdminController UserEditAdminController = new UserEditAdminController(userToEdit);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("UserEditAdmin.fxml"));
         loader.setController(UserEditAdminController);
         Parent root = loader.load();
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setOnHiding(windowEvent -> {
+            this.userToEdit = User.getUser(usernameTf.getText());
+            this.getData();});
         scene.getWindow().sizeToScene();
         stage.show();
+    }
 
+    private void getData() {
+        String authorisation;
+        if (userToEdit.getIsAdmin() == true) {
+            authorisation = "Admin";
+        } else if (userToEdit.getIsAdmin() == false) {
+            authorisation = "User";
+        } else {
+            authorisation = "failure";
+        }
+
+        surnameTf.setText(userToEdit.getSurName());
+        nameTf.setText(userToEdit.getName());
+        authorizationTf.setText(authorisation);
+        usernameTf.setText(userToEdit.getUserName());
     }
 
     @FXML
@@ -127,8 +130,6 @@ public class UserViewAdminController extends Controller  {
      */
     public void switchToPasswordEditAdmin(ActionEvent actionEvent) throws IOException {
         // TODO: Methode testen
-        User userToGet = User.getUser(usernameTf.getText());
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PasswordEditAdmin.fxml"));
         Parent root = loader.load();
         //PasswordEditAdminController.showUserName(PasswordEditAdminController);
@@ -137,9 +138,6 @@ public class UserViewAdminController extends Controller  {
         stage.setScene(scene);
         scene.getWindow().sizeToScene();
         stage.show();
-
-
-
     }
 }
 
