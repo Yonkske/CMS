@@ -222,8 +222,8 @@ public class StartpageController extends Controller implements Initializable {
         if (onHiding) {
             stage.setOnHiding(windowEvent -> this.setTableWithFilterAndSearch());
         }
-        stage.getIcons().add(new Image(App.class.getResourceAsStream("icons/loeschen.png")));
-        stage.setTitle("CMS");
+        stage.getIcons().add(new Image(App.class.getResourceAsStream("icons/favicon1.jpg")));
+        stage.setTitle("CMS - Configuration Management System");
         Scene scene = new Scene(root);
         stage.setScene(scene);
         scene.getWindow().sizeToScene();
