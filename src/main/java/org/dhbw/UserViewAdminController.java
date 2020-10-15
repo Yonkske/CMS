@@ -31,6 +31,10 @@ public class UserViewAdminController extends Controller  {
     @FXML
     private Button noBtn;
 
+    public UserViewAdminController(User user) {
+        this.user = user;
+    }
+
     /**
      *
      * @param user
@@ -101,7 +105,7 @@ public class UserViewAdminController extends Controller  {
         // TODO: Test der Methode
         String userName = usernameTf.getText();
         //User userToGet = User.getUser(userName);
-        User user1 = User.getUser("admin");
+        User user1 = User.getUser("123");
 
         UserEditAdminController UserEditAdminController = new UserEditAdminController(user1);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("UserEditAdmin.fxml"));
