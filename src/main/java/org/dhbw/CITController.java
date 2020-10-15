@@ -1,5 +1,7 @@
 package org.dhbw;
 
+import backend.database.DbCallerCir;
+import backend.usability.Cir;
 import backend.usability.Cit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -85,7 +87,7 @@ public class CITController extends Controller {
         stage.show();
     }
 
-    public void fillingIn(ActionEvent actionEvent) throws IOException{
+    public void fillingIn(ActionEvent actionEvent) throws IOException, SQLException {
         Cit cit = choiceBox.getSelectionModel().getSelectedItem();
 
 
@@ -100,6 +102,9 @@ public class CITController extends Controller {
         attribut6Tf.setText(cit.getCitAttributes()[5]);
         attribut7Tf.setText(cit.getCitAttributes()[6]);
         attribut8Tf.setText(cit.getCitAttributes()[7]);
+        numberCIRTf.setText(String.valueOf(DB_CALLER_CIR.getCirCountForType(cit)));
+
+
     }
 
     /**
