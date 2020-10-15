@@ -285,7 +285,9 @@ public class DbCallerCir extends DbConnector {
         ArrayList<Cir> cirListe = new ArrayList<Cir>();
 
         //ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE RECORD_NAME LIKE '%"+ searchValue + "%'"); // DB Abfrage
-        ResultSet rs = stmt.executeQuery("select R.* From CIR R JOIN CIT T on T.TYPE_ID = R.TYPE_ID WHERE R.RECORD_NAME LIKE '%" + searchValue + "%' OR T.TYPE_NAME LIKE '%" + searchValue + "%'");
+        ResultSet rs = stmt.executeQuery("select R.* From CIR R JOIN CIT T on T.TYPE_ID = R.TYPE_ID WHERE LOWER(R.RECORD_NAME) LIKE LOWER('%"
+                + searchValue + "%') OR LOWER(T.TYPE_NAME) LIKE LOWER('%"
+                + searchValue + "%')");
 
         //FIXME: FIXEN new DbConnector...
         new DbConnector().startConnection(); // Warum???!
@@ -306,8 +308,8 @@ public class DbCallerCir extends DbConnector {
         ArrayList<Cir> cirListe = new ArrayList<Cir>();
 
         String query = "select R.* From CIR R JOIN CIT T on T.TYPE_ID = R.TYPE_ID WHERE R.TYPE_ID = "
-                + selectedCit.getCitID() + " AND (R.RECORD_NAME LIKE '%"
-                + searchValue + "%' OR T.TYPE_NAME LIKE '%" + searchValue + "%')";
+                + selectedCit.getCitID() + " AND (LOWER(R.RECORD_NAME) LIKE LOWER('%"
+                + searchValue + "%') OR LOWER(T.TYPE_NAME) LIKE LOWER('%" + searchValue + "%'))";
 
         ResultSet rs = stmt.executeQuery(query);
 
