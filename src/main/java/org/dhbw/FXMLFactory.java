@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,6 +23,8 @@ public class FXMLFactory extends Application {
         scene = new Scene(loadFXML("Login"));
         stage.setScene(scene);
         stage.setResizable(false);
+        stage.getIcons().add(new Image(App.class.getResourceAsStream("icons/loeschen.png")));
+        stage.setTitle("CMS");
         stage.show();
     }
 
@@ -34,10 +37,12 @@ public class FXMLFactory extends Application {
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
         scene.getWindow().sizeToScene();
+        Stage stage = (Stage) scene.getWindow();
         if (fxml.equals("Startpage") || fxml.equals("CIT") || fxml.equals("UserAdmin") || fxml.equals("Statistic")) {
-            Stage stage = (Stage) scene.getWindow();
             stage.setResizable(true);
         }
+
+
     }
 
     /**
