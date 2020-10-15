@@ -29,12 +29,6 @@ public class UserEditAdminController extends Controller implements Initializable
     private User user;
 
     @FXML
-    public void fillFields() {
-
-
-    }
-
-    @FXML
     public void submit() {
         String surName = surnameTf.getText();
         String name = nameTf.getText();
