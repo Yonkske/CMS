@@ -98,5 +98,10 @@
             </VBox>
          </children>
       </HBox>
+      <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="(Status)" />
+         </children>
+      </HBox>
    </children>
 </VBox>

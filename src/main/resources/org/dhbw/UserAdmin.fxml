@@ -15,22 +15,22 @@
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="startpagerBtn" minWidth="65.6" mnemonicParsing="false" prefWidth="78.0" text="Startseite" onAction="#swapToStartpage">
+                  <Button fx:id="startpagerBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStartpage" prefWidth="78.0" text="Startseite">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" prefWidth="78.0" text="CIT" onAction="#swapToCIT">
+                  <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToCIT" prefWidth="78.0" text="CIT">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="statisticBtn" minWidth="65.6" mnemonicParsing="false" prefWidth="78.0" text="Statistik" onAction="#swapToStatistic">
+                  <Button fx:id="statisticBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStatistic" prefWidth="78.0" text="Statistik">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="userBtn" minWidth="65.6" mnemonicParsing="false" prefWidth="78.0" text="Benutzer" onAction="#swapToBenutzer">
+                  <Button fx:id="userBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToBenutzer" prefWidth="78.0" text="Benutzer">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -41,7 +41,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="67.0" prefWidth="458.0">
                      <children>
-                        <ComboBox fx:id="searchCombobox" prefWidth="150.0" />
+                        <TextField fx:id="searchTextField" prefWidth="150.0" />
                         <Button fx:id="searchBtn" mnemonicParsing="false" text="Suche" />
                      </children>
                   </HBox>
@@ -51,8 +51,8 @@
                            <content>
                               <TableView fx:id="userTable" prefHeight="194.0" prefWidth="240.0">
                                 <columns>
-                                  <TableColumn prefWidth="120.0" text="Benutzer" />
-                                  <TableColumn prefWidth="120.0" text="Rechte" />
+                                  <TableColumn fx:id="userColumn" prefWidth="120.0" text="Benutzer" />
+                                  <TableColumn fx:id="rightColumn" prefWidth="120.0" text="Rechte" />
                                 </columns>
                               </TableView>
                            </content></ScrollPane>
@@ -65,11 +65,12 @@
                      </children>
                   </HBox>
 
+
                </children>
             </VBox>
          </children>
       </HBox>
-      <DialogPane prefHeight="26.0" prefWidth="600.0" />
+      <DialogPane prefHeight="17.0" prefWidth="600.0" />
       <VBox prefHeight="200.0" prefWidth="100.0" />
    </children>
 </VBox>
