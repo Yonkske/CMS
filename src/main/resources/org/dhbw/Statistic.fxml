@@ -19,22 +19,22 @@
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="383.0" prefWidth="136.0">
                <children>
-                  <Button fx:id="startpageBtn" minWidth="65.6" mnemonicParsing="false" text="Startseite">
+                  <Button fx:id="startpageBtn" minWidth="65.6" mnemonicParsing="false" text="Startseite" onAction="#swapToStartpage">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" text="CIT">
+                  <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" text="CIT" onAction="#swapToCIT">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="statisticBtn" minWidth="65.6" mnemonicParsing="false" text="Statistik">
+                  <Button fx:id="statisticBtn" minWidth="65.6" mnemonicParsing="false" text="Statistik" onAction="#swapToStatistic">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="userBtn" minWidth="65.6" mnemonicParsing="false" text="Benutzer">
+                  <Button fx:id="userBtn" minWidth="65.6" mnemonicParsing="false" text="Benutzer" onAction="#swapToBenutzer">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -48,11 +48,11 @@
                <children>
                   <HBox prefHeight="35.0" prefWidth="323.0">
                      <children>
-                        <ComboBox fx:id="searchTf" editable="true" prefWidth="150.0">
+                        <ChoiceBox fx:id="searchTf" prefWidth="150.0">
                            <HBox.margin>
                               <Insets right="15.0" />
                            </HBox.margin>
-                        </ComboBox>
+                        </ChoiceBox>
                         <Button fx:id="filterBtn" mnemonicParsing="false" text="filtern" />
                      </children>
                      <VBox.margin>
@@ -67,16 +67,16 @@
                                  <HBox.margin>
                                     <Insets right="40.0" />
                                  </HBox.margin></Label>
-                              <TextField fx:id="numberCIRTf" prefWidth="50.0" />
+                              <TextField fx:id="numberCIRTf" disable="true" prefWidth="50.0" />
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label fx:id="citLabel" text="Anzahl CIT">
+                              <Label fx:id="citLabel"  text="Anzahl CIT">
                                  <padding>
                                     <Insets right="40.0" />
                                  </padding></Label>
-                              <TextField fx:id="numberCITTf" prefWidth="50.0" />
+                              <TextField fx:id="numberCITTf" disable="true" prefWidth="50.0" />
                            </children>
                         </HBox>
                      </children>

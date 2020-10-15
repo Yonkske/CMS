@@ -2,6 +2,7 @@ package backend.database;
 
 import backend.usability.Cit;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import java.sql.*;
 import java.util.ArrayList;
@@ -163,6 +164,7 @@ public class DbCallerCit extends DbConnector{
         }
         return iCountCIT;
     }
+  
     public int getMaxItemId() throws SQLException {
         startConnection();
         ResultSet rs = stmt.executeQuery("Select max(TYPE_ID) FROM CIT");
@@ -173,5 +175,4 @@ public class DbCallerCit extends DbConnector{
             return 0;
         }
     }
-
 }
