@@ -23,18 +23,6 @@ public class UserTest {
     } //is the function running without any failures?
 
     @Test
-    public void testChangeAdmin() throws SQLException {
-        new DbConnector().startConnection();
-        Assert.assertEquals(true, User.changeAdmin("creation", true));
-    } //is the function running without any failures?
-
-    @Test
-    public void checkIsAdmin() throws SQLException {
-        new DbConnector().startConnection();
-        Assert.assertEquals(true, User.checkIsAdmin("creation"));
-    } //is the function running without any failures?
-
-    @Test
     public void testDeleteUser() throws SQLException {
         new DbConnector().startConnection();
         Assert.assertEquals(true, User.deleteUser("creation"));
@@ -46,9 +34,4 @@ public class UserTest {
         Assert.assertEquals(true, User.changePassword("creation", "true"));
     } //is the function running without any failures?
 
-    @Test
-    public void testChangePwByAdmin() throws SQLException {
-        new DbConnector().startConnection();
-        Assert.assertEquals(true, User.changePassword("creation", "true", "false"));
-    } //is the function running without any failures?
 }

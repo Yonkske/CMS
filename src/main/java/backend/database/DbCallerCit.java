@@ -16,7 +16,7 @@ public class DbCallerCit extends DbConnector{
      */
     public Cit getCit(int id) throws SQLException{
 
-        String[] sCitArray = new String[10]; // String zum Speichern der Resultset Daten
+        String[] sCitArray = new String[8]; // String zum Speichern der Resultset Daten
         ResultSet rs = stmt.executeQuery("SELECT * FROM CIT WHERE TYPE_ID = " + id); // SQL Abfrage
 
         rs.first();
@@ -43,17 +43,17 @@ public class DbCallerCit extends DbConnector{
         boolean bWorks;
         try{
             PreparedStatement prepStmt = con.prepareStatement
-                    ("INSERT INTO CIT VALUES (?,?,?,?,?,?,?,?,?,?)"); // SQL Statement
+                    ("INSERT INTO CIT VALUES (?,?,?,?,?,?,?,?,?)"); // SQL Statement
 
             prepStmt.setInt(1,type.getCitID());
-            prepStmt.setString(3,type.getCitName());
-            prepStmt.setString(4,sCitAttributes[0]);
-            prepStmt.setString(5,sCitAttributes[1]);
-            prepStmt.setString(6,sCitAttributes[2]);
-            prepStmt.setString(7,sCitAttributes[3]);
-            prepStmt.setString(8,sCitAttributes[4]);
-            prepStmt.setString(9,sCitAttributes[5]);
-            prepStmt.setString(10,sCitAttributes[6]);
+            prepStmt.setString(2,type.getCitName());
+            prepStmt.setString(3,sCitAttributes[0]);
+            prepStmt.setString(4,sCitAttributes[1]);
+            prepStmt.setString(5,sCitAttributes[2]);
+            prepStmt.setString(6,sCitAttributes[3]);
+            prepStmt.setString(7,sCitAttributes[4]);
+            prepStmt.setString(8,sCitAttributes[5]);
+            prepStmt.setString(9,sCitAttributes[6]);
             prepStmt.executeUpdate();
             prepStmt.close();
             bWorks = true;
@@ -111,9 +111,9 @@ public class DbCallerCit extends DbConnector{
         while(rs.next())
         {
             iIDCit = rs.getInt(1); // ID des ResultSet
-            String[] attributes = new String[9];
+            String[] attributes = new String[8];
             for(int i = 0; i < attributes.length; i++) {
-                attributes[i] = rs.getString(i+1);
+                attributes[i] = rs.getString(i+2);
             }
             citListe.add(new Cit(iIDCit, attributes)); // CIT object in Liste eintragen
 
@@ -163,5 +163,16 @@ public class DbCallerCit extends DbConnector{
             iCountCIT = 0;
         }
         return iCountCIT;
+    }
+  
+    public int getMaxItemId() throws SQLException {
+        startConnection();
+        ResultSet rs = stmt.executeQuery("Select max(TYPE_ID) FROM CIT");
+
+        if (rs.first()) {
+            return rs.getInt(1);
+        } else {
+            return 0;
+        }
     }
 }

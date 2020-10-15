@@ -2,12 +2,16 @@ package org.dhbw;
 
 import backend.usability.User;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class UserEditAdminController extends Controller {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class UserEditAdminController extends Controller implements Initializable {
 
     @FXML
     public TextField surnameTf;
@@ -17,26 +21,12 @@ public class UserEditAdminController extends Controller {
     public TextField usernameTf;
 
     @FXML
-    public ChoiceBox authorizationChoiceBox;
+    public ChoiceBox<String> authorizationChoiceBox;
     @FXML
     public Button submitBtn;
     @FXML
     public Button cancelBtn;
-
-    @FXML
-    public void fillFields(User user) {
-        surnameTf.setText(user.getSurName());
-        nameTf.setText(user.getName());
-        usernameTf.setText(user.getUserName());
-
-        if (user.getIsAdmin() == true) {
-            authorizationChoiceBox.setValue("Admin");
-        } else if (user.getIsAdmin() == false) {
-            authorizationChoiceBox.setValue("User");
-        } else {
-            authorizationChoiceBox.setValue("Fehler");
-        }
-    }
+    private User user;
 
     @FXML
     public void submit() {
@@ -69,4 +59,20 @@ public class UserEditAdminController extends Controller {
         close.close();
     }
 
+    public UserEditAdminController(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        surnameTf.setText(user.getSurName());
+        nameTf.setText(user.getName());
+        usernameTf.setText(user.getUserName());
+        authorizationChoiceBox.getItems().addAll("Admin", "User");
+        if (user.getIsAdmin()) {
+            authorizationChoiceBox.setValue("Admin");
+        } else {
+            authorizationChoiceBox.setValue("User");
+        }
+    }
 }

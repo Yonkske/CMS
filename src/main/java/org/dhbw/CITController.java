@@ -38,9 +38,11 @@ public class CITController extends Controller {
     @FXML public TextField attribut7Tf;
     @FXML public TextField attribut8Tf;
     @FXML public Label numberCIRLbl;
-    @FXML public TextField numberCIRLTf;
+    @FXML public TextField numberCIRTf;
     @FXML public Button deleteBtn;
     @FXML public Button citaddBtn;
+
+    private final String PAGE_NAME = "CIT";
 
     private Cit cit;
 
@@ -50,7 +52,7 @@ public class CITController extends Controller {
     public void initialize() throws SQLException {
         ObservableList<Cit> list = FXCollections.observableArrayList();
         choiceBox.setItems(list);
-        list.addAll(Cit.showAll());
+        list.addAll(DB_CALLER_CIT.getAllCits());
 
     }
 
@@ -91,13 +93,30 @@ public class CITController extends Controller {
         citTf.setText(cit.getCitName());
 
         attribut1Tf.setText(cit.getCitAttributes()[0]);
-        attribut2Tf.setText(cit.getCitAttributes()[2]);
-        attribut3Tf.setText(cit.getCitAttributes()[3]);
-        attribut4Tf.setText(cit.getCitAttributes()[4]);
-        attribut5Tf.setText(cit.getCitAttributes()[5]);
-        attribut6Tf.setText(cit.getCitAttributes()[6]);
-        attribut7Tf.setText(cit.getCitAttributes()[7]);
-        attribut8Tf.setText(cit.getCitAttributes()[8]);
+        attribut2Tf.setText(cit.getCitAttributes()[1]);
+        attribut3Tf.setText(cit.getCitAttributes()[2]);
+        attribut4Tf.setText(cit.getCitAttributes()[3]);
+        attribut5Tf.setText(cit.getCitAttributes()[4]);
+        attribut6Tf.setText(cit.getCitAttributes()[5]);
+        attribut7Tf.setText(cit.getCitAttributes()[6]);
+        attribut8Tf.setText(cit.getCitAttributes()[7]);
+    }
+
+    /**
+     * Opens the popup to delete the selected cit
+     */
+    @FXML
+    public void openDeleteCitPopup() throws IOException {
+        // FIXME
+        NotificationController notificationController = new NotificationController(choiceBox.getSelectionModel().getSelectedItem(), PAGE_NAME);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Notification.fxml"));
+        loader.setController(notificationController);
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        scene.getWindow().sizeToScene();
+        stage.show();
     }
 
 

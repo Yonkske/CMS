@@ -39,7 +39,7 @@
                         <font>
                             <Font size="14.0" />
                         </font></Label>
-               <PasswordField fx:id="passwordField" prefWidth="210.0" />
+               <PasswordField fx:id="passwordField" onAction="#logIn" prefWidth="210.0" />
                     <VBox.margin>
                         <Insets bottom="5.0" top="5.0" />
                     </VBox.margin>
