@@ -143,14 +143,37 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" spacing="10.0">
                <children>
-                  <Button fx:id="submitBtn" mnemonicParsing="false" text="Speichern" onAction="#submit"/>
-                  <Button fx:id="cancelBtn" mnemonicParsing="false" text="Abbrechen" onAction="#cancel"/>
+
+                  <Label fx:id="meldungLbl" contentDisplay="CENTER" prefHeight="36.0" prefWidth="105.0" style="-fx-border-color: #cf0000;" text="Eingaben überpfüfen!" textAlignment="CENTER" textFill="#cf0000" wrapText="true">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Label>
+                  <Button fx:id="submitBtn" mnemonicParsing="false" style="-fx-background-color: #ccebc5;" text="Speichern">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/speichern.png" />
+                           </image></ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Button>
+                  <Button fx:id="cancelBtn" mnemonicParsing="false" prefHeight="32.0" prefWidth="96.4" style="-fx-background-color: #F5A9A9;" text="Abbrechen">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/abbrechen.png" />
+                           </image></ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Button>
                </children>
                <VBox.margin>
-                  <Insets bottom="40.0" />
+                  <Insets bottom="40.0" top="10.0" />
                </VBox.margin>
                <padding>
-                  <Insets right="25.0" top="10.0" />
+                  <Insets right="25.0" />
                </padding>
             </HBox>
          </children>
