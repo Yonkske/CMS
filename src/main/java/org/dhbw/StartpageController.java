@@ -168,7 +168,6 @@ public class StartpageController extends Controller implements Initializable {
      */
     @FXML
     public void openEditCir() throws IOException {
-
         if (Objects.nonNull(cirTable.getSelectionModel().getSelectedItem())) {
             openPopup(new CIREditController(cirTable.getSelectionModel().getSelectedItem()), "CIREdit.fxml", true);
         }
