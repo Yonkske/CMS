@@ -2,10 +2,11 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.LoginController">
     <children>
         <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -15,9 +16,9 @@
                             <Insets />
                         </HBox.margin>
                         <font>
-                            <Font size="14.0" />
+                            <Font size="15.0" />
                         </font></Label>
-                    <TextField fx:id="usernameTf" editable="true" prefWidth="210.0">
+                    <TextField fx:id="usernameTf" editable="true" prefWidth="210.0" style="-fx-background-color: #f2f2f2;">
                         <HBox.margin>
                             <Insets />
                         </HBox.margin>
@@ -37,9 +38,12 @@
                             <Insets />
                         </HBox.margin>
                         <font>
-                            <Font size="14.0" />
+                            <Font size="15.0" />
                         </font></Label>
-               <PasswordField fx:id="passwordField" prefWidth="210.0" />
+               <PasswordField fx:id="passwordField" prefWidth="210.0" style="-fx-background-color: #f2f2f2;">
+                  <font>
+                     <Font size="14.0" />
+                  </font></PasswordField>
                     <VBox.margin>
                         <Insets bottom="5.0" top="5.0" />
                     </VBox.margin>
@@ -49,12 +53,18 @@
                         <HBox.margin>
                             <Insets />
                         </HBox.margin></Label>
-               <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#logIn" text="Anmelden" />
+               <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#logIn" style="-fx-background-color: #94d0e1;" text="Anmelden">
+                  <graphic>
+                     <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@icons/anmelden.png" />
+                        </image></ImageView>
+                  </graphic></Button>
                     <VBox.margin>
                         <Insets bottom="40.0" top="5.0" />
                     </VBox.margin>
                <padding>
-                  <Insets left="105.0" />
+                  <Insets left="80.0" />
                </padding>
                 </HBox>
             </children>

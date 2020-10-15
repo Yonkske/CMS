@@ -5,22 +5,22 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.4" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="169.2" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="CENTER" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <padding>
             <Insets bottom="40.0" top="40.0" />
          </padding>
          <children>
-            <Label fx:id="notificationLbl" prefWidth="350.0" text="Sind Sie sich sicher, dass das Element unwiderruflich gelöscht werden soll?" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="notificationLbl" prefWidth="400.0" text="Sind Sie sich sicher, dass das Element unwiderruflich gelöscht werden soll?" textAlignment="CENTER" wrapText="true">
                <font>
-                  <Font size="14.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
             <HBox alignment="CENTER" spacing="10.0">
                <children>
-                  <Button fx:id="yesBtn" mnemonicParsing="false" prefWidth="41.0" text="Ja"/>
-                  <Button fx:id="noBtn" mnemonicParsing="false" prefWidth="41.0" text="Nein"/>
+                  <Button fx:id="yesBtn" mnemonicParsing="false" prefHeight="32.0" prefWidth="50.0" style="-fx-background-color: #ccebc5;" text="Ja" />
+                  <Button fx:id="noBtn" mnemonicParsing="false" prefHeight="32.0" prefWidth="50.0" style="-fx-background-color: #F5A9A9;" text="Nein" />
                </children>
                <VBox.margin>
                   <Insets />
