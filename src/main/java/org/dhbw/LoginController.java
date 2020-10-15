@@ -48,8 +48,10 @@ public class LoginController extends Controller {
                 showError();
             } else if (CB_CALLER_USER.checkUser(givenName, givenPassword) == true & user.getIsInitial() == true) {
                 openPopUpEditPassword(User.getUser(givenName));
+                new Controller().user = User.getUser(givenName);
             } else if (CB_CALLER_USER.checkUser(givenName, givenPassword) == true & user.getIsInitial() == false) {
                 switchToStartpage(User.getUser(givenName));
+                new Controller().user = User.getUser(givenName);
             } else {
                 showError();
             }
