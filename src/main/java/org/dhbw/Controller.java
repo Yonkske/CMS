@@ -34,11 +34,6 @@ public class Controller {
 
     }
 
-    // This method close a PopUp
-    public void closeScene(){
-
-    }
-
     public String encryptPassword(String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[16];

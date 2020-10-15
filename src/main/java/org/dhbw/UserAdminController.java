@@ -40,6 +40,8 @@ public class UserAdminController extends Controller implements Initializable {
 
     @FXML
     private Label adminLbl;
+    @FXML
+    private final String PAGE_NAME = "UserAdmin";
 
 
     /**
@@ -106,7 +108,7 @@ public class UserAdminController extends Controller implements Initializable {
     public void deleteUser() throws IOException {
         // TODO: Test der Methode
         User userToDelete = userTable.getSelectionModel().getSelectedItem();
-        openPopup(new NotificationController(), "Notification.fxml", false);
+        openPopup(new NotificationController(userToDelete, PAGE_NAME), "Notification.fxml", false);
     }
 
     private void openPopup(Controller controller, String fxmlName, boolean onHiding) throws IOException {

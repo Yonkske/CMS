@@ -8,11 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -55,7 +53,7 @@ public class UserViewAdminController extends Controller implements Initializable
      */
     public void deleteUser(ActionEvent actionEvent) throws IOException {
         // TODO: Test der Methode
-        openPopup(new NotificationController(currentUser, PAGE_NAME), "Notification.fxml", false);
+        openPopup(new NotificationController(userToEdit, PAGE_NAME), "Notification.fxml", false, true);
     }
 
     @FXML
@@ -66,7 +64,7 @@ public class UserViewAdminController extends Controller implements Initializable
      */
     public void switchToUserEditAdmin(ActionEvent actionEvent) throws IOException {
         // TODO: Test der Methode
-        openPopup(new UserEditAdminController(userToEdit), "UserEditAdmin.fxml", true);
+        openPopup(new UserEditAdminController(userToEdit), "UserEditAdmin.fxml", true, false);
     }
 
     private void getData() {
@@ -92,19 +90,23 @@ public class UserViewAdminController extends Controller implements Initializable
      */
     public void switchToPasswordEditAdmin(ActionEvent actionEvent) throws IOException {
         // TODO: Methode testen
-        openPopup(new PasswordEditAdminController(), "PasswordEditAdmin.fxml", true);
+        openPopup(new PasswordEditAdminController(), "PasswordEditAdmin.fxml", false, true);
     }
 
-    private void openPopup(Controller controller, String fxmlName, boolean onHiding) throws IOException {
+    private void openPopup(Controller controller, String fxmlName, boolean onHidingRefresh, boolean onHindingClose) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
         loader.setController(controller);
         Parent root = loader.load();
         Stage stage = new Stage();
         stage.setResizable(false);
-        if (onHiding) {
+        if (onHidingRefresh) {
             stage.setOnHiding(windowEvent -> {
                 this.userToEdit = User.getUser(usernameTf.getText());
                 this.getData();});
+        } else if (onHindingClose) {
+            stage.setOnHiding(windowEvent -> this.closeScene());
+
+
         }
         stage.getIcons().add(new Image(App.class.getResourceAsStream("icons/favicon1.jpg")));
         stage.setTitle("CMS - Configuration Management System");
@@ -112,6 +114,11 @@ public class UserViewAdminController extends Controller implements Initializable
         stage.setScene(scene);
         scene.getWindow().sizeToScene();
         stage.show();
+    }
+
+    protected void closeScene(){
+        Stage stClose = (Stage) nameTf.getScene().getWindow();
+        stClose.close();
     }
 }
 
