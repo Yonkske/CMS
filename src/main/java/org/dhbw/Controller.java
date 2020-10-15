@@ -13,7 +13,7 @@ public class Controller {
     final DbCallerCir DB_CALLER_CIR;
     final DbCallerCit DB_CALLER_CIT;
     final DbCallerUser CB_CALLER_USER;
-    User user = null;
+    static User user;
 
     public Controller () {
 
