@@ -21,6 +21,7 @@ public class FXMLFactory extends Application {
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("Login"));
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 
@@ -33,6 +34,10 @@ public class FXMLFactory extends Application {
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
         scene.getWindow().sizeToScene();
+        if (fxml.equals("Startpage") || fxml.equals("CIT") || fxml.equals("UserAdmin") || fxml.equals("Statistic")) {
+            Stage stage = (Stage) scene.getWindow();
+            stage.setResizable(true);
+        }
     }
 
     /**

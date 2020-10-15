@@ -208,8 +208,8 @@ public class StartpageController extends Controller implements Initializable {
      * Opens a popup window
      *
      * @param controller controller for the popup - must match fxmlName
-     * @param fxmlName of the fxml file to be opened in the popup - must match controller
-     * @param onHiding if the page should be refreshed on closing the popup
+     * @param fxmlName   of the fxml file to be opened in the popup - must match controller
+     * @param onHiding   if the page should be refreshed on closing the popup
      * @throws IOException
      */
     private void openPopup(Controller controller, String fxmlName, boolean onHiding) throws IOException {
@@ -217,7 +217,8 @@ public class StartpageController extends Controller implements Initializable {
         loader.setController(controller);
         Parent root = loader.load();
         Stage stage = new Stage();
-        if(onHiding) {
+        stage.setResizable(false);
+        if (onHiding) {
             stage.setOnHiding(windowEvent -> this.setTableWithFilterAndSearch());
         }
         Scene scene = new Scene(root);
