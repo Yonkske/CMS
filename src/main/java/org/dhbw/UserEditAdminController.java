@@ -65,7 +65,6 @@ public class UserEditAdminController extends Controller implements Initializable
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println(user.getName() + " Hallo");
         surnameTf.setText(user.getSurName());
         nameTf.setText(user.getName());
         usernameTf.setText(user.getUserName());
