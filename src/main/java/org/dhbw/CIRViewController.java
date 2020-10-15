@@ -46,6 +46,7 @@ public class CIRViewController extends Controller implements Initializable  {
     @FXML public TextField attribut7Tf;
     @FXML public Button deleteBtn;
     @FXML public Button editCirBtn;
+    @FXML public Button cancelBtn;
 
     private Cir cir;
     private final String PAGE_NAME = "Startpage";
@@ -110,6 +111,16 @@ public class CIRViewController extends Controller implements Initializable  {
                 catch (IOException throwables) {
                     throwables.printStackTrace();
                 }
+
+            }
+        });
+        // Abbrechen Button, schließt das Popup
+        cancelBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Stage stClose = new Stage();
+                stClose = (Stage) cancelBtn.getScene().getWindow();
+                stClose.close();
 
             }
         });
