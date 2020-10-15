@@ -92,5 +92,10 @@ public class Cit {
         return typename;
     }
 
+    @Override
+    public String toString() {
+        return cit_bezeichnung;
+    }
+
 }
 

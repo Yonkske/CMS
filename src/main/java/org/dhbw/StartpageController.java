@@ -1,33 +1,45 @@
 package org.dhbw;
 
 import backend.usability.Cir;
+import backend.usability.Cit;
 import backend.usability.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class StartpageController extends Controller implements Initializable {
 
-    @FXML private TableView<Cir> cirTable;
-    @FXML private TableColumn<Cir, String> citColumn;
-    @FXML private TableColumn<Cir, String> cirNameColumn;
-    @FXML private Label adminLbl;
-    @FXML private Button userBtn;
-    @FXML private Button citEditBtn;
-    @FXML private Button citDeleteBtn;
+    @FXML
+    private TableView<Cir> cirTable;
+    @FXML
+    private TableColumn<Cir, String> citColumn;
+    @FXML
+    private TableColumn<Cir, String> cirNameColumn;
+    @FXML
+    private Label adminLbl;
+    @FXML
+    private Button userBtn;
+    @FXML
+    private Button citEditBtn;
+    @FXML
+    private Button citDeleteBtn;
+    @FXML
+    private Button searchBtn;
+    @FXML
+    private TextField searchTf;
+    @FXML
+    private ComboBox<Cit> filterCitCb;
 
     private final String PAGE_NAME = "Startpage";
 
@@ -42,9 +54,13 @@ public class StartpageController extends Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         try {
-            cirTable.getItems().setAll(DB_CALLER_CIR.getAll());
-            citColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CitName"));
-            cirNameColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CirName"));
+            setTableContent(DB_CALLER_CIR.getAll());
+
+            Cit placeholder = new Cit(0, new String[]{"CIT", null, null, null, null, null, null, null});
+            filterCitCb.getItems().add(placeholder);
+            filterCitCb.getItems().addAll(DB_CALLER_CIT.getAllCits());
+            filterCitCb.setValue(placeholder);
+            // DO IT!
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -53,13 +69,13 @@ public class StartpageController extends Controller implements Initializable {
         super.user = new User("foobar", "foobar", false, false, "Simon", "Froehner");
 
 
-        if(!super.user.getIsAdmin()) {
-            adminLbl.setText(super.user.getSurName()+", "+super.user.getName());
+        if (!super.user.getIsAdmin()) {
+            adminLbl.setText(super.user.getSurName() + ", " + super.user.getName());
             userBtn.setVisible(false);
             citEditBtn.setVisible(false);
             citDeleteBtn.setVisible(false);
         } else {
-            adminLbl.setText(super.user.getSurName()+", "+super.user.getName()+" (Admin)");
+            adminLbl.setText(super.user.getSurName() + ", " + super.user.getName() + " (Admin)");
         }
     }
 
@@ -99,7 +115,7 @@ public class StartpageController extends Controller implements Initializable {
      * @throws IOException
      */
     @FXML
-    public void swapToUserAdmin() throws IOException{
+    public void swapToUserAdmin() throws IOException {
         FXMLFactory.setRoot("UserAdmin");
     }
 
@@ -197,4 +213,69 @@ public class StartpageController extends Controller implements Initializable {
         stage.show();
     }
 
+    /**
+     * Changes the content of the table depending on the selected filter in the combobox
+     */
+    @FXML
+    public void setFilterForTable() {
+        // TODO: get selected Cit
+        Cit selectedCit = filterCitCb.getSelectionModel().getSelectedItem();
+        // TODO: set filter for selected Cit
+        try {
+            if (selectedCit.getCitID() == 0) {
+                setTableContent(DB_CALLER_CIR.getAll());
+            } else {
+                setTableContent(DB_CALLER_CIR.getAllCirForType(selectedCit));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Changes the content of the table depending on the selected filter in the combobox and the search input
+     */
+    @FXML
+    public void searchCirOrCit() {
+        String searchValue = searchTf.getText();
+        try {
+            setTableContent(DB_CALLER_CIR.getAllCirSearchValue(searchValue));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Sets the content of the table to the given list of cirs
+     *
+     * @param cirs - ArrayList with cirs to be shown in the table
+     */
+
+    /**
+     * Changes the content of the table to fit the search and selected filter
+     */
+    @FXML
+    public void setTableWithFilterAndSearch() {
+        // TODO: get selected Cit
+        Cit selectedCit = filterCitCb.getSelectionModel().getSelectedItem();
+        String searchValue = searchTf.getText();
+        // TODO: set filter for selected Cit
+        try {
+            if (selectedCit.getCitID() == 0) {
+                //setTableContent(DB_CALLER_CIR.getAll());
+                setTableContent(DB_CALLER_CIR.getAllCirSearchValue(searchValue));
+            } else {
+                //setTableContent(DB_CALLER_CIR.getAllCirForType(selectedCit));
+                setTableContent(DB_CALLER_CIR.getAllWithFilterAndSearch(selectedCit, searchValue));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setTableContent(ArrayList <Cir> cirs){
+        cirTable.getItems().setAll(cirs);
+        citColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CitName"));
+        cirNameColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CirName"));
+    }
 }
