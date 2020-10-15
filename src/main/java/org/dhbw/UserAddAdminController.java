@@ -23,6 +23,8 @@ public class UserAddAdminController extends Controller implements Initializable 
     private TextField usernameTf;
     @FXML
     private TextField initialPasswordTf;
+    @FXML
+    private TextField repeatInitialPasswordTf;
 
     @FXML
     private ChoiceBox<String> authorizationChoiceBox;
@@ -39,35 +41,74 @@ public class UserAddAdminController extends Controller implements Initializable 
         authorizationChoiceBox.setValue("User");
     }
 
+    @FXML
+    /**
+     * Method checks if both given passwords are identical.
+     * Method additionally checks if Username ans Password are given.
+     * If both checks are true the given Password will be encrypt.
+     * Additionally the new User will be saved in the Database.
+     *
+     * @throws InvalidKeySpecException
+     * @throws NoSuchAlgorithmException
+     */
     public void submit() throws InvalidKeySpecException, NoSuchAlgorithmException {
-        String surName = surnameTf.getText();
-        String name = nameTf.getText();
-        String userName = usernameTf.getText();
         String passwordNotEncrypted = initialPasswordTf.getText();
+        String passwortRepeated = repeatInitialPasswordTf.getText();
 
-        boolean isAdmin = false;
-        if (authorizationChoiceBox.getValue() == "Admin") {
-            isAdmin = true;
-        } else if (authorizationChoiceBox.getValue() == "User") {
-            isAdmin = false;
+        if (passwordNotEncrypted == passwortRepeated) {
+            String surName = surnameTf.getText();
+            String name = nameTf.getText();
+            String userName = usernameTf.getText();
+
+            boolean isAdmin = false;
+            if (authorizationChoiceBox.getValue() == "Admin") {
+                isAdmin = true;
+            } else if (authorizationChoiceBox.getValue() == "User") {
+                isAdmin = false;
+            }
+
+            if (userName.length() > 0 & passwordNotEncrypted.length() > 0 & passwortRepeated.length() > 0) {
+
+                String passwordEncrypted = super.encryptPassword(passwordNotEncrypted);
+                User user = new User(userName, passwordEncrypted, true, isAdmin, name, surName);
+                CB_CALLER_USER.insertUser(user);
+
+                closeScene();
+            } else if (userName.length() == 0 & passwordNotEncrypted.length() == 0 & passwortRepeated.length() == 0) {
+                showError();
+            } else if (userName.length() > 0 & passwordNotEncrypted.length() == 0 & passwortRepeated.length() == 0) {
+                showError();
+            } else if (userName.length() == 0 & passwordNotEncrypted.length() > 0 & passwortRepeated.length() == 0) {
+                showError();
+            } else if (userName.length() == 0 & passwordNotEncrypted.length() == 0 & passwortRepeated.length() > 0) {
+                showError();
+            }
+        } else {
+            showError();
         }
-
-        String passwordEncrypted = super.encryptPassword(passwordNotEncrypted);
-
-        User user = new User(userName, passwordEncrypted, true, isAdmin, name, surName);
-        CB_CALLER_USER.insertUser(user);
-
-        closeScene();
     }
 
+    /**
+     * Action for the Cancel Button.
+     */
     public void cancel() {
         closeScene();
     }
 
     @FXML
+    /**
+     * Method closes the Popup.
+     */
     public void closeScene() {
         Stage close = new Stage();
         close = (Stage) submitBtn.getScene().getWindow();
         close.close();
+    }
+
+    /**
+     * When a error warning will be implemented this method will show it when needed.
+     */
+    public void showError() {
+        // meldungLbl.setVisible(true); // TODO: meldungLbl einfügen!
     }
 }
