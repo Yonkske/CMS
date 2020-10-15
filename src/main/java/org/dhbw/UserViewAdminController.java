@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -43,8 +44,7 @@ public class UserViewAdminController extends Controller implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // TODO: Methode testen
-
-        getData();
+        this.getData();
     }
 
     @FXML
@@ -55,17 +55,7 @@ public class UserViewAdminController extends Controller implements Initializable
      */
     public void deleteUser(ActionEvent actionEvent) throws IOException {
         // TODO: Test der Methode
-
-        NotificationController notificationController = new NotificationController(currentUser, PAGE_NAME);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Notification.fxml"));
-        loader.setController(notificationController);
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        scene.getWindow().sizeToScene();
-        stage.show();
-
+        openPopup(new NotificationController(currentUser, PAGE_NAME), "Notification.fxml", false);
     }
 
     @FXML
@@ -76,18 +66,7 @@ public class UserViewAdminController extends Controller implements Initializable
      */
     public void switchToUserEditAdmin(ActionEvent actionEvent) throws IOException {
         // TODO: Test der Methode
-        UserEditAdminController UserEditAdminController = new UserEditAdminController(userToEdit);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("UserEditAdmin.fxml"));
-        loader.setController(UserEditAdminController);
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setOnHiding(windowEvent -> {
-            this.userToEdit = User.getUser(usernameTf.getText());
-            this.getData();});
-        scene.getWindow().sizeToScene();
-        stage.show();
+        openPopup(new UserEditAdminController(userToEdit), "UserEditAdmin.fxml", true);
     }
 
     private void getData() {
@@ -99,7 +78,6 @@ public class UserViewAdminController extends Controller implements Initializable
         } else {
             authorisation = "failure";
         }
-
         surnameTf.setText(userToEdit.getSurName());
         nameTf.setText(userToEdit.getName());
         authorizationTf.setText(authorisation);
@@ -114,10 +92,22 @@ public class UserViewAdminController extends Controller implements Initializable
      */
     public void switchToPasswordEditAdmin(ActionEvent actionEvent) throws IOException {
         // TODO: Methode testen
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("PasswordEditAdmin.fxml"));
+        openPopup(new PasswordEditAdminController(), "PasswordEditAdmin.fxml", true);
+    }
+
+    private void openPopup(Controller controller, String fxmlName, boolean onHiding) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
+        loader.setController(controller);
         Parent root = loader.load();
-        //PasswordEditAdminController.showUserName(PasswordEditAdminController);
         Stage stage = new Stage();
+        stage.setResizable(false);
+        if (onHiding) {
+            stage.setOnHiding(windowEvent -> {
+                this.userToEdit = User.getUser(usernameTf.getText());
+                this.getData();});
+        }
+        stage.getIcons().add(new Image(App.class.getResourceAsStream("icons/favicon1.jpg")));
+        stage.setTitle("CMS - Configuration Management System");
         Scene scene = new Scene(root);
         stage.setScene(scene);
         scene.getWindow().sizeToScene();
