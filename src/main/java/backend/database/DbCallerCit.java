@@ -163,5 +163,15 @@ public class DbCallerCit extends DbConnector{
         }
         return iCountCIT;
     }
+    public int getMaxItemId() throws SQLException {
+        startConnection();
+        ResultSet rs = stmt.executeQuery("Select max(TYPE_ID) FROM CIT");
+
+        if (rs.first()) {
+            return rs.getInt(1);
+        } else {
+            return 0;
+        }
+    }
 
 }
