@@ -58,18 +58,6 @@ public class LoginController extends Controller {
         }
     }
 
-    public String encryptPassword(String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
-        SecureRandom random = new SecureRandom();
-        byte[] salt = new byte[16];
-
-        random.nextBytes(salt);
-        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 128);
-
-        SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-        String hash = String.valueOf(factory.generateSecret(spec).getEncoded());
-        return hash;
-    }
-
     @FXML
     /**
      * This method sets a error message visible if one is needed.
