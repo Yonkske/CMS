@@ -1,6 +1,7 @@
 package org.dhbw;
 
 import backend.usability.Cir;
+import backend.usability.Cit;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -52,7 +53,7 @@ public class CIREditController extends Controller implements Initializable {
         // Atrribute des Cir Übergeben und in der View ausgeben
         idTf.setText(String.valueOf(cir.getCirID()));
         //todo: Change CIT Int to CIT Type
-        citTf.setText(String.valueOf(cir.getCitID()));
+        citTf.setText(String.valueOf(cir.getCitName()));
         nameTf.setText(cir.getCirName());
         attribut1Tf.setText(cir.getCirAttributes()[0]);
         attribut2Tf.setText(cir.getCirAttributes()[1]);
@@ -61,6 +62,18 @@ public class CIREditController extends Controller implements Initializable {
         attribut5Tf.setText(cir.getCirAttributes()[4]);
         attribut6Tf.setText(cir.getCirAttributes()[5]);
         attribut7Tf.setText(cir.getCirAttributes()[6]);
+
+        // Labels für CIT setzen
+        Cit cit = cir.getCit();
+        attribut1Lbl.setText(cit.getCitAttributes()[1]);
+        attribut2Lbl.setText(cit.getCitAttributes()[2]);
+        attribut3Lbl.setText(cit.getCitAttributes()[3]);
+        attribut4Lbl.setText(cit.getCitAttributes()[4]);
+        attribut5Lbl.setText(cit.getCitAttributes()[5]);
+        attribut6Lbl.setText(cit.getCitAttributes()[6]);
+        attribut7Lbl.setText(cit.getCitAttributes()[7]);
+
+
 
         // Button Speichern
         submitBtn.setOnAction(new EventHandler<ActionEvent>() {

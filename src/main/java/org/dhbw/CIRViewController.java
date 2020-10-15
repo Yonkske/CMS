@@ -1,6 +1,7 @@
 package org.dhbw;
 
 import backend.usability.Cir;
+import backend.usability.Cit;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -63,6 +64,17 @@ public class CIRViewController extends Controller implements Initializable  {
         attribut5Tf.setText(cir.getCirAttributes()[4]);
         attribut6Tf.setText(cir.getCirAttributes()[5]);
         attribut7Tf.setText(cir.getCirAttributes()[6]);
+
+
+        // Cit Labels setzen
+        Cit cit = cir.getCit();
+        attribut1Lbl.setText(cit.getCitAttributes()[1]);
+        attribut2Lbl.setText(cit.getCitAttributes()[2]);
+        attribut3Lbl.setText(cit.getCitAttributes()[3]);
+        attribut4Lbl.setText(cit.getCitAttributes()[4]);
+        attribut5Lbl.setText(cit.getCitAttributes()[5]);
+        attribut6Lbl.setText(cit.getCitAttributes()[6]);
+        attribut7Lbl.setText(cit.getCitAttributes()[7]);
 
         // Action Event bearbeiten Button
         editCirBtn.setOnAction(new EventHandler<ActionEvent>() {
