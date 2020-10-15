@@ -88,6 +88,7 @@ public class Cit {
 
     }
 
+    @Override
     public String toString() {
         return typename;
     }

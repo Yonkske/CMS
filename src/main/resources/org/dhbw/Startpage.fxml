@@ -6,6 +6,14 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.StartpageController">
    <children>
+      <HBox alignment="TOP_RIGHT" prefHeight="23.0" prefWidth="600.0">
+         <children>
+            <Label fx:id="adminLbl" text="Vorname, Nachname">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin></Label>
+         </children>
+      </HBox>
       <HBox prefHeight="389.0" prefWidth="600.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -42,28 +50,22 @@
                            <HBox.margin>
                               <Insets top="20.0" />
                            </HBox.margin></TextField>
-                        <Button fx:id="searchBtn" mnemonicParsing="false" text="Suchen">
+                        <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#setTableWithFilterAndSearch" text="Suchen">
                            <HBox.margin>
                               <Insets left="15.0" top="20.0" />
                            </HBox.margin></Button>
                      </children>
                   </HBox>
-                  <ScrollPane prefHeight="275.0" prefWidth="274.0">
-                     <content>
-                        <TableView fx:id="cirTable" prefHeight="276.0" prefWidth="270.0">
-                          <columns>
-                            <TableColumn fx:id="citColumn" editable="false" prefWidth="135.0" text="CIT">
-                                 <graphic>
-                                    <ComboBox prefHeight="25.0" prefWidth="135.0" promptText="CIT" />
-                                 </graphic></TableColumn>
-                            <TableColumn fx:id="cirNameColumn" editable="false" prefWidth="135.0" text="CIR-Bezeichnung" />
-                          </columns>
-                        </TableView>
-                     </content>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </ScrollPane>
+                  <TableView fx:id="cirTable" prefHeight="276.0" prefWidth="270.0">
+                    <columns>
+                      <TableColumn fx:id="citColumn" editable="false" prefWidth="135.0" text="CIT">
+                           <graphic>
+                              <ComboBox fx:id="filterCitCb" prefHeight="25.0" prefWidth="135.0" promptText="CIT" onAction="#setTableWithFilterAndSearch" />
+                           </graphic>
+                        </TableColumn>
+                      <TableColumn fx:id="cirNameColumn" editable="false" prefWidth="135.0" text="CIR-Bezeichnung" />
+                    </columns>
+                  </TableView>
                </children>
             </VBox>
             <VBox prefHeight="383.0" prefWidth="228.0">
@@ -112,14 +114,6 @@
                   <Insets />
                </HBox.margin>
             </VBox>
-         </children>
-      </HBox>
-      <HBox alignment="TOP_RIGHT" prefHeight="23.0" prefWidth="600.0">
-         <children>
-            <Label fx:id="adminLbl" text="Vorname, Nachname">
-               <HBox.margin>
-                  <Insets right="5.0" />
-               </HBox.margin></Label>
          </children>
       </HBox>
    </children>

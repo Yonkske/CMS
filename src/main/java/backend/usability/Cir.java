@@ -3,11 +3,9 @@ package backend.usability;
 import backend.database.DbCallerCir;
 import backend.database.DbCallerCit;
 import backend.database.DbConnector;
-import javafx.css.converter.StringConverter;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Cir {
 

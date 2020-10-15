@@ -38,9 +38,11 @@ public class CITController extends Controller {
     @FXML public TextField attribut7Tf;
     @FXML public TextField attribut8Tf;
     @FXML public Label numberCIRLbl;
-    @FXML public TextField numberCIRLTf;
+    @FXML public TextField numberCIRTf;
     @FXML public Button deleteBtn;
     @FXML public Button citaddBtn;
+
+    private final String PAGE_NAME = "CIT";
 
     private Cit cit;
 
@@ -98,6 +100,23 @@ public class CITController extends Controller {
         attribut6Tf.setText(cit.getCitAttributes()[5]);
         attribut7Tf.setText(cit.getCitAttributes()[6]);
         attribut8Tf.setText(cit.getCitAttributes()[7]);
+    }
+
+    /**
+     * Opens the popup to delete the selected cit
+     */
+    @FXML
+    public void openDeleteCitPopup() throws IOException {
+        // FIXME
+        NotificationController notificationController = new NotificationController(choiceBox.getSelectionModel().getSelectedItem(), PAGE_NAME);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Notification.fxml"));
+        loader.setController(notificationController);
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        scene.getWindow().sizeToScene();
+        stage.show();
     }
 
 

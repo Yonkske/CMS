@@ -30,9 +30,9 @@ public class UserViewAdminController extends Controller implements Initializable
     private TextField usernameTf;
 
     @FXML
-    private Button yesBtn;
+    private User currentUser;
     @FXML
-    private Button noBtn;
+    private final String PAGE_NAME = "UserAdmin";
 
     private User userToEdit;
 
@@ -55,11 +55,10 @@ public class UserViewAdminController extends Controller implements Initializable
      */
     public void deleteUser(ActionEvent actionEvent) throws IOException {
         // TODO: Test der Methode
-        String userName = usernameTf.getText();
 
-        NotificationController NotificationController = new NotificationController();
+        NotificationController notificationController = new NotificationController(currentUser, PAGE_NAME);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Notification.fxml"));
-        loader.setController(NotificationController);
+        loader.setController(notificationController);
         Parent root = loader.load();
         Stage stage = new Stage();
         Scene scene = new Scene(root);
@@ -67,21 +66,6 @@ public class UserViewAdminController extends Controller implements Initializable
         scene.getWindow().sizeToScene();
         stage.show();
 
-
-        /*yesBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                CB_CALLER_USER.deleteUser(userToEdit); // TODO: Diese Zeile ausführen lassen.
-                new Controller().closeScene();
-            }
-        });
-
-        noBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                new Controller().closeScene();
-            }
-        });*/
     }
 
     @FXML

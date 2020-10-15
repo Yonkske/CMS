@@ -78,10 +78,11 @@
         </HBox>
         <HBox alignment="CENTER" cache="true" spacing="5.0">
             <VBox.margin>
-                <Insets bottom="20.0" left="100.0" top="5.0" />
+                <Insets bottom="20.0" left="15.0" top="5.0" />
             </VBox.margin>
-            <Button fx:id="editCirBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Bearbeiten" />
             <Button fx:id="deleteBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Löschen" />
+            <Button fx:id="editCirBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Bearbeiten" />
+         <Button fx:id="cancelBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Abbrechen" />
         </HBox>
     </VBox>
 </AnchorPane>
