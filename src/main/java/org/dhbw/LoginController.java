@@ -29,11 +29,11 @@ public class LoginController extends Controller {
     /**
      * This method is for a user logIn, it is checked whether the user is a admin.
      */
-    public void logIn() throws IOException {
-        // TODO: Check for ADMIN, Hashing the PW
+    public void logIn() throws IOException, InvalidKeySpecException, NoSuchAlgorithmException {
 
         String givenName = usernameTf.getText();
         String givenPassword = passwordField.getText();
+        String givenPasswordEncrypt = super.encryptPassword(givenPassword);
 
         User user = CB_CALLER_USER.getUser(givenName);
 
@@ -47,9 +47,11 @@ public class LoginController extends Controller {
             } else if (givenPassword.length() == 0) {
                 showError();
             } else if (CB_CALLER_USER.checkUser(givenName, givenPassword) & user.getIsInitial()) {
+                // TODO: Wenn nur noch codierte passwörter gespeichert sind: CB_CALLER_USER.checkUser(givenName, givenPasswordEncrypt)
                 openPopUpEditPassword(User.getUser(givenName));
-                super.user = User.getUser(givenName) ;
+                super.user = User.getUser(givenName);
             } else if (CB_CALLER_USER.checkUser(givenName, givenPassword) & !user.getIsInitial()) {
+                // TODO: Wenn nur noch codierte passwörter gespeichert sind: CB_CALLER_USER.checkUser(givenName, givenPasswordEncrypt)
                 switchToStartpage(User.getUser(givenName));
                 super.user = User.getUser(givenName);
             } else {
