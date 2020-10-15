@@ -158,7 +158,6 @@ public class DbCallerUser extends DbConnector {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        System.out.println(allUsers);
         return allUsers;
     }
 }

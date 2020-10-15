@@ -40,10 +40,11 @@
                         <font>
                             <Font size="15.0" />
                         </font></Label>
-               <PasswordField fx:id="passwordField" prefWidth="210.0" style="-fx-background-color: #f2f2f2;">
+               <PasswordField fx:id="passwordField" prefWidth="210.0" style="-fx-background-color: #f2f2f2;" onAction="#logIn">
                   <font>
                      <Font size="14.0" />
                   </font></PasswordField>
+
                     <VBox.margin>
                         <Insets bottom="5.0" top="5.0" />
                     </VBox.margin>
