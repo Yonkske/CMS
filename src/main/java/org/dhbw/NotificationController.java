@@ -30,10 +30,13 @@ public class NotificationController extends Controller implements Initializable 
     private String itemToDelete;
     private String callingPage;
 
+    public NotificationController() {
+    }
+
     /**
      * Creates a new NotificationController
      *
-     * @param inUser - the user that you want to delete
+     * @param inUser      - the user that you want to delete
      * @param callingPage - name of the fxml file to be refreshed
      */
     public NotificationController(User inUser, String callingPage) {
@@ -55,7 +58,7 @@ public class NotificationController extends Controller implements Initializable 
     /**
      * Creates a new NotificationController
      *
-     * @param inCit - the cit that you want to delete
+     * @param inCit       - the cit that you want to delete
      * @param callingPage - name of the fxml file to be refreshed
      */
     public NotificationController(Cit inCit, String callingPage) {
@@ -77,7 +80,7 @@ public class NotificationController extends Controller implements Initializable 
     /**
      * Creates a new NotificationController
      *
-     * @param inCir - the cir that you want to delete
+     * @param inCir       - the cir that you want to delete
      * @param callingPage - name of the fxml file to be refreshed
      */
     public NotificationController(Cir inCir, String callingPage) {
@@ -128,7 +131,6 @@ public class NotificationController extends Controller implements Initializable 
      * Deletes the given cit, cir or user when the yesBtn is clicked
      */
     private void yesButtonClicked() {
-        System.out.println("Yes clicked");
 
         switch (itemToDelete) {
             case "cir":
@@ -153,7 +155,9 @@ public class NotificationController extends Controller implements Initializable 
         }
 
         try {
-            FXMLFactory.setRoot(callingPage);
+            if (callingPage != null) {
+                FXMLFactory.setRoot(callingPage);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

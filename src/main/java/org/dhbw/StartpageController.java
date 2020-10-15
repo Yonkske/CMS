@@ -66,7 +66,7 @@ public class StartpageController extends Controller implements Initializable {
         }
 
         // FIXME: For test purposes only
-        super.user = new User("foobar", "foobar", false, false, "Simon", "Froehner");
+        super.user = new User("foobar", "foobar", false, true, "Simon", "Froehner");
 
 
         if (!super.user.getIsAdmin()) {
@@ -136,7 +136,7 @@ public class StartpageController extends Controller implements Initializable {
      */
     @FXML
     public void openDeleteCitPopup() throws IOException {
-        openPopup(new NotificationController(cirTable.getSelectionModel().getSelectedItem().getCit()), "Notifcation.fxml", true);
+        openPopup(new NotificationController(cirTable.getSelectionModel().getSelectedItem().getCit()), "Notification.fxml", true);
     }
 
     /**
@@ -146,7 +146,7 @@ public class StartpageController extends Controller implements Initializable {
      */
     @FXML
     public void openDeleteCirPopup() throws IOException {
-        openPopup(new NotificationController(cirTable.getSelectionModel().getSelectedItem()), "Notifcation.fxml", true);
+        openPopup(new NotificationController(cirTable.getSelectionModel().getSelectedItem()), "Notification.fxml", true);
     }
 
     /**
