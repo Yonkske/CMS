@@ -126,15 +126,7 @@ public class StartpageController extends Controller implements Initializable {
      */
     @FXML
     public void openAddCit() throws IOException {
-        CITAddController citAddController = new CITAddController();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("CITAdd.fxml"));
-        loader.setController(citAddController);
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        scene.getWindow().sizeToScene();
-        stage.show();
+        openPopup(new CITAddController(), "CITAdd.fxml", true);
     }
 
     /**
@@ -144,16 +136,7 @@ public class StartpageController extends Controller implements Initializable {
      */
     @FXML
     public void openDeleteCitPopup() throws IOException {
-        // FIXME
-        NotificationController notificationController = new NotificationController(cirTable.getSelectionModel().getSelectedItem().getCit(), PAGE_NAME);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Notification.fxml"));
-        loader.setController(notificationController);
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        scene.getWindow().sizeToScene();
-        stage.show();
+        openPopup(new NotificationController(cirTable.getSelectionModel().getSelectedItem().getCit()), "Notifcation.fxml", true);
     }
 
     /**
@@ -163,16 +146,7 @@ public class StartpageController extends Controller implements Initializable {
      */
     @FXML
     public void openDeleteCirPopup() throws IOException {
-        // FIXME
-        NotificationController notificationController = new NotificationController(cirTable.getSelectionModel().getSelectedItem(), PAGE_NAME);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Notification.fxml"));
-        loader.setController(notificationController);
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        scene.getWindow().sizeToScene();
-        stage.show();
+        openPopup(new NotificationController(cirTable.getSelectionModel().getSelectedItem()), "Notifcation.fxml", true);
     }
 
     /**
@@ -182,15 +156,7 @@ public class StartpageController extends Controller implements Initializable {
      */
     @FXML
     public void openAddCir() throws IOException {
-        CIRAddController cirAddController = new CIRAddController();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("CIRAdd.fxml"));
-        loader.setController(cirAddController);
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        scene.getWindow().sizeToScene();
-        stage.show();
+        openPopup(new CIRAddController(), "CIRAdd.fxml", true);
     }
 
     /**
@@ -200,49 +166,7 @@ public class StartpageController extends Controller implements Initializable {
      */
     @FXML
     public void openEditCir() throws IOException {
-        // FIXME
-        CIREditController CIREditController = new CIREditController(cirTable.getSelectionModel().getSelectedItem());
-        //CIREditController CIREditController = new CIREditController();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("CIREdit.fxml"));
-        loader.setController(CIREditController);
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        scene.getWindow().sizeToScene();
-        stage.show();
-    }
-
-    /**
-     * Changes the content of the table depending on the selected filter in the combobox
-     */
-    @FXML
-    public void setFilterForTable() {
-        // TODO: get selected Cit
-        Cit selectedCit = filterCitCb.getSelectionModel().getSelectedItem();
-        // TODO: set filter for selected Cit
-        try {
-            if (selectedCit.getCitID() == 0) {
-                setTableContent(DB_CALLER_CIR.getAll());
-            } else {
-                setTableContent(DB_CALLER_CIR.getAllCirForType(selectedCit));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Changes the content of the table depending on the selected filter in the combobox and the search input
-     */
-    @FXML
-    public void searchCirOrCit() {
-        String searchValue = searchTf.getText();
-        try {
-            setTableContent(DB_CALLER_CIR.getAllCirSearchValue(searchValue));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        openPopup(new CIREditController(cirTable.getSelectionModel().getSelectedItem()), "CIREdit.fxml", true);
     }
 
     /**
@@ -256,16 +180,12 @@ public class StartpageController extends Controller implements Initializable {
      */
     @FXML
     public void setTableWithFilterAndSearch() {
-        // TODO: get selected Cit
         Cit selectedCit = filterCitCb.getSelectionModel().getSelectedItem();
         String searchValue = searchTf.getText();
-        // TODO: set filter for selected Cit
         try {
             if (selectedCit.getCitID() == 0) {
-                //setTableContent(DB_CALLER_CIR.getAll());
                 setTableContent(DB_CALLER_CIR.getAllCirSearchValue(searchValue));
             } else {
-                //setTableContent(DB_CALLER_CIR.getAllCirForType(selectedCit));
                 setTableContent(DB_CALLER_CIR.getAllWithFilterAndSearch(selectedCit, searchValue));
             }
         } catch (SQLException e) {
@@ -273,9 +193,36 @@ public class StartpageController extends Controller implements Initializable {
         }
     }
 
-    private void setTableContent(ArrayList <Cir> cirs){
+    /**
+     * Sets the table content to the given list of CIRs
+     *
+     * @param cirs to be displayed in the table
+     */
+    private void setTableContent(ArrayList<Cir> cirs) {
         cirTable.getItems().setAll(cirs);
         citColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CitName"));
         cirNameColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CirName"));
+    }
+
+    /**
+     * Opens a popup window
+     *
+     * @param controller controller for the popup - must match fxmlName
+     * @param fxmlName of the fxml file to be opened in the popup - must match controller
+     * @param onHiding if the page should be refreshed on closing the popup
+     * @throws IOException
+     */
+    private void openPopup(Controller controller, String fxmlName, boolean onHiding) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
+        loader.setController(controller);
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        if(onHiding) {
+            stage.setOnHiding(windowEvent -> this.setTableWithFilterAndSearch());
+        }
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        scene.getWindow().sizeToScene();
+        stage.show();
     }
 }
