@@ -46,7 +46,7 @@
                <children>
                   <HBox prefHeight="33.0" prefWidth="274.0">
                      <children>
-                        <TextField fx:id="searchTf">
+                        <TextField fx:id="searchTf" onAction="#setTableWithFilterAndSearch">
                            <HBox.margin>
                               <Insets top="20.0" />
                            </HBox.margin></TextField>
