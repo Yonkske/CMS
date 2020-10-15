@@ -32,8 +32,4 @@ public class Controller {
     public void closeScene(){
 
     }
-
-    public void setUser(User user){
-        this.user = user;
-    }
 }
