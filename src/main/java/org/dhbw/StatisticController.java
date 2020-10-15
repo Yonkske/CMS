@@ -76,6 +76,9 @@ public class StatisticController extends Controller {
             adminPieChart.getData().add(slice[i]);
         }
 
+        numberCIRTf.setText(String.valueOf(Cir.getCount()));
+
+
     }
 
     public void swapToStartpage(ActionEvent actionEvent) throws IOException {
