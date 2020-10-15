@@ -141,8 +141,8 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" spacing="10.0">
                <children>
-                  <Button fx:id="submitBtn" mnemonicParsing="false" text="Speichern" />
-                  <Button fx:id="cancelBtn" mnemonicParsing="false" text="Abbrechen" />
+                  <Button fx:id="submitBtn" mnemonicParsing="false" text="Speichern" onAction="#submit"/>
+                  <Button fx:id="cancelBtn" mnemonicParsing="false" text="Abbrechen" onAction="#cancel"/>
                </children>
                <VBox.margin>
                   <Insets bottom="40.0" />
