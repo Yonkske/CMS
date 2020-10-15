@@ -19,47 +19,65 @@ import java.util.ResourceBundle;
 
 public class CITAddController extends Controller implements Initializable {
 
-    @FXML public Label idLbl;
-    @FXML public Label citLbl;
-    @FXML public Label attribut1Lbl;
-    @FXML public Label attribut2Lbl;
-    @FXML public Label attribut3Lbl;
-    @FXML public Label attribut4Lbl;
-    @FXML public Label attribut5Lbl;
-    @FXML public Label attribut6Lbl;
-    @FXML public Label attribut7Lbl;
-    @FXML public Label attribut8Lbl;
-    @FXML public TextField idTf;
-    @FXML public TextField citTf;
-    @FXML public TextField attribut1Tf;
-    @FXML public TextField attribut2Tf;
-    @FXML public TextField attribut3Tf;
-    @FXML public TextField attribut4Tf;
-    @FXML public TextField attribut5Tf;
-    @FXML public TextField attribut6Tf;
-    @FXML public TextField attribut7Tf;
-    @FXML public TextField attribut8Tf;
-    @FXML public Button cancelBtn;
-    @FXML public Button submitBtn;
-
-
+    @FXML
+    public Label idLbl;
+    @FXML
+    public Label citLbl;
+    @FXML
+    public Label attribut1Lbl;
+    @FXML
+    public Label attribut2Lbl;
+    @FXML
+    public Label attribut3Lbl;
+    @FXML
+    public Label attribut4Lbl;
+    @FXML
+    public Label attribut5Lbl;
+    @FXML
+    public Label attribut6Lbl;
+    @FXML
+    public Label attribut7Lbl;
+    @FXML
+    public Label attribut8Lbl;
+    @FXML
+    public TextField idTf;
+    @FXML
+    public TextField citTf;
+    @FXML
+    public TextField attribut1Tf;
+    @FXML
+    public TextField attribut2Tf;
+    @FXML
+    public TextField attribut3Tf;
+    @FXML
+    public TextField attribut4Tf;
+    @FXML
+    public TextField attribut5Tf;
+    @FXML
+    public TextField attribut6Tf;
+    @FXML
+    public TextField attribut7Tf;
+    @FXML
+    public TextField attribut8Tf;
+    @FXML
+    public Button cancelBtn;
+    @FXML
+    public Button submitBtn;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            idTf.setText(String.valueOf(DB_CALLER_CIT.getMaxItemId()+1));
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            idTf.setText(String.valueOf(DB_CALLER_CIT.getMaxItemId() + 1));
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         //Button Speichern
         submitBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println(idTf.getText());
                 String[] sCitArray = new String[8];
                 int id = Integer.parseInt(idTf.getText());
-                System.out.println(id);
 
                 sCitArray[0] = citTf.getText();
                 sCitArray[1] = attribut2Tf.getText();
@@ -73,13 +91,13 @@ public class CITAddController extends Controller implements Initializable {
                 Cit cit = new Cit(id, sCitArray);
                 try {
                     DB_CALLER_CIT.createCit(cit);
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
+
                 Stage stClose = new Stage();
                 stClose = (Stage) submitBtn.getScene().getWindow();
                 stClose.close();
-
 
             }
         });
