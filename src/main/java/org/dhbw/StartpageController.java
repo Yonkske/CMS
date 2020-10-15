@@ -29,6 +29,8 @@ public class StartpageController extends Controller implements Initializable {
     @FXML private Button citEditBtn;
     @FXML private Button citDeleteBtn;
 
+    private final String PAGE_NAME = "Startpage";
+
     /**
      * Methode from the interface Initializable that auto generates the page on
      * start
@@ -48,7 +50,7 @@ public class StartpageController extends Controller implements Initializable {
         }
 
         // FIXME: For test purposes only
-        super.user = new User("foobar", "foobar", false, true, "Simon", "Froehner");
+        super.user = new User("foobar", "foobar", false, false, "Simon", "Froehner");
 
 
         if(!super.user.getIsAdmin()) {
@@ -127,8 +129,7 @@ public class StartpageController extends Controller implements Initializable {
     @FXML
     public void openDeleteCitPopup() throws IOException {
         // FIXME
-        //NotificationController notificationController = new NotificationController(cirTable.getSelectionModel().getSelectedItem().getCit());
-        NotificationController notificationController = new NotificationController();
+        NotificationController notificationController = new NotificationController(cirTable.getSelectionModel().getSelectedItem().getCit(), PAGE_NAME);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Notification.fxml"));
         loader.setController(notificationController);
         Parent root = loader.load();
@@ -147,8 +148,7 @@ public class StartpageController extends Controller implements Initializable {
     @FXML
     public void openDeleteCirPopup() throws IOException {
         // FIXME
-        //NotificationController notificationController = new NotificationController(cirTable.getSelectionModel().getSelectedItem());
-        NotificationController notificationController = new NotificationController();
+        NotificationController notificationController = new NotificationController(cirTable.getSelectionModel().getSelectedItem(), PAGE_NAME);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Notification.fxml"));
         loader.setController(notificationController);
         Parent root = loader.load();

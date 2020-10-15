@@ -27,9 +27,9 @@ public class UserViewAdminController extends Controller  {
     private TextField usernameTf;
 
     @FXML
-    private Button yesBtn;
+    private User currentUser;
     @FXML
-    private Button noBtn;
+    private final String PAGE_NAME = "UserAdmin";
 
     /**
      *
@@ -37,6 +37,8 @@ public class UserViewAdminController extends Controller  {
      */
     public void fillTextfields(User user) {
         // TODO: Methode testen
+
+        this.currentUser = user;
 
         String authorisation;
         if (user.getIsAdmin() == true) {
@@ -62,33 +64,16 @@ public class UserViewAdminController extends Controller  {
      */
     public void deleteUser(ActionEvent actionEvent) throws IOException {
         // TODO: Test der Methode
-        String userName = usernameTf.getText();
 
-        NotificationController NotificationController = new NotificationController();
+        NotificationController notificationController = new NotificationController(currentUser, PAGE_NAME);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Notification.fxml"));
-        loader.setController(NotificationController);
+        loader.setController(notificationController);
         Parent root = loader.load();
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         scene.getWindow().sizeToScene();
         stage.show();
-
-
-        /*yesBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                CB_CALLER_USER.deleteUser(CB_CALLER_USER.getUser(userName));
-                new Controller().closeScene();
-            }
-        });
-
-        noBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                new Controller().closeScene();
-            }
-        });*/
     }
 
     @FXML
