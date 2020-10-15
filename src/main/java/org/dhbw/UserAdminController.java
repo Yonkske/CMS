@@ -117,6 +117,7 @@ public class UserAdminController extends Controller implements Initializable {
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setOnHiding(windowEvent -> getData());
         scene.getWindow().sizeToScene();
         stage.show();
     }
@@ -132,6 +133,7 @@ public class UserAdminController extends Controller implements Initializable {
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setOnHiding(windowEvent -> getData());
         scene.getWindow().sizeToScene();
         stage.show();
     }
@@ -148,9 +150,9 @@ public class UserAdminController extends Controller implements Initializable {
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setOnHiding(windowEvent -> getData());
         scene.getWindow().sizeToScene();
         stage.show();
-
 
         /*yesBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
