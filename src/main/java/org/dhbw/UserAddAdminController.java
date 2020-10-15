@@ -79,24 +79,15 @@ public class UserAddAdminController extends Controller implements Initializable 
                 closeScene();
             } else if (userName.length() == 0 & passwordNotEncrypted.length() == 0 & passwortRepeated.length() == 0) {
                 showError();
-                usernameTf.setText("");
-                initialPasswordTf.setText("");
-                repeatInitialPasswordTf.setText("");
             } else if (userName.length() > 0 & passwordNotEncrypted.length() == 0 & passwortRepeated.length() == 0) {
                 showError();
-                usernameTf.setText("");
-                initialPasswordTf.setText("");
-                repeatInitialPasswordTf.setText("");
+                clearPasswordAndUser();
             } else if (userName.length() == 0 & passwordNotEncrypted.length() > 0 & passwortRepeated.length() == 0) {
                 showError();
-                usernameTf.setText("");
-                initialPasswordTf.setText("");
-                repeatInitialPasswordTf.setText("");
+                clearPasswordAndUser();
             } else if (userName.length() == 0 & passwordNotEncrypted.length() == 0 & passwortRepeated.length() > 0) {
                 showError();
-                usernameTf.setText("");
-                initialPasswordTf.setText("");
-                repeatInitialPasswordTf.setText("");
+                clearPasswordAndUser();
             }
         } else {
             showError();
@@ -128,4 +119,11 @@ public class UserAddAdminController extends Controller implements Initializable 
     public void showError() {
         meldungLbl.setVisible(true); // TODO: meldungLbl einfügen!
     }
+    
+    public void clearPasswordAndUser() {
+        usernameTf.setText("");
+        initialPasswordTf.setText("");
+        repeatInitialPasswordTf.setText("");
+    }
+        
 }
