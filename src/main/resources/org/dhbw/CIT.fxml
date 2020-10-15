@@ -185,7 +185,7 @@
          </HBox>
                 <HBox alignment="CENTER" prefHeight="47.0" prefWidth="396.0">
             <children>
-               <Button fx:id="deleteBtn" mnemonicParsing="false" text="Löschen" />
+               <Button fx:id="deleteBtn" mnemonicParsing="false" text="Löschen" onAction="#openDeleteCitPopup"/>
                <Button fx:id="citaddBtn" mnemonicParsing="false" onAction="#swapToCITAdd" text="CIT erstellen" />
             </children></HBox>
             </VBox>
