@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class StartpageController extends Controller implements Initializable {
@@ -167,7 +168,9 @@ public class StartpageController extends Controller implements Initializable {
      */
     @FXML
     public void openEditCir() throws IOException {
-        openPopup(new CIREditController(cirTable.getSelectionModel().getSelectedItem()), "CIREdit.fxml", true);
+        if (Objects.nonNull(cirTable.getSelectionModel().getSelectedItem())) {
+            openPopup(new CIREditController(cirTable.getSelectionModel().getSelectedItem()), "CIREdit.fxml", true);
+        }
     }
 
     /**

@@ -2,18 +2,14 @@ package org.dhbw;
 
 import backend.usability.User;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -92,82 +88,42 @@ public class UserAdminController extends Controller implements Initializable {
 
 
     public void showUser() throws IOException {
-
         User userToShow = userTable.getSelectionModel().getSelectedItem();
-
-        UserViewAdminController UserViewAdminController = new UserViewAdminController(userToShow);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("UserViewAdmin.fxml"));
-        loader.setController(UserViewAdminController);
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setOnHiding(windowEvent -> getData());
-        scene.getWindow().sizeToScene();
-        stage.show();
+        openPopup(new UserViewAdminController(userToShow), "UserViewAdmin.fxml", true);
     }
 
     public void addUser() throws IOException {
         // TODO: Test method
-
-        UserAddAdminController UserAddAdminController = new UserAddAdminController();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("UserAddAdmin.fxml"));
-        loader.setController(UserAddAdminController);
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setOnHiding(windowEvent -> getData());
-        scene.getWindow().sizeToScene();
-        stage.show();
+        openPopup(new UserAddAdminController(), "UserAddAdmin.fxml", true);
     }
 
     public void editUser() throws IOException {
         // TODO: Test der Methode
         User userToEdit = userTable.getSelectionModel().getSelectedItem();
-
-        UserEditAdminController UserEditAdminController = new UserEditAdminController(userToEdit);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("UserEditAdmin.fxml"));
-        loader.setController(UserEditAdminController);
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setOnHiding(windowEvent -> getData());
-        scene.getWindow().sizeToScene();
-        stage.show();
+        openPopup(new UserEditAdminController(userToEdit), "UserEditAdmin.fxml", true);
     }
 
     public void deleteUser() throws IOException {
         // TODO: Test der Methode
-        //String userName = usernameTf.getText();
         User userToDelete = userTable.getSelectionModel().getSelectedItem();
+        openPopup(new NotificationController(), "Notification.fxml", false);
+    }
 
-        NotificationController NotificationController = new NotificationController();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Notification.fxml"));
-        loader.setController(NotificationController);
+    private void openPopup(Controller controller, String fxmlName, boolean onHiding) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
+        loader.setController(controller);
         Parent root = loader.load();
         Stage stage = new Stage();
+        stage.setResizable(false);
+        if (onHiding) {
+            stage.setOnHiding(windowEvent -> this.getData());
+        }
+        stage.getIcons().add(new Image(App.class.getResourceAsStream("icons/favicon1.jpg")));
+        stage.setTitle("CMS - Configuration Management System");
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setOnHiding(windowEvent -> getData());
         scene.getWindow().sizeToScene();
         stage.show();
-
-        /*yesBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                CB_CALLER_USER.deleteUser(userToDelete); // TODO: Diese Funktion ausführen.
-                new Controller().closeScene();
-            }
-        });
-
-        noBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                new Controller().closeScene();
-            }
-        });*/
     }
 
     public void swapToStartpage(ActionEvent actionEvent) throws IOException {
@@ -186,4 +142,3 @@ public class UserAdminController extends Controller implements Initializable {
         FXMLFactory.setRoot("UserAdmin");
     }
 }
-
