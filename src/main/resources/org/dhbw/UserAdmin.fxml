@@ -60,8 +60,8 @@
                   <HBox alignment="BOTTOM_RIGHT" prefHeight="97.0" prefWidth="458.0">
                      <children>
                         <Button fx:id="addBtn" mnemonicParsing="false" text="+" onAction="#addUser"/>
-                        <Button fx:id="deleteBtn" mnemonicParsing="false" text="Löschen" onAction="#deleteUser"/>
-                        <Button fx:id="editBtn" mnemonicParsing="false" text="Bearbeiten" onAction="#editUser"/>
+                        <Button fx:id="deleteBtn" mnemonicParsing="false" text="Löschen" onAction="#deleteUser" disable="false"/>
+                        <Button fx:id="editBtn" mnemonicParsing="false" text="Bearbeiten" onAction="#editUser" disable="false"/>
                      </children>
                   </HBox>
 
