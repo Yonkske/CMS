@@ -58,7 +58,7 @@ public class LoginController extends Controller {
         }
     }
 
-    public String verschlüsseltPasswort(String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
+    public String encryptPassword(String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[16];
 
