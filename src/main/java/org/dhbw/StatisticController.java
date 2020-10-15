@@ -77,6 +77,7 @@ public class StatisticController extends Controller {
         }
 
         numberCIRTf.setText(String.valueOf(Cir.getCount()));
+        numberCITTf.setText(String.valueOf(Cit.getCount()));
 
 
     }
