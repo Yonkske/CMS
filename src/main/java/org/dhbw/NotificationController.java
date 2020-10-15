@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class NotificationController extends Controller  {
 
     @FXML
-    private Button yesBtn;
+    public static Button yesBtn;
 
     @FXML
     private Button noBtn;

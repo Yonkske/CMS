@@ -102,11 +102,10 @@ public class UserViewAdminController extends Controller implements Initializable
         if (onHidingRefresh) {
             stage.setOnHiding(windowEvent -> {
                 this.userToEdit = User.getUser(usernameTf.getText());
-                this.getData();});
+                this.getData();
+            });
         } else if (onHindingClose) {
             stage.setOnHiding(windowEvent -> this.closeScene());
-
-
         }
         stage.getIcons().add(new Image(App.class.getResourceAsStream("icons/favicon1.jpg")));
         stage.setTitle("CMS - Configuration Management System");
@@ -116,7 +115,7 @@ public class UserViewAdminController extends Controller implements Initializable
         stage.show();
     }
 
-    protected void closeScene(){
+    protected void closeScene() {
         Stage stClose = (Stage) nameTf.getScene().getWindow();
         stClose.close();
     }

@@ -91,34 +91,36 @@ public class UserAdminController extends Controller implements Initializable {
 
     public void showUser() throws IOException {
         User userToShow = userTable.getSelectionModel().getSelectedItem();
-        openPopup(new UserViewAdminController(userToShow), "UserViewAdmin.fxml", true);
+        openPopup(new UserViewAdminController(userToShow), "UserViewAdmin.fxml", true, false);
     }
 
     public void addUser() throws IOException {
         // TODO: Test method
-        openPopup(new UserAddAdminController(), "UserAddAdmin.fxml", true);
+        openPopup(new UserAddAdminController(), "UserAddAdmin.fxml", true, true);
     }
 
     public void editUser() throws IOException {
         // TODO: Test der Methode
         User userToEdit = userTable.getSelectionModel().getSelectedItem();
-        openPopup(new UserEditAdminController(userToEdit), "UserEditAdmin.fxml", true);
+        openPopup(new UserEditAdminController(userToEdit), "UserEditAdmin.fxml", true, false);
     }
 
     public void deleteUser() throws IOException {
         // TODO: Test der Methode
         User userToDelete = userTable.getSelectionModel().getSelectedItem();
-        openPopup(new NotificationController(userToDelete, PAGE_NAME), "Notification.fxml", false);
+        openPopup(new NotificationController(userToDelete, PAGE_NAME), "Notification.fxml", false, true);
     }
 
-    private void openPopup(Controller controller, String fxmlName, boolean onHiding) throws IOException {
+    private void openPopup(Controller controller, String fxmlName, boolean onHidingRefresh, boolean onHindingClose) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
         loader.setController(controller);
         Parent root = loader.load();
         Stage stage = new Stage();
         stage.setResizable(false);
-        if (onHiding) {
+        if (onHidingRefresh) {
             stage.setOnHiding(windowEvent -> this.getData());
+        } else if (onHindingClose) {
+            stage.setOnHiding(windowEvent -> this.closeScene());
         }
         stage.getIcons().add(new Image(App.class.getResourceAsStream("icons/favicon1.jpg")));
         stage.setTitle("CMS - Configuration Management System");
@@ -142,5 +144,10 @@ public class UserAdminController extends Controller implements Initializable {
 
     public void swapToBenutzer(ActionEvent actionEvent) throws IOException {
         FXMLFactory.setRoot("UserAdmin");
+    }
+
+    protected void closeScene(){
+        Stage stClose = (Stage) adminLbl.getScene().getWindow();
+        stClose.close();
     }
 }
