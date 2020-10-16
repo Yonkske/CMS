@@ -19,7 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
-public class CITController extends Controller {
+public class CITController extends MainPagesController {
     @FXML public Label adminLbl;
     @FXML public Button startpageBtn;
     @FXML public Button citBtn;
@@ -125,4 +125,8 @@ public class CITController extends Controller {
     }
 
 
+    @Override
+    public void refresh() {
+
+    }
 }

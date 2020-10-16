@@ -28,7 +28,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 
-public class StatisticController extends Controller {
+public class StatisticController extends MainPagesController {
 
     @FXML
     public Label adminLbl;
@@ -74,7 +74,6 @@ public class StatisticController extends Controller {
         numberCIRTf.setText(String.valueOf(Cir.getCount()));
         numberCITTf.setText(String.valueOf(Cit.getCount()));
 
-
     }
 
     public void swapToStartpage(ActionEvent actionEvent) throws IOException {
@@ -91,5 +90,10 @@ public class StatisticController extends Controller {
 
     public void swapToBenutzer(ActionEvent actionEvent) throws IOException {
         FXMLFactory.setRoot("UserAdmin");
+    }
+
+    @Override
+    public void refresh() {
+
     }
 }
