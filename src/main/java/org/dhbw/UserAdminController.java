@@ -62,6 +62,7 @@ public class UserAdminController extends Controller implements Initializable {
         getData();
     }
 
+    @FXML
     private void getData() {
         this.allUsers = CB_CALLER_USER.getAllUsers();
         try {
@@ -98,6 +99,7 @@ public class UserAdminController extends Controller implements Initializable {
         }
     }
 
+    @FXML
     private void disableButtons() {
         editBtn.setDisable(true);
         deleteBtn.setDisable(true);
@@ -202,7 +204,6 @@ public class UserAdminController extends Controller implements Initializable {
         return list;
     }
 
-
     @FXML
     private void setTableContent(ArrayList<User> user) {
         userTable.getItems().setAll(user);
@@ -214,16 +215,12 @@ public class UserAdminController extends Controller implements Initializable {
         ArrayList<User> outputList = new ArrayList<>();
         ArrayList<User> filteredUserList = this.getAllUserSearchValue(selectedFilter);
 
-        int amountFilteredUsers = filteredUserList.size();
-
         for (User u : filteredUserList) {
 
             if (u.getUserName().contains(searchValue)) {
                 outputList.add(u);
             }
         }
-
-
         return outputList;
     }
 
@@ -232,10 +229,14 @@ public class UserAdminController extends Controller implements Initializable {
         String selectedUser = filterUser.getSelectionModel().getSelectedItem();
         String searchValue = searchTextField.getText();
 
-        if (selectedUser.equals("Rechte")) {
-            setTableContent(this.getAllUserSearchValue(searchValue));
-        } else {
-            setTableContent(this.getAllWithFilterAndSearch(selectedUser, searchValue));
+        if (selectedUser.equals("Rechte") & searchValue.length() != 0) {
+            this.setTableContent(this.getAllUserSearchValue(searchValue));
+        } else if (!selectedUser.equals("Rechte")){
+            this.setTableContent(this.getAllWithFilterAndSearch(selectedUser, searchValue));
+        } else if (selectedUser.equals("Rechte") & searchValue.length() == 0) {
+            this.setTableContent(allUsers);
+        } else if (selectedUser.equals("Rechte") & searchValue.length() == 0) {
+            this.setTableContent(allUsers);
         }
     }
 }

@@ -46,8 +46,8 @@
                     <children>
                         <HBox alignment="CENTER" prefHeight="67.0" prefWidth="458.0">
                             <children>
-                                <TextField fx:id="searchTextField" prefWidth="150.0"/>
-                                <Button fx:id="searchBtn" mnemonicParsing="false" text="Suche"/>
+                                <TextField fx:id="searchTextField" prefWidth="150.0" onAction="#setTableWithFilterAndSearch"/>
+                                <Button fx:id="searchBtn" mnemonicParsing="false" text="Suche" onAction="#setTableWithFilterAndSearch"/>
                             </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="211.0" prefWidth="455.0">
