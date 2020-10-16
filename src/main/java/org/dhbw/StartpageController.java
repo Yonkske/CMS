@@ -246,4 +246,10 @@ public class StartpageController extends Controller implements Initializable {
         scene.getWindow().sizeToScene();
         stage.show();
     }
+    @FXML
+    public void logout() throws IOException {
+        FXMLFactory.setRoot("Login");
+    }
+
+
 }
