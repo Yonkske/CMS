@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -194,6 +195,19 @@ public class StartpageController extends Controller implements Initializable {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * Opens the CirView on double click on table row
+     *
+     * @param me MouseEvent from javafx.scene.input
+     * @throws IOException
+     */
+    @FXML
+    public void openCirView(MouseEvent me) throws IOException {
+        if (me.getClickCount() == 2) {
+            openPopup(new CIRViewController(cirTable.getSelectionModel().getSelectedItem()), "CIRView.fxml", false);
         }
     }
 
