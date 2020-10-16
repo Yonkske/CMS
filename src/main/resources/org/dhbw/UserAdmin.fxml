@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.UserAdminController">
    <children>
       <HBox alignment="TOP_RIGHT" prefHeight="23.0" prefWidth="600.0">
@@ -60,8 +59,8 @@
                   <HBox alignment="BOTTOM_RIGHT" prefHeight="97.0" prefWidth="458.0">
                      <children>
                         <Button fx:id="addBtn" mnemonicParsing="false" text="+" onAction="#addUser"/>
-                        <Button fx:id="deleteBtn" mnemonicParsing="false" text="Löschen" onAction="#deleteUser" disable="false"/>
-                        <Button fx:id="editBtn" mnemonicParsing="false" text="Bearbeiten" onAction="#editUser" disable="false"/>
+                        <Button fx:id="deleteBtn" mnemonicParsing="false" text="Löschen" onAction="#deleteUser" disable="true"/>
+                        <Button fx:id="editBtn" mnemonicParsing="false" text="Bearbeiten" onAction="#editUser" disable="true"/>
                      </children>
                   </HBox>
 

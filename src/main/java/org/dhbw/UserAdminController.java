@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class UserAdminController extends Controller implements Initializable {
@@ -59,9 +60,6 @@ public class UserAdminController extends Controller implements Initializable {
     }
 
     private void getData() {
-        editBtn.setDisable(false);
-        deleteBtn.setDisable(false);
-
         try {
             userTable.getItems().setAll(CB_CALLER_USER.getAllUsers());
             userColumn.setCellValueFactory(new PropertyValueFactory<User, String>("UserName"));
@@ -75,40 +73,58 @@ public class UserAdminController extends Controller implements Initializable {
 
     @FXML
     public void clickAction(MouseEvent mouseEvent) {
+        boolean userSelected = false;
+        if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
+            userSelected = true;
+        }
 
-        if (mouseEvent.getClickCount() > 2) {
-            editBtn.setDisable(true);
-            deleteBtn.setDisable(true);
+        if (userSelected) {
+            editBtn.setDisable(false);
+            deleteBtn.setDisable(false);
         } else if (mouseEvent.getClickCount() == 2) {
             try {
                 showUser();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        } else if (!userSelected) {
+            this.disableButtons();
         }
+    }
+
+    private void disableButtons() {
+        editBtn.setDisable(true);
+        deleteBtn.setDisable(true);
     }
 
 
     public void showUser() throws IOException {
-        User userToShow = userTable.getSelectionModel().getSelectedItem();
-        openPopup(new UserViewAdminController(userToShow), "UserViewAdmin.fxml", true, false);
+        if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
+            openPopup(new UserViewAdminController(userTable.getSelectionModel().getSelectedItem()), "UserViewAdmin.fxml", true, false);
+            this.disableButtons();
+        }
     }
 
     public void addUser() throws IOException {
         // TODO: Test method
         openPopup(new UserAddAdminController(), "UserAddAdmin.fxml", true, true);
+        this.disableButtons();
     }
 
     public void editUser() throws IOException {
         // TODO: Test der Methode
-        User userToEdit = userTable.getSelectionModel().getSelectedItem();
-        openPopup(new UserEditAdminController(userToEdit), "UserEditAdmin.fxml", true, false);
+        if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
+            openPopup(new UserEditAdminController(userTable.getSelectionModel().getSelectedItem()), "UserEditAdmin.fxml", true, false);
+            this.disableButtons();
+        }
     }
 
     public void deleteUser() throws IOException {
         // TODO: Test der Methode
-        User userToDelete = userTable.getSelectionModel().getSelectedItem();
-        openPopup(new NotificationController(userToDelete, PAGE_NAME), "Notification.fxml", false, true);
+        if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
+            openPopup(new NotificationController(userTable.getSelectionModel().getSelectedItem(), PAGE_NAME), "Notification.fxml", false, true);
+            this.disableButtons();
+        }
     }
 
     private void openPopup(Controller controller, String fxmlName, boolean onHidingRefresh, boolean onHindingClose) throws IOException {
@@ -146,7 +162,7 @@ public class UserAdminController extends Controller implements Initializable {
         FXMLFactory.setRoot("UserAdmin");
     }
 
-    protected void closeScene(){
+    protected void closeScene() {
         Stage stClose = (Stage) adminLbl.getScene().getWindow();
         stClose.close();
     }
