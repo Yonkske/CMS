@@ -194,16 +194,6 @@ public class UserAdminController extends Controller implements Initializable {
         }
     }
 
-    private ArrayList<User> getListOfAdmins() {
-        ArrayList<User> list = new ArrayList<>() ;
-        for (User u : allUsers) {
-            if (user.getIsAdmin()) {
-                list.add(u);
-            }
-        }
-        return list;
-    }
-
     @FXML
     private void setTableContent(ArrayList<User> user) {
         userTable.getItems().setAll(user);
