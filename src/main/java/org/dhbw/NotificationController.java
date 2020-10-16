@@ -126,7 +126,7 @@ public class NotificationController extends Controller  {
                 }
                 break;
             case "user":
-                CB_CALLER_USER.deleteUser(userToDelete);
+                DB_CALLER_USER.deleteUser(userToDelete);
                 break;
             default:
                 System.out.println("Löschen fehlgeschlagen!");

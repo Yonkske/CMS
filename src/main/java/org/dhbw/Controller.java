@@ -13,7 +13,7 @@ public abstract class Controller {
 
     final DbCallerCir DB_CALLER_CIR;
     final DbCallerCit DB_CALLER_CIT;
-    final DbCallerUser CB_CALLER_USER;
+    final DbCallerUser DB_CALLER_USER;
     static User user;
 
     public Controller() {
@@ -23,7 +23,7 @@ public abstract class Controller {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        CB_CALLER_USER = new DbCallerUser();
+        DB_CALLER_USER = new DbCallerUser();
         DB_CALLER_CIR = new DbCallerCir();
         DB_CALLER_CIT = new DbCallerCit();
 
