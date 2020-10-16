@@ -58,7 +58,7 @@ public class UserAddAdminController extends Controller implements Initializable 
         String passwordNotEncrypted = initialPasswordTf.getText();
         String passwortRepeated = repeatInitialPasswordTf.getText();
 
-        if (passwordNotEncrypted == passwortRepeated) {
+        if (passwordNotEncrypted.equals(passwortRepeated)) {
             String surName = surnameTf.getText();
             String name = nameTf.getText();
             String userName = usernameTf.getText();

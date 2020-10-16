@@ -3,22 +3,17 @@ package org.dhbw;
 import backend.usability.Cir;
 import backend.usability.Cit;
 import backend.usability.User;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 
-public class NotificationController extends Controller implements Initializable {
+public class NotificationController extends Controller  {
 
     @FXML
-    private Button yesBtn;
+    public Button yesBtn;
 
     @FXML
     private Button noBtn;
@@ -99,34 +94,17 @@ public class NotificationController extends Controller implements Initializable 
         this.itemToDelete = "cir";
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        noBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                closeStage();
-            }
-        });
 
-
-        yesBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                yesButtonClicked();
-            }
-        });
-    }
-
-
+    @FXML
     /**
      * Closes the notification popup
      */
     private void closeStage() {
-        Stage stClose = new Stage();
-        stClose = (Stage) noBtn.getScene().getWindow();
+        Stage stClose = (Stage) noBtn.getScene().getWindow();
         stClose.close();
     }
 
+    @FXML
     /**
      * Deletes the given cit, cir or user when the yesBtn is clicked
      */
