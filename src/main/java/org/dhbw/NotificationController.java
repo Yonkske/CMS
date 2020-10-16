@@ -110,7 +110,6 @@ public class NotificationController extends Controller  {
      */
     private void yesButtonClicked() {
 
-        System.out.println("Hello");
         switch (itemToDelete) {
             case "cir":
                 try {
