@@ -19,6 +19,9 @@ public class UserInfoController extends Controller implements Initializable {
 
     private User userToShow;
 
+
+    // Following are to show the correct selected-user
+
     public UserInfoController (User user) {
         this.userToShow= user;
     }

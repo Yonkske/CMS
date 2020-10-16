@@ -49,6 +49,7 @@ public class UserAdminController extends Controller implements Initializable {
     private ComboBox<String> filterUser;
     private ArrayList<User> allUsers = new ArrayList<>();
 
+// Following are to show correct data on the user page
 
     /**
      * Methode from the interface Initializable that auto generates the page on
@@ -78,32 +79,7 @@ public class UserAdminController extends Controller implements Initializable {
         adminLbl.setText(super.user.getSurName() + ", " + super.user.getName() + " (Admin)");
     }
 
-    @FXML
-    public void clickAction(MouseEvent mouseEvent) {
-        boolean userSelected = false;
-        if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
-            userSelected = true;
-        }
-
-        if (userSelected) {
-            editBtn.setDisable(false);
-            deleteBtn.setDisable(false);
-        }
-        if (mouseEvent.getClickCount() == 2) {
-            try {
-                showUser();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    @FXML
-    private void disableButtons() {
-        editBtn.setDisable(true);
-        deleteBtn.setDisable(true);
-    }
-
+// Following are open Popups
 
     public void showUser() throws IOException {
         if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
@@ -134,29 +110,24 @@ public class UserAdminController extends Controller implements Initializable {
         }
     }
 
-    private void openPopup(Controller controller, String fxmlName, boolean onHidingRefresh, boolean onHindingClose) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
-        loader.setController(controller);
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        stage.setResizable(false);
-        if (onHidingRefresh) {
-            stage.setOnHiding(windowEvent -> this.getData());
-        } else if (onHindingClose) {
-            stage.setOnHiding(windowEvent -> this.closeScene());
-        }
-        stage.getIcons().add(new Image(App.class.getResourceAsStream("icons/favicon1.jpg")));
-        stage.setTitle("CMS - Configuration Management System");
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        scene.getWindow().sizeToScene();
-        stage.show();
+// Following are the user-comboBox-button-functions
+
+    public void swapToUserInfo() throws IOException {
+        // TODO: Set onAction with showCurrentUserBtn
+        this.openPopup(new UserInfoController(user), "UserInfo.fxml", false, false);
     }
 
-    public void openUserInfo() throws IOException {
-        // TODO: Set onAction with showCurrentUserBtn
-        openPopup(new UserInfoController(super.user), "UserInfo.fxml", false, false);
+    public void swapToLogin (ActionEvent actionEvent) throws IOException {
+        // TODO: Set onAction with logoutBtn
+        FXMLFactory.setRoot("Login");
     }
+
+    public void swapToChangePassword() throws IOException {
+        // TODO: Set onAction with changePasswordBtn
+        this.openPopup(new ChangePasswordController(user), "ChangePassword.fxml", false, false);
+    }
+
+// Following are Page-Swaps between the main pages
 
     public void swapToStartpage(ActionEvent actionEvent) throws IOException {
         FXMLFactory.setRoot("Startpage");
@@ -174,9 +145,56 @@ public class UserAdminController extends Controller implements Initializable {
         FXMLFactory.setRoot("UserAdmin");
     }
 
+// Following are for functions in this view
+
+    private void openPopup(Controller controller, String fxmlName, boolean onHidingRefresh, boolean onHindingClose) throws IOException {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
+    loader.setController(controller);
+    Parent root = loader.load();
+    Stage stage = new Stage();
+    stage.setResizable(false);
+    if (onHidingRefresh) {
+        stage.setOnHiding(windowEvent -> this.getData());
+    } else if (onHindingClose) {
+        stage.setOnHiding(windowEvent -> this.closeScene());
+    }
+    stage.getIcons().add(new Image(App.class.getResourceAsStream("icons/favicon1.jpg")));
+    stage.setTitle("CMS - Configuration Management System");
+    Scene scene = new Scene(root);
+    stage.setScene(scene);
+    scene.getWindow().sizeToScene();
+    stage.show();
+}
+
     private void closeScene() {
         Stage stClose = (Stage) adminLbl.getScene().getWindow();
         stClose.close();
+    }
+
+    @FXML
+    private void disableButtons() {
+        editBtn.setDisable(true);
+        deleteBtn.setDisable(true);
+    }
+
+    @FXML
+    public void clickAction(MouseEvent mouseEvent) {
+        boolean userSelected = false;
+        if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
+            userSelected = true;
+        }
+
+        if (userSelected) {
+            editBtn.setDisable(false);
+            deleteBtn.setDisable(false);
+        }
+        if (mouseEvent.getClickCount() == 2) {
+            try {
+                showUser();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public ArrayList<User> getAllUserSearchValue(String searchValue) {
@@ -197,6 +215,8 @@ public class UserAdminController extends Controller implements Initializable {
             return answerListUser;
         }
     }
+
+// Following is to Filter and to Search
 
     @FXML
     private void setTableContent(ArrayList<User> user) {
