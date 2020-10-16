@@ -5,14 +5,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -70,14 +66,6 @@ public class CITController extends MainPagesController {
     public Button userBtn;
 
 
-    private final String PAGE_NAME = "CIT";
-
-    private Cit cit;
-
-    public void CITController(Cit cit) {
-        this.cit = cit;
-    }
-
     public void initialize(URL url, ResourceBundle resourceBundle)  {
         super.initialize(url, resourceBundle);
 
@@ -99,15 +87,7 @@ public class CITController extends MainPagesController {
     }
 
     public void swapToCITAdd(ActionEvent actionEvent) throws IOException {
-        CITAddController citAddController = new CITAddController();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("CITAdd.fxml"));
-        loader.setController(citAddController);
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        scene.getWindow().sizeToScene();
-        stage.show();
+        openPopup(new CITAddController(), "CITAdd.fxml", false);
     }
 
     public void fillingIn(ActionEvent actionEvent) throws IOException, SQLException {
@@ -136,15 +116,8 @@ public class CITController extends MainPagesController {
     @FXML
     public void openDeleteCitPopup() throws IOException {
         // FIXME
-        NotificationController notificationController = new NotificationController(choiceBox.getSelectionModel().getSelectedItem(), PAGE_NAME);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Notification.fxml"));
-        loader.setController(notificationController);
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        scene.getWindow().sizeToScene();
-        stage.show();
+        String PAGE_NAME = "CIT";
+        openPopup(new NotificationController(choiceBox.getSelectionModel().getSelectedItem(), PAGE_NAME), "Notification.fxml", false);
     }
 
 

@@ -20,7 +20,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
@@ -37,7 +36,7 @@ public class CIRAddController extends Controller implements Initializable {
     @FXML public Label attribut7Lbl;
 
     @FXML public TextField idTf;
-    @FXML public ChoiceBox citChoicebox;
+    @FXML public ChoiceBox<Cit> citChoicebox;
     @FXML public TextField nameTf;
     @FXML public TextField attribut1Tf;
     @FXML public TextField attribut2Tf;
