@@ -139,7 +139,7 @@ public class DbCallerUser extends DbConnector {
                 password = rs.getString("PASSWORD");
             }
         } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
+
         }
         return password;
     }
