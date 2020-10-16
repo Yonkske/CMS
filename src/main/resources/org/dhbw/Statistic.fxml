@@ -6,14 +6,25 @@
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.StatisticController">
+<VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.StatisticController">
    <children>
-      <HBox alignment="TOP_RIGHT" prefHeight="23.0" prefWidth="600.0">
+      <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label fx:id="adminLbl" text="Vorname, Nachname">
-               <HBox.margin>
-                  <Insets right="5.0" />
-               </HBox.margin></Label>
+            <MenuButton fx:id="adminUserMB" mnemonicParsing="false" text="Vorname, Nachname">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1">
+                     <graphic>
+                        <Button fx:id="benutzerDropDownBtn" mnemonicParsing="false" onAction="#openUserInfo" text="Benutzer" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" text="Action 2">
+                     <graphic>
+                        <Button fx:id="passwordEditBtn" mnemonicParsing="false" onAction="#openChangePassword" text="Passwort ändern" />
+                     </graphic>
+                  </MenuItem>
+               </items>
+            </MenuButton>
+            <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" text="Logout" />
          </children>
       </HBox>
       <HBox prefHeight="389.0" prefWidth="600.0">
@@ -25,7 +36,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToCIT" text="CIT">
+                  <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToCit" text="CIT">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -35,7 +46,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="userBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToBenutzer" text="Benutzer">
+                  <Button fx:id="userBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToUserAdmin" text="Benutzer">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>

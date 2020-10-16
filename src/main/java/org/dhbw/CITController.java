@@ -22,7 +22,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
-public class CITController extends Controller {
+
+public class CITController extends MainPagesController {
     @FXML
     public Label adminLbl;
     @FXML
@@ -98,22 +99,6 @@ public class CITController extends Controller {
 
     }
 
-    public void swapToStartpage(ActionEvent actionEvent) throws IOException {
-        FXMLFactory.setRoot("Startpage");
-    }
-
-    public void swapToCIT(ActionEvent actionEvent) throws IOException {
-        FXMLFactory.setRoot("CIT");
-    }
-
-    public void swapToStatistic(ActionEvent actionEvent) throws IOException {
-        FXMLFactory.setRoot("Statistic");
-    }
-
-    public void swapToBenutzer(ActionEvent actionEvent) throws IOException {
-        FXMLFactory.setRoot("UserAdmin");
-    }
-
     public void swapToCITAdd(ActionEvent actionEvent) throws IOException {
         CITAddController citAddController = new CITAddController();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CITAdd.fxml"));
@@ -164,4 +149,8 @@ public class CITController extends Controller {
     }
 
 
+    @Override
+    public void refresh() {
+
+    }
 }

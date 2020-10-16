@@ -14,7 +14,7 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.sql.SQLException;
 
-public class Controller {
+public abstract class Controller {
 
     final DbCallerCir DB_CALLER_CIR;
     final DbCallerCit DB_CALLER_CIT;
