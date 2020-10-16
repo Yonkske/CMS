@@ -3,6 +3,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.StatisticController">
@@ -19,22 +20,22 @@
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="383.0" prefWidth="136.0">
                <children>
-                  <Button fx:id="startpageBtn" minWidth="65.6" mnemonicParsing="false" text="Startseite" onAction="#swapToStartpage">
+                  <Button fx:id="startpageBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStartpage" text="Startseite">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" text="CIT" onAction="#swapToCIT">
+                  <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToCIT" text="CIT">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="statisticBtn" minWidth="65.6" mnemonicParsing="false" text="Statistik" onAction="#swapToStatistic">
+                  <Button fx:id="statisticBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStatistic" text="Statistik">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="userBtn" minWidth="65.6" mnemonicParsing="false" text="Benutzer" onAction="#swapToBenutzer">
+                  <Button fx:id="userBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToBenutzer" text="Benutzer">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -47,51 +48,38 @@
             <VBox prefHeight="383.0" prefWidth="476.0">
                <children>
                   <HBox prefHeight="35.0" prefWidth="323.0">
-                     <children>
-                        <ChoiceBox fx:id="searchTf" prefWidth="150.0">
-                           <HBox.margin>
-                              <Insets right="15.0" />
-                           </HBox.margin>
-                        </ChoiceBox>
-                        <Button fx:id="filterBtn" mnemonicParsing="false" text="filtern" />
-                     </children>
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </HBox>
                   <VBox prefHeight="74.0" prefWidth="323.0">
                      <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <HBox prefHeight="236.0" prefWidth="470.0">
                            <children>
                               <Label fx:id="cirLabel" minWidth="30.0" text="Anzahl CIR">
                                  <HBox.margin>
                                     <Insets right="40.0" />
                                  </HBox.margin></Label>
-                              <TextField fx:id="numberCIRTf" disable="true" prefWidth="50.0" />
+                              <TextField fx:id="numberCIRTf" alignment="TOP_CENTER" disable="true" prefWidth="50.0" />
                            </children>
                         </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <HBox prefHeight="27.0" prefWidth="251.0">
                            <children>
-                              <Label fx:id="citLabel"  text="Anzahl CIT">
+                              <Label fx:id="citLabel" text="Anzahl CIT">
                                  <padding>
                                     <Insets right="40.0" />
                                  </padding></Label>
-                              <TextField fx:id="numberCITTf" disable="true" prefWidth="50.0" />
+                              <TextField fx:id="numberCITTf" alignment="TOP_LEFT" disable="true" editable="false" prefWidth="50.0" />
                            </children>
                         </HBox>
                      </children>
                   </VBox>
                   <HBox prefHeight="253.0" prefWidth="393.0">
                      <children>
-                        <PieChart fx:id="adminPieChart" maxWidth="300.0" prefHeight="253.0" prefWidth="292.0" />
-                        <BarChart fx:id="adminStackedBarChart" prefHeight="253.0" prefWidth="318.0">
-                          <xAxis>
-                            <CategoryAxis side="BOTTOM" />
-                          </xAxis>
-                          <yAxis>
-                            <NumberAxis side="LEFT" />
-                          </yAxis>
-                        </BarChart>
+                        <PieChart fx:id="adminPieChart" maxWidth="479.0" prefHeight="227.0" prefWidth="398.0">
+                           <effect>
+                              <Blend />
+                           </effect></PieChart>
                      </children>
                   </HBox>
                </children>

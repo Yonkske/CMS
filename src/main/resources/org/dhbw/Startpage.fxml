@@ -56,7 +56,7 @@
                            </HBox.margin></Button>
                      </children>
                   </HBox>
-                  <TableView fx:id="cirTable" prefHeight="276.0" prefWidth="270.0">
+                  <TableView fx:id="cirTable" prefHeight="276.0" prefWidth="270.0" onMouseClicked="#openCirView">
                     <columns>
                       <TableColumn fx:id="citColumn" editable="false" prefWidth="135.0" text="CIT">
                            <graphic>
