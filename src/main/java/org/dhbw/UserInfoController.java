@@ -20,13 +20,25 @@ public class UserInfoController extends Controller implements Initializable {
     private User userToShow;
 
 
-    // Following are to show the correct selected-user
+// Following are to show the correct selected-user
 
+    /**
+     *
+     * @param user
+     */
     public UserInfoController (User user) {
         this.userToShow= user;
     }
 
+
     @Override
+    /**
+     *
+     * this method shows your own user
+     *
+     * @param resourceBundle
+     * @param user
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         surnameTf.setText(userToShow.getSurName());
         nameTf.setText(userToShow.getName());

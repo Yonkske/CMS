@@ -39,6 +39,9 @@ public class UserAddAdminController extends Controller implements Initializable 
 
 
     @Override
+    /**
+     * Methode from the interface Initializable that auto generates the PopUp to add a user
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         authorizationChoiceBox.getItems().addAll("Admin", "User");
         authorizationChoiceBox.setValue("User");

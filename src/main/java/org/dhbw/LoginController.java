@@ -79,7 +79,7 @@ public class LoginController extends Controller {
 
     @FXML
     /**
-     *
+     * this methode open the PopUp to edit the password if the user logs in for the first time
      */
     private void openPopUpEditPassword(User user) throws IOException {
         FXMLFactory.setRoot("ChangePassword");
@@ -87,7 +87,7 @@ public class LoginController extends Controller {
 
     @FXML
     /**
-     *
+     * this methode terminates the program
      */
     public void exit(ActionEvent event) {
         Platform.exit();

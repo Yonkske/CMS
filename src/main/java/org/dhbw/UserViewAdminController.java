@@ -40,6 +40,12 @@ public class UserViewAdminController extends Controller implements Initializable
     }
 
     @Override
+    /**
+     *
+     * Methode from the interface Initializable that auto generates the page
+     *
+     * @param resourceBundle
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // TODO: Methode testen
         this.getData();
@@ -47,7 +53,7 @@ public class UserViewAdminController extends Controller implements Initializable
 
     @FXML
     /**
-     *
+     * this methode open the Notification PopUp to delete a selected user
      * @param actionEvent
      * @throws IOException
      */
@@ -58,7 +64,7 @@ public class UserViewAdminController extends Controller implements Initializable
 
     @FXML
     /**
-     *
+     * this methode open the PopUp to edit the selected user
      * @param actionEvent
      * @throws IOException
      */
@@ -67,6 +73,10 @@ public class UserViewAdminController extends Controller implements Initializable
         openPopup(new UserEditAdminController(userToEdit), "UserEditAdmin.fxml", true, false);
     }
 
+    /**
+     * this methode displays the selected user
+     *
+     */
     private void getData() {
         String authorisation;
         if (userToEdit.getIsAdmin()) {
@@ -84,7 +94,7 @@ public class UserViewAdminController extends Controller implements Initializable
 
     @FXML
     /**
-     *
+     * this methode open the PopUp to edit the password from a selected user
      * @param actionEvent
      * @throws IOException
      */
@@ -93,6 +103,15 @@ public class UserViewAdminController extends Controller implements Initializable
         openPopup(new PasswordEditAdminController(), "PasswordEditAdmin.fxml", false, true);
     }
 
+    /**
+     * this method open the popUps
+     *
+     * @param controller
+     * @param fxmlName
+     * @param onHidingRefresh
+     * @param onHindingClose
+     * @throws IOException
+     */
     private void openPopup(Controller controller, String fxmlName, boolean onHidingRefresh, boolean onHindingClose) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
         loader.setController(controller);
@@ -115,6 +134,9 @@ public class UserViewAdminController extends Controller implements Initializable
         stage.show();
     }
 
+    /**
+     * this methode close the PopUp after an action by the user
+     */
     protected void closeScene() {
         Stage stClose = (Stage) nameTf.getScene().getWindow();
         stClose.close();
