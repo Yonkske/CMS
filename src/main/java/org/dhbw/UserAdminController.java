@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -22,6 +23,7 @@ public class UserAdminController extends Controller implements Initializable {
 
     @FXML
     private TextField searchTextField;
+
 
     @FXML
     private Button searchBtn;
@@ -43,6 +45,9 @@ public class UserAdminController extends Controller implements Initializable {
     private Label adminLbl;
     @FXML
     private final String PAGE_NAME = "UserAdmin";
+    @FXML
+    private ComboBox<String> filterUser;
+    private ArrayList<User> allUsers = null;
 
 
     /**
@@ -54,16 +59,17 @@ public class UserAdminController extends Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         getData();
-
     }
 
     private void getData() {
+        this.allUsers = CB_CALLER_USER.getAllUsers();
         try {
-            userTable.getItems().setAll(CB_CALLER_USER.getAllUsers());
+            userTable.getItems().setAll(allUsers);
             userColumn.setCellValueFactory(new PropertyValueFactory<User, String>("UserName"));
             rightColumn.setCellValueFactory(new PropertyValueFactory<User, String>("Right"));
+            filterUser.getItems().addAll("Rechte", "User", "Admin");
+            filterUser.setValue("Rechte");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -162,8 +168,71 @@ public class UserAdminController extends Controller implements Initializable {
         FXMLFactory.setRoot("UserAdmin");
     }
 
-    protected void closeScene() {
+    private void closeScene() {
         Stage stClose = (Stage) adminLbl.getScene().getWindow();
         stClose.close();
+    }
+
+    public ArrayList<User> getAllUserSearchValue(String searchValue) {
+        int amountUsers = allUsers.size();
+        ArrayList<User> answerListAdmin = null;
+        ArrayList<User> answerListUser = null;
+
+        for (int i = 0; i < amountUsers; i++) {
+            if (allUsers.get(i).getIsAdmin()) {
+                answerListAdmin.add(allUsers.get(i));
+            } else if (!allUsers.get(i).getIsAdmin()) {
+                answerListUser.add(allUsers.get(i));
+            }
+        }
+
+        if (searchValue.equals("Admin")) {
+            return answerListAdmin;
+        } else {
+            return answerListUser;
+        }
+    }
+
+    private ArrayList<User> getListOfAdmins() {
+        ArrayList<User> list = new ArrayList<>() ;
+        for (User u : allUsers) {
+            if (user.getIsAdmin()) {
+                list.add(u);
+            }
+        }
+        return list;
+    }
+
+
+    private void setTableContent(ArrayList<User> user) {
+        userTable.getItems().setAll(user);
+        userColumn.setCellValueFactory(new PropertyValueFactory<User, String>("UserName"));
+        rightColumn.setCellValueFactory(new PropertyValueFactory<User, String>("Right"));
+    }
+
+    public ArrayList<User> getAllWithFilterAndSearch(String selectedFilter, String searchValue) {
+        ArrayList<User> outputList = null;
+        ArrayList<User> filteredUserList = this.getAllUserSearchValue(selectedFilter);
+
+        int amountFilteredUsers = filteredUserList.size();
+
+        for (int i = 0; i < amountFilteredUsers; i++) {
+            if (filteredUserList.get(i).getUserName().contains(searchValue)) {
+                outputList.add(filteredUserList.get(i));
+            }
+        }
+        return outputList;
+    }
+
+    @FXML
+    public void setTableWithFilterAndSearch() {
+        String selectedUser = filterUser.getSelectionModel().getSelectedItem();
+        String searchValue = searchTextField.getText();
+
+        if (selectedUser.equals("Rechte")) {
+            setTableContent(this.getAllUserSearchValue(searchValue));
+        } else {
+            setTableContent(this.getAllWithFilterAndSearch(selectedUser, searchValue));
+        }
     }
 }

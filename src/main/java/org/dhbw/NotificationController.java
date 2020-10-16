@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class NotificationController extends Controller  {
 
     @FXML
-    public Button yesBtn;
+    public static Button yesBtn;
 
     @FXML
     private Button noBtn;
@@ -110,6 +110,7 @@ public class NotificationController extends Controller  {
      */
     private void yesButtonClicked() {
 
+        System.out.println("Hello");
         switch (itemToDelete) {
             case "cir":
                 try {
