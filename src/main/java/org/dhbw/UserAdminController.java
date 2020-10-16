@@ -47,7 +47,7 @@ public class UserAdminController extends Controller implements Initializable {
     private final String PAGE_NAME = "UserAdmin";
     @FXML
     private ComboBox<String> filterUser;
-    private ArrayList<User> allUsers = null;
+    private ArrayList<User> allUsers = new ArrayList<>();
 
 
     /**
