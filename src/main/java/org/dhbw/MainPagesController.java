@@ -37,7 +37,10 @@ public abstract class MainPagesController extends Controller implements IRefresh
         adminUserMB.setText(Controller.user.getSurName() + ", " + Controller.user.getName());
     }
 
-
+    @FXML
+    public void logout() throws IOException {
+        FXMLFactory.setRoot("Login");
+    }
 
     /**
      * Opens the user info on button click

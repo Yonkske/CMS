@@ -181,10 +181,7 @@ public class StartpageController extends MainPagesController  {
     public void refresh() {
         this.setTableWithFilterAndSearch();
     }
-    @FXML
-    public void logout() throws IOException {
-        FXMLFactory.setRoot("Login");
-    }
+
 
 
 }
