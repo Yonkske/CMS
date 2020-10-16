@@ -32,7 +32,11 @@ public abstract class MainPagesController extends Controller implements IRefresh
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        adminUserMB.setText(Controller.user.getSurName() + ", " + Controller.user.getName());
+        String name = Controller.user.getSurName() + ", " + Controller.user.getName();
+        if (Controller.user.getIsAdmin()) {
+            name += " (Admin)";
+            adminUserMB.setText(name);
+        }
     }
 
     @FXML
@@ -116,7 +120,7 @@ public abstract class MainPagesController extends Controller implements IRefresh
      */
     void openPopup(Controller controller, String fxmlName, boolean onHiding) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
-        if(Objects.nonNull(controller)){
+        if (Objects.nonNull(controller)) {
             loader.setController(controller);
         }
         Parent root = loader.load();

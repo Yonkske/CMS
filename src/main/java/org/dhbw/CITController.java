@@ -1,7 +1,6 @@
 package org.dhbw;
 
 import backend.usability.Cit;
-import backend.usability.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -81,24 +80,20 @@ public class CITController extends MainPagesController {
 
     public void initialize(URL url, ResourceBundle resourceBundle)  {
         super.initialize(url, resourceBundle);
+
         ObservableList<Cit> list = FXCollections.observableArrayList();
         choiceBox.setItems(list);
+
         try {
             list.addAll(DB_CALLER_CIT.getAllCits());
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
 
-        super.user = new User("foobar", "foobar", false, false, "Ion", "Tabyrca");
-
-
-        if (!super.user.getIsAdmin()) {
-            //adminLbl.setText(super.user.getSurName() + ", " + super.user.getName());
+        if (!Controller.user.getIsAdmin()) {
             deleteBtn.setVisible(false);
             citaddBtn.setVisible(false);
             userBtn.setVisible(false);
-        } else {
-            //adminLbl.setText(super.user.getSurName() + ", " + super.user.getName() + " (Admin)");
         }
 
     }
