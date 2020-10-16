@@ -33,6 +33,13 @@ public class LoginController extends Controller {
 
         User user = CB_CALLER_USER.getUser(givenName);
 
+
+        //-----------
+        System.out.println(encryptPassword(givenPassword));
+        System.out.print(String.valueOf(checkPassword(givenPassword, encryptPassword(givenPassword))));
+        //-----------
+
+
         if (user == null) {
             showError();
         } else {
