@@ -62,6 +62,7 @@ public abstract class MainPagesController extends Controller implements IRefresh
      * Logs the current user out and swaps the scene back to the login page
      */
     public void logOut() throws IOException {
+        Controller.user = null;
         FXMLFactory.setRoot("Login");
     }
 
