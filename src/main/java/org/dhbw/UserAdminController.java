@@ -130,7 +130,7 @@ public class UserAdminController extends Controller implements Initializable {
     public void deleteUser() throws IOException {
         // TODO: Test der Methode
         if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
-            openPopup(new NotificationController(userTable.getSelectionModel().getSelectedItem(), PAGE_NAME), "Notification.fxml", false, true);
+            openPopup(new NotificationController(userTable.getSelectionModel().getSelectedItem(), PAGE_NAME), "Notification.fxml", false, false);
             this.disableButtons();
         }
     }
