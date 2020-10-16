@@ -141,5 +141,4 @@ public class NotificationController extends Controller  {
         }
         closeStage();
     }
-
 }

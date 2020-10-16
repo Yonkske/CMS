@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -22,6 +23,7 @@ public class UserAdminController extends Controller implements Initializable {
 
     @FXML
     private TextField searchTextField;
+
 
     @FXML
     private Button searchBtn;
@@ -43,6 +45,9 @@ public class UserAdminController extends Controller implements Initializable {
     private Label adminLbl;
     @FXML
     private final String PAGE_NAME = "UserAdmin";
+    @FXML
+    private ComboBox<String> filterUser;
+    private ArrayList<User> allUsers = new ArrayList<>();
 
 
     /**
@@ -54,16 +59,18 @@ public class UserAdminController extends Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         getData();
-
     }
 
+    @FXML
     private void getData() {
+        this.allUsers = CB_CALLER_USER.getAllUsers();
         try {
-            userTable.getItems().setAll(CB_CALLER_USER.getAllUsers());
+            userTable.getItems().setAll(allUsers);
             userColumn.setCellValueFactory(new PropertyValueFactory<User, String>("UserName"));
             rightColumn.setCellValueFactory(new PropertyValueFactory<User, String>("Right"));
+            filterUser.getItems().addAll("Rechte", "User", "Admin");
+            filterUser.setValue("Rechte");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -91,6 +98,7 @@ public class UserAdminController extends Controller implements Initializable {
         }
     }
 
+    @FXML
     private void disableButtons() {
         editBtn.setDisable(true);
         deleteBtn.setDisable(true);
@@ -121,7 +129,7 @@ public class UserAdminController extends Controller implements Initializable {
     public void deleteUser() throws IOException {
         // TODO: Test der Methode
         if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
-            openPopup(new NotificationController(userTable.getSelectionModel().getSelectedItem(), PAGE_NAME), "Notification.fxml", false, true);
+            openPopup(new NotificationController(userTable.getSelectionModel().getSelectedItem(), PAGE_NAME), "Notification.fxml", false, false);
             this.disableButtons();
         }
     }
@@ -161,8 +169,62 @@ public class UserAdminController extends Controller implements Initializable {
         FXMLFactory.setRoot("UserAdmin");
     }
 
-    protected void closeScene() {
+    private void closeScene() {
         Stage stClose = (Stage) adminLbl.getScene().getWindow();
         stClose.close();
+    }
+
+    public ArrayList<User> getAllUserSearchValue(String searchValue) {
+        ArrayList<User> answerListAdmin = new ArrayList<>();
+        ArrayList<User> answerListUser = new ArrayList<>();
+
+        for (User u : allUsers) {
+            if (u.getIsAdmin()) {
+                answerListAdmin.add(u);
+            } else {
+                answerListUser.add(u);
+            }
+        }
+
+        if (searchValue.equals("Admin")) {
+            return answerListAdmin;
+        } else {
+            return answerListUser;
+        }
+    }
+
+    @FXML
+    private void setTableContent(ArrayList<User> user) {
+        userTable.getItems().setAll(user);
+        userColumn.setCellValueFactory(new PropertyValueFactory<User, String>("UserName"));
+        rightColumn.setCellValueFactory(new PropertyValueFactory<User, String>("Right"));
+    }
+
+    public ArrayList<User> getAllWithFilterAndSearch(String selectedFilter, String searchValue) {
+        ArrayList<User> outputList = new ArrayList<>();
+        ArrayList<User> filteredUserList = this.getAllUserSearchValue(selectedFilter);
+
+        for (User u : filteredUserList) {
+            if (u.getUserName().contains(searchValue)) {
+                outputList.add(u);
+            }
+        }
+        return outputList;
+    }
+
+    @FXML
+    public void setTableWithFilterAndSearch() {
+        String selectedUser = filterUser.getSelectionModel().getSelectedItem();
+        String searchValue = searchTextField.getText();
+
+        if (selectedUser.equals("Rechte") & searchValue.length() != 0) {
+            this.setTableContent(this.getAllUserSearchValue(searchValue));
+        } else if (!selectedUser.equals("Rechte")){
+            this.setTableContent(this.getAllWithFilterAndSearch(selectedUser, searchValue));
+        } else if (selectedUser.equals("Rechte") & searchValue.length() == 0) {
+            this.setTableContent(allUsers);
+        } else if (selectedUser.equals("Rechte") & searchValue.length() == 0) {
+            this.setTableContent(allUsers);
+        }
     }
 }
