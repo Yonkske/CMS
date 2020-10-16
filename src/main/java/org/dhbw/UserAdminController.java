@@ -99,7 +99,6 @@ public class UserAdminController extends Controller implements Initializable {
 
     public void showUser() throws IOException {
         if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
-            System.out.println("Pop up");
             openPopup(new UserViewAdminController(userTable.getSelectionModel().getSelectedItem()), "UserViewAdmin.fxml", true, false);
             this.disableButtons();
         }
