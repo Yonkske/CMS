@@ -9,8 +9,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 
 public class LoginController extends Controller {
 
@@ -25,19 +23,11 @@ public class LoginController extends Controller {
     /**
      * This method is for a user logIn, it is checked whether the user is a admin.
      */
-    public void logIn() throws IOException, InvalidKeySpecException, NoSuchAlgorithmException {
+    public void logIn() throws IOException {
 
         String givenName = usernameTf.getText();
         String givenPassword = passwordField.getText();
-        String givenPasswordEncrypt = super.encryptPassword(givenPassword);
-
         User user = CB_CALLER_USER.getUser(givenName);
-
-
-        //-----------
-        System.out.println(encryptPassword(givenPassword));
-        System.out.print(String.valueOf(checkPassword(givenPassword, encryptPassword(givenPassword))));
-        //-----------
 
 
         if (user == null) {
@@ -49,11 +39,10 @@ public class LoginController extends Controller {
                 showError();
             } else if (givenPassword.length() == 0) {
                 showError();
-            } else if (CB_CALLER_USER.checkUser(givenName, givenPassword) & user.getIsInitial()) {
-                // TODO: Wenn nur noch codierte passwörter gespeichert sind: CB_CALLER_USER.checkUser(givenName, givenPasswordEncrypt)
+            } else if (checkPassword(givenPassword, CB_CALLER_USER.getEncryptedPassword(givenName)) & user.getIsInitial()) {
+
                 openPopUpEditPassword(User.getUser(givenName));Controller.user = User.getUser(givenName);
-            } else if (CB_CALLER_USER.checkUser(givenName, givenPassword) & !user.getIsInitial()) {
-                // TODO: Wenn nur noch codierte passwörter gespeichert sind: CB_CALLER_USER.checkUser(givenName, givenPasswordEncrypt)
+            } else if (checkPassword(givenPassword, CB_CALLER_USER.getEncryptedPassword(givenName)) & !user.getIsInitial()) {
                 Controller.user = User.getUser(givenName);
                 switchToStartpage(User.getUser(givenName));
             } else {

@@ -1,10 +1,11 @@
 package backend.database;
 
 
-import backend.usability.Cit;
 import backend.usability.User;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DbCallerUser extends DbConnector {
@@ -130,12 +131,26 @@ public class DbCallerUser extends DbConnector {
         }
     }
 
+    public String getEncryptedPassword(String userName) {
+        String password = null;
+        try {
+            rs = stmt.executeQuery("SELECT PASSWORD FROM USER WHERE USER_NAME = '" + userName + "';");
+            if (rs.first()) {
+                password = rs.getString("PASSWORD");
+            }
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+        return password;
+    }
+
     /**
      * Method gives a list of all Users in database
+     *
      * @return
      */
     public ArrayList<User> getAllUsers() {
-    // TODO: make it work
+        // TODO: make it work
 
         ArrayList<User> allUsers = new ArrayList<User>();
         User user = User.getUser("admin");
@@ -143,8 +158,7 @@ public class DbCallerUser extends DbConnector {
         try {
             rs = stmt.executeQuery("SELECT * FROM USER");
 
-            while(rs.next())
-            {
+            while (rs.next()) {
                 String userName = rs.getString(1);
                 String password = rs.getString(2);
                 boolean isInitial = rs.getBoolean(3);
