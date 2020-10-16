@@ -89,12 +89,12 @@ public class CITController extends MainPagesController {
 
 
         if (!super.user.getIsAdmin()) {
-            adminLbl.setText(super.user.getSurName() + ", " + super.user.getName());
+            //adminLbl.setText(super.user.getSurName() + ", " + super.user.getName());
             deleteBtn.setVisible(false);
             citaddBtn.setVisible(false);
             userBtn.setVisible(false);
         } else {
-            adminLbl.setText(super.user.getSurName() + ", " + super.user.getName() + " (Admin)");
+            //adminLbl.setText(super.user.getSurName() + ", " + super.user.getName() + " (Admin)");
         }
 
     }
