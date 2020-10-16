@@ -41,7 +41,7 @@ public class UserEditAdminController extends Controller implements Initializable
         }
 
         User user = new User(userName, password, false, isAdmin, name, surName);
-        CB_CALLER_USER.updateUser(user);
+        DB_CALLER_USER.updateUser(user);
 
         closeScene();
     }
