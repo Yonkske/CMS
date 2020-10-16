@@ -5,13 +5,8 @@ import backend.database.DbCallerCit;
 import backend.database.DbCallerUser;
 import backend.database.DbConnector;
 import backend.usability.User;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.KeySpec;
 import java.sql.SQLException;
 
 public abstract class Controller {
@@ -21,7 +16,7 @@ public abstract class Controller {
     final DbCallerUser CB_CALLER_USER;
     static User user;
 
-    public Controller () {
+    public Controller() {
 
         try {
             new DbConnector().startConnection();
@@ -34,15 +29,13 @@ public abstract class Controller {
 
     }
 
-    public String encryptPassword(String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
-        SecureRandom random = new SecureRandom();
-        byte[] salt = new byte[16];
+    String encryptPassword(String password) {
+        StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
+        return encryptor.encryptPassword(password);
+    }
 
-        random.nextBytes(salt);
-        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 128);
-
-        SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-        String hash = String.valueOf(factory.generateSecret(spec).getEncoded());
-        return hash;
+    boolean checkPassword(String inputPassword, String encryptedStoredPassword) {
+        StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
+        return encryptor.checkPassword(inputPassword, encryptedStoredPassword);
     }
 }

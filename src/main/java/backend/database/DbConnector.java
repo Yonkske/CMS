@@ -1,6 +1,9 @@
 package backend.database;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DbConnector {
 
@@ -107,7 +110,7 @@ public class DbConnector {
      */
     private void insertFirstUser() throws SQLException{
         String query = "INSERT INTO USER "
-                + "SELECT 'admin', 'admin', false, true, '', ''"
+                + "SELECT 'admin', 'f3BZyl1b+cGrUn+HPjvPfkZcBRCfj0VoocwLEUbB4ZaTyEfyw2ppAOxQP05f64tW', false, true, 'Strator', 'Admini'"
                 + "WHERE NOT EXISTS (SELECT * FROM USER)";
 
         stmt.execute(query);

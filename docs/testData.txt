@@ -1,4 +1,4 @@
-insert into USER values ('testuser', 'password', false, true, 'Test', 'User');
+insert into USER values ('testuser', 'f3BZyl1b+cGrUn+HPjvPfkZcBRCfj0VoocwLEUbB4ZaTyEfyw2ppAOxQP05f64tW', false, true, 'Test', 'User');
 
 insert into CIT values ( 1, 'Drucker','Hersteller','Modell','Farbe','IP','Raum','Ort','Niederlassung');
 

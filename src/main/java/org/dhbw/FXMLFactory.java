@@ -32,7 +32,7 @@ public class FXMLFactory extends Application {
      * Sets root of actual scene to scene in file of @param fxml. Scene is set to new size.
      *
      * @param fxml String name <b>without</b> suffix.
-     * @throws IOException
+     * @throws IOException the exception.
      */
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
@@ -48,7 +48,7 @@ public class FXMLFactory extends Application {
     /**
      * @param fxml String name without suffix.
      * @return FXMLLoader instance, loaded
-     * @throws IOException
+     * @throws IOException the exception.
      */
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));

@@ -36,10 +36,8 @@ public class UserEditAdminController extends Controller implements Initializable
         String password = User.getUser(userName).getPassword();
         boolean isAdmin = false;
 
-        if (authorizationChoiceBox.getValue() == "Admin") {
+        if (authorizationChoiceBox.getValue().equals("Admin")) {
             isAdmin = true;
-        } else if (authorizationChoiceBox.getValue() == "User") {
-            isAdmin = false;
         }
 
         User user = new User(userName, password, false, isAdmin, name, surName);
@@ -54,8 +52,7 @@ public class UserEditAdminController extends Controller implements Initializable
 
     @FXML
     public void closeScene() {
-        Stage close = new Stage();
-        close = (Stage) submitBtn.getScene().getWindow();
+        Stage close = (Stage) submitBtn.getScene().getWindow();
         close.close();
     }
 

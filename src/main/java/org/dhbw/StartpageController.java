@@ -2,17 +2,10 @@ package org.dhbw;
 
 import backend.usability.Cir;
 import backend.usability.Cit;
-import backend.usability.User;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class StartpageController extends MainPagesController implements Initializable {
+public class StartpageController extends MainPagesController  {
 
     @FXML
     private TableView<Cir> cirTable;
@@ -55,7 +48,7 @@ public class StartpageController extends MainPagesController implements Initiali
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        super.initialize(url, resourceBundle);
         try {
             setTableContent(DB_CALLER_CIR.getAll());
 
@@ -68,18 +61,12 @@ public class StartpageController extends MainPagesController implements Initiali
             e.printStackTrace();
         }
 
-        // FIXME: For test purposes only
-        super.user = new User("foobar", "foobar", false, true, "Simon", "Froehner");
-
-
-        if (!super.user.getIsAdmin()) {
-            //adminLbl.setText(super.user.getSurName() + ", " + super.user.getName());
+        if (!Controller.user.getIsAdmin()) {
             userBtn.setVisible(false);
             citEditBtn.setVisible(false);
             citDeleteBtn.setVisible(false);
-        } else {
-            //adminLbl.setText(super.user.getSurName() + ", " + super.user.getName() + " (Admin)");
         }
+
     }
 
     /**
@@ -182,15 +169,9 @@ public class StartpageController extends MainPagesController implements Initiali
         cirNameColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CirName"));
     }
 
-
     @Override
     public void refresh() {
         this.setTableWithFilterAndSearch();
     }
-    @FXML
-    public void logout() throws IOException {
-        FXMLFactory.setRoot("Login");
-    }
-
 
 }

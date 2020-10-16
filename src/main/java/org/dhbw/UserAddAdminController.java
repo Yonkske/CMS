@@ -26,10 +26,8 @@ public class UserAddAdminController extends Controller implements Initializable 
     private TextField initialPasswordTf;
     @FXML
     private TextField repeatInitialPasswordTf;
-
     @FXML
     private ChoiceBox<String> authorizationChoiceBox;
-
     @FXML
     private Button cancelBtn;
     @FXML
@@ -41,6 +39,8 @@ public class UserAddAdminController extends Controller implements Initializable 
     @Override
     /**
      * Methode from the interface Initializable that auto generates the PopUp to add a user
+     * @Param url url
+     * @Param resourceBundle resourceBundle
      */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         authorizationChoiceBox.getItems().addAll("Admin", "User");
