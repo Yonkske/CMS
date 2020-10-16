@@ -38,7 +38,4 @@ public abstract class Controller {
         StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
         return encryptor.checkPassword(inputPassword, encryptedStoredPassword);
     }
-
-
-
 }
