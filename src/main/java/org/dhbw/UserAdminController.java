@@ -206,7 +206,6 @@ public class UserAdminController extends Controller implements Initializable {
         ArrayList<User> filteredUserList = this.getAllUserSearchValue(selectedFilter);
 
         for (User u : filteredUserList) {
-
             if (u.getUserName().contains(searchValue)) {
                 outputList.add(u);
             }
