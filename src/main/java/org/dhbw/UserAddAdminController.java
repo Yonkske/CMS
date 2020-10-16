@@ -55,34 +55,27 @@ public class UserAddAdminController extends Controller implements Initializable 
      * @throws NoSuchAlgorithmException
      */
     public void submit() throws InvalidKeySpecException, NoSuchAlgorithmException {
-        String passwordNotEncrypted = initialPasswordTf.getText();
-        String passwortRepeated = repeatInitialPasswordTf.getText();
 
-        if (passwordNotEncrypted.equals(passwortRepeated)) {
+        if (initialPasswordTf.getText().equals(repeatInitialPasswordTf.getText())) {
             String surName = surnameTf.getText();
             String name = nameTf.getText();
             String userName = usernameTf.getText();
-
             boolean isAdmin = false;
-            if (authorizationChoiceBox.getValue() == "Admin") {
+
+            if (authorizationChoiceBox.getValue().equals("Admin")) {
                 isAdmin = true;
-            } else if (authorizationChoiceBox.getValue() == "User") {
-                isAdmin = false;
             }
 
-            if (userName.length() > 0 && passwordNotEncrypted.length() > 0 && passwortRepeated.length() > 0) {
-
-                String passwordEncrypted = super.encryptPassword(passwordNotEncrypted);
+            if (userName.length() > 0 && initialPasswordTf.getText().length() > 0 && repeatInitialPasswordTf.getText().length() > 0) {
+                String passwordEncrypted = super.encryptPassword(initialPasswordTf.getText());
                 User user = new User(userName, passwordEncrypted, true, isAdmin, name, surName);
                 CB_CALLER_USER.insertUser(user);
-
                 closeScene();
-            } else if (userName.length() == 0 && passwordNotEncrypted.length() == 0 && passwortRepeated.length() == 0) {
-                showError();
             } else {
                 showError();
                 clearPasswordAndUser();
             }
+
         } else {
             showError();
             initialPasswordTf.setText("");
