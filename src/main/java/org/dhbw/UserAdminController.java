@@ -81,14 +81,13 @@ public class UserAdminController extends Controller implements Initializable {
         if (userSelected) {
             editBtn.setDisable(false);
             deleteBtn.setDisable(false);
-        } else if (mouseEvent.getClickCount() == 2) {
+        }
+        if (mouseEvent.getClickCount() == 2) {
             try {
                 showUser();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else if (!userSelected) {
-            this.disableButtons();
         }
     }
 
