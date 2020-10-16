@@ -47,8 +47,8 @@ public class LoginController extends Controller {
                 openPopUpEditPassword(User.getUser(givenName));Controller.user = User.getUser(givenName);
             } else if (CB_CALLER_USER.checkUser(givenName, givenPassword) & !user.getIsInitial()) {
                 // TODO: Wenn nur noch codierte passwörter gespeichert sind: CB_CALLER_USER.checkUser(givenName, givenPasswordEncrypt)
-                switchToStartpage(User.getUser(givenName));
                 Controller.user = User.getUser(givenName);
+                switchToStartpage(User.getUser(givenName));
             } else {
                 showError();
             }

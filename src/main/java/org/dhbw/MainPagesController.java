@@ -1,7 +1,6 @@
 package org.dhbw;
 
 
-import backend.usability.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -33,7 +32,6 @@ public abstract class MainPagesController extends Controller implements IRefresh
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Controller.user = new User("foobar", "foobar", false, true, "Simon", "Froehner");
         adminUserMB.setText(Controller.user.getSurName() + ", " + Controller.user.getName());
     }
 
