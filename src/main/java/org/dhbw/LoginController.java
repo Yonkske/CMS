@@ -27,7 +27,7 @@ public class LoginController extends Controller {
 
         String givenName = usernameTf.getText();
         String givenPassword = passwordField.getText();
-        User user = CB_CALLER_USER.getUser(givenName);
+        User user = DB_CALLER_USER.getUser(givenName);
 
         // Wenn der Null ist löst zuvor die
         if (user == null) {
@@ -39,10 +39,10 @@ public class LoginController extends Controller {
                 showError();
             } else if (givenPassword.length() == 0) {
                 showError();
-            } else if (checkPassword(givenPassword, CB_CALLER_USER.getEncryptedPassword(givenName)) & user.getIsInitial()) {
+            } else if (checkPassword(givenPassword, DB_CALLER_USER.getEncryptedPassword(givenName)) & user.getIsInitial()) {
                 Controller.user = User.getUser(givenName);
                 openPopUpEditPassword(User.getUser(givenName));
-            } else if (checkPassword(givenPassword, CB_CALLER_USER.getEncryptedPassword(givenName)) & !user.getIsInitial()) {
+            } else if (checkPassword(givenPassword, DB_CALLER_USER.getEncryptedPassword(givenName)) & !user.getIsInitial()) {
                 Controller.user = User.getUser(givenName);
                 switchToStartpage(User.getUser(givenName));
             } else {

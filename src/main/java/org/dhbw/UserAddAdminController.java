@@ -72,7 +72,7 @@ public class UserAddAdminController extends Controller implements Initializable 
             if (userName.length() > 0 && initialPasswordTf.getText().length() > 0 && repeatInitialPasswordTf.getText().length() > 0) {
                 String passwordEncrypted = super.encryptPassword(initialPasswordTf.getText());
                 User user = new User(userName, passwordEncrypted, true, isAdmin, name, surName);
-                CB_CALLER_USER.insertUser(user);
+                DB_CALLER_USER.insertUser(user);
                 closeScene();
             } else {
                 showError();

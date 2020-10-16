@@ -70,7 +70,7 @@ public class UserAdminController extends Controller implements Initializable {
      * This method is to show the data from the database.
      */
     private void getData() {
-        this.allUsers = CB_CALLER_USER.getAllUsers();
+        this.allUsers = DB_CALLER_USER.getAllUsers();
         try {
             userTable.getItems().setAll(allUsers);
             userColumn.setCellValueFactory(new PropertyValueFactory<User, String>("UserName"));
