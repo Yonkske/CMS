@@ -13,8 +13,8 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.ResourceBundle;
-
 
 
 public class CITController extends MainPagesController {
@@ -66,7 +66,7 @@ public class CITController extends MainPagesController {
     public Button userBtn;
 
 
-    public void initialize(URL url, ResourceBundle resourceBundle)  {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
 
         ObservableList<Cit> list = FXCollections.observableArrayList();
@@ -117,7 +117,9 @@ public class CITController extends MainPagesController {
     public void openDeleteCitPopup() throws IOException {
         // FIXME
         String PAGE_NAME = "CIT";
-        openPopup(new NotificationController(choiceBox.getSelectionModel().getSelectedItem(), PAGE_NAME), "Notification.fxml", false);
+        if (Objects.nonNull(choiceBox.getSelectionModel().getSelectedItem())) {
+            openPopup(new NotificationController(choiceBox.getSelectionModel().getSelectedItem(), PAGE_NAME), "Notification.fxml", false);
+        }
     }
 
 
