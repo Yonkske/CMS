@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public abstract class MainPagesController extends Controller implements IRefreshable{
 
@@ -20,29 +21,84 @@ public abstract class MainPagesController extends Controller implements IRefresh
     @FXML
     Button logoutBtn;
 
+    /**
+     * Opens the user info on button click
+     *
+     * @throws IOException
+     */
     public void openUserInfo() throws IOException {
-        openPopup(new UserInfoController(), "UserInfo.fxml", false);
+        openPopup(null, "UserInfo.fxml", false);
     }
 
+    /**
+     * Opens change password on button click
+     *
+     * @throws IOException
+     */
     public void openChangePassword() throws IOException {
-        openPopup(new ChangePasswordController(), "ChangePassword.fxml", false);
+        openPopup(null, "ChangePassword.fxml", false);
     }
 
+    /**
+     * Logs the current user out and swaps the scene back to the login page
+     */
     public void swapToLogin() {
 
     }
 
     /**
+     * Swaps the scene to the startpage on button click
+     *
+     * @throws IOException
+     */
+    @FXML
+    public void swapToStartpage() throws IOException {
+        FXMLFactory.setRoot("Startpage");
+    }
+
+    /**
+     * Swaps the scene to the CITPage on button click
+     *
+     * @throws IOException
+     */
+    @FXML
+    public void swapToCit() throws IOException {
+        FXMLFactory.setRoot("CIT");
+    }
+
+    /**
+     * Swaps the scene to the statistic page on button click
+     *
+     * @throws IOException
+     */
+    @FXML
+    public void swapToStatistic() throws IOException {
+        FXMLFactory.setRoot("Statistic");
+    }
+
+    /**
+     * Swaps the scene to the user page on button click
+     *
+     * @throws IOException
+     */
+    @FXML
+    public void swapToUserAdmin() throws IOException {
+        FXMLFactory.setRoot("UserAdmin");
+    }
+
+    /**
      * Opens a popup window
      *
-     * @param controller controller for the popup - must match fxmlName
+     * @param controller controller for the popup - must match fxmlName or be null
      * @param fxmlName   of the fxml file to be opened in the popup - must match controller
      * @param onHiding   if the page should be refreshed on closing the popup
      * @throws IOException
      */
     void openPopup(Controller controller, String fxmlName, boolean onHiding) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
-        //loader.setController(controller);
+        if(Objects.nonNull(controller)){
+            loader.setController(controller);
+        }
         Parent root = loader.load();
         Stage stage = new Stage();
         stage.setResizable(false);

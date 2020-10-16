@@ -83,46 +83,6 @@ public class StartpageController extends MainPagesController implements Initiali
     }
 
     /**
-     * Swaps the scene to the startpage on button click
-     *
-     * @throws IOException
-     */
-    @FXML
-    public void swapToStartpage() throws IOException {
-        FXMLFactory.setRoot("Startpage");
-    }
-
-    /**
-     * Swaps the scene to the CITPage on button click
-     *
-     * @throws IOException
-     */
-    @FXML
-    public void swapToCitAdmin() throws IOException {
-        FXMLFactory.setRoot("CIT");
-    }
-
-    /**
-     * Swaps the scene to the statistic page on button click
-     *
-     * @throws IOException
-     */
-    @FXML
-    public void swapToStatisticAdmin() throws IOException {
-        FXMLFactory.setRoot("Statistic");
-    }
-
-    /**
-     * Swaps the scene to the user page on button click
-     *
-     * @throws IOException
-     */
-    @FXML
-    public void swapToUserAdmin() throws IOException {
-        FXMLFactory.setRoot("UserAdmin");
-    }
-
-    /**
      * Opens the CITAdd Popup on button click
      *
      * @throws IOException
@@ -221,35 +181,6 @@ public class StartpageController extends MainPagesController implements Initiali
         citColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CitName"));
         cirNameColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CirName"));
     }
-
-
-    /**
-     * Opens a popup window
-     *
-     * @param controller controller for the popup - must match fxmlName
-     * @param fxmlName   of the fxml file to be opened in the popup - must match controller
-     * @param onHiding   if the page should be refreshed on closing the popup
-     * @throws IOException
-     */
-    /*
-    private void openPopup(Controller controller, String fxmlName, boolean onHiding) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
-        loader.setController(controller);
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        stage.setResizable(false);
-        if (onHiding) {
-            stage.setOnHiding(windowEvent -> );
-        }
-        stage.getIcons().add(new Image(App.class.getResourceAsStream("icons/favicon1.jpg")));
-        stage.setTitle("CMS - Configuration Management System");
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        scene.getWindow().sizeToScene();
-        stage.show();
-    }
-
-     */
 
 
     @Override

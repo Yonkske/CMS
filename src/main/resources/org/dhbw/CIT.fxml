@@ -37,7 +37,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToCIT" prefWidth="78.0" text="CIT">
+                  <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToCit" prefWidth="78.0" text="CIT">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -47,7 +47,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="userBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToBenutzer" text="Benutzer">
+                  <Button fx:id="userBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToUserAdmin" text="Benutzer">
                         <VBox.margin>
                             <Insets top="20.0" />
                         </VBox.margin>

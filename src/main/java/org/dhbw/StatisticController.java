@@ -1,12 +1,7 @@
 package org.dhbw;
 
-import backend.database.DbCallerCir;
-import backend.database.DbCallerCit;
 import backend.usability.Cir;
 import backend.usability.Cit;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
@@ -15,17 +10,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
-import java.sql.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import javafx.application.Application;
-import javafx.geometry.Side;
-import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 
 
 public class StatisticController extends MainPagesController {
@@ -74,22 +60,6 @@ public class StatisticController extends MainPagesController {
         numberCIRTf.setText(String.valueOf(Cir.getCount()));
         numberCITTf.setText(String.valueOf(Cit.getCount()));
 
-    }
-
-    public void swapToStartpage(ActionEvent actionEvent) throws IOException {
-        FXMLFactory.setRoot("Startpage");
-    }
-
-    public void swapToCIT(ActionEvent actionEvent) throws IOException {
-        FXMLFactory.setRoot("CIT");
-    }
-
-    public void swapToStatistic(ActionEvent actionEvent) throws IOException {
-        FXMLFactory.setRoot("Statistic");
-    }
-
-    public void swapToBenutzer(ActionEvent actionEvent) throws IOException {
-        FXMLFactory.setRoot("UserAdmin");
     }
 
     @Override
