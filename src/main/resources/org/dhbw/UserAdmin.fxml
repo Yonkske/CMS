@@ -57,14 +57,14 @@
                                         <TableView fx:id="userTable" prefHeight="194.0" prefWidth="240.0"
                                                    onMouseClicked="#clickAction">
                                             <columns>
-                                                <TableColumn fx:id="userColumn"  prefWidth="120.0" text="Benutzer">>
+                                                <TableColumn fx:id="userColumn"  prefWidth="120.0"  text="Benutzer"/>
+                                                <TableColumn fx:id="rightColumn" prefWidth="120.0">
                                                     <graphic>
                                                         <ComboBox fx:id="filterUser" prefHeight="25.0" prefWidth="135.0"
-                                                                  promptText="Benutzer"
+                                                                  promptText="Rechte"
                                                                   onAction="#setTableWithFilterAndSearch"/>
                                                     </graphic>
                                                 </TableColumn>
-                                                <TableColumn fx:id="rightColumn" prefWidth="120.0" text="Rechte"/>
                                             </columns>
                                         </TableView>
                                     </content>
