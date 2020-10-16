@@ -80,7 +80,7 @@
                                  <padding>
                                     <Insets right="40.0" />
                                  </padding></Label>
-                              <TextField fx:id="numberCITTf" alignment="TOP_LEFT" disable="true" editable="false" prefWidth="50.0" />
+                              <TextField fx:id="numberCITTf" alignment="TOP_CENTER" disable="true" editable="false" prefWidth="50.0" />
                            </children>
                         </HBox>
                      </children>
