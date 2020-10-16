@@ -59,7 +59,6 @@ public class FXMLFactory extends Application {
      * go method, extends main method of the program
      */
     void go() {
-        new Controller();
         launch();
     }
 }
