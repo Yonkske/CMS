@@ -29,7 +29,7 @@ public class LoginController extends Controller {
         String givenPassword = passwordField.getText();
         User user = CB_CALLER_USER.getUser(givenName);
 
-
+        // Wenn der Null ist löst zuvor die
         if (user == null) {
             showError();
         } else {

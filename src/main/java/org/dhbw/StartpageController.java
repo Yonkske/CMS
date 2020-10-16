@@ -61,13 +61,6 @@ public class StartpageController extends MainPagesController  {
             e.printStackTrace();
         }
 
-        // FIXME: For test purposes only
-    //    Controller.user = new User("foobar", "foobar", false, true, "Simon", "Froehner");
-
-
-    //    adminUserMB.setText(Controller.user.getSurName() + ", " + Controller.user.getName());
-
-
         if (!Controller.user.getIsAdmin()) {
             userBtn.setVisible(false);
             citEditBtn.setVisible(false);
@@ -176,12 +169,9 @@ public class StartpageController extends MainPagesController  {
         cirNameColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CirName"));
     }
 
-
     @Override
     public void refresh() {
         this.setTableWithFilterAndSearch();
     }
-
-
 
 }

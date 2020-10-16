@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 
@@ -156,6 +155,7 @@ public class CIRViewController extends Controller implements Initializable  {
      */
     private void openPopUpNotification(Cir selectedCir) throws IOException {
         NotificationController notificationController = new NotificationController(selectedCir, PAGE_NAME);
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Notification.fxml"));
         loader.setController(notificationController);
         Parent root = loader.load();
