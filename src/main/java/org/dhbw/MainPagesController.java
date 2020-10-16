@@ -35,8 +35,8 @@ public abstract class MainPagesController extends Controller implements IRefresh
         String name = Controller.user.getSurName() + ", " + Controller.user.getName();
         if (Controller.user.getIsAdmin()) {
             name += " (Admin)";
-            adminUserMB.setText(name);
         }
+        adminUserMB.setText(name);
     }
 
     @FXML
