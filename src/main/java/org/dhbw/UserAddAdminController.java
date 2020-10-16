@@ -70,22 +70,16 @@ public class UserAddAdminController extends Controller implements Initializable 
                 isAdmin = false;
             }
 
-            if (userName.length() > 0 & passwordNotEncrypted.length() > 0 & passwortRepeated.length() > 0) {
+            if (userName.length() > 0 && passwordNotEncrypted.length() > 0 && passwortRepeated.length() > 0) {
 
                 String passwordEncrypted = super.encryptPassword(passwordNotEncrypted);
                 User user = new User(userName, passwordEncrypted, true, isAdmin, name, surName);
                 CB_CALLER_USER.insertUser(user);
 
                 closeScene();
-            } else if (userName.length() == 0 & passwordNotEncrypted.length() == 0 & passwortRepeated.length() == 0) {
+            } else if (userName.length() == 0 && passwordNotEncrypted.length() == 0 && passwortRepeated.length() == 0) {
                 showError();
-            } else if (userName.length() > 0 & passwordNotEncrypted.length() == 0 & passwortRepeated.length() == 0) {
-                showError();
-                clearPasswordAndUser();
-            } else if (userName.length() == 0 & passwordNotEncrypted.length() > 0 & passwortRepeated.length() == 0) {
-                showError();
-                clearPasswordAndUser();
-            } else if (userName.length() == 0 & passwordNotEncrypted.length() == 0 & passwortRepeated.length() > 0) {
+            } else {
                 showError();
                 clearPasswordAndUser();
             }

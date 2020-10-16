@@ -217,13 +217,11 @@ public class UserAdminController extends Controller implements Initializable {
         String selectedUser = filterUser.getSelectionModel().getSelectedItem();
         String searchValue = searchTextField.getText();
 
-        if (selectedUser.equals("Rechte") & searchValue.length() != 0) {
+        if (selectedUser.equals("Rechte") && searchValue.length() != 0) {
             this.setTableContent(this.getAllUserSearchValue(searchValue));
         } else if (!selectedUser.equals("Rechte")){
             this.setTableContent(this.getAllWithFilterAndSearch(selectedUser, searchValue));
-        } else if (selectedUser.equals("Rechte") & searchValue.length() == 0) {
-            this.setTableContent(allUsers);
-        } else if (selectedUser.equals("Rechte") & searchValue.length() == 0) {
+        } else {
             this.setTableContent(allUsers);
         }
     }
