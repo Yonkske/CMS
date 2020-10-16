@@ -204,6 +204,7 @@ public class UserAdminController extends Controller implements Initializable {
     }
 
 
+    @FXML
     private void setTableContent(ArrayList<User> user) {
         userTable.getItems().setAll(user);
         userColumn.setCellValueFactory(new PropertyValueFactory<User, String>("UserName"));
