@@ -59,11 +59,6 @@ public class StatisticController extends Controller {
 
 
     public void initialize() throws SQLException {
-        ObservableList<Cit> list = FXCollections.observableArrayList();
-        searchTf.setItems(list);
-        list.addAll(Cit.showAll());
-
-
         ArrayList<Cit> allCit = new ArrayList<Cit>();
         allCit = Cit.showAll();
         Cit currentCit;
