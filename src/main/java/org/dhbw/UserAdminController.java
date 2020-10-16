@@ -153,6 +153,11 @@ public class UserAdminController extends Controller implements Initializable {
         stage.show();
     }
 
+    public void openUserInfo() throws IOException {
+        // TODO: Set onAction with showCurrentUserBtn
+        openPopup(new UserInfoController(super.user), "UserInfo.fxml", false, false);
+    }
+
     public void swapToStartpage(ActionEvent actionEvent) throws IOException {
         FXMLFactory.setRoot("Startpage");
     }

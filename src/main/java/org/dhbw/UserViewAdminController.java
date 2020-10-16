@@ -69,9 +69,9 @@ public class UserViewAdminController extends Controller implements Initializable
 
     private void getData() {
         String authorisation;
-        if (userToEdit.getIsAdmin() == true) {
+        if (userToEdit.getIsAdmin()) {
             authorisation = "Admin";
-        } else if (userToEdit.getIsAdmin() == false) {
+        } else if (!userToEdit.getIsAdmin()) {
             authorisation = "User";
         } else {
             authorisation = "failure";
