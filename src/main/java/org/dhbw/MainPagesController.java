@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -14,6 +16,10 @@ import java.util.Objects;
 
 public abstract class MainPagesController extends Controller implements IRefreshable{
 
+    @FXML
+    MenuButton adminUserMB;
+    @FXML
+    MenuItem logOutMbItem;
     @FXML
     Button benutzerDropDownBtn;
     @FXML
@@ -42,8 +48,8 @@ public abstract class MainPagesController extends Controller implements IRefresh
     /**
      * Logs the current user out and swaps the scene back to the login page
      */
-    public void swapToLogin() {
-
+    public void logOut() throws IOException {
+        FXMLFactory.setRoot("Login");
     }
 
     /**
