@@ -1,5 +1,6 @@
 package org.dhbw;
 
+import backend.usability.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -26,6 +27,9 @@ public class ChangePasswordController extends Controller {
     public Button cancelBtn;
     @FXML
     public Button submitBtn;
+
+    public ChangePasswordController(User user) {
+    }
 
     public void switchToStartpage(ActionEvent actionEvent) throws IOException {
         FXMLFactory.setRoot("Startpage");

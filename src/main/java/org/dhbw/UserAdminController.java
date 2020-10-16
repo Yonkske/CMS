@@ -24,7 +24,6 @@ public class UserAdminController extends Controller implements Initializable {
     @FXML
     private TextField searchTextField;
 
-
     @FXML
     private Button searchBtn;
     @FXML
@@ -49,6 +48,7 @@ public class UserAdminController extends Controller implements Initializable {
     private ComboBox<String> filterUser;
     private ArrayList<User> allUsers = new ArrayList<>();
 
+// Following are to show correct data on the user page
 
     /**
      * Methode from the interface Initializable that auto generates the page on
@@ -58,11 +58,17 @@ public class UserAdminController extends Controller implements Initializable {
      * @param resourceBundle
      */
     @Override
+    /**
+     * This method runs when this Controller is addressed.
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         getData();
     }
 
     @FXML
+    /**
+     * This method is to show the data from the database.
+     */
     private void getData() {
         this.allUsers = CB_CALLER_USER.getAllUsers();
         try {
@@ -78,7 +84,172 @@ public class UserAdminController extends Controller implements Initializable {
         adminLbl.setText(super.user.getSurName() + ", " + super.user.getName() + " (Admin)");
     }
 
+// Following are open Popups
+
+    /**
+     * This method is to show a selected user in a popup.
+     * @throws IOException
+     */
+    public void showUser() throws IOException {
+        if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
+            openPopup(new UserViewAdminController(userTable.getSelectionModel().getSelectedItem()), "UserViewAdmin.fxml", true, false);
+            this.disableButtons();
+        }
+    }
+
+    /**
+     * This method opens a Popup. With that you can add a new User to the database.
+     * @throws IOException
+     */
+    public void addUser() throws IOException {
+        // TODO: Test method
+        openPopup(new UserAddAdminController(), "UserAddAdmin.fxml", true, true);
+        this.disableButtons();
+    }
+
+    /**
+     * This method opens a popup where you can edit the selected user.
+     * @throws IOException
+     */
+    public void editUser() throws IOException {
+        // TODO: Test der Methode
+        if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
+            openPopup(new UserEditAdminController(userTable.getSelectionModel().getSelectedItem()), "UserEditAdmin.fxml", true, false);
+            this.disableButtons();
+        }
+    }
+
+    /**
+     * With this method you can delete the selected user.
+     * It also opens a popup to secure you do not accidental delete a user.
+     * @throws IOException
+     */
+    public void deleteUser() throws IOException {
+        // TODO: Test der Methode
+        if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
+            openPopup(new NotificationController(userTable.getSelectionModel().getSelectedItem(), PAGE_NAME), "Notification.fxml", false, false);
+            this.disableButtons();
+        }
+    }
+
+// Following are the user-comboBox-button-functions
+
+    /**
+     * This method opens a popup where you can see your own user data.
+     * @throws IOException
+     */
+    public void swapToUserInfo() throws IOException {
+        // TODO: Set onAction with showCurrentUserBtn
+        this.openPopup(new UserInfoController(user), "UserInfo.fxml", false, false);
+    }
+
+    /**
+     * This method is the "Logout".
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void swapToLogin (ActionEvent actionEvent) throws IOException {
+        // TODO: Set onAction with logoutBtn
+        FXMLFactory.setRoot("Login");
+    }
+
+    /**
+     * This method opens a popup where you can change your own password.
+     * @throws IOException
+     */
+    public void swapToChangePassword() throws IOException {
+        // TODO: Set onAction with changePasswordBtn
+        this.openPopup(new ChangePasswordController(user), "ChangePassword.fxml", false, false);
+    }
+
+// Following are Page-Swaps between the main pages
+
+    /**
+     * This method brings you to the Startpage.
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void swapToStartpage(ActionEvent actionEvent) throws IOException {
+        FXMLFactory.setRoot("Startpage");
+    }
+
+    /**
+     * This method brings you to the CIT Page.
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void swapToCIT(ActionEvent actionEvent) throws IOException {
+        FXMLFactory.setRoot("CIT");
+    }
+
+    /**
+     * This method brings you to the Statistics page.
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void swapToStatistic(ActionEvent actionEvent) throws IOException {
+        FXMLFactory.setRoot("Statistic");
+    }
+
+    /**
+     * This method brings you to the User page although you are already in it.
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void swapToBenutzer(ActionEvent actionEvent) throws IOException {
+        FXMLFactory.setRoot("UserAdmin");
+    }
+
+// Following are for functions in this view
+
+    /**
+     * This method opens the popup.
+     * @param controller - you define a new controller for the fxml page you want to open
+     * @param fxmlName - this fxml page should be opened
+     * @param onHidingRefresh - when the calling page should be refreshed after closing the popup: true
+     * @param onHindingClose - when the calling page should be closed after closing the popup: true
+     * @throws IOException
+     */
+    private void openPopup(Controller controller, String fxmlName, boolean onHidingRefresh, boolean onHindingClose) throws IOException {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
+    loader.setController(controller);
+    Parent root = loader.load();
+    Stage stage = new Stage();
+    stage.setResizable(false);
+    if (onHidingRefresh) {
+        stage.setOnHiding(windowEvent -> this.getData());
+    } else if (onHindingClose) {
+        stage.setOnHiding(windowEvent -> this.closeScene());
+    }
+    stage.getIcons().add(new Image(App.class.getResourceAsStream("icons/favicon1.jpg")));
+    stage.setTitle("CMS - Configuration Management System");
+    Scene scene = new Scene(root);
+    stage.setScene(scene);
+    scene.getWindow().sizeToScene();
+    stage.show();
+}
+
+    /**
+     * This method closes the popup.
+     */
+    private void closeScene() {
+        Stage stClose = (Stage) adminLbl.getScene().getWindow();
+        stClose.close();
+    }
+
     @FXML
+    /**
+     * This method sets the edit and the delete Button disable as long as no user is selected.
+     */
+    private void disableButtons() {
+        editBtn.setDisable(true);
+        deleteBtn.setDisable(true);
+    }
+
+    @FXML
+    /**
+     * This method says what to do by selecting a user and double clicking at a user.
+     */
     public void clickAction(MouseEvent mouseEvent) {
         boolean userSelected = false;
         if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
@@ -98,82 +269,12 @@ public class UserAdminController extends Controller implements Initializable {
         }
     }
 
-    @FXML
-    private void disableButtons() {
-        editBtn.setDisable(true);
-        deleteBtn.setDisable(true);
-    }
-
-
-    public void showUser() throws IOException {
-        if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
-            openPopup(new UserViewAdminController(userTable.getSelectionModel().getSelectedItem()), "UserViewAdmin.fxml", true, false);
-            this.disableButtons();
-        }
-    }
-
-    public void addUser() throws IOException {
-        // TODO: Test method
-        openPopup(new UserAddAdminController(), "UserAddAdmin.fxml", true, true);
-        this.disableButtons();
-    }
-
-    public void editUser() throws IOException {
-        // TODO: Test der Methode
-        if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
-            openPopup(new UserEditAdminController(userTable.getSelectionModel().getSelectedItem()), "UserEditAdmin.fxml", true, false);
-            this.disableButtons();
-        }
-    }
-
-    public void deleteUser() throws IOException {
-        // TODO: Test der Methode
-        if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
-            openPopup(new NotificationController(userTable.getSelectionModel().getSelectedItem(), PAGE_NAME), "Notification.fxml", false, false);
-            this.disableButtons();
-        }
-    }
-
-    private void openPopup(Controller controller, String fxmlName, boolean onHidingRefresh, boolean onHindingClose) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
-        loader.setController(controller);
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        stage.setResizable(false);
-        if (onHidingRefresh) {
-            stage.setOnHiding(windowEvent -> this.getData());
-        } else if (onHindingClose) {
-            stage.setOnHiding(windowEvent -> this.closeScene());
-        }
-        stage.getIcons().add(new Image(App.class.getResourceAsStream("icons/favicon1.jpg")));
-        stage.setTitle("CMS - Configuration Management System");
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        scene.getWindow().sizeToScene();
-        stage.show();
-    }
-
-    public void swapToStartpage(ActionEvent actionEvent) throws IOException {
-        FXMLFactory.setRoot("Startpage");
-    }
-
-    public void swapToCIT(ActionEvent actionEvent) throws IOException {
-        FXMLFactory.setRoot("CIT");
-    }
-
-    public void swapToStatistic(ActionEvent actionEvent) throws IOException {
-        FXMLFactory.setRoot("Statistic");
-    }
-
-    public void swapToBenutzer(ActionEvent actionEvent) throws IOException {
-        FXMLFactory.setRoot("UserAdmin");
-    }
-
-    private void closeScene() {
-        Stage stClose = (Stage) adminLbl.getScene().getWindow();
-        stClose.close();
-    }
-
+    /**
+     * This method creates ArrayLists for each authorisation.
+     * Returns the list depending on the searchValue.
+     * @param searchValue - Either User or Admin.
+     * @return
+     */
     public ArrayList<User> getAllUserSearchValue(String searchValue) {
         ArrayList<User> answerListAdmin = new ArrayList<>();
         ArrayList<User> answerListUser = new ArrayList<>();
@@ -193,13 +294,24 @@ public class UserAdminController extends Controller implements Initializable {
         }
     }
 
+// Following is to Filter and to Search
+
     @FXML
+    /**
+     *  This method fills the Table depending on filter and search.
+     */
     private void setTableContent(ArrayList<User> user) {
         userTable.getItems().setAll(user);
         userColumn.setCellValueFactory(new PropertyValueFactory<User, String>("UserName"));
         rightColumn.setCellValueFactory(new PropertyValueFactory<User, String>("Right"));
     }
 
+    /**
+     * This method gets a List of Users depending on search and filter.
+     * @param selectedFilter - Either user or admin
+     * @param searchValue - SearchField value
+     * @return
+     */
     public ArrayList<User> getAllWithFilterAndSearch(String selectedFilter, String searchValue) {
         ArrayList<User> outputList = new ArrayList<>();
         ArrayList<User> filteredUserList = this.getAllUserSearchValue(selectedFilter);
@@ -213,6 +325,9 @@ public class UserAdminController extends Controller implements Initializable {
     }
 
     @FXML
+    /**
+     *  This method says what to do when filter and search are set.
+     */
     public void setTableWithFilterAndSearch() {
         String selectedUser = filterUser.getSelectionModel().getSelectedItem();
         String searchValue = searchTextField.getText();
