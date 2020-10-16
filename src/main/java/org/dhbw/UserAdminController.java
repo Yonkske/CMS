@@ -174,15 +174,14 @@ public class UserAdminController extends Controller implements Initializable {
     }
 
     public ArrayList<User> getAllUserSearchValue(String searchValue) {
-        int amountUsers = allUsers.size();
-        ArrayList<User> answerListAdmin = null;
-        ArrayList<User> answerListUser = null;
+        ArrayList<User> answerListAdmin = new ArrayList<>();
+        ArrayList<User> answerListUser = new ArrayList<>();
 
-        for (int i = 0; i < amountUsers; i++) {
-            if (allUsers.get(i).getIsAdmin()) {
-                answerListAdmin.add(allUsers.get(i));
-            } else if (!allUsers.get(i).getIsAdmin()) {
-                answerListUser.add(allUsers.get(i));
+        for (User u : allUsers) {
+            if (u.getIsAdmin()) {
+                answerListAdmin.add(u);
+            } else {
+                answerListUser.add(u);
             }
         }
 
@@ -212,16 +211,19 @@ public class UserAdminController extends Controller implements Initializable {
     }
 
     public ArrayList<User> getAllWithFilterAndSearch(String selectedFilter, String searchValue) {
-        ArrayList<User> outputList = null;
+        ArrayList<User> outputList = new ArrayList<>();
         ArrayList<User> filteredUserList = this.getAllUserSearchValue(selectedFilter);
 
         int amountFilteredUsers = filteredUserList.size();
 
-        for (int i = 0; i < amountFilteredUsers; i++) {
-            if (filteredUserList.get(i).getUserName().contains(searchValue)) {
-                outputList.add(filteredUserList.get(i));
+        for (User u : filteredUserList) {
+
+            if (u.getUserName().contains(searchValue)) {
+                outputList.add(u);
             }
         }
+
+
         return outputList;
     }
 
