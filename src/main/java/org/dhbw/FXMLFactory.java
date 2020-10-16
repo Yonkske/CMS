@@ -1,6 +1,7 @@
 package org.dhbw;
 
 
+import backend.usability.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,6 +17,7 @@ import java.io.IOException;
  */
 public class FXMLFactory extends Application {
     private static Scene scene;
+    static User logedInUser;
 
 
     @Override

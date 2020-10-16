@@ -1,17 +1,11 @@
 package org.dhbw;
 
-import backend.database.DbCallerCir;
-import backend.usability.Cir;
 import backend.usability.Cit;
 import backend.usability.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
-import java.io.IOException;
-import java.sql.SQLException;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,6 +14,11 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 
 
@@ -80,10 +79,15 @@ public class CITController extends MainPagesController {
         this.cit = cit;
     }
 
-    public void initialize() throws SQLException {
+    public void initialize(URL url, ResourceBundle resourceBundle)  {
+        super.initialize(url, resourceBundle);
         ObservableList<Cit> list = FXCollections.observableArrayList();
         choiceBox.setItems(list);
-        list.addAll(DB_CALLER_CIT.getAllCits());
+        try {
+            list.addAll(DB_CALLER_CIT.getAllCits());
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
 
         super.user = new User("foobar", "foobar", false, false, "Ion", "Tabyrca");
 

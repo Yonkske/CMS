@@ -8,13 +8,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
-import java.security.spec.KeySpec;
 
 public class LoginController extends Controller {
 
@@ -48,12 +44,11 @@ public class LoginController extends Controller {
                 showError();
             } else if (CB_CALLER_USER.checkUser(givenName, givenPassword) & user.getIsInitial()) {
                 // TODO: Wenn nur noch codierte passwörter gespeichert sind: CB_CALLER_USER.checkUser(givenName, givenPasswordEncrypt)
-                openPopUpEditPassword(User.getUser(givenName));
-                super.user = User.getUser(givenName);
+                openPopUpEditPassword(User.getUser(givenName));Controller.user = User.getUser(givenName);
             } else if (CB_CALLER_USER.checkUser(givenName, givenPassword) & !user.getIsInitial()) {
                 // TODO: Wenn nur noch codierte passwörter gespeichert sind: CB_CALLER_USER.checkUser(givenName, givenPasswordEncrypt)
                 switchToStartpage(User.getUser(givenName));
-                super.user = User.getUser(givenName);
+                Controller.user = User.getUser(givenName);
             } else {
                 showError();
             }
@@ -73,7 +68,6 @@ public class LoginController extends Controller {
      * This method forwards to the Startpage.
      */
     private void switchToStartpage(User user) throws IOException {
-
         FXMLFactory.setRoot("Startpage");
     }
 

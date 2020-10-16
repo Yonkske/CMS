@@ -1,8 +1,10 @@
 package org.dhbw;
 
 
+import backend.usability.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,9 +14,11 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public abstract class MainPagesController extends Controller implements IRefreshable{
+public abstract class MainPagesController extends Controller implements IRefreshable, Initializable {
 
     @FXML
     MenuButton adminUserMB;
@@ -26,6 +30,14 @@ public abstract class MainPagesController extends Controller implements IRefresh
     Button passwordEditBtn;
     @FXML
     Button logoutBtn;
+
+
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Controller.user = new User("foobar", "foobar", false, true, "Simon", "Froehner");
+        adminUserMB.setText(Controller.user.getSurName() + ", " + Controller.user.getName());
+    }
+
+
 
     /**
      * Opens the user info on button click

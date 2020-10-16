@@ -10,8 +10,10 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 
 public class StatisticController extends MainPagesController {
@@ -44,21 +46,28 @@ public class StatisticController extends MainPagesController {
     public BarChart adminStackedBarChart;
 
 
-    public void initialize() throws SQLException {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        super.initialize(url, resourceBundle);
         ArrayList<Cit> allCit = new ArrayList<Cit>();
-        allCit = Cit.showAll();
-        Cit currentCit;
+        try {
+            allCit = Cit.showAll();
+            Cit currentCit;
+
+            PieChart.Data slice[] = new PieChart.Data[10];
+            for (int i = 0; i < allCit.size(); i++) {
+                currentCit = allCit.get(i);
+                slice[i] = new PieChart.Data(currentCit.getCitName(), DB_CALLER_CIR.getCirCountForType(currentCit));
+                adminPieChart.getData().add(slice[i]);
+            }
+
+            numberCIRTf.setText(String.valueOf(Cir.getCount()));
+            numberCITTf.setText(String.valueOf(Cit.getCount()));
 
 
-        PieChart.Data slice[] = new PieChart.Data[10];
-        for (int i = 0; i < allCit.size(); i++) {
-            currentCit = allCit.get(i);
-            slice[i] = new PieChart.Data(currentCit.getCitName(), DB_CALLER_CIR.getCirCountForType(currentCit));
-            adminPieChart.getData().add(slice[i]);
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
         }
-
-        numberCIRTf.setText(String.valueOf(Cir.getCount()));
-        numberCITTf.setText(String.valueOf(Cit.getCount()));
 
     }
 
