@@ -81,7 +81,7 @@ public class UserAdminController extends Controller implements Initializable {
             e.printStackTrace();
         }
 
-        adminLbl.setText(super.user.getSurName() + ", " + super.user.getName() + " (Admin)");
+        adminLbl.setText(Controller.user.getSurName() + ", " + Controller.user.getName() + " (Admin)");
     }
 
 // Following are open Popups
