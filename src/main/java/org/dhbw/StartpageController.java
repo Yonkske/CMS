@@ -153,7 +153,7 @@ public class StartpageController extends MainPagesController  {
      */
     @FXML
     public void openCirView(MouseEvent me) throws IOException {
-        if (me.getClickCount() == 2) {
+        if ( Objects.nonNull(cirTable.getSelectionModel().getSelectedItem()) && me.getClickCount() == 2) {
             openPopup(new CIRViewController(cirTable.getSelectionModel().getSelectedItem()), "CIRView.fxml", false);
         }
     }
