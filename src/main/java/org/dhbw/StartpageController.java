@@ -46,7 +46,7 @@ public class StartpageController extends MainPagesController {
         try {
             setTableContent(DB_CALLER_CIR.getAll());
 
-            Cit placeholder = new Cit(0, new String[]{"CIT", null, null, null, null, null, null, null});
+            Cit placeholder = new Cit(0, "CIT", new String[]{null, null, null, null, null, null, null});
             filterCitCb.getItems().add(placeholder);
             filterCitCb.getItems().addAll(DB_CALLER_CIT.getAllCits());
             filterCitCb.setValue(placeholder);

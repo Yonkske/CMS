@@ -72,7 +72,7 @@ public class CITController extends MainPagesController {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
 
-       this.getData();
+        this.getData();
 
         if (!Controller.user.getIsAdmin()) {
             deleteBtn.setVisible(false);
@@ -110,18 +110,21 @@ public class CITController extends MainPagesController {
     public void fillingIn() throws SQLException {
         Cit cit = choiceBox.getSelectionModel().getSelectedItem();
 
-        idTf.setText(String.valueOf(cit.getCitID()));
-        citTf.setText(cit.getCitName());
+        // Avoids an exception when no CIT was selected in the choiceBox before a new CIT is created
+        if (Objects.nonNull(cit)) {
+            idTf.setText(String.valueOf(cit.getCitID()));
+            citTf.setText(cit.getCitName());
 
-        attribut1Tf.setText(cit.getCitAttributes()[0]);
-        attribut2Tf.setText(cit.getCitAttributes()[1]);
-        attribut3Tf.setText(cit.getCitAttributes()[2]);
-        attribut4Tf.setText(cit.getCitAttributes()[3]);
-        attribut5Tf.setText(cit.getCitAttributes()[4]);
-        attribut6Tf.setText(cit.getCitAttributes()[5]);
-        attribut7Tf.setText(cit.getCitAttributes()[6]);
-        attribut8Tf.setText(cit.getCitAttributes()[7]);
-        numberCIRTf.setText(String.valueOf(DB_CALLER_CIR.getCirCountForType(cit)));
+            attribut1Tf.setText(cit.getCitAttributes()[0]);
+            attribut2Tf.setText(cit.getCitAttributes()[1]);
+            attribut3Tf.setText(cit.getCitAttributes()[2]);
+            attribut4Tf.setText(cit.getCitAttributes()[3]);
+            attribut5Tf.setText(cit.getCitAttributes()[4]);
+            attribut6Tf.setText(cit.getCitAttributes()[5]);
+            attribut7Tf.setText(cit.getCitAttributes()[6]);
+            attribut8Tf.setText(cit.getCitAttributes()[7]);
+            numberCIRTf.setText(String.valueOf(DB_CALLER_CIR.getCirCountForType(cit)));
+        }
 
     }
 
