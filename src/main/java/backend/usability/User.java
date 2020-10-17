@@ -59,7 +59,6 @@ public class User {
 
     /**
      * Within this method the user can change his own password.
-     * @param userName - username of the user whose password should be changed
      * @param newPassword - the new password
      * @return boolean - if true returns the password was changed, if false returns the password could not be changed
      */
