@@ -90,7 +90,8 @@ public class CITAddController extends Controller implements Initializable {
         sCitArray[5] = attribut6Tf.getText();
         sCitArray[6] = attribut7Tf.getText();
         sCitArray[7] = attribut8Tf.getText();
-        if (sCitArray[0].isEmpty()){
+        if (citTf.getText().length() == 0){
+            System.out.println("Feld darf nicht leer sein");
             showError();
         }
         else {
