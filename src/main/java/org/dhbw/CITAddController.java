@@ -85,22 +85,24 @@ public class CITAddController extends Controller implements Initializable {
                 showError();
             } else {
 
-        sCitArray[0] = citTf.getText();
-        sCitArray[1] = attribut1Tf.getText();
-        sCitArray[2] = attribut2Tf.getText();
-        sCitArray[3] = attribut3Tf.getText();
-        sCitArray[4] = attribut4Tf.getText();
-        sCitArray[5] = attribut5Tf.getText();
-        sCitArray[6] = attribut6Tf.getText();
-        sCitArray[7] = attribut7Tf.getText();
-        if (sCitArray[0].length() == 0) {
-            showError();
-        } else {
+                sCitArray[0] = citTf.getText();
+                sCitArray[1] = attribut1Tf.getText();
+                sCitArray[2] = attribut2Tf.getText();
+                sCitArray[3] = attribut3Tf.getText();
+                sCitArray[4] = attribut4Tf.getText();
+                sCitArray[5] = attribut5Tf.getText();
+                sCitArray[6] = attribut6Tf.getText();
+                sCitArray[7] = attribut7Tf.getText();
+                if (sCitArray[0].length() == 0) {
+                    showError();
+                } else {
 
-            Cit cit = new Cit(id, sCitArray);
-            DB_CALLER_CIT.createCit(cit);
-            Stage stClose = (Stage) submitBtn.getScene().getWindow();
-            stClose.close();
+                    Cit cit = new Cit(id, sCitArray);
+                    DB_CALLER_CIT.createCit(cit);
+                    Stage stClose = (Stage) submitBtn.getScene().getWindow();
+                    stClose.close();
+                }
+            }
         }
     }
 
@@ -114,3 +116,4 @@ public class CITAddController extends Controller implements Initializable {
         meldungLbl.setVisible(true);
     }
 }
+
