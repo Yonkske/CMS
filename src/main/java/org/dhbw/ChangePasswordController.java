@@ -1,6 +1,5 @@
 package org.dhbw;
 
-import backend.database.DbCallerUser;
 import backend.usability.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -33,6 +32,7 @@ public class ChangePasswordController extends Controller {
         this.userToCangePassword = user;
     }
 
+    @FXML
     public void submit() throws IOException {
         boolean oldPwCheck = super.checkPassword(oldPasswordPf.getText(), userToCangePassword.getPassword());
         boolean enteredPwCheck = this.checkNewPasswords();
@@ -55,6 +55,7 @@ public class ChangePasswordController extends Controller {
     /**
      * Action for the Cancel Button.
      */
+    @FXML
     public void cancel() {
         this.closeScene();
     }
@@ -63,9 +64,8 @@ public class ChangePasswordController extends Controller {
      * Method closes the Popup.
      */
     @FXML
-    public void closeScene() {
-        Stage close = new Stage();
-        close = (Stage) submitBtn.getScene().getWindow();
+    private void closeScene() {
+        Stage close = (Stage) submitBtn.getScene().getWindow();
         close.close();
     }
 
@@ -94,7 +94,6 @@ public class ChangePasswordController extends Controller {
     /**
      * This method forwards to the Startpage.
      */
-    @FXML
     private void switchToStartpage(User user) throws IOException {
         FXMLFactory.setRoot("Startpage");
     }
