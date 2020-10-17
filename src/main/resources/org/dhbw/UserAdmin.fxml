@@ -7,9 +7,23 @@
       xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="org.dhbw.UserAdminController">
     <children>
-        <HBox alignment="TOP_RIGHT" prefHeight="23.0" prefWidth="600.0">
+        <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
             <children>
-                <Label fx:id="adminLbl" text="Vorname, Nachname"/>
+                <MenuButton fx:id="adminUserMB" mnemonicParsing="false" text="Vorname, Nachname">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1">
+                            <graphic>
+                                <Button fx:id="benutzerDropDownBtn" mnemonicParsing="false" onAction="#openUserInfo" text="Benutzer" />
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" text="Action 2">
+                            <graphic>
+                                <Button fx:id="passwordEditBtn" mnemonicParsing="false" onAction="#openChangePassword" text="Passwort ändern" />
+                            </graphic>
+                        </MenuItem>
+                    </items>
+                </MenuButton>
+                <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" text="Logout" />
             </children>
         </HBox>
         <HBox prefHeight="577.0" prefWidth="600.0">
