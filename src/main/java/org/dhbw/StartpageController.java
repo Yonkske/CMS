@@ -2,6 +2,7 @@ package org.dhbw;
 
 import backend.usability.Cir;
 import backend.usability.Cit;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -174,5 +175,9 @@ public class StartpageController extends MainPagesController {
     @Override
     public void refresh() {
         this.setTableWithFilterAndSearch();
+    }
+
+    public void openExtraView(ActionEvent actionEvent) throws IOException {
+        openPopup(new AllCirForCit(), "allCirForCit.fxml", false);
     }
 }

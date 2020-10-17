@@ -3,7 +3,6 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 <VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.StartpageController">
    <children>
       <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
@@ -82,6 +81,7 @@
             </VBox>
             <VBox prefHeight="383.0" prefWidth="228.0">
                <children>
+                  <Button mnemonicParsing="false" onAction="#openExtraView" text="Button" />
                   <HBox alignment="TOP_RIGHT" prefHeight="27.0" prefWidth="228.0">
                      <children>
                         <Button fx:id="citEditBtn" mnemonicParsing="false" onAction="#openAddCit" text=" CIT erstellen">
