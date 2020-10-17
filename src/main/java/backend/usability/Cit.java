@@ -1,4 +1,3 @@
-//Autor: Ion Tabyrca
 package backend.usability;
 
 import backend.database.DbCallerCit;
