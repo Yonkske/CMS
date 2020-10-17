@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -22,8 +21,6 @@ public abstract class MainPagesController extends Controller implements IRefresh
     @FXML
     MenuButton adminUserMB;
     @FXML
-    MenuItem logOutMbItem;
-    @FXML
     Button benutzerDropDownBtn;
     @FXML
     Button passwordEditBtn;
@@ -31,6 +28,12 @@ public abstract class MainPagesController extends Controller implements IRefresh
     Button logoutBtn;
 
 
+    /**
+     * Standard initialize for all main pages. Inserts the name of the current user into the MenuButton on the top right
+     *
+     * @param url            - demanded by interface
+     * @param resourceBundle - demanded by interface
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String name = Controller.user.getSurName() + ", " + Controller.user.getName();
         if (Controller.user.getIsAdmin()) {
@@ -39,6 +42,11 @@ public abstract class MainPagesController extends Controller implements IRefresh
         adminUserMB.setText(name);
     }
 
+    /**
+     * Logs out the user and swaps the scene to the login page on button click
+     *
+     * @throws IOException - if fxml file isn't found
+     */
     @FXML
     public void logout() throws IOException {
         FXMLFactory.setRoot("Login");
@@ -47,7 +55,7 @@ public abstract class MainPagesController extends Controller implements IRefresh
     /**
      * Opens the user info on button click
      *
-     * @throws IOException
+     * @throws IOException - if fxml file isn't found
      */
     public void openUserInfo() throws IOException {
         openPopup(null, "UserInfo.fxml", false);
@@ -56,7 +64,7 @@ public abstract class MainPagesController extends Controller implements IRefresh
     /**
      * Opens change password on button click
      *
-     * @throws IOException
+     * @throws IOException - if fxml file isn't found
      */
     public void openChangePassword() throws IOException {
         openPopup(null, "ChangePassword.fxml", false);
@@ -73,7 +81,7 @@ public abstract class MainPagesController extends Controller implements IRefresh
     /**
      * Swaps the scene to the startpage on button click
      *
-     * @throws IOException
+     * @throws IOException - if fxml file isn't found
      */
     @FXML
     public void swapToStartpage() throws IOException {
@@ -83,7 +91,7 @@ public abstract class MainPagesController extends Controller implements IRefresh
     /**
      * Swaps the scene to the CITPage on button click
      *
-     * @throws IOException
+     * @throws IOException - if fxml file isn't found
      */
     @FXML
     public void swapToCit() throws IOException {
@@ -93,7 +101,7 @@ public abstract class MainPagesController extends Controller implements IRefresh
     /**
      * Swaps the scene to the statistic page on button click
      *
-     * @throws IOException
+     * @throws IOException - if fxml file isn't found
      */
     @FXML
     public void swapToStatistic() throws IOException {
@@ -103,7 +111,7 @@ public abstract class MainPagesController extends Controller implements IRefresh
     /**
      * Swaps the scene to the user page on button click
      *
-     * @throws IOException
+     * @throws IOException - if fxml file isn't found
      */
     @FXML
     public void swapToUserAdmin() throws IOException {
@@ -113,10 +121,10 @@ public abstract class MainPagesController extends Controller implements IRefresh
     /**
      * Opens a popup window
      *
-     * @param controller controller for the popup - must match fxmlName or be null
-     * @param fxmlName   of the fxml file to be opened in the popup - must match controller
-     * @param onHiding   if the page should be refreshed on closing the popup
-     * @throws IOException
+     * @param controller - controller for the popup - must match fxmlName or be null
+     * @param fxmlName   - of the fxml file to be opened in the popup - must match controller
+     * @param onHiding   - if the page should be refreshed on closing the popup
+     * @throws IOException - if fxml file isn't found
      */
     void openPopup(Controller controller, String fxmlName, boolean onHiding) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));

@@ -159,6 +159,9 @@ public class StartpageController extends MainPagesController {
         cirNameColumn.setCellValueFactory(new PropertyValueFactory<>("CirName"));
     }
 
+    /**
+     * Defines what happens to refresh the page after a popup is closed
+     */
     @Override
     public void refresh() {
         this.setTableWithFilterAndSearch();
