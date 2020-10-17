@@ -80,7 +80,7 @@ public class Cir {
      */
     public static Cir showCir(int id) throws SQLException {
 
-        Cir cirName = DbCallerCir.getCirById(id);
+        Cir cirName = new DbCallerCir().getCirById(id);
 
         return cirName;
     }
@@ -120,36 +120,6 @@ public class Cir {
         bCirDeleted = DbCallerCir.deleteCir(cirName);     // zu löschendes CIR an den DBCallerCIR übergeben
 
         return bCirDeleted;
-    }
-
-    /**
-     * Number of all CIR's
-     *
-     * @return iCountAllCir - int of all CIR's
-     * @throws SQLException
-     */
-    public static int getCount() throws SQLException {
-        int iCountAllCir;
-
-        iCountAllCir = DbCallerCir.getCirCount();
-
-        return iCountAllCir;
-    }
-
-    /**
-     * Returns the number of CIR from a given CIT
-     *
-     * @param sCIT - CIT Type
-     * @return iCountCIRofCIT - Int number of CIR from a given CIT
-     * @throws SQLException
-     */
-    //todo: Anpassen der Methode, Type ist CIT nicht String
-    public static int getCountForType(String sCIT) throws SQLException {
-
-        int iCountCIRofCIT;
-        iCountCIRofCIT = DbCallerCir.getCirCountForType(sCIT);
-
-        return iCountCIRofCIT;
     }
 
     /**

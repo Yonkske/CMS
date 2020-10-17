@@ -156,7 +156,7 @@ public class CIREditController extends Controller implements Initializable {
      */
     public void loadViewCir() throws SQLException, IOException {
         // loadViewCir
-        cir = Cir.showCir(Integer.parseInt(idTf.getText()));
+        cir = DB_CALLER_CIR.getCirById(Integer.parseInt(idTf.getText()));
         CIRViewController CIRViewController = new CIRViewController(cir);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CIRView.fxml"));
         loader.setController(CIRViewController);

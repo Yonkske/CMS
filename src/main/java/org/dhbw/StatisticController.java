@@ -55,14 +55,14 @@ public class StatisticController extends MainPagesController {
 
     private void setUpChart() {
         try {
-            ArrayList<Cit> allCit = Cit.showAll();
+            ArrayList<Cit> allCit = DB_CALLER_CIT.getAllCits();
             PieChart.Data[] slice = new PieChart.Data[10];
 
             for (int i = 0; i < allCit.size(); i++) {
                 slice[i] = new PieChart.Data(allCit.get(i).getCitName(), DB_CALLER_CIR.getCirCountForType(allCit.get(i)));
                 adminPieChart.getData().add(slice[i]);
             }
-            numberCIRTf.setText(String.valueOf(Cir.getCount()));
+            numberCIRTf.setText(String.valueOf(DB_CALLER_CIR.getCirCount()));
             numberCITTf.setText(String.valueOf(Cit.getCount()));
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();

@@ -15,7 +15,7 @@ public class DbCallerCir extends DbConnector {
      * @return cirName - the CIR Objekt
      * @throws SQLException - on database access error or other errors
      */
-    public static Cir getCirById(int id) throws SQLException {
+    public Cir getCirById(int id) throws SQLException {
 
         String[] sCirArray = new String[10]; // String zum Speichern der Resultset Daten
         ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE ITEM_ID = " + id); // SQL Abfrage
@@ -34,50 +34,45 @@ public class DbCallerCir extends DbConnector {
     /**
      * Writes a new CIR into the database, requires a CIR object
      *
-     * @param cirName - Type Cir
+     * @param cirToInsert - Type Cir
      * @return bWorks - Boolean
      * @throws SQLException - on database access error or other errors
      */
-    public boolean insertCir(Cir cirName) throws SQLException {
-        String[] sCirAttributes = cirName.getCirAttributes();
-        boolean bWorks;
+    public boolean insertCir(Cir cirToInsert) throws SQLException {
+        String[] attributes = cirToInsert.getCirAttributes();
+        boolean successful;
         try {
             PreparedStatement prepStmt = con.prepareStatement
                     ("INSERT INTO CIR VALUES (?,?,?,?,?,?,?,?,?,?)"); // SQL Statement
 
-            prepStmt.setInt(1, cirName.getCirID());
-            prepStmt.setString(2, cirName.getCitID()); //todo: change String to CIT type
-            prepStmt.setString(3, cirName.getCirName());
-            prepStmt.setString(4, sCirAttributes[0]);
-            prepStmt.setString(5, sCirAttributes[1]);
-            prepStmt.setString(6, sCirAttributes[2]);
-            prepStmt.setString(7, sCirAttributes[3]);
-            prepStmt.setString(8, sCirAttributes[4]);
-            prepStmt.setString(9, sCirAttributes[5]);
-            prepStmt.setString(10, sCirAttributes[6]);
+            prepStmt.setInt(1, cirToInsert.getCirID());
+            prepStmt.setString(2, cirToInsert.getCitID());
+            prepStmt.setString(3, cirToInsert.getCirName());
+
+            for(int i = 0; i < attributes.length; i++) {
+                prepStmt.setString(i+2, attributes[i]);
+            }
+
             prepStmt.executeUpdate();
             prepStmt.close();
-            bWorks = true;
-        } catch (SQLSyntaxErrorException a) {
-            bWorks = false;
-        } catch (SQLIntegrityConstraintViolationException b) {
-            bWorks = false;
+            successful = true;
+        } catch (SQLNonTransientException c) {
+            successful = false;
         }
 
-
-        return bWorks;
+        return successful;
     }
 
     /**
      * Update a CIR in the database, requires a CIR object and returns a boolean value
      *
-     * @param cirName - CirObjekt
+     * @param cirToUpdate - CirObjekt
      * @return bUpdateCir - Boolean with true/false
      * @throws SQLException - on database access error or other errors
      */
-    public boolean updateCir(Cir cirName) throws SQLException {
-        boolean bUpdateCir;
-        String[] sCirAttributes = cirName.getCirAttributes();
+    public boolean updateCir(Cir cirToUpdate) throws SQLException {
+        boolean successful;
+        String[] attributes = cirToUpdate.getCirAttributes();
         try {
             PreparedStatement prepStmt = con.prepareStatement
                     ("UPDATE CIR SET RECORD_NAME = ?," +
@@ -86,26 +81,24 @@ public class DbCallerCir extends DbConnector {
                             "ATTRIBUTE_VALUE_3 = ?," +
                             "ATTRIBUTE_VALUE_4 = ?," +
                             "ATTRIBUTE_VALUE_5 = ?," +
-                            "ATTRIBUTE_VALUE_6 = ? ," +
+                            "ATTRIBUTE_VALUE_6 = ?," +
                             "ATTRIBUTE_VALUE_7 = ?" +
-                            "WHERE ITEM_ID =" + cirName.getCirID()); // SQL Statement
+                            "WHERE ITEM_ID =" + cirToUpdate.getCirID()); // SQL Statement
 
-            prepStmt.setString(1, cirName.getCirName());
-            prepStmt.setString(2, sCirAttributes[0]);
-            prepStmt.setString(3, sCirAttributes[1]);
-            prepStmt.setString(4, sCirAttributes[2]);
-            prepStmt.setString(5, sCirAttributes[3]);
-            prepStmt.setString(6, sCirAttributes[4]);
-            prepStmt.setString(7, sCirAttributes[5]);
-            prepStmt.setString(8, sCirAttributes[6]);
+            prepStmt.setString(1, cirToUpdate.getCirName());
+
+            for(int i = 0; i < attributes.length; i++) {
+                prepStmt.setString(i+2, attributes[i]);
+            }
+
             prepStmt.executeUpdate();
             prepStmt.close();
-            bUpdateCir = true;
+            successful = true;
         } catch (SQLNonTransientException c) {
-            bUpdateCir = false;
+            successful = false;
         }
 
-        return bUpdateCir;
+        return successful;
     }
 
     /**
@@ -133,7 +126,7 @@ public class DbCallerCir extends DbConnector {
      * @return iCirCount - int CIR Count of all Cir's
      * @throws SQLException - on database access error or other errors
      */
-    public static int getCirCount() throws SQLException {
+    public int getCirCount() throws SQLException {
         int iCirCount;
         try {
             ResultSet rs = stmt.executeQuery("SELECT count(ITEM_ID) FROM CIR");
@@ -142,28 +135,8 @@ public class DbCallerCir extends DbConnector {
         } catch (SQLNonTransientException c) {
             iCirCount = 0;
         }
+
         return iCirCount;
-    }
-
-    /**
-     * The Number of alle Cir's from a specific Cit
-     *
-     * @param sCit - String later CIT Type
-     * @return iCountCIRofCIT -Integer Count of Cir form a specific CIT
-     * @throws SQLException - on database access error or other errors
-     */
-    public static int getCirCountForType(String sCit) throws SQLException {
-        int iCountCIRofCIT;
-        int iCit = Integer.parseInt(sCit);
-        try {
-            ResultSet rs = stmt.executeQuery("SELECT count(ITEM_ID) FROM CIR WHERE TYPE_ID =" + iCit);
-            rs.first();
-            iCountCIRofCIT = rs.getInt(1);
-        } catch (SQLNonTransientException c) {
-            iCountCIRofCIT = 0;
-        }
-        return iCountCIRofCIT;
-
     }
 
     /**
@@ -272,7 +245,6 @@ public class DbCallerCir extends DbConnector {
                 Cit type = new Cit(typId, typeName, attributeNames);
 
                 // Create the CIT
-
                 int recordId = rs.getInt("ITEM_ID");
                 String recordName = rs.getString("RECORD_NAME");
 
