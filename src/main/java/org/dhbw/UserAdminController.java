@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class UserAdminController extends Controller implements Initializable {
+public class UserAdminController extends MainPagesController {
 
     @FXML
     private TextField searchTextField;
@@ -62,6 +62,7 @@ public class UserAdminController extends Controller implements Initializable {
      * This method runs when this Controller is addressed.
      */
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        super.initialize(url, resourceBundle);
         getData();
     }
 
@@ -92,7 +93,7 @@ public class UserAdminController extends Controller implements Initializable {
      */
     public void showUser() throws IOException {
         if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
-            openPopup(new UserViewAdminController(userTable.getSelectionModel().getSelectedItem()), "UserViewAdmin.fxml", true, false);
+            openPopup(new UserViewAdminController(userTable.getSelectionModel().getSelectedItem()), "UserViewAdmin.fxml", true);
             this.disableButtons();
         }
     }
@@ -103,7 +104,7 @@ public class UserAdminController extends Controller implements Initializable {
      */
     public void addUser() throws IOException {
         // TODO: Test method
-        openPopup(new UserAddAdminController(), "UserAddAdmin.fxml", true, true);
+        openPopup(new UserAddAdminController(), "UserAddAdmin.fxml", true);
         this.disableButtons();
     }
 
@@ -114,7 +115,7 @@ public class UserAdminController extends Controller implements Initializable {
     public void editUser() throws IOException {
         // TODO: Test der Methode
         if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
-            openPopup(new UserEditAdminController(userTable.getSelectionModel().getSelectedItem()), "UserEditAdmin.fxml", true, false);
+            openPopup(new UserEditAdminController(userTable.getSelectionModel().getSelectedItem()), "UserEditAdmin.fxml", true);
             this.disableButtons();
         }
     }
@@ -127,7 +128,7 @@ public class UserAdminController extends Controller implements Initializable {
     public void deleteUser() throws IOException {
         // TODO: Test der Methode
         if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
-            openPopup(new NotificationController(userTable.getSelectionModel().getSelectedItem(), PAGE_NAME), "Notification.fxml", false, false);
+            openPopup(new NotificationController(userTable.getSelectionModel().getSelectedItem(), PAGE_NAME), "Notification.fxml", false);
             this.disableButtons();
         }
     }
@@ -140,7 +141,7 @@ public class UserAdminController extends Controller implements Initializable {
      */
     public void swapToUserInfo() throws IOException {
         // TODO: Set onAction with showCurrentUserBtn
-        this.openPopup(new UserInfoController(user), "UserInfo.fxml", false, false);
+        this.openPopup(new UserInfoController(user), "UserInfo.fxml", false);
     }
 
     /**
@@ -159,17 +160,17 @@ public class UserAdminController extends Controller implements Initializable {
      */
     public void swapToChangePassword() throws IOException {
         // TODO: Set onAction with changePasswordBtn
-        this.openPopup(new ChangePasswordController(user), "ChangePassword.fxml", false, false);
+        this.openPopup(new ChangePasswordController(user), "ChangePassword.fxml", false);
     }
 
 // Following are Page-Swaps between the main pages
-
+/*
     /**
      * This method brings you to the Startpage.
      * @param actionEvent
      * @throws IOException
      */
-    public void swapToStartpage(ActionEvent actionEvent) throws IOException {
+    /*public void swapToStartpage(ActionEvent actionEvent) throws IOException {
         FXMLFactory.setRoot("Startpage");
     }
 
@@ -178,7 +179,7 @@ public class UserAdminController extends Controller implements Initializable {
      * @param actionEvent
      * @throws IOException
      */
-    public void swapToCIT(ActionEvent actionEvent) throws IOException {
+   /* public void swapToCIT(ActionEvent actionEvent) throws IOException {
         FXMLFactory.setRoot("CIT");
     }
 
@@ -187,7 +188,7 @@ public class UserAdminController extends Controller implements Initializable {
      * @param actionEvent
      * @throws IOException
      */
-    public void swapToStatistic(ActionEvent actionEvent) throws IOException {
+   /* public void swapToStatistic(ActionEvent actionEvent) throws IOException {
         FXMLFactory.setRoot("Statistic");
     }
 
@@ -196,11 +197,12 @@ public class UserAdminController extends Controller implements Initializable {
      * @param actionEvent
      * @throws IOException
      */
-    public void swapToBenutzer(ActionEvent actionEvent) throws IOException {
+    /*public void swapToBenutzer(ActionEvent actionEvent) throws IOException {
         FXMLFactory.setRoot("UserAdmin");
     }
 
 // Following are for functions in this view
+
 
     /**
      * This method opens the popup.
@@ -210,7 +212,7 @@ public class UserAdminController extends Controller implements Initializable {
      * @param onHindingClose - when the calling page should be closed after closing the popup: true
      * @throws IOException
      */
-    private void openPopup(Controller controller, String fxmlName, boolean onHidingRefresh, boolean onHindingClose) throws IOException {
+    /*void openPopup(Controller controller, String fxmlName, boolean onHidingRefresh, boolean onHindingClose) throws IOException {
     FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
     loader.setController(controller);
     Parent root = loader.load();
@@ -269,13 +271,25 @@ public class UserAdminController extends Controller implements Initializable {
         }
     }
 
+// Following is to Filter and to Search
+
+    @FXML
+    /**
+     *  This method fills the Table depending on filter and search.
+     */
+    private void setTableContent(ArrayList<User> user) {
+        userTable.getItems().setAll(user);
+        userColumn.setCellValueFactory(new PropertyValueFactory<User, String>("UserName"));
+        rightColumn.setCellValueFactory(new PropertyValueFactory<User, String>("Right"));
+    }
+
     /**
      * This method creates ArrayLists for each authorisation.
      * Returns the list depending on the searchValue.
-     * @param searchValue - Either User or Admin.
+     * @param selectedFilter - Either User or Admin.
      * @return
      */
-    public ArrayList<User> getAllUserSearchValue(String searchValue) {
+    public ArrayList<User> getAllUserSearchValue(String selectedFilter) {
         ArrayList<User> answerListAdmin = new ArrayList<>();
         ArrayList<User> answerListUser = new ArrayList<>();
 
@@ -287,23 +301,11 @@ public class UserAdminController extends Controller implements Initializable {
             }
         }
 
-        if (searchValue.equals("Admin")) {
+        if (selectedFilter.equals("Admin")) {
             return answerListAdmin;
         } else {
             return answerListUser;
         }
-    }
-
-// Following is to Filter and to Search
-
-    @FXML
-    /**
-     *  This method fills the Table depending on filter and search.
-     */
-    private void setTableContent(ArrayList<User> user) {
-        userTable.getItems().setAll(user);
-        userColumn.setCellValueFactory(new PropertyValueFactory<User, String>("UserName"));
-        rightColumn.setCellValueFactory(new PropertyValueFactory<User, String>("Right"));
     }
 
     /**
@@ -339,5 +341,10 @@ public class UserAdminController extends Controller implements Initializable {
         } else {
             this.setTableContent(allUsers);
         }
+    }
+
+    @Override
+    public void refresh() {
+        this.getData();
     }
 }
