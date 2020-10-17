@@ -69,23 +69,22 @@ public class CITAddController extends Controller implements Initializable {
     @FXML
     public void fillIn() throws SQLException {
         if (Objects.nonNull(citTf.getText())) {
-            String[] sCitArray = new String[8];
+            String[] sCitArray = new String[7];
             int id = Integer.parseInt(idTf.getText());
 
-
-            sCitArray[0] = citTf.getText();
-            sCitArray[1] = attribut1Tf.getText();
-            sCitArray[2] = attribut2Tf.getText();
-            sCitArray[3] = attribut3Tf.getText();
-            sCitArray[4] = attribut4Tf.getText();
-            sCitArray[5] = attribut5Tf.getText();
-            sCitArray[6] = attribut6Tf.getText();
-            sCitArray[7] = attribut7Tf.getText();
+            String citName = citTf.getText();
+            sCitArray[0] = attribut1Tf.getText();
+            sCitArray[1] = attribut2Tf.getText();
+            sCitArray[2] = attribut3Tf.getText();
+            sCitArray[3] = attribut4Tf.getText();
+            sCitArray[4] = attribut5Tf.getText();
+            sCitArray[5] = attribut6Tf.getText();
+            sCitArray[6] = attribut7Tf.getText();
             if (sCitArray[0].length() == 0) {
                 showError();
             } else {
 
-                Cit cit = new Cit(id, sCitArray);
+                Cit cit = new Cit(id, citName, sCitArray);
                 DB_CALLER_CIT.createCit(cit);
                 Stage stClose = (Stage) submitBtn.getScene().getWindow();
                 stClose.close();
