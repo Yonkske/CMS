@@ -131,29 +131,6 @@ public class UserAdminController extends MainPagesController {
         }
     }
 
-// Following are the user-comboBox-button-functions
-
-    /**
-     * This method opens a popup where you can see your own user data.
-     *
-     * @throws IOException
-     */
-    public void swapToUserInfo() throws IOException {
-        // TODO: Set onAction with showCurrentUserBtn
-        this.openPopup(new UserInfoController(user), "UserInfo.fxml", false);
-    }
-
-    /**
-     * This method is the "Logout".
-     *
-     * @param actionEvent
-     * @throws IOException
-     */
-    public void swapToLogin(ActionEvent actionEvent) throws IOException {
-        // TODO: Set onAction with logoutBtn
-        FXMLFactory.setRoot("Login");
-    }
-
 // Following are for functions in this view
 
     /**
@@ -211,8 +188,8 @@ public class UserAdminController extends MainPagesController {
             userSelected = true;
         }
 
-        if (userTable.getSelectionModel().getSelectedItem().equals(new DbCallerUser().getUser("Admin"))) {
-            this.disableButtons();
+        if (userTable.getSelectionModel().getSelectedItem().equals(DB_CALLER_USER.getUser("admin"))) {
+            deleteBtn.setDisable(true);
         }
 
         if (userSelected) {
