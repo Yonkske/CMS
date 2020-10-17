@@ -23,21 +23,14 @@ public class ChangePasswordController extends Controller {
     @FXML
     private Button submitBtn;
     private User userToCangePassword;
-    private String callingPage;
 
     /**
      * Constructor.
      *
      * @param user
      */
-    public ChangePasswordController(User user, String callingPage) {
+    public ChangePasswordController(User user) {
         this.userToCangePassword = user;
-        this.callingPage = callingPage;
-
-        if (callingPage.equals("UserAdmin")) {
-            oldPasswordPf.setEditable(false);
-            oldPasswordPf.setPromptText("Keine Eingabe notwendig");
-        }
     }
 
     public void submit() throws IOException {
@@ -45,26 +38,18 @@ public class ChangePasswordController extends Controller {
         boolean enteredPwCheck = this.checkNewPasswords();
         boolean noEmptyInputCheck = this.checkNoEmptyInput();
 
-        if (callingPage.equals("Login")) {
-            if (oldPwCheck && enteredPwCheck && noEmptyInputCheck) {
-                User.changePassword(userToCangePassword.getUserName(), super.encryptPassword(newPasswordPf.getText()));
+        if (oldPwCheck && enteredPwCheck && noEmptyInputCheck) {
+            User.changePassword(userToCangePassword.getUserName(), super.encryptPassword(newPasswordPf.getText()));
 
-                userToCangePassword.setIsInitial(false);
-                this.switchToStartpage(new DbCallerUser().getUser(userToCangePassword.getUserName()));
+            userToCangePassword.setIsInitial(false);
+            DB_CALLER_USER.updateUser(userToCangePassword);
+            this.switchToStartpage(DB_CALLER_USER.getUser(userToCangePassword.getUserName()));
 
-                this.closeScene();
-            } else {
-                this.showError();
-            }
-        } else if (callingPage.equals("UserAdmin")) {
-
-            if (enteredPwCheck && noEmptyInputCheck) {
-                User.changePassword(userToCangePassword.getUserName(), super.encryptPassword(newPasswordPf.getText()));
-                userToCangePassword.setIsInitial(true);
-            }
+            this.closeScene();
         } else {
             this.showError();
         }
+
     }
 
     /**

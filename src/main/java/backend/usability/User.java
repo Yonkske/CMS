@@ -101,7 +101,6 @@ public class User {
 
     public void setIsInitial(boolean newInitial) {
         this.isInitial = newInitial;
-        new DbCallerUser().updateUser(this.getUser(this.userName));
     }
 
     public String getRight() {
@@ -114,14 +113,4 @@ public class User {
         return right;
     }
 
-
-
-    /**
-     * With this method the user can log out.
-     * @return true
-     */
-    public boolean logOut() {
-
-        return true;
-    }
 }

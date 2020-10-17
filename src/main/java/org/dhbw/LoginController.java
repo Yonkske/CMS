@@ -79,7 +79,7 @@ public class LoginController extends Controller {
      * this methode open the PopUp to edit the password if the user logs in for the first time
      */
     private void openPopUpEditPassword(User user) throws IOException {
-        ChangePasswordController changePasswordController = new ChangePasswordController(new DbCallerUser().getUser(usernameTf.getText()), "Login");
+        ChangePasswordController changePasswordController = new ChangePasswordController(new DbCallerUser().getUser(usernameTf.getText()));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ChangePassword.fxml"));
         loader.setController(changePasswordController);
         Parent root = loader.load();
