@@ -14,25 +14,6 @@ public class Cit {
     private String[] attributes;
 
     /**
-     * Constructor to create an object of CIT
-     *
-     * @param cit_ID        is the current id of the CIT
-     * @param attributeList is the list of attributes which are defined by admin
-     */
-    @Deprecated
-    public Cit(int cit_ID, String[] attributeList) {
-        id = cit_ID;                                            //id wird über Konstruktor zugeteilt
-        attributes = new String[8];                             // Erzeugen des Attribute-Arrays
-        typename = attributeList[0];                     //Die Bezeichnung des CIT steht an 2. Stelle im Array
-        attributes[0] = "Name";                                 //Das Attribut Name gibt es in jedem CIT
-
-
-        for (int i = 1; i < attributes.length; i++) {       //Alle anderen Attribute werden über den Übergabeparameter weitergegeben.
-            this.attributes[i] = attributeList[i];
-        }
-    }
-
-    /**
      * Constructor to create a new instance of CIT
      *
      * @param citId           int - the id of the CIT
