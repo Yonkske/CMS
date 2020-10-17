@@ -38,9 +38,7 @@ public class FXMLFactory extends Application {
         scene.setRoot(loadFXML(fxml));
         scene.getWindow().sizeToScene();
         Stage stage = (Stage) scene.getWindow();
-        if (fxml.equals("Startpage") || fxml.equals("CIT") || fxml.equals("UserAdmin") || fxml.equals("Statistic")) {
-            stage.setResizable(true);
-        }
+        stage.setResizable(fxml.equals("Startpage") || fxml.equals("CIT") || fxml.equals("UserAdmin") || fxml.equals("Statistic"));
     }
 
     /**
