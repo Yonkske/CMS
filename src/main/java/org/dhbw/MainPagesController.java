@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -26,6 +27,8 @@ public abstract class MainPagesController extends Controller implements IRefresh
     Button passwordEditBtn;
     @FXML
     Button logoutBtn;
+    @FXML
+    MenuItem itemPassword;
 
 
     /**
@@ -38,6 +41,9 @@ public abstract class MainPagesController extends Controller implements IRefresh
         String name = Controller.user.getSurName() + ", " + Controller.user.getName();
         if (Controller.user.getIsAdmin()) {
             name += " (Admin)";
+        }
+        if (Controller.user.getUserName().equals("admin")) {
+            itemPassword.setVisible(false);
         }
         adminUserMB.setText(name);
     }

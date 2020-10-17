@@ -16,9 +16,9 @@
                                 <Button fx:id="benutzerDropDownBtn" mnemonicParsing="false" onAction="#openUserInfo" text="Benutzer" />
                             </graphic>
                         </MenuItem>
-                        <MenuItem mnemonicParsing="false" text="Action 2">
+                        <MenuItem fx:id="itemPassword" mnemonicParsing="false" text="Action 2">
                             <graphic>
-                                <Button fx:id="passwordEditBtn" mnemonicParsing="false" onAction="#openChangePassword" text="Passwort ändern" onAction=""/>
+                                <Button fx:id="passwordEditBtn" mnemonicParsing="false" onAction="#openChangePassword" text="Passwort ändern"/>
                             </graphic>
                         </MenuItem>
                     </items>
