@@ -44,29 +44,32 @@ public class StatisticController extends MainPagesController {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         super.initialize(url, resourceBundle);
-        ArrayList<Cit> allCit;
-        try {
-            allCit = Cit.showAll();
-            Cit currentCit;
 
+        if (!Controller.user.getIsAdmin()) {
+            userBtn.setVisible(false);
+        }
+
+        setUpChart();
+    }
+
+    private void setUpChart() {
+        try {
+            ArrayList<Cit> allCit = Cit.showAll();
             PieChart.Data[] slice = new PieChart.Data[10];
+
             for (int i = 0; i < allCit.size(); i++) {
-                currentCit = allCit.get(i);
-                slice[i] = new PieChart.Data(currentCit.getCitName(), DB_CALLER_CIR.getCirCountForType(currentCit));
+                slice[i] = new PieChart.Data(allCit.get(i).getCitName(), DB_CALLER_CIR.getCirCountForType(allCit.get(i)));
                 adminPieChart.getData().add(slice[i]);
             }
-
             numberCIRTf.setText(String.valueOf(Cir.getCount()));
             numberCITTf.setText(String.valueOf(Cit.getCount()));
-
-
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
 
     }
+
 
     @Override
     public void refresh() {
