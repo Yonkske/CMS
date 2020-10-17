@@ -40,9 +40,13 @@ public class CITAddController extends Controller implements Initializable {
     @FXML
     public Label attribut8Lbl;
     @FXML
+    public Label meldungLbl;
+    @FXML
     public TextField idTf;
     @FXML
     public TextField citTf;
+    @FXML
+    public TextField nameTf;
     @FXML
     public TextField attribut1Tf;
     @FXML
@@ -58,8 +62,6 @@ public class CITAddController extends Controller implements Initializable {
     @FXML
     public TextField attribut7Tf;
     @FXML
-    public TextField attribut8Tf;
-    @FXML
     public Button cancelBtn;
     @FXML
     public Button submitBtn;
@@ -69,37 +71,47 @@ public class CITAddController extends Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             idTf.setText(String.valueOf(DB_CALLER_CIT.getMaxItemId() + 1));
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
-        //Button Speichern
-        submitBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                String[] sCitArray = new String[8];
-                int id = Integer.parseInt(idTf.getText());
+    }
 
-                sCitArray[0] = citTf.getText();
-                sCitArray[1] = attribut2Tf.getText();
-                sCitArray[2] = attribut3Tf.getText();
-                sCitArray[3] = attribut4Tf.getText();
-                sCitArray[4] = attribut5Tf.getText();
-                sCitArray[5] = attribut6Tf.getText();
-                sCitArray[6] = attribut7Tf.getText();
-                sCitArray[7] = attribut8Tf.getText();
+    @FXML
+    public void fillIn(ActionEvent actionEvent) throws SQLException {
 
-                Cit cit = new Cit(id, sCitArray);
-                try {
-                    DB_CALLER_CIT.createCit(cit);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+        String[] sCitArray = new String[8];
+        int id = Integer.parseInt(idTf.getText());
 
-                Stage stClose = new Stage();
-                stClose = (Stage) submitBtn.getScene().getWindow();
-                stClose.close();
+        sCitArray[0] = citTf.getText();
+        sCitArray[1] = attribut1Tf.getText();
+        sCitArray[2] = attribut2Tf.getText();
+        sCitArray[3] = attribut3Tf.getText();
+        sCitArray[4] = attribut4Tf.getText();
+        sCitArray[5] = attribut5Tf.getText();
+        sCitArray[6] = attribut6Tf.getText();
+        sCitArray[7] = attribut7Tf.getText();
+        if (sCitArray[0].length()== 0){
+            showError();
+        }
+        else {
 
-            }
-        });
+            Cit cit = new Cit(id, sCitArray);
+            DB_CALLER_CIT.createCit(cit);
+            Stage stClose = new Stage();
+            stClose = (Stage) submitBtn.getScene().getWindow();
+            stClose.close();
+        }
+
+
+    }
+
+    @FXML
+    public void cancelButton(ActionEvent actionEvent) {
+        Stage stClose = new Stage();
+        stClose = (Stage) submitBtn.getScene().getWindow();
+        stClose.close();
+    }
+    private void showError() {
+        meldungLbl.setVisible(true);
     }
 }
