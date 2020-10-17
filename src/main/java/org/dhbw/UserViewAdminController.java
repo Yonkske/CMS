@@ -79,7 +79,7 @@ public class UserViewAdminController extends Controller implements Initializable
      * @throws IOException
      */
     public void swapToChangePassword() throws IOException {
-        this.openPopup(new ChangePasswordController(user), "ChangePassword.fxml", false, true);
+        this.openPopup(new ChangePasswordController(user, PAGE_NAME), "ChangePassword.fxml", false, true);
     }
 
     /**

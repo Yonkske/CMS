@@ -58,31 +58,12 @@ public class User {
     }
 
     /**
-     * Within this method a user could be deleted from the database.
-     * @param userName - username of the user which should be deleted
-     * @return true - if true returns the user was deleted, if false returns the user could not be deleted
-     */
-    public static boolean deleteUser(String userName) {
-
-        User userToDelete = getUser(userName);
-
-        if (new DbCallerUser().deleteUser(userToDelete)) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    } // TODO: NEEDED?!
-
-    /**
      * Within this method the user can change his own password.
      * @param userName - username of the user whose password should be changed
      * @param newPassword - the new password
      * @return boolean - if true returns the password was changed, if false returns the password could not be changed
      */
     public static boolean changePassword(String userName, String newPassword) {
-        // TODO: Abfrage ob Passwort geändert werden darf in aufrufender Methode implementieren.
-
         User userToChangePw = getUser(userName);
 
         userToChangePw.password = newPassword;
@@ -116,6 +97,11 @@ public class User {
 
     public boolean getIsInitial() {
         return this.isInitial;
+    }
+
+    public void setIsInitial(boolean newInitial) {
+        this.isInitial = newInitial;
+        new DbCallerUser().updateUser(this.getUser(this.userName));
     }
 
     public String getRight() {
