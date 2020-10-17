@@ -31,10 +31,8 @@ public class PasswordEditAdminController extends Controller {
 
         if (enteredPwCheck && noEmptyInputCheck) {
             userToChangePw.setNewPassword(super.encryptPassword(newPasswordPf.getText()));
-
             userToChangePw.setIsInitial(true);
             DB_CALLER_USER.updateUser(userToChangePw);
-
             this.closeScene();
         } else {
             this.showError();
