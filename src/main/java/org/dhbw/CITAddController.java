@@ -1,10 +1,7 @@
 package org.dhbw;
 
-import backend.database.DbCallerCir;
-import backend.database.DbCallerCit;
 import backend.usability.Cit;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -18,27 +15,8 @@ import java.util.ResourceBundle;
 
 
 public class CITAddController extends Controller implements Initializable {
-
-    @FXML
-    public Label idLbl;
     @FXML
     public Label citLbl;
-    @FXML
-    public Label attribut1Lbl;
-    @FXML
-    public Label attribut2Lbl;
-    @FXML
-    public Label attribut3Lbl;
-    @FXML
-    public Label attribut4Lbl;
-    @FXML
-    public Label attribut5Lbl;
-    @FXML
-    public Label attribut6Lbl;
-    @FXML
-    public Label attribut7Lbl;
-    @FXML
-    public Label attribut8Lbl;
     @FXML
     public Label meldungLbl;
     @FXML
@@ -66,7 +44,13 @@ public class CITAddController extends Controller implements Initializable {
     @FXML
     public Button submitBtn;
 
-
+    /**
+     * Methode from the interface Initializable that auto generates the page on
+     * start
+     *
+     * @param url            - demanded by interface
+     * @param resourceBundle - demanded by interface
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -76,8 +60,13 @@ public class CITAddController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Creates a new CIT with the data inserted by the user and inserts it into the database
+     *
+     * @throws SQLException - on Issue with the database
+     */
     @FXML
-    public void fillIn(ActionEvent actionEvent) throws SQLException {
+    public void fillIn() throws SQLException {
 
         String[] sCitArray = new String[8];
         int id = Integer.parseInt(idTf.getText());
@@ -90,15 +79,13 @@ public class CITAddController extends Controller implements Initializable {
         sCitArray[5] = attribut5Tf.getText();
         sCitArray[6] = attribut6Tf.getText();
         sCitArray[7] = attribut7Tf.getText();
-        if (sCitArray[0].length()== 0){
+        if (sCitArray[0].length() == 0) {
             showError();
-        }
-        else {
+        } else {
 
             Cit cit = new Cit(id, sCitArray);
             DB_CALLER_CIT.createCit(cit);
-            Stage stClose = new Stage();
-            stClose = (Stage) submitBtn.getScene().getWindow();
+            Stage stClose = (Stage) submitBtn.getScene().getWindow();
             stClose.close();
         }
 
@@ -107,10 +94,10 @@ public class CITAddController extends Controller implements Initializable {
 
     @FXML
     public void cancelButton(ActionEvent actionEvent) {
-        Stage stClose = new Stage();
-        stClose = (Stage) submitBtn.getScene().getWindow();
+        Stage stClose = (Stage) submitBtn.getScene().getWindow();
         stClose.close();
     }
+
     private void showError() {
         meldungLbl.setVisible(true);
     }
