@@ -23,28 +23,22 @@ public class StartpageController extends MainPagesController {
     @FXML
     private TableColumn<Cir, String> cirNameColumn;
     @FXML
-    private Label adminLbl;
-    @FXML
     private Button userBtn;
     @FXML
     private Button citEditBtn;
     @FXML
     private Button citDeleteBtn;
     @FXML
-    private Button searchBtn;
-    @FXML
     private TextField searchTf;
     @FXML
     private ComboBox<Cit> filterCitCb;
-
-    private final String PAGE_NAME = "Startpage";
 
     /**
      * Methode from the interface Initializable that auto generates the page on
      * start
      *
-     * @param url
-     * @param resourceBundle
+     * @param url            - demanded by interface
+     * @param resourceBundle - demanded by interface
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -72,7 +66,7 @@ public class StartpageController extends MainPagesController {
     /**
      * Opens the CITAdd Popup on button click
      *
-     * @throws IOException
+     * @throws IOException - if fxml file isn't found
      */
     @FXML
     public void openAddCit() throws IOException {
@@ -82,7 +76,7 @@ public class StartpageController extends MainPagesController {
     /**
      * Opens the Notification Popup on button click and gives the selected Cit that has to be deleted
      *
-     * @throws IOException
+     * @throws IOException - if fxml file isn't found
      */
     @FXML
     public void openDeleteCitPopup() throws IOException {
@@ -92,7 +86,7 @@ public class StartpageController extends MainPagesController {
     /**
      * Opens the Notification Popup on button click and gives the selected Cir that has to be deleted
      *
-     * @throws IOException
+     * @throws IOException - if fxml file isn't found
      */
     @FXML
     public void openDeleteCirPopup() throws IOException {
@@ -104,7 +98,7 @@ public class StartpageController extends MainPagesController {
     /**
      * Opens the CIRAdd Popup on button click
      *
-     * @throws IOException
+     * @throws IOException - if fxml file isn't found
      */
     @FXML
     public void openAddCir() throws IOException {
@@ -114,7 +108,7 @@ public class StartpageController extends MainPagesController {
     /**
      * Opens the CIREdit Popup on button click and gives the selected cir that has to be edited
      *
-     * @throws IOException
+     * @throws IOException - if fxml file isn't found
      */
     @FXML
     public void openEditCir() throws IOException {
@@ -122,12 +116,6 @@ public class StartpageController extends MainPagesController {
             openPopup(new CIREditController(cirTable.getSelectionModel().getSelectedItem()), "CIREdit.fxml", true);
         }
     }
-
-    /**
-     * Sets the content of the table to the given list of cirs
-     *
-     * @param cirs - ArrayList with cirs to be shown in the table
-     */
 
     /**
      * Changes the content of the table to fit the search and selected filter
@@ -151,7 +139,7 @@ public class StartpageController extends MainPagesController {
      * Opens the CirView on double click on table row
      *
      * @param me MouseEvent from javafx.scene.input
-     * @throws IOException
+     * @throws IOException - if fxml file isn't found
      */
     @FXML
     public void openCirView(MouseEvent me) throws IOException {
@@ -167,8 +155,8 @@ public class StartpageController extends MainPagesController {
      */
     private void setTableContent(ArrayList<Cir> cirs) {
         cirTable.getItems().setAll(cirs);
-        citColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CitName"));
-        cirNameColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CirName"));
+        citColumn.setCellValueFactory(new PropertyValueFactory<>("CitName"));
+        cirNameColumn.setCellValueFactory(new PropertyValueFactory<>("CirName"));
     }
 
     @Override
