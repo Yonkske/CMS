@@ -58,7 +58,7 @@ public abstract class MainPagesController extends Controller implements IRefresh
      * @throws IOException - if fxml file isn't found
      */
     public void openUserInfo() throws IOException {
-        openPopup(null, "UserInfo.fxml", false);
+        openPopup(new UserInfoController(Controller.user), "UserInfo.fxml", false);
     }
 
     /**
@@ -67,7 +67,7 @@ public abstract class MainPagesController extends Controller implements IRefresh
      * @throws IOException - if fxml file isn't found
      */
     public void openChangePassword() throws IOException {
-        openPopup(null, "ChangePassword.fxml", false);
+        openPopup(new ChangePasswordController(Controller.user), "ChangePassword.fxml", false);
     }
 
     /**
