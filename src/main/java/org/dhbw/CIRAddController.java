@@ -24,30 +24,50 @@ import java.util.ResourceBundle;
 
 
 public class CIRAddController extends Controller implements Initializable {
-    @FXML public Label idLbl;
-    @FXML public Label citLbl;
-    @FXML public Label nameLbl;
-    @FXML public Label attribut1Lbl;
-    @FXML public Label attribut2Lbl;
-    @FXML public Label attribut3Lbl;
-    @FXML public Label attribut4Lbl;
-    @FXML public Label attribut5Lbl;
-    @FXML public Label attribut6Lbl;
-    @FXML public Label attribut7Lbl;
+    @FXML
+    public Label citLbl;
+    @FXML
+    public Label nameLbl;
+    @FXML
+    public Label attribut1Lbl;
+    @FXML
+    public Label attribut2Lbl;
+    @FXML
+    public Label attribut3Lbl;
+    @FXML
+    public Label attribut4Lbl;
+    @FXML
+    public Label attribut5Lbl;
+    @FXML
+    public Label attribut6Lbl;
+    @FXML
+    public Label attribut7Lbl;
 
-    @FXML public TextField idTf;
-    @FXML public ChoiceBox<Cit> citChoicebox;
-    @FXML public TextField nameTf;
-    @FXML public TextField attribut1Tf;
-    @FXML public TextField attribut2Tf;
-    @FXML public TextField attribut3Tf;
-    @FXML public TextField attribut4Tf;
-    @FXML public TextField attribut5Tf;
-    @FXML public TextField attribut6Tf;
-    @FXML public TextField attribut7Tf;
+    @FXML
+    public TextField idTf;
+    @FXML
+    public ChoiceBox<Cit> citChoicebox;
+    @FXML
+    public TextField nameTf;
+    @FXML
+    public TextField attribut1Tf;
+    @FXML
+    public TextField attribut2Tf;
+    @FXML
+    public TextField attribut3Tf;
+    @FXML
+    public TextField attribut4Tf;
+    @FXML
+    public TextField attribut5Tf;
+    @FXML
+    public TextField attribut6Tf;
+    @FXML
+    public TextField attribut7Tf;
 
-    @FXML public Button cancelBtn;
-    @FXML public Button submitBtn;
+    @FXML
+    public Button cancelBtn;
+    @FXML
+    public Button submitBtn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -63,11 +83,11 @@ public class CIRAddController extends Controller implements Initializable {
         }
 
         // Button Speichern
-        submitBtn.setOnAction(new EventHandler<ActionEvent>() {
+        submitBtn.setOnAction(new EventHandler<>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 //Auslesen der Textfelder und speichern in einem String
-                Cit cit = (Cit) citChoicebox.getSelectionModel().getSelectedItem();
+                Cit cit = citChoicebox.getSelectionModel().getSelectedItem();
                 String[] sCirArray = new String[10];
                 sCirArray[0] = idTf.getText();
                 sCirArray[1] = String.valueOf(cit.getCitID());
@@ -83,15 +103,14 @@ public class CIRAddController extends Controller implements Initializable {
                 Cir cirName = Cir.create(sCirArray);
 
 
-
                 try {
                     //Fixme: Error Handling
                     // Neues CIR Objekt in die Datenbank schreiben
                     DB_CALLER_CIR.insertCir(cirName);
 
-                } catch (SQLException throwables) {
+                } catch (SQLException e) {
 
-                    throwables.printStackTrace();
+                    e.printStackTrace();
 
                 }
                 try {
@@ -112,34 +131,28 @@ public class CIRAddController extends Controller implements Initializable {
 
 
                 // Methode Fenster schließen
-                fensterSchließen();
+                closeWindow();
 
             }
         });
         // Abbrechen Button, schließt das Popup
-        cancelBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                    // Methode Fenster schließen
-                    //todo: aktuelle ohne Startseite neu laden, --> User/Admin?
-                    fensterSchließen();
+        cancelBtn.setOnAction(actionEvent -> {
+            // Methode Fenster schließen
+            //todo: aktuelle ohne Startseite neu laden, --> User/Admin?
+            closeWindow();
 
-            }
         });
 
         // Abbrechen Button, schließt das Popup
-        citChoicebox.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                Cit cit = (Cit) citChoicebox.getSelectionModel().getSelectedItem();
-                attribut1Lbl.setText(cit.getCitAttributes()[1]);
-                attribut2Lbl.setText(cit.getCitAttributes()[2]);
-                attribut3Lbl.setText(cit.getCitAttributes()[3]);
-                attribut4Lbl.setText(cit.getCitAttributes()[4]);
-                attribut5Lbl.setText(cit.getCitAttributes()[5]);
-                attribut6Lbl.setText(cit.getCitAttributes()[6]);
-                attribut7Lbl.setText(cit.getCitAttributes()[7]);
-            }
+        citChoicebox.setOnAction(actionEvent -> {
+            Cit cit = citChoicebox.getSelectionModel().getSelectedItem();
+            attribut1Lbl.setText(cit.getCitAttributes()[1]);
+            attribut2Lbl.setText(cit.getCitAttributes()[2]);
+            attribut3Lbl.setText(cit.getCitAttributes()[3]);
+            attribut4Lbl.setText(cit.getCitAttributes()[4]);
+            attribut5Lbl.setText(cit.getCitAttributes()[5]);
+            attribut6Lbl.setText(cit.getCitAttributes()[6]);
+            attribut7Lbl.setText(cit.getCitAttributes()[7]);
         });
 
     }
@@ -147,10 +160,8 @@ public class CIRAddController extends Controller implements Initializable {
     /**
      * Methode close Window
      */
-    public void fensterSchließen()
-    {
-        Stage stClose = new Stage();
-        stClose = (Stage) submitBtn.getScene().getWindow();
+    public void closeWindow() {
+        Stage stClose = (Stage) submitBtn.getScene().getWindow();
         stClose.close();
     }
 

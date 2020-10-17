@@ -26,10 +26,10 @@ public class LoginController extends Controller {
     @FXML
     private Label meldungLbl;
 
-    @FXML
     /**
      * This method is for a user logIn, it is checked whether the user is a admin.
      */
+    @FXML
     public void logIn() throws IOException {
 
         String givenName = usernameTf.getText();
@@ -58,10 +58,10 @@ public class LoginController extends Controller {
         }
     }
 
-    @FXML
     /**
      * This method sets a error message visible if one is needed.
      */
+    @FXML
     private void showError() {
         meldungLbl.setVisible(true);
     }
@@ -74,10 +74,10 @@ public class LoginController extends Controller {
         FXMLFactory.setRoot("Startpage");
     }
 
-    @FXML
     /**
      * this methode open the PopUp to edit the password if the user logs in for the first time
      */
+    @FXML
     private void openPopUpEditPassword(User user) throws IOException {
         ChangePasswordController changePasswordController = new ChangePasswordController(new DbCallerUser().getUser(usernameTf.getText()));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ChangePassword.fxml"));
@@ -93,10 +93,10 @@ public class LoginController extends Controller {
         stage.show();
     }
 
-    @FXML
     /**
      * this methode terminates the program
      */
+    @FXML
     public void exit(ActionEvent event) {
         Platform.exit();
     }

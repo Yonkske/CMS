@@ -19,36 +19,54 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class CIRViewController extends Controller implements Initializable  {
-    private static Scene scene;
+public class CIRViewController extends Controller implements Initializable {
+    @FXML
+    public Label citLbl;
+    @FXML
+    public Label nameLbl;
+    @FXML
+    public Label attribut1Lbl;
+    @FXML
+    public Label attribut2Lbl;
+    @FXML
+    public Label attribut3Lbl;
+    @FXML
+    public Label attribut4Lbl;
+    @FXML
+    public Label attribut5Lbl;
+    @FXML
+    public Label attribut6Lbl;
+    @FXML
+    public Label attribut7Lbl;
 
-    @FXML public Label idLbl;
-    @FXML public Label citLbl;
-    @FXML public Label nameLbl;
-    @FXML public Label attribut1Lbl;
-    @FXML public Label attribut2Lbl;
-    @FXML public Label attribut3Lbl;
-    @FXML public Label attribut4Lbl;
-    @FXML public Label attribut5Lbl;
-    @FXML public Label attribut6Lbl;
-    @FXML public Label attribut7Lbl;
+    @FXML
+    public TextField idTf;
+    @FXML
+    public TextField citTf;
+    @FXML
+    public TextField nameTf;
+    @FXML
+    public TextField attribut1Tf;
+    @FXML
+    public TextField attribut2Tf;
+    @FXML
+    public TextField attribut3Tf;
+    @FXML
+    public TextField attribut4Tf;
+    @FXML
+    public TextField attribut5Tf;
+    @FXML
+    public TextField attribut6Tf;
+    @FXML
+    public TextField attribut7Tf;
+    @FXML
+    public Button deleteBtn;
+    @FXML
+    public Button editCirBtn;
+    @FXML
+    public Button cancelBtn;
 
-    @FXML public TextField idTf;
-    @FXML public TextField citTf;
-    @FXML public TextField nameTf;
-    @FXML public TextField attribut1Tf;
-    @FXML public TextField attribut2Tf;
-    @FXML public TextField attribut3Tf;
-    @FXML public TextField attribut4Tf;
-    @FXML public TextField attribut5Tf;
-    @FXML public TextField attribut6Tf;
-    @FXML public TextField attribut7Tf;
-    @FXML public Button deleteBtn;
-    @FXML public Button editCirBtn;
-    @FXML public Button cancelBtn;
-
-    private Cir cir;
-    private final String PAGE_NAME = "Startpage";
+    private final Cir cir;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -78,58 +96,46 @@ public class CIRViewController extends Controller implements Initializable  {
         attribut7Lbl.setText(cit.getCitAttributes()[7]);
 
         // Action Event bearbeiten Button
-        editCirBtn.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                try {
-                    // Aufrufen von View CIR Edit
-                    openPopUpCirEdit(cir);
-                    // Aktuelle View schließen
-                    Stage stClose = new Stage();
-                    stClose = (Stage) editCirBtn.getScene().getWindow();
-                    stClose.close();
-
-                }
-                //Fixme: Error Handling
-                catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        deleteBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                try {
-                    //todo: einbinden der Notification vor dem löschen
-                    openPopUpNotification(cir);
-                    //deleteSelectedCir(cir);
-                }
-                //Fixme: Error Handling
-                catch (IOException throwables) {
-                    throwables.printStackTrace();
-                }
-
-            }
-        });
-        // Abbrechen Button, schließt das Popup
-        cancelBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                Stage stClose = new Stage();
-                stClose = (Stage) cancelBtn.getScene().getWindow();
+        editCirBtn.setOnAction(actionEvent -> {
+            try {
+                // Aufrufen von View CIR Edit
+                openPopUpCirEdit(cir);
+                // Aktuelle View schließen
+                Stage stClose = (Stage) editCirBtn.getScene().getWindow();
                 stClose.close();
 
             }
+            //Fixme: Error Handling
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        deleteBtn.setOnAction(actionEvent -> {
+            try {
+                //todo: einbinden der Notification vor dem löschen
+                openPopUpNotification(cir);
+                //deleteSelectedCir(cir);
+            }
+            //Fixme: Error Handling
+            catch (IOException throwables) {
+                throwables.printStackTrace();
+            }
+
+        });
+        // Abbrechen Button, schließt das Popup
+        cancelBtn.setOnAction(actionEvent -> {
+            Stage stClose = (Stage) cancelBtn.getScene().getWindow();
+            stClose.close();
+
         });
     }
 
     /**
-     *   open the Cir Edit View
+     * open the Cir Edit View
      *
-     * @param selectedCir - Cir Objekt
-     * @throws IOException
+     * @param selectedCir - selected CIR
+     * @throws IOException - if fxml file isn't found
      */
     private void openPopUpCirEdit(Cir selectedCir) throws IOException {
         // Aufruf View CIREdit
@@ -150,10 +156,11 @@ public class CIRViewController extends Controller implements Initializable  {
     /**
      * Opens the popup to delete the selected cir
      *
-     * @param selectedCir
-     * @throws IOException
+     * @param selectedCir - selected CIR
+     * @throws IOException - if fxml file isn't found
      */
     private void openPopUpNotification(Cir selectedCir) throws IOException {
+        String PAGE_NAME = "Startpage";
         NotificationController notificationController = new NotificationController(selectedCir, PAGE_NAME);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Notification.fxml"));

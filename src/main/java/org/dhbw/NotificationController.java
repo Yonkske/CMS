@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class NotificationController extends Controller  {
 
     @FXML
-    public Button yesBtn;
+    private Button yesBtn;
 
     @FXML
     private Button noBtn;
@@ -95,19 +95,19 @@ public class NotificationController extends Controller  {
     }
 
 
-    @FXML
     /**
      * Closes the notification popup
      */
+    @FXML
     private void closeStage() {
         Stage stClose = (Stage) noBtn.getScene().getWindow();
         stClose.close();
     }
 
-    @FXML
     /**
      * Deletes the given cit, cir or user when the yesBtn is clicked
      */
+    @FXML
     private void yesButtonClicked() {
 
         switch (itemToDelete) {

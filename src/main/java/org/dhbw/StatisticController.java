@@ -35,8 +35,14 @@ public class StatisticController extends MainPagesController {
     @FXML
     public PieChart adminPieChart;
 
-
-
+    /**
+     * Methode from the interface Initializable that auto generates the page on
+     * start
+     *
+     * @param url            - demanded by interface
+     * @param resourceBundle - demanded by interface
+     */
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         super.initialize(url, resourceBundle);
