@@ -46,6 +46,8 @@ public class CITAddController extends Controller implements Initializable {
     @FXML
     public TextField citTf;
     @FXML
+    public TextField nameTf;
+    @FXML
     public TextField attribut1Tf;
     @FXML
     public TextField attribut2Tf;
@@ -59,8 +61,6 @@ public class CITAddController extends Controller implements Initializable {
     public TextField attribut6Tf;
     @FXML
     public TextField attribut7Tf;
-    @FXML
-    public TextField attribut8Tf;
     @FXML
     public Button cancelBtn;
     @FXML
@@ -83,15 +83,14 @@ public class CITAddController extends Controller implements Initializable {
         int id = Integer.parseInt(idTf.getText());
 
         sCitArray[0] = citTf.getText();
-        sCitArray[1] = attribut2Tf.getText();
-        sCitArray[2] = attribut3Tf.getText();
-        sCitArray[3] = attribut4Tf.getText();
-        sCitArray[4] = attribut5Tf.getText();
-        sCitArray[5] = attribut6Tf.getText();
-        sCitArray[6] = attribut7Tf.getText();
-        sCitArray[7] = attribut8Tf.getText();
-        if (citTf.getText().length() == 0){
-            System.out.println("Feld darf nicht leer sein");
+        sCitArray[1] = attribut1Tf.getText();
+        sCitArray[2] = attribut2Tf.getText();
+        sCitArray[3] = attribut3Tf.getText();
+        sCitArray[4] = attribut4Tf.getText();
+        sCitArray[5] = attribut5Tf.getText();
+        sCitArray[6] = attribut6Tf.getText();
+        sCitArray[7] = attribut7Tf.getText();
+        if (sCitArray[0].length()== 0){
             showError();
         }
         else {
