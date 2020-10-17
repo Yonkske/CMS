@@ -74,6 +74,15 @@ public class UserViewAdminController extends Controller implements Initializable
     }
 
     /**
+     * This method opens a popup where you can change your own password.
+     *
+     * @throws IOException
+     */
+    public void swapToChangePassword() throws IOException {
+        this.openPopup(new ChangePasswordController(user), "ChangePassword.fxml", false, true);
+    }
+
+    /**
      * this methode displays the selected user
      *
      */

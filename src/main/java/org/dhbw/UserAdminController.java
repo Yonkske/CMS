@@ -156,16 +156,6 @@ public class UserAdminController extends MainPagesController {
         FXMLFactory.setRoot("Login");
     }
 
-    /**
-     * This method opens a popup where you can change your own password.
-     *
-     * @throws IOException
-     */
-    public void swapToChangePassword() throws IOException {
-        // TODO: Set onAction with changePasswordBtn
-        this.openPopup(new ChangePasswordController(user), "ChangePassword.fxml", false);
-    }
-
 // Following are for functions in this view
 
     /**
@@ -312,6 +302,5 @@ public class UserAdminController extends MainPagesController {
 
     @Override
     public void refresh() {
-        this.getData();
     }
 }
