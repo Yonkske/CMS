@@ -41,8 +41,6 @@ public class FXMLFactory extends Application {
         if (fxml.equals("Startpage") || fxml.equals("CIT") || fxml.equals("UserAdmin") || fxml.equals("Statistic")) {
             stage.setResizable(true);
         }
-
-
     }
 
     /**
