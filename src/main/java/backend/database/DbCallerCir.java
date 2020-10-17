@@ -268,23 +268,43 @@ public class DbCallerCir extends DbConnector {
     }
 
     /**
-     * Get all CIRs from the database
+     * Gets all CIRs from the database
      *
-     * @return allCirs
-     * @throws SQLException
+     * @return ArrayList containing all CIRs
      */
-    public ArrayList<Cir> getAll() throws SQLException {
-        startConnection();
-        ArrayList<Cir> allCirs = new ArrayList<Cir>();
+    public ArrayList<Cir> getAll() {
+        ArrayList<Cir> allCirs = new ArrayList<>();
 
-        ResultSet rs = stmt.executeQuery("Select * from CIR");
+        try {
+            ResultSet rs = stmt.executeQuery("SELECT * FROM CIR R JOIN CIT T on T.TYPE_ID = R.TYPE_ID");
 
-        while (rs.next()) {
-            String[] attributes = new String[10];
-            for (int i = 0; i < attributes.length; i++) {
-                attributes[i] = rs.getString(i + 1);
+            while(rs.next()) {
+
+                // Create the CIT
+                int typId = rs.getInt("TYPE_ID");
+                String typeName = rs.getString("TYPE_NAME");
+
+                String[] attributeNames = new String[7];
+                for(int i = 13; i <= rs.getMetaData().getColumnCount(); i++) {
+                    attributeNames[i-13] = rs.getString(i);
+                }
+
+                Cit type = new Cit(typId, typeName, attributeNames);
+
+                // Create the CIT
+
+                int recordId = rs.getInt("ITEM_ID");
+                String recordName = rs.getString("RECORD_NAME");
+
+                String[] attributeValues = new String[7];
+                for(int i = 0; i < attributeValues.length; i++) {
+                    attributeValues[i] = rs.getString(i+4);
+                }
+
+                allCirs.add(new Cir(recordId, type, recordName, attributeValues));
             }
-            allCirs.add(new Cir(attributes));
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
         return allCirs;
