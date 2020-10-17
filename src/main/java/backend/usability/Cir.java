@@ -123,21 +123,6 @@ public class Cir {
     }
 
     /**
-     * List of Cir's to a specific CIT
-     *
-     * @param sCitType - String later CIT Type
-     * @return CirListe - List with alle Cir's from a specific CIT
-     */
-    // todo: CIT Type anstatt String sCitType
-    public static ArrayList<Cir> getAllForType(String sCitType) throws SQLException {
-
-        ArrayList<Cir> CirListe = new ArrayList<Cir>(); // Erzeugen einer Cir Liste
-        CirListe = DbCallerCir.getAllCirForType(sCitType);  //Methoden aufruf
-
-        return CirListe;
-    }
-
-    /**
      * Number of all CIR's
      *
      * @return iCountAllCir - int of all CIR's
