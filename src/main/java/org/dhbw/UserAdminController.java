@@ -56,18 +56,15 @@ public class UserAdminController extends MainPagesController {
      * @param resourceBundle
      */
     @Override
-    /**
-     * This method runs when this Controller is addressed.
-     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
         this.getData();
     }
 
-    @FXML
     /**
      * This method is to show the data from the database.
      */
+    @FXML
     private void getData() {
         this.allUsers = DB_CALLER_USER.getAllUsers();
         try {
@@ -194,19 +191,19 @@ public class UserAdminController extends MainPagesController {
         stClose.close();
     }
 
-    @FXML
     /**
      * This method sets the edit and the delete Button disable as long as no user is selected.
      */
+    @FXML
     private void disableButtons() {
         editBtn.setDisable(true);
         deleteBtn.setDisable(true);
     }
 
-    @FXML
     /**
      * This method says what to do by selecting a user and double clicking at a user.
      */
+    @FXML
     public void clickAction(MouseEvent mouseEvent) {
         boolean userSelected = false;
         if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
@@ -228,10 +225,10 @@ public class UserAdminController extends MainPagesController {
 
 // Following is to Filter and to Search
 
-    @FXML
     /**
      *  This method fills the Table depending on filter and search.
      */
+    @FXML
     private void setTableContent(ArrayList<User> user) {
         userTable.getItems().setAll(user);
         userColumn.setCellValueFactory(new PropertyValueFactory<User, String>("UserName"));
@@ -283,10 +280,10 @@ public class UserAdminController extends MainPagesController {
         return outputList;
     }
 
-    @FXML
     /**
      *  This method says what to do when filter and search are set.
      */
+    @FXML
     public void setTableWithFilterAndSearch() {
         String selectedUser = filterUser.getSelectionModel().getSelectedItem();
         String searchValue = searchTextField.getText();
