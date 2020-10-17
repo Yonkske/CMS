@@ -61,20 +61,16 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="211.0" prefWidth="455.0">
                             <children>
-                                <ScrollPane prefHeight="164.0" prefWidth="240.0">
-                                    <content>
-                                        <TableView fx:id="userTable" onMouseClicked="#clickAction" prefHeight="194.0" prefWidth="240.0">
-                                            <columns>
-                                                <TableColumn fx:id="userColumn" prefWidth="120.0" text="Benutzer" />
-                                                <TableColumn fx:id="rightColumn" prefWidth="120.0">
-                                                    <graphic>
-                                                        <ComboBox fx:id="filterUser" onAction="#setTableWithFilterAndSearch" prefHeight="25.0" prefWidth="135.0" promptText="Rechte" />
-                                                    </graphic>
-                                                </TableColumn>
-                                            </columns>
-                                        </TableView>
-                                    </content>
-                                </ScrollPane>
+                                  <TableView fx:id="userTable" onMouseClicked="#clickAction" prefHeight="194.0" prefWidth="240.0">
+                                      <columns>
+                                          <TableColumn fx:id="userColumn" prefWidth="120.0" text="Benutzer" />
+                                          <TableColumn fx:id="rightColumn" prefWidth="120.0">
+                                              <graphic>
+                                                  <ComboBox fx:id="filterUser" onAction="#setTableWithFilterAndSearch" prefHeight="25.0" prefWidth="135.0" promptText="Rechte" />
+                                              </graphic>
+                                          </TableColumn>
+                                      </columns>
+                                  </TableView>
                             </children>
                         </HBox>
                         <HBox alignment="BOTTOM_RIGHT" prefHeight="97.0" prefWidth="458.0">
