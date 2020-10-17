@@ -31,6 +31,8 @@ public class UserAdminController extends MainPagesController {
     private Button deleteBtn;
     @FXML
     private Button editBtn;
+    @FXML
+    private Button passwordEditBtn;
 
     @FXML
     private TableView<User> userTable;
@@ -101,6 +103,17 @@ public class UserAdminController extends MainPagesController {
     public void addUser() throws IOException {
         // TODO: Test method
         openPopup(new UserAddAdminController(), "UserAddAdmin.fxml", true, true);
+        this.disableButtons();
+    }
+
+    /**
+     * This method opens a Popup. With that you can change your own Password.
+     *
+     * @throws IOException
+     */
+    public void changeOwnPassword() throws IOException {
+        // TODO: Test method
+        super.openPopup(new ChangePasswordController(Controller.user), "ChangePassword.fxml", false);
         this.disableButtons();
     }
 

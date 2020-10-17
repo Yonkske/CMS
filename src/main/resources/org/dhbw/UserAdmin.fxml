@@ -18,7 +18,7 @@
                         </MenuItem>
                         <MenuItem mnemonicParsing="false" text="Action 2">
                             <graphic>
-                                <Button fx:id="passwordEditBtn" mnemonicParsing="false" onAction="#openChangePassword" text="Passwort ändern" />
+                                <Button fx:id="passwordEditBtn" mnemonicParsing="false" onAction="#openChangePassword" text="Passwort ändern" onAction=""/>
                             </graphic>
                         </MenuItem>
                     </items>
