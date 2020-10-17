@@ -72,14 +72,7 @@ public class CITController extends MainPagesController {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
 
-        ObservableList<Cit> list = FXCollections.observableArrayList();
-        choiceBox.setItems(list);
-
-        try {
-            list.addAll(DB_CALLER_CIT.getAllCits());
-        } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
-        }
+       this.getData();
 
         if (!Controller.user.getIsAdmin()) {
             deleteBtn.setVisible(false);
@@ -89,13 +82,24 @@ public class CITController extends MainPagesController {
 
     }
 
+    private void getData() {
+        ObservableList<Cit> list = FXCollections.observableArrayList();
+        choiceBox.setItems(list);
+
+        try {
+            list.addAll(DB_CALLER_CIT.getAllCits());
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+    }
+
     /**
      * Opens the citAddd popup on button click
      *
      * @throws IOException - if fxml file isn't found
      */
     public void swapToCITAdd() throws IOException {
-        openPopup(new CITAddController(), "CITAdd.fxml", false);
+        openPopup(new CITAddController(), "CITAdd.fxml", true);
     }
 
     /**
@@ -136,6 +140,6 @@ public class CITController extends MainPagesController {
 
     @Override
     public void refresh() {
-
+        this.getData();
     }
 }
