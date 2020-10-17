@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 
@@ -67,9 +68,22 @@ public class CITAddController extends Controller implements Initializable {
      */
     @FXML
     public void fillIn() throws SQLException {
+        if (Objects.isNull(citTf.getText())) {
+            String[] sCitArray = new String[8];
+            int id = Integer.parseInt(idTf.getText());
 
-        String[] sCitArray = new String[8];
-        int id = Integer.parseInt(idTf.getText());
+
+            sCitArray[0] = citTf.getText();
+            sCitArray[1] = attribut1Tf.getText();
+            sCitArray[2] = attribut2Tf.getText();
+            sCitArray[3] = attribut3Tf.getText();
+            sCitArray[4] = attribut4Tf.getText();
+            sCitArray[5] = attribut5Tf.getText();
+            sCitArray[6] = attribut6Tf.getText();
+            sCitArray[7] = attribut7Tf.getText();
+            if (sCitArray[0].length() == 0) {
+                showError();
+            } else {
 
         sCitArray[0] = citTf.getText();
         sCitArray[1] = attribut1Tf.getText();
@@ -88,8 +102,6 @@ public class CITAddController extends Controller implements Initializable {
             Stage stClose = (Stage) submitBtn.getScene().getWindow();
             stClose.close();
         }
-
-
     }
 
     @FXML

@@ -93,10 +93,10 @@ public class UserAddAdminController extends Controller implements Initializable 
         closeScene();
     }
 
-    @FXML
     /**
      * Method closes the Popup.
      */
+    @FXML
     public void closeScene() {
         Stage close = new Stage();
         close = (Stage) submitBtn.getScene().getWindow();
@@ -107,7 +107,7 @@ public class UserAddAdminController extends Controller implements Initializable 
      * When a error warning will be implemented this method will show it when needed.
      */
     public void showError() {
-        meldungLbl.setVisible(true); // TODO: meldungLbl einfügen!
+        meldungLbl.setVisible(true);
     }
     
     public void clearPasswordAndUser() {

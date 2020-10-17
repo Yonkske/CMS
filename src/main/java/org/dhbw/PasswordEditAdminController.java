@@ -1,5 +1,6 @@
 package org.dhbw;
 
+import backend.usability.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -14,4 +15,8 @@ public class PasswordEditAdminController extends Controller {
     public PasswordField newPasswordPf;
     @FXML
     public PasswordField passwordRepeatPf;
+
+    public PasswordEditAdminController(User user) {
+
+    }
 }

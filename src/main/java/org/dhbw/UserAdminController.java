@@ -1,5 +1,6 @@
 package org.dhbw;
 
+import backend.database.DbCallerUser;
 import backend.usability.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -208,6 +209,10 @@ public class UserAdminController extends MainPagesController {
         boolean userSelected = false;
         if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
             userSelected = true;
+        }
+
+        if (userTable.getSelectionModel().getSelectedItem().equals(new DbCallerUser().getUser("Admin"))) {
+            this.disableButtons();
         }
 
         if (userSelected) {

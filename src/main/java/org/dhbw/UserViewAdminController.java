@@ -79,7 +79,7 @@ public class UserViewAdminController extends Controller implements Initializable
      * @throws IOException
      */
     public void swapToChangePassword() throws IOException {
-        this.openPopup(new ChangePasswordController(user), "ChangePassword.fxml", false, true);
+        this.openPopup(new PasswordEditAdminController(user), "PasswordEditAdmin.fxml", false, true);
     }
 
     /**
@@ -109,7 +109,7 @@ public class UserViewAdminController extends Controller implements Initializable
     @FXML
     public void switchToPasswordEditAdmin(ActionEvent actionEvent) throws IOException {
         // TODO: Methode testen
-        openPopup(new PasswordEditAdminController(), "PasswordEditAdmin.fxml", false, true);
+        openPopup(new PasswordEditAdminController(userToEdit), "PasswordEditAdmin.fxml", false, false);
     }
 
     /**
