@@ -108,9 +108,9 @@ public class CIRAddController extends Controller implements Initializable {
                     // Neues CIR Objekt in die Datenbank schreiben
                     DB_CALLER_CIR.insertCir(cirName);
 
-                } catch (SQLException throwables) {
+                } catch (SQLException e) {
 
-                    throwables.printStackTrace();
+                    e.printStackTrace();
 
                 }
                 try {
@@ -145,7 +145,7 @@ public class CIRAddController extends Controller implements Initializable {
 
         // Abbrechen Button, schließt das Popup
         citChoicebox.setOnAction(actionEvent -> {
-            Cit cit = (Cit) citChoicebox.getSelectionModel().getSelectedItem();
+            Cit cit = citChoicebox.getSelectionModel().getSelectedItem();
             attribut1Lbl.setText(cit.getCitAttributes()[1]);
             attribut2Lbl.setText(cit.getCitAttributes()[2]);
             attribut3Lbl.setText(cit.getCitAttributes()[3]);
