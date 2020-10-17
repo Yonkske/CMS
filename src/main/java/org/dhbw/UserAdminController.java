@@ -188,14 +188,15 @@ public class UserAdminController extends MainPagesController {
             userSelected = true;
         }
 
-        if (userTable.getSelectionModel().getSelectedItem().getUserName().equals("admin")) {
-            deleteBtn.setDisable(true);
-        }
-
         if (userSelected) {
             editBtn.setDisable(false);
             deleteBtn.setDisable(false);
         }
+
+        if (userTable.getSelectionModel().getSelectedItem().getUserName().equals("admin")) {
+            deleteBtn.setDisable(true);
+        }
+
         if (mouseEvent.getClickCount() == 2) {
             try {
                 showUser();
