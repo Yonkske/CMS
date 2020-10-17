@@ -3,7 +3,6 @@ package org.dhbw;
 import backend.usability.Cit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -18,8 +17,6 @@ import java.util.ResourceBundle;
 
 
 public class CITController extends MainPagesController {
-    @FXML
-    public Label adminLbl;
     @FXML
     public Button startpageBtn;
     @FXML
@@ -65,7 +62,13 @@ public class CITController extends MainPagesController {
     @FXML
     public Button userBtn;
 
-
+    /**
+     * Methode from the interface Initializable that auto generates the page on
+     * start
+     *
+     * @param url            - demanded by interface
+     * @param resourceBundle - demanded by interface
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
 
@@ -86,13 +89,22 @@ public class CITController extends MainPagesController {
 
     }
 
-    public void swapToCITAdd(ActionEvent actionEvent) throws IOException {
+    /**
+     * Opens the citAddd popup on button click
+     *
+     * @throws IOException - if fxml file isn't found
+     */
+    public void swapToCITAdd() throws IOException {
         openPopup(new CITAddController(), "CITAdd.fxml", false);
     }
 
-    public void fillingIn(ActionEvent actionEvent) throws IOException, SQLException {
+    /**
+     * Fills the text fields with the values of the selected cit
+     *
+     * @throws SQLException - if fxml file isn't found
+     */
+    public void fillingIn() throws SQLException {
         Cit cit = choiceBox.getSelectionModel().getSelectedItem();
-
 
         idTf.setText(String.valueOf(cit.getCitID()));
         citTf.setText(cit.getCitName());
@@ -106,7 +118,6 @@ public class CITController extends MainPagesController {
         attribut7Tf.setText(cit.getCitAttributes()[6]);
         attribut8Tf.setText(cit.getCitAttributes()[7]);
         numberCIRTf.setText(String.valueOf(DB_CALLER_CIR.getCirCountForType(cit)));
-
 
     }
 
