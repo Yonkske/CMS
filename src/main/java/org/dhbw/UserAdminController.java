@@ -188,7 +188,7 @@ public class UserAdminController extends MainPagesController {
             userSelected = true;
         }
 
-        if (userTable.getSelectionModel().getSelectedItem().equals(DB_CALLER_USER.getUser("admin"))) {
+        if (userTable.getSelectionModel().getSelectedItem().getUserName().equals("admin")) {
             deleteBtn.setDisable(true);
         }
 
