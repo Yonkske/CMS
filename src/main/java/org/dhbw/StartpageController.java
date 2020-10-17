@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class StartpageController extends MainPagesController  {
+public class StartpageController extends MainPagesController {
 
     @FXML
     private TableView<Cir> cirTable;
@@ -96,7 +96,9 @@ public class StartpageController extends MainPagesController  {
      */
     @FXML
     public void openDeleteCirPopup() throws IOException {
-        openPopup(new NotificationController(cirTable.getSelectionModel().getSelectedItem()), "Notification.fxml", true);
+        if (Objects.nonNull(cirTable.getSelectionModel().getSelectedItem())) {
+            openPopup(new NotificationController(cirTable.getSelectionModel().getSelectedItem()), "Notification.fxml", true);
+        }
     }
 
     /**
@@ -153,7 +155,7 @@ public class StartpageController extends MainPagesController  {
      */
     @FXML
     public void openCirView(MouseEvent me) throws IOException {
-        if ( Objects.nonNull(cirTable.getSelectionModel().getSelectedItem()) && me.getClickCount() == 2) {
+        if (Objects.nonNull(cirTable.getSelectionModel().getSelectedItem()) && me.getClickCount() == 2) {
             openPopup(new CIRViewController(cirTable.getSelectionModel().getSelectedItem()), "CIRView.fxml", false);
         }
     }
