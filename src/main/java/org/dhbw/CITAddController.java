@@ -68,7 +68,7 @@ public class CITAddController extends Controller implements Initializable {
      */
     @FXML
     public void fillIn() throws SQLException {
-        if (Objects.isNull(citTf.getText())) {
+        if (Objects.nonNull(citTf.getText())) {
             String[] sCitArray = new String[8];
             int id = Integer.parseInt(idTf.getText());
 
