@@ -160,11 +160,19 @@ public class StartpageController extends MainPagesController {
     }
 
     /**
+     * Resets the search and refreshes the table
+     */
+    @FXML
+    public void emptySearchTf() {
+        searchTf.setText("");
+        setTableWithFilterAndSearch();
+    }
+
+    /**
      * Defines what happens to refresh the page after a popup is closed
      */
     @Override
     public void refresh() {
         this.setTableWithFilterAndSearch();
     }
-
 }
