@@ -1,14 +1,21 @@
 package org.dhbw;
 
+import backend.database.DbCallerUser;
 import backend.usability.User;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class LoginController extends Controller {
 
@@ -59,10 +66,10 @@ public class LoginController extends Controller {
         meldungLbl.setVisible(true);
     }
 
-    @FXML
     /**
      * This method forwards to the Startpage.
      */
+    @FXML
     private void switchToStartpage(User user) throws IOException {
         FXMLFactory.setRoot("Startpage");
     }
@@ -72,7 +79,18 @@ public class LoginController extends Controller {
      * this methode open the PopUp to edit the password if the user logs in for the first time
      */
     private void openPopUpEditPassword(User user) throws IOException {
-        FXMLFactory.setRoot("ChangePassword");
+        ChangePasswordController changePasswordController = new ChangePasswordController(new DbCallerUser().getUser(usernameTf.getText()));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ChangePassword.fxml"));
+        loader.setController(changePasswordController);
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setResizable(false);
+        stage.getIcons().add(new Image(App.class.getResourceAsStream("icons/favicon1.jpg")));
+        stage.setTitle("CMS - Configuration Management System");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        scene.getWindow().sizeToScene();
+        stage.show();
     }
 
     @FXML

@@ -120,17 +120,6 @@ public class DbCallerUser extends DbConnector {
         }
     }
 
-    public boolean checkUser(String userName, String password) {
-
-        try {
-            rs = stmt.executeQuery("SELECT * FROM USER WHERE USER_NAME = '" + userName + "' AND PASSWORD = '" + password + "'");
-            return rs.next();
-        } catch (SQLException exception) {
-            exception.printStackTrace();
-            return false;
-        }
-    }
-
     public String getEncryptedPassword(String userName) {
         String password = null;
         try {
