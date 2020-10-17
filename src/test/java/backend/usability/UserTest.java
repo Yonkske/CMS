@@ -22,10 +22,5 @@ public class UserTest {
         Assert.assertNotNull(User.create("creation", "password", false, "", ""));
     } //is the function running without any failures?
 
-    @Test
-    public void testChangePw() throws SQLException {
-        new DbConnector().startConnection();
-        Assert.assertEquals(true, User.changePassword("creation", "true"));
-    } //is the function running without any failures?
 
 }

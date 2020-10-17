@@ -39,7 +39,7 @@ public class ChangePasswordController extends Controller {
         boolean noEmptyInputCheck = this.checkNoEmptyInput();
 
         if (oldPwCheck && enteredPwCheck && noEmptyInputCheck) {
-            User.changePassword(userToCangePassword.getUserName(), super.encryptPassword(newPasswordPf.getText()));
+            userToCangePassword.setNewPassword(super.encryptPassword(newPasswordPf.getText()));
 
             userToCangePassword.setIsInitial(false);
             DB_CALLER_USER.updateUser(userToCangePassword);

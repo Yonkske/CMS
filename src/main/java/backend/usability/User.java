@@ -63,16 +63,8 @@ public class User {
      * @param newPassword - the new password
      * @return boolean - if true returns the password was changed, if false returns the password could not be changed
      */
-    public static boolean changePassword(String userName, String newPassword) {
-        User userToChangePw = getUser(userName);
-
-        userToChangePw.password = newPassword;
-
-        if (new DbCallerUser().updateUser(userToChangePw)) {
-            return true;
-        } else {
-            return false;
-        }
+    public void setNewPassword(String newPassword) {
+        this.password = newPassword;
     }
 
     public String getUserName() {
