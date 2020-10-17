@@ -12,22 +12,23 @@ public class Cir {
     // FIXME: change DbCallers to non-static
     private int id;
     private Cit cit;
-    private String[] attribute;
+    private String[] attributes;
     private String name;
     private String type; // TODO: change to Cit
 
     /**
      * constructor creates the CIR object
      *
-     * @param attributes - Sting Array with a length of 10
+     * @param inAttributes - Sting Array with a length of 10
      */
-    public Cir(String[] attributes) {
-        attribute = new String[7];
+    @Deprecated
+    public Cir(String[] inAttributes) {
+        this.attributes = new String[7];
 
         // TODO: figure out if cit comes as object or String
-        id = Integer.parseInt(attributes[0]);
-        type = attributes[1];
-        name = attributes[2];
+        id = Integer.parseInt(inAttributes[0]);
+        type = inAttributes[1];
+        name = inAttributes[2];
 
         // FIXME: Exception handling
         try {
@@ -38,9 +39,24 @@ public class Cir {
             e.printStackTrace();
         }
 
-        for (int i = 3; i < attributes.length; i++) {
-            attribute[i - 3] = attributes[i];
+        for (int i = 3; i < inAttributes.length; i++) {
+            this.attributes[i - 3] = inAttributes[i];
         }
+    }
+
+    /**
+     * Constructor to create a new instance of CIR
+     *
+     * @param inId         int - id of the cir
+     * @param inType       cit - cit of the record
+     * @param inName       String - name of the record
+     * @param inAttributes String[] max length 7 - the attribute values of the record
+     */
+    public Cir(int inId, Cit inType, String inName, String[] inAttributes) {
+        id = inId;
+        cit = inType;
+        name = inName;
+        attributes = inAttributes;
     }
 
     /**
@@ -83,7 +99,7 @@ public class Cir {
         Cir cirName = showCir(id); //Über die ID das alte Cir aus der Datenbank holen
         cirName.name = attributes[2];
         for (int i = 3; i < attributes.length; i++) {
-            cirName.attribute[i - 3] = attributes[i];
+            cirName.attributes[i - 3] = attributes[i];
         }
 
 
@@ -175,7 +191,7 @@ public class Cir {
      * @return attrubute - Cir Attribites in a String Array
      */
     public String[] getCirAttributes() {
-        return attribute;
+        return attributes;
     }
 
     /**
