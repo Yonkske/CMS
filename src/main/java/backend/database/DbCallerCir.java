@@ -13,7 +13,7 @@ public class DbCallerCir extends DbConnector {
      *
      * @param id - Int ID of the CIR's
      * @return cirName - the CIR Objekt
-     * @throws SQLException
+     * @throws SQLException - on database access error or other errors
      */
     public static Cir getCirById(int id) throws SQLException {
 
@@ -36,7 +36,7 @@ public class DbCallerCir extends DbConnector {
      *
      * @param cirName - Type Cir
      * @return bWorks - Boolean
-     * @throws SQLException
+     * @throws SQLException - on database access error or other errors
      */
     public boolean insertCir(Cir cirName) throws SQLException {
         String[] sCirAttributes = cirName.getCirAttributes();
@@ -73,7 +73,7 @@ public class DbCallerCir extends DbConnector {
      *
      * @param cirName - CirObjekt
      * @return bUpdateCir - Boolean with true/false
-     * @throws SQLException
+     * @throws SQLException - on database access error or other errors
      */
     public boolean updateCir(Cir cirName) throws SQLException {
         boolean bUpdateCir;
@@ -101,9 +101,7 @@ public class DbCallerCir extends DbConnector {
             prepStmt.executeUpdate();
             prepStmt.close();
             bUpdateCir = true;
-        } catch (SQLSyntaxErrorException a) {
-            bUpdateCir = false;
-        } catch (SQLIntegrityConstraintViolationException b) {
+        } catch (SQLNonTransientException c) {
             bUpdateCir = false;
         }
 
@@ -115,17 +113,13 @@ public class DbCallerCir extends DbConnector {
      *
      * @param cirName - CIR Objekt
      * @return bDeleteCir - boolean
-     * @throws SQLException
+     * @throws SQLException - on database access error or other errors
      */
     static public boolean deleteCir(Cir cirName) throws SQLException {
         boolean bDeleteCir;
         try {
             stmt.execute("DELETE FROM CIR WHERE ITEM_ID = " + cirName.getCirID()); // SQL Abfrage
             bDeleteCir = true;
-        } catch (SQLSyntaxErrorException a) {
-            bDeleteCir = false;
-        } catch (SQLIntegrityConstraintViolationException b) {
-            bDeleteCir = false;
         } catch (SQLNonTransientException c) {
             bDeleteCir = false;
         }
@@ -137,7 +131,7 @@ public class DbCallerCir extends DbConnector {
      * The number of all CIR's
      *
      * @return iCirCount - int CIR Count of all Cir's
-     * @throws SQLException
+     * @throws SQLException - on database access error or other errors
      */
     public static int getCirCount() throws SQLException {
         int iCirCount;
@@ -156,7 +150,7 @@ public class DbCallerCir extends DbConnector {
      *
      * @param sCit - String later CIT Type
      * @return iCountCIRofCIT -Integer Count of Cir form a specific CIT
-     * @throws SQLException
+     * @throws SQLException - on database access error or other errors
      */
     public static int getCirCountForType(String sCit) throws SQLException {
         int iCountCIRofCIT;
@@ -177,7 +171,7 @@ public class DbCallerCir extends DbConnector {
      *
      * @param type which should
      * @return count of Cir form a specific CIT
-     * @throws SQLException
+     * @throws SQLException - on database access error or other errors
      */
     public int getCirCountForType(Cit type) throws SQLException {
         int iCountCIRofCIT;
@@ -197,7 +191,7 @@ public class DbCallerCir extends DbConnector {
      * Get the highest item_id from the database
      *
      * @return the highest item_id if there are entries, 0 if there are no entires in the db
-     * @throws SQLException
+     * @throws SQLException - on database access error or other errors
      */
     public int getMaxItemId() throws SQLException {
         startConnection();
