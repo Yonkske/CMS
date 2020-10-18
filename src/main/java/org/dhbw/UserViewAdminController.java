@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -30,6 +31,8 @@ public class UserViewAdminController extends Controller implements Initializable
 
     @FXML
     private User currentUser;
+    @FXML
+    private Button editPasswordBtn;
     @FXML
     private final String PAGE_NAME = "UserAdmin";
 
@@ -99,6 +102,10 @@ public class UserViewAdminController extends Controller implements Initializable
         nameTf.setText(userToEdit.getName());
         authorizationTf.setText(authorisation);
         usernameTf.setText(userToEdit.getUserName());
+
+        if (usernameTf.getText().equals("admin")) {
+            editPasswordBtn.setDisable(true);
+        }
     }
 
     /**
