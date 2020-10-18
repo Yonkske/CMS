@@ -5,7 +5,6 @@ import backend.database.DbCallerCit;
 import backend.database.DbConnector;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class Cir {
 
@@ -16,6 +15,7 @@ public class Cir {
     private String name;
     private String type; // TODO: change to Cit
 
+    // TODO: Get rid of it
     /**
      * constructor creates the CIR object
      *
@@ -59,6 +59,7 @@ public class Cir {
         attributes = inAttributes;
     }
 
+    // TODO: Get rid of it
     /**
      * Creates the CIR Obekt and returns the reference
      *
@@ -72,6 +73,7 @@ public class Cir {
         return cirName;
     }
 
+    // TODO: Get rid of it
     /**
      * Returns the CIR object via the CIR ID
      *
@@ -94,9 +96,7 @@ public class Cir {
      * @throws SQLException
      */
     public static boolean change(String[] attributes, int id) throws SQLException {
-
-        boolean bTest; //Variablen für die Methode
-        Cir cirName = showCir(id); //Über die ID das alte Cir aus der Datenbank holen
+        Cir cirName = showCir(id);
         cirName.name = attributes[2];
         for (int i = 3; i < attributes.length; i++) {
             cirName.attributes[i - 3] = attributes[i];
@@ -116,8 +116,8 @@ public class Cir {
     public static boolean delete(int id) throws SQLException {
 
         boolean bCirDeleted;
-        Cir cirName = showCir(id);  //zu löschendes CIR auslesen
-        bCirDeleted = DbCallerCir.deleteCir(cirName);     // zu löschendes CIR an den DBCallerCIR übergeben
+        Cir cirName = showCir(id);
+        bCirDeleted = DbCallerCir.deleteCir(cirName);
 
         return bCirDeleted;
     }
@@ -185,4 +185,4 @@ public class Cir {
         return this.cit;
     }
 
-} //Cir
+}
