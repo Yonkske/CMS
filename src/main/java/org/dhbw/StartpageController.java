@@ -23,36 +23,30 @@ public class StartpageController extends MainPagesController {
     @FXML
     private TableColumn<Cir, String> cirNameColumn;
     @FXML
-    private Label adminLbl;
-    @FXML
     private Button userBtn;
     @FXML
     private Button citEditBtn;
     @FXML
     private Button citDeleteBtn;
     @FXML
-    private Button searchBtn;
-    @FXML
     private TextField searchTf;
     @FXML
     private ComboBox<Cit> filterCitCb;
-
-    private final String PAGE_NAME = "Startpage";
 
     /**
      * Methode from the interface Initializable that auto generates the page on
      * start
      *
-     * @param url
-     * @param resourceBundle
+     * @param url            - demanded by interface
+     * @param resourceBundle - demanded by interface
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
         try {
-            setTableContent(DB_CALLER_CIR.getAll());
+            setTableContent(DB_CALLER_CIR.getRecords());
 
-            Cit placeholder = new Cit(0, new String[]{"CIT", null, null, null, null, null, null, null});
+            Cit placeholder = new Cit(0, "CIT", new String[]{null, null, null, null, null, null, null});
             filterCitCb.getItems().add(placeholder);
             filterCitCb.getItems().addAll(DB_CALLER_CIT.getAllCits());
             filterCitCb.setValue(placeholder);
@@ -72,7 +66,7 @@ public class StartpageController extends MainPagesController {
     /**
      * Opens the CITAdd Popup on button click
      *
-     * @throws IOException
+     * @throws IOException - if fxml file isn't found
      */
     @FXML
     public void openAddCit() throws IOException {
@@ -82,7 +76,7 @@ public class StartpageController extends MainPagesController {
     /**
      * Opens the Notification Popup on button click and gives the selected Cit that has to be deleted
      *
-     * @throws IOException
+     * @throws IOException - if fxml file isn't found
      */
     @FXML
     public void openDeleteCitPopup() throws IOException {
@@ -92,7 +86,7 @@ public class StartpageController extends MainPagesController {
     /**
      * Opens the Notification Popup on button click and gives the selected Cir that has to be deleted
      *
-     * @throws IOException
+     * @throws IOException - if fxml file isn't found
      */
     @FXML
     public void openDeleteCirPopup() throws IOException {
@@ -104,7 +98,7 @@ public class StartpageController extends MainPagesController {
     /**
      * Opens the CIRAdd Popup on button click
      *
-     * @throws IOException
+     * @throws IOException - if fxml file isn't found
      */
     @FXML
     public void openAddCir() throws IOException {
@@ -114,7 +108,7 @@ public class StartpageController extends MainPagesController {
     /**
      * Opens the CIREdit Popup on button click and gives the selected cir that has to be edited
      *
-     * @throws IOException
+     * @throws IOException - if fxml file isn't found
      */
     @FXML
     public void openEditCir() throws IOException {
@@ -124,26 +118,19 @@ public class StartpageController extends MainPagesController {
     }
 
     /**
-     * Sets the content of the table to the given list of cirs
-     *
-     * @param cirs - ArrayList with cirs to be shown in the table
-     */
-
-    /**
      * Changes the content of the table to fit the search and selected filter
      */
     @FXML
     public void setTableWithFilterAndSearch() {
         Cit selectedCit = filterCitCb.getSelectionModel().getSelectedItem();
         String searchValue = searchTf.getText();
-        try {
-            if (selectedCit.getCitID() == 0) {
-                setTableContent(DB_CALLER_CIR.getAllCirSearchValue(searchValue));
-            } else {
-                setTableContent(DB_CALLER_CIR.getAllWithFilterAndSearch(selectedCit, searchValue));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if(selectedCit.getCitID() == 0 && Objects.isNull(searchValue)) {
+
+        }
+        else if (selectedCit.getCitID() == 0) {
+            setTableContent(DB_CALLER_CIR.getRecords(searchValue));
+        } else {
+            setTableContent(DB_CALLER_CIR.getRecords(searchValue, selectedCit));
         }
     }
 
@@ -151,7 +138,7 @@ public class StartpageController extends MainPagesController {
      * Opens the CirView on double click on table row
      *
      * @param me MouseEvent from javafx.scene.input
-     * @throws IOException
+     * @throws IOException - if fxml file isn't found
      */
     @FXML
     public void openCirView(MouseEvent me) throws IOException {
@@ -167,13 +154,24 @@ public class StartpageController extends MainPagesController {
      */
     private void setTableContent(ArrayList<Cir> cirs) {
         cirTable.getItems().setAll(cirs);
-        citColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CitName"));
-        cirNameColumn.setCellValueFactory(new PropertyValueFactory<Cir, String>("CirName"));
+        citColumn.setCellValueFactory(new PropertyValueFactory<>("CitName"));
+        cirNameColumn.setCellValueFactory(new PropertyValueFactory<>("CirName"));
     }
 
+    /**
+     * Resets the search and refreshes the table
+     */
+    @FXML
+    public void emptySearchTf() {
+        searchTf.setText("");
+        setTableWithFilterAndSearch();
+    }
+
+    /**
+     * Defines what happens to refresh the page after a popup is closed
+     */
     @Override
     public void refresh() {
         this.setTableWithFilterAndSearch();
     }
-
 }

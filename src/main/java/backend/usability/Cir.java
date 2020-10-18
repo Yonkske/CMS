@@ -5,29 +5,30 @@ import backend.database.DbCallerCit;
 import backend.database.DbConnector;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class Cir {
 
     // FIXME: change DbCallers to non-static
     private int id;
     private Cit cit;
-    private String[] attribute;
+    private String[] attributes;
     private String name;
     private String type; // TODO: change to Cit
 
+    // TODO: Get rid of it
     /**
      * constructor creates the CIR object
      *
-     * @param attributes - Sting Array with a length of 10
+     * @param inAttributes - Sting Array with a length of 10
      */
-    public Cir(String[] attributes) {
-        attribute = new String[7];
+    @Deprecated
+    public Cir(String[] inAttributes) {
+        this.attributes = new String[7];
 
         // TODO: figure out if cit comes as object or String
-        id = Integer.parseInt(attributes[0]);
-        type = attributes[1];
-        name = attributes[2];
+        id = Integer.parseInt(inAttributes[0]);
+        type = inAttributes[1];
+        name = inAttributes[2];
 
         // FIXME: Exception handling
         try {
@@ -38,11 +39,27 @@ public class Cir {
             e.printStackTrace();
         }
 
-        for (int i = 3; i < attributes.length; i++) {
-            attribute[i - 3] = attributes[i];
+        for (int i = 3; i < inAttributes.length; i++) {
+            this.attributes[i - 3] = inAttributes[i];
         }
     }
 
+    /**
+     * Constructor to create a new instance of CIR
+     *
+     * @param inId         int - id of the cir
+     * @param inType       cit - cit of the record
+     * @param inName       String - name of the record
+     * @param inAttributes String[] max length 7 - the attribute values of the record
+     */
+    public Cir(int inId, Cit inType, String inName, String[] inAttributes) {
+        id = inId;
+        cit = inType;
+        name = inName;
+        attributes = inAttributes;
+    }
+
+    // TODO: Get rid of it
     /**
      * Creates the CIR Obekt and returns the reference
      *
@@ -56,6 +73,7 @@ public class Cir {
         return cirName;
     }
 
+    // TODO: Get rid of it
     /**
      * Returns the CIR object via the CIR ID
      *
@@ -64,7 +82,7 @@ public class Cir {
      */
     public static Cir showCir(int id) throws SQLException {
 
-        Cir cirName = DbCallerCir.getCirById(id);
+        Cir cirName = new DbCallerCir().getCirById(id);
 
         return cirName;
     }
@@ -78,12 +96,10 @@ public class Cir {
      * @throws SQLException
      */
     public static boolean change(String[] attributes, int id) throws SQLException {
-
-        boolean bTest; //Variablen für die Methode
-        Cir cirName = showCir(id); //Über die ID das alte Cir aus der Datenbank holen
+        Cir cirName = showCir(id);
         cirName.name = attributes[2];
         for (int i = 3; i < attributes.length; i++) {
-            cirName.attribute[i - 3] = attributes[i];
+            cirName.attributes[i - 3] = attributes[i];
         }
 
 
@@ -100,55 +116,10 @@ public class Cir {
     public static boolean delete(int id) throws SQLException {
 
         boolean bCirDeleted;
-        Cir cirName = showCir(id);  //zu löschendes CIR auslesen
-        bCirDeleted = DbCallerCir.deleteCir(cirName);     // zu löschendes CIR an den DBCallerCIR übergeben
+        Cir cirName = showCir(id);
+        bCirDeleted = DbCallerCir.deleteCir(cirName);
 
         return bCirDeleted;
-    }
-
-    /**
-     * List of Cir's to a specific CIT
-     *
-     * @param sCitType - String later CIT Type
-     * @return CirListe - List with alle Cir's from a specific CIT
-     */
-    // todo: CIT Type anstatt String sCitType
-    public static ArrayList<Cir> getAllForType(String sCitType) throws SQLException {
-
-        ArrayList<Cir> CirListe = new ArrayList<Cir>(); // Erzeugen einer Cir Liste
-        CirListe = DbCallerCir.getAllCirForType(sCitType);  //Methoden aufruf
-
-        return CirListe;
-    }
-
-    /**
-     * Number of all CIR's
-     *
-     * @return iCountAllCir - int of all CIR's
-     * @throws SQLException
-     */
-    public static int getCount() throws SQLException {
-        int iCountAllCir;
-
-        iCountAllCir = DbCallerCir.getCirCount();
-
-        return iCountAllCir;
-    }
-
-    /**
-     * Returns the number of CIR from a given CIT
-     *
-     * @param sCIT - CIT Type
-     * @return iCountCIRofCIT - Int number of CIR from a given CIT
-     * @throws SQLException
-     */
-    //todo: Anpassen der Methode, Type ist CIT nicht String
-    public static int getCountForType(String sCIT) throws SQLException {
-
-        int iCountCIRofCIT;
-        iCountCIRofCIT = DbCallerCir.getCirCountForType(sCIT);
-
-        return iCountCIRofCIT;
     }
 
     /**
@@ -175,7 +146,7 @@ public class Cir {
      * @return attrubute - Cir Attribites in a String Array
      */
     public String[] getCirAttributes() {
-        return attribute;
+        return attributes;
     }
 
     /**
@@ -214,4 +185,4 @@ public class Cir {
         return this.cit;
     }
 
-} //Cir
+}

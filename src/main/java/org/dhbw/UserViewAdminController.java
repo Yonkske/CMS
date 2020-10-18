@@ -39,38 +39,47 @@ public class UserViewAdminController extends Controller implements Initializable
         this.userToEdit = user;
     }
 
-    @Override
     /**
      *
      * Methode from the interface Initializable that auto generates the page
      *
      * @param resourceBundle
      */
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // TODO: Methode testen
         this.getData();
     }
 
-    @FXML
     /**
      * this methode open the Notification PopUp to delete a selected user
      * @param actionEvent
      * @throws IOException
      */
+    @FXML
     public void deleteUser(ActionEvent actionEvent) throws IOException {
         // TODO: Test der Methode
         openPopup(new NotificationController(userToEdit, PAGE_NAME), "Notification.fxml", false, true);
     }
 
-    @FXML
     /**
      * this methode open the PopUp to edit the selected user
      * @param actionEvent
      * @throws IOException
      */
+    @FXML
     public void switchToUserEditAdmin(ActionEvent actionEvent) throws IOException {
         // TODO: Test der Methode
         openPopup(new UserEditAdminController(userToEdit), "UserEditAdmin.fxml", true, false);
+    }
+
+    /**
+     * This method opens a popup where you can change your own password.
+     *
+     * @throws IOException
+     */
+    public void swapToChangePassword() throws IOException {
+        this.openPopup(new PasswordEditAdminController(userToEdit), "PasswordEditAdmin.fxml", false, true);
     }
 
     /**
@@ -92,15 +101,15 @@ public class UserViewAdminController extends Controller implements Initializable
         usernameTf.setText(userToEdit.getUserName());
     }
 
-    @FXML
     /**
      * this methode open the PopUp to edit the password from a selected user
      * @param actionEvent
      * @throws IOException
      */
+    @FXML
     public void switchToPasswordEditAdmin(ActionEvent actionEvent) throws IOException {
         // TODO: Methode testen
-        openPopup(new PasswordEditAdminController(), "PasswordEditAdmin.fxml", false, true);
+        openPopup(new PasswordEditAdminController(userToEdit), "PasswordEditAdmin.fxml", false, false);
     }
 
     /**

@@ -1,10 +1,7 @@
 package org.dhbw;
 
-import backend.database.DbCallerCir;
-import backend.database.DbCallerCit;
 import backend.usability.Cit;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -14,35 +11,21 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 
 public class CITAddController extends Controller implements Initializable {
-
-    @FXML
-    public Label idLbl;
     @FXML
     public Label citLbl;
     @FXML
-    public Label attribut1Lbl;
-    @FXML
-    public Label attribut2Lbl;
-    @FXML
-    public Label attribut3Lbl;
-    @FXML
-    public Label attribut4Lbl;
-    @FXML
-    public Label attribut5Lbl;
-    @FXML
-    public Label attribut6Lbl;
-    @FXML
-    public Label attribut7Lbl;
-    @FXML
-    public Label attribut8Lbl;
+    public Label meldungLbl;
     @FXML
     public TextField idTf;
     @FXML
     public TextField citTf;
+    @FXML
+    public TextField nameTf;
     @FXML
     public TextField attribut1Tf;
     @FXML
@@ -58,48 +41,66 @@ public class CITAddController extends Controller implements Initializable {
     @FXML
     public TextField attribut7Tf;
     @FXML
-    public TextField attribut8Tf;
-    @FXML
     public Button cancelBtn;
     @FXML
     public Button submitBtn;
 
-
+    /**
+     * Methode from the interface Initializable that auto generates the page on
+     * start
+     *
+     * @param url            - demanded by interface
+     * @param resourceBundle - demanded by interface
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             idTf.setText(String.valueOf(DB_CALLER_CIT.getMaxItemId() + 1));
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
-        //Button Speichern
-        submitBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                String[] sCitArray = new String[8];
-                int id = Integer.parseInt(idTf.getText());
+    }
 
-                sCitArray[0] = citTf.getText();
-                sCitArray[1] = attribut2Tf.getText();
-                sCitArray[2] = attribut3Tf.getText();
-                sCitArray[3] = attribut4Tf.getText();
-                sCitArray[4] = attribut5Tf.getText();
-                sCitArray[5] = attribut6Tf.getText();
-                sCitArray[6] = attribut7Tf.getText();
-                sCitArray[7] = attribut8Tf.getText();
+    /**
+     * Creates a new CIT with the data inserted by the user and inserts it into the database
+     *
+     * @throws SQLException - on Issue with the database
+     */
+    @FXML
+    public void fillIn() throws SQLException {
+        if (Objects.nonNull(citTf.getText())) {
+            DB_CALLER_CIT.createCit(new Cit(Integer.parseInt(idTf.getText()), citTf.getText(), getAttributeArray()));
+            this.close();
+        } else {
+            this.showError();
+        }
+    }
 
-                Cit cit = new Cit(id, sCitArray);
-                try {
-                    DB_CALLER_CIT.createCit(cit);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+    private String[] getAttributeArray() {
+        String[] sCitArray = new String[7];
+        sCitArray[0] = attribut1Tf.getText();
+        sCitArray[1] = attribut2Tf.getText();
+        sCitArray[2] = attribut3Tf.getText();
+        sCitArray[3] = attribut4Tf.getText();
+        sCitArray[4] = attribut5Tf.getText();
+        sCitArray[5] = attribut6Tf.getText();
+        sCitArray[6] = attribut7Tf.getText();
 
-                Stage stClose = new Stage();
-                stClose = (Stage) submitBtn.getScene().getWindow();
-                stClose.close();
+        return sCitArray;
+    }
 
-            }
-        });
+
+    @FXML
+    public void cancelButton(ActionEvent actionEvent) {
+        this.close();
+    }
+    private void close() {
+        Stage stClose = (Stage) submitBtn.getScene().getWindow();
+        stClose.close();
+    }
+
+    private void showError() {
+        meldungLbl.setVisible(true);
     }
 }
+

@@ -35,32 +35,41 @@ public class StatisticController extends MainPagesController {
     @FXML
     public PieChart adminPieChart;
 
-
-
+    /**
+     * Methode from the interface Initializable that auto generates the page on
+     * start
+     *
+     * @param url            - demanded by interface
+     * @param resourceBundle - demanded by interface
+     */
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         super.initialize(url, resourceBundle);
-        ArrayList<Cit> allCit;
-        try {
-            allCit = Cit.showAll();
-            Cit currentCit;
 
+        if (!Controller.user.getIsAdmin()) {
+            userBtn.setVisible(false);
+        }
+
+        setUpChart();
+    }
+
+    private void setUpChart() {
+        try {
+            ArrayList<Cit> allCit = DB_CALLER_CIT.getAllCits();
             PieChart.Data[] slice = new PieChart.Data[10];
+
             for (int i = 0; i < allCit.size(); i++) {
-                currentCit = allCit.get(i);
-                slice[i] = new PieChart.Data(currentCit.getCitName(), DB_CALLER_CIR.getCirCountForType(currentCit));
+                slice[i] = new PieChart.Data(allCit.get(i).getCitName(), DB_CALLER_CIR.getCirCountForType(allCit.get(i)));
                 adminPieChart.getData().add(slice[i]);
             }
-
-            numberCIRTf.setText(String.valueOf(Cir.getCount()));
+            numberCIRTf.setText(String.valueOf(DB_CALLER_CIR.getCirCount()));
             numberCITTf.setText(String.valueOf(Cit.getCount()));
-
-
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
 
     }
+
 
     @Override
     public void refresh() {

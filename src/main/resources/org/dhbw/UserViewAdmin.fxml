@@ -125,7 +125,7 @@
                 </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                        <Button fx:id="editPasswordBtn" mnemonicParsing="false" onAction="#switchToPasswordEditAdmin" style="-fx-background-color: #94d0e1;" text=" Passwort ändern">
+                        <Button fx:id="editPasswordBtn" mnemonicParsing="false" onAction="#swapToChangePassword" style="-fx-background-color: #94d0e1;" text=" Passwort ändern">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>

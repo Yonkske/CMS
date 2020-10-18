@@ -10,12 +10,12 @@
          <children>
             <MenuButton fx:id="adminUserMB" mnemonicParsing="false" text="Vorname, Nachname">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1">
+                  <MenuItem mnemonicParsing="false">
                      <graphic>
                         <Button fx:id="benutzerDropDownBtn" mnemonicParsing="false" onAction="#openUserInfo" text="Benutzer" />
                      </graphic>
                   </MenuItem>
-                  <MenuItem mnemonicParsing="false" text="Action 2">
+                  <MenuItem fx:id="itemPassword" mnemonicParsing="false">
                      <graphic>
                         <Button fx:id="passwordEditBtn" mnemonicParsing="false" onAction="#openChangePassword" text="Passwort ändern" />
                      </graphic>
@@ -55,12 +55,13 @@
             </VBox>
             <VBox prefHeight="383.0" prefWidth="274.0">
                <children>
-                  <HBox prefHeight="33.0" prefWidth="274.0">
+                  <HBox alignment="BOTTOM_LEFT" prefHeight="33.0" prefWidth="274.0">
                      <children>
                         <TextField fx:id="searchTf" onAction="#setTableWithFilterAndSearch">
                            <HBox.margin>
                               <Insets top="20.0" />
                            </HBox.margin></TextField>
+                        <Button fx:id="deleteSearchBtn" mnemonicParsing="false" onAction="#emptySearchTf" text="X" />
                         <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#setTableWithFilterAndSearch" text="Suchen">
                            <HBox.margin>
                               <Insets left="15.0" top="20.0" />

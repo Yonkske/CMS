@@ -3,7 +3,6 @@ package org.dhbw;
 import backend.usability.Cit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -18,8 +17,6 @@ import java.util.ResourceBundle;
 
 
 public class CITController extends MainPagesController {
-    @FXML
-    public Label adminLbl;
     @FXML
     public Button startpageBtn;
     @FXML
@@ -65,18 +62,17 @@ public class CITController extends MainPagesController {
     @FXML
     public Button userBtn;
 
-
+    /**
+     * Methode from the interface Initializable that auto generates the page on
+     * start
+     *
+     * @param url            - demanded by interface
+     * @param resourceBundle - demanded by interface
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
 
-        ObservableList<Cit> list = FXCollections.observableArrayList();
-        choiceBox.setItems(list);
-
-        try {
-            list.addAll(DB_CALLER_CIT.getAllCits());
-        } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
-        }
+        this.getData();
 
         if (!Controller.user.getIsAdmin()) {
             deleteBtn.setVisible(false);
@@ -86,27 +82,49 @@ public class CITController extends MainPagesController {
 
     }
 
-    public void swapToCITAdd(ActionEvent actionEvent) throws IOException {
-        openPopup(new CITAddController(), "CITAdd.fxml", false);
+    private void getData() {
+        ObservableList<Cit> list = FXCollections.observableArrayList();
+        choiceBox.setItems(list);
+
+        try {
+            list.addAll(DB_CALLER_CIT.getAllCits());
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
     }
 
-    public void fillingIn(ActionEvent actionEvent) throws IOException, SQLException {
+    /**
+     * Opens the citAddd popup on button click
+     *
+     * @throws IOException - if fxml file isn't found
+     */
+    public void swapToCITAdd() throws IOException {
+        openPopup(new CITAddController(), "CITAdd.fxml", true);
+    }
+
+    /**
+     * Fills the text fields with the values of the selected cit
+     *
+     * @throws SQLException - if fxml file isn't found
+     */
+    public void fillingIn() throws SQLException {
         Cit cit = choiceBox.getSelectionModel().getSelectedItem();
 
+        // Avoids an exception when no CIT was selected in the choiceBox before a new CIT is created
+        if (Objects.nonNull(cit)) {
+            idTf.setText(String.valueOf(cit.getCitID()));
+            citTf.setText(cit.getCitName());
 
-        idTf.setText(String.valueOf(cit.getCitID()));
-        citTf.setText(cit.getCitName());
-
-        attribut1Tf.setText(cit.getCitAttributes()[0]);
-        attribut2Tf.setText(cit.getCitAttributes()[1]);
-        attribut3Tf.setText(cit.getCitAttributes()[2]);
-        attribut4Tf.setText(cit.getCitAttributes()[3]);
-        attribut5Tf.setText(cit.getCitAttributes()[4]);
-        attribut6Tf.setText(cit.getCitAttributes()[5]);
-        attribut7Tf.setText(cit.getCitAttributes()[6]);
-        attribut8Tf.setText(cit.getCitAttributes()[7]);
-        numberCIRTf.setText(String.valueOf(DB_CALLER_CIR.getCirCountForType(cit)));
-
+            attribut1Tf.setText(cit.getCitAttributes()[0]);
+            attribut2Tf.setText(cit.getCitAttributes()[1]);
+            attribut3Tf.setText(cit.getCitAttributes()[2]);
+            attribut4Tf.setText(cit.getCitAttributes()[3]);
+            attribut5Tf.setText(cit.getCitAttributes()[4]);
+            attribut6Tf.setText(cit.getCitAttributes()[5]);
+            attribut7Tf.setText(cit.getCitAttributes()[6]);
+            attribut8Tf.setText(cit.getCitAttributes()[7]);
+            numberCIRTf.setText(String.valueOf(DB_CALLER_CIR.getCirCountForType(cit)));
+        }
 
     }
 
@@ -125,6 +143,6 @@ public class CITController extends MainPagesController {
 
     @Override
     public void refresh() {
-
+        this.getData();
     }
 }

@@ -21,30 +21,50 @@ import java.util.ResourceBundle;
 
 
 public class CIREditController extends Controller implements Initializable {
-    @FXML public Label idLbl;
-    @FXML public Label citLbl;
-    @FXML public Label nameLbl;
-    @FXML public Label attribut1Lbl;
-    @FXML public Label attribut2Lbl;
-    @FXML public Label attribut3Lbl;
-    @FXML public Label attribut4Lbl;
-    @FXML public Label attribut5Lbl;
-    @FXML public Label attribut6Lbl;
-    @FXML public Label attribut7Lbl;
+    @FXML
+    public Label citLbl;
+    @FXML
+    public Label nameLbl;
+    @FXML
+    public Label attribut1Lbl;
+    @FXML
+    public Label attribut2Lbl;
+    @FXML
+    public Label attribut3Lbl;
+    @FXML
+    public Label attribut4Lbl;
+    @FXML
+    public Label attribut5Lbl;
+    @FXML
+    public Label attribut6Lbl;
+    @FXML
+    public Label attribut7Lbl;
 
-    @FXML public TextField idTf;
-    @FXML public TextField citTf;
-    @FXML public TextField nameTf;
-    @FXML public TextField attribut1Tf;
-    @FXML public TextField attribut2Tf;
-    @FXML public TextField attribut3Tf;
-    @FXML public TextField attribut4Tf;
-    @FXML public TextField attribut5Tf;
-    @FXML public TextField attribut6Tf;
-    @FXML public TextField attribut7Tf;
+    @FXML
+    public TextField idTf;
+    @FXML
+    public TextField citTf;
+    @FXML
+    public TextField nameTf;
+    @FXML
+    public TextField attribut1Tf;
+    @FXML
+    public TextField attribut2Tf;
+    @FXML
+    public TextField attribut3Tf;
+    @FXML
+    public TextField attribut4Tf;
+    @FXML
+    public TextField attribut5Tf;
+    @FXML
+    public TextField attribut6Tf;
+    @FXML
+    public TextField attribut7Tf;
 
-    @FXML public Button cancelBtn;
-    @FXML public Button submitBtn;
+    @FXML
+    public Button cancelBtn;
+    @FXML
+    public Button submitBtn;
     private Cir cir;
 
     @Override
@@ -86,6 +106,7 @@ public class CIREditController extends Controller implements Initializable {
             throwables.printStackTrace();
         }
     }
+  
     public void cancelButton(ActionEvent actionEvent){
         try {
             // CIR View wird geladen und CirEdit wird geschlossen
@@ -103,7 +124,7 @@ public class CIREditController extends Controller implements Initializable {
      *
      * @throws SQLException
      */
-    private void  updateStatus() throws SQLException {
+    private void updateStatus() throws SQLException {
 
         // Attribute an String Array größe 10 Übergeben
         String[] sAttributeCir = new String[10];
@@ -128,11 +149,11 @@ public class CIREditController extends Controller implements Initializable {
      * load of the ControllerCirView
      *
      * @throws SQLException
-     * @throws IOException
+     * @throws IOException  - if fxml file isn't found
      */
     public void loadViewCir() throws SQLException, IOException {
         // loadViewCir
-        cir = Cir.showCir(Integer.parseInt(idTf.getText()));
+        cir = DB_CALLER_CIR.getCirById(Integer.parseInt(idTf.getText()));
         CIRViewController CIRViewController = new CIRViewController(cir);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CIRView.fxml"));
         loader.setController(CIRViewController);
@@ -144,17 +165,16 @@ public class CIREditController extends Controller implements Initializable {
         scene.getWindow().sizeToScene();
         stage.show();
         // Aktuele View schließen
-        Stage stClose = new Stage();
-        stClose = (Stage) submitBtn.getScene().getWindow();
+        Stage stClose = (Stage) submitBtn.getScene().getWindow();
         stClose.close();
     }
 
     /**
-     *  Konstruktor CIREditController
+     * Konstruktor CIREditController
      *
      * @param selectedCir - Cir Obejekt
      */
-    public CIREditController(Cir selectedCir){
+    public CIREditController(Cir selectedCir) {
         this.cir = selectedCir;
     }
 }
