@@ -5,7 +5,6 @@ import backend.usability.Cit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -126,10 +125,10 @@ public class CIRAddController extends Controller implements Initializable {
             e.printStackTrace();
         }
         // Methode Fenster schließen
-        fensterSchließen();
+        closeWindow();
     }
     public void cancelButton(ActionEvent actionEvent){
-        fensterSchließen();
+        closeWindow();
     }
     public void ChoiceBox(ActionEvent actionEvent){
         Cit cit = (Cit) citChoicebox.getSelectionModel().getSelectedItem();
