@@ -11,6 +11,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.dhbw.interfaces.IRefreshable;
 
 import java.io.IOException;
 import java.net.URL;

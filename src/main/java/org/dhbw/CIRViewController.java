@@ -1,17 +1,11 @@
 package org.dhbw;
 
 import backend.usability.Cir;
-import backend.usability.Cit;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,46 +13,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class CIRViewController extends Controller implements Initializable {
-    @FXML
-    public Label citLbl;
-    @FXML
-    public Label nameLbl;
-    @FXML
-    public Label attribut1Lbl;
-    @FXML
-    public Label attribut2Lbl;
-    @FXML
-    public Label attribut3Lbl;
-    @FXML
-    public Label attribut4Lbl;
-    @FXML
-    public Label attribut5Lbl;
-    @FXML
-    public Label attribut6Lbl;
-    @FXML
-    public Label attribut7Lbl;
-
-    @FXML
-    public TextField idTf;
-    @FXML
-    public TextField citTf;
-    @FXML
-    public TextField nameTf;
-    @FXML
-    public TextField attribut1Tf;
-    @FXML
-    public TextField attribut2Tf;
-    @FXML
-    public TextField attribut3Tf;
-    @FXML
-    public TextField attribut4Tf;
-    @FXML
-    public TextField attribut5Tf;
-    @FXML
-    public TextField attribut6Tf;
-    @FXML
-    public TextField attribut7Tf;
+public class CIRViewController extends MainCirPopupsController {
     @FXML
     public Button deleteBtn;
     @FXML
@@ -66,41 +21,21 @@ public class CIRViewController extends Controller implements Initializable {
     @FXML
     public Button cancelBtn;
 
-    private final Cir cir;
+    /**
+     * Contrktor of the Method CIRViewController
+     *
+     * @param selectedCir - CIR Objekt
+     */
+    public CIRViewController(Cir selectedCir) {
+        super(selectedCir);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        // Atrribute des Cir Übergeben und in der View ausgeben
-        idTf.setText(String.valueOf(cir.getCirID()));
-        //todo: Change CIT Int to CIT Type
-        citTf.setText(String.valueOf(cir.getCitID()));
-        nameTf.setText(cir.getCirName());
-        attribut1Tf.setText(cir.getCirAttributes()[0]);
-        attribut2Tf.setText(cir.getCirAttributes()[1]);
-        attribut3Tf.setText(cir.getCirAttributes()[2]);
-        attribut4Tf.setText(cir.getCirAttributes()[3]);
-        attribut5Tf.setText(cir.getCirAttributes()[4]);
-        attribut6Tf.setText(cir.getCirAttributes()[5]);
-        attribut7Tf.setText(cir.getCirAttributes()[6]);
-
-
-        // Cit Labels setzen
-        Cit cit = cir.getCit();
-        attribut1Lbl.setText(cit.getCitAttributes()[1]);
-        attribut2Lbl.setText(cit.getCitAttributes()[2]);
-        attribut3Lbl.setText(cit.getCitAttributes()[3]);
-        attribut4Lbl.setText(cit.getCitAttributes()[4]);
-        attribut5Lbl.setText(cit.getCitAttributes()[5]);
-        attribut6Lbl.setText(cit.getCitAttributes()[6]);
-        attribut7Lbl.setText(cit.getCitAttributes()[7]);
-
-        // Action Event bearbeiten Button
+        super.initialize(url, resourceBundle);
         editCirBtn.setOnAction(actionEvent -> {
             try {
-                // Aufrufen von View CIR Edit
                 openPopUpCirEdit(cir);
-                // Aktuelle View schließen
                 Stage stClose = (Stage) editCirBtn.getScene().getWindow();
                 stClose.close();
 
@@ -113,9 +48,7 @@ public class CIRViewController extends Controller implements Initializable {
 
         deleteBtn.setOnAction(actionEvent -> {
             try {
-                //todo: einbinden der Notification vor dem löschen
                 openPopUpNotification(cir);
-                //deleteSelectedCir(cir);
             }
             //Fixme: Error Handling
             catch (IOException throwables) {
@@ -138,19 +71,8 @@ public class CIRViewController extends Controller implements Initializable {
      * @throws IOException - if fxml file isn't found
      */
     private void openPopUpCirEdit(Cir selectedCir) throws IOException {
-        // Aufruf View CIREdit
         CIREditController CIREditController = new CIREditController(selectedCir);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("CIREdit.fxml"));
-        loader.setController(CIREditController);
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        // View an Fenster anpassen
-        stage.setScene(scene);
-        scene.getWindow().sizeToScene();
-        stage.show();
-
-
+        openPopUp(CIREditController, "CIREdit.fxml");
     }
 
     /**
@@ -160,26 +82,20 @@ public class CIRViewController extends Controller implements Initializable {
      * @throws IOException - if fxml file isn't found
      */
     private void openPopUpNotification(Cir selectedCir) throws IOException {
-        String PAGE_NAME = "Startpage";
-        NotificationController notificationController = new NotificationController(selectedCir, PAGE_NAME);
+        NotificationController notificationController = new NotificationController(selectedCir, "Startpage");
+        openPopUp(notificationController, "Notification.fxml");
+    }
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Notification.fxml"));
-        loader.setController(notificationController);
+    private void openPopUp(Controller controller, String fxmlName) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
+        loader.setController(controller);
         Parent root = loader.load();
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         scene.getWindow().sizeToScene();
         stage.show();
-    }
 
-    /**
-     * Kontrktor of the Method CIRViewController
-     *
-     * @param cir - CIR Objekt
-     */
-    public CIRViewController(Cir cir) {
-        this.cir = cir;
     }
 
 }
