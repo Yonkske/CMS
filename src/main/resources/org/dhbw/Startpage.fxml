@@ -63,7 +63,6 @@
                            </HBox.margin>
                         </TextField> -->
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button fx:id="deleteSearchBtn" mnemonicParsing="false" onAction="#emptySearchTf" text="X" />
                         <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#setTableWithFilterAndSearch" text="Suchen">
                            <HBox.margin>
                               <Insets left="15.0" top="20.0" />
