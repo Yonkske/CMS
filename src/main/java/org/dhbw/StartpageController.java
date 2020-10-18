@@ -3,9 +3,17 @@ package org.dhbw;
 import backend.usability.Cir;
 import backend.usability.Cit;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import org.controlsfx.control.textfield.CustomTextField;
 
 import java.io.IOException;
 import java.net.URL;
@@ -16,6 +24,8 @@ import java.util.ResourceBundle;
 
 public class StartpageController extends MainPagesController {
 
+    public Pane thePane;
+    public HBox hBoxSearch;
     @FXML
     private TableView<Cir> cirTable;
     @FXML
@@ -28,10 +38,11 @@ public class StartpageController extends MainPagesController {
     private Button citEditBtn;
     @FXML
     private Button citDeleteBtn;
-    @FXML
-    private TextField searchTf;
+    // @FXML
+    // private TextField searchTf;
     @FXML
     private ComboBox<Cit> filterCitCb;
+    CustomTextField searchTf;
 
     /**
      * Methode from the interface Initializable that auto generates the page on
@@ -50,6 +61,9 @@ public class StartpageController extends MainPagesController {
             filterCitCb.getItems().add(placeholder);
             filterCitCb.getItems().addAll(DB_CALLER_CIT.getAllCits());
             filterCitCb.setValue(placeholder);
+
+            initSearchTf();
+
             // DO IT!
         } catch (SQLException e) {
             e.printStackTrace();
@@ -62,6 +76,22 @@ public class StartpageController extends MainPagesController {
         }
 
     }
+
+
+    private void initSearchTf() {
+        searchTf = new CustomTextField();
+        ImageView iv = new ImageView();
+        Image image = new Image(App.class.getResourceAsStream("icons/abbrechen_small.png"));
+        iv.setImage(image);
+        searchTf.setRight(iv);
+        searchTf.setOnAction(actionEvent -> setTableWithFilterAndSearch());
+        searchTf.getRight().setOnMouseClicked(mouseEvent -> {
+            emptySearchTf();
+        });
+
+        hBoxSearch.getChildren().add(0,searchTf);
+    }
+
 
     /**
      * Opens the CITAdd Popup on button click
@@ -124,10 +154,9 @@ public class StartpageController extends MainPagesController {
     public void setTableWithFilterAndSearch() {
         Cit selectedCit = filterCitCb.getSelectionModel().getSelectedItem();
         String searchValue = searchTf.getText();
-        if(selectedCit.getCitID() == 0 && Objects.isNull(searchValue)) {
+        if (selectedCit.getCitID() == 0 && Objects.isNull(searchValue)) {
 
-        }
-        else if (selectedCit.getCitID() == 0) {
+        } else if (selectedCit.getCitID() == 0) {
             setTableContent(DB_CALLER_CIR.getRecords(searchValue));
         } else {
             setTableContent(DB_CALLER_CIR.getRecords(searchValue, selectedCit));
