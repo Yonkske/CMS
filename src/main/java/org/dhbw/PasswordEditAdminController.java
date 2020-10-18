@@ -3,6 +3,7 @@ package org.dhbw;
 import backend.usability.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 
@@ -19,6 +20,8 @@ public class PasswordEditAdminController extends Controller {
     private Button submitBtn;
     @FXML
     private Button cancelBtn;
+    @FXML
+    private Label meldungLbl;
     private User userToChangePw;
 
     public PasswordEditAdminController(User user) {
@@ -76,6 +79,6 @@ public class PasswordEditAdminController extends Controller {
      * When a error warning will be implemented this method will show it when needed.
      */
     public void showError() {
-//        meldungLbl.setVisible(true); // TODO: meldungLbl einfügen!
+        meldungLbl.setVisible(true);
     }
 }
