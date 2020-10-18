@@ -3,7 +3,10 @@ package backend.database;
 import backend.usability.Cir;
 import backend.usability.Cit;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.SQLNonTransientException;
 import java.util.ArrayList;
 
 public class DbCallerCir extends DbConnector {
@@ -42,7 +45,7 @@ public class DbCallerCir extends DbConnector {
         boolean successful;
         try {
             PreparedStatement prepStmt = con.prepareStatement
-                    ("INSERT INTO CIR VALUES (?,?,?,?,?,?,?,?,?,?)"); // SQL Statement
+                    ("INSERT INTO CIR VALUES (?,?,?,?,?,?,?,?,?,?)");
 
             prepStmt.setInt(1, cirToInsert.getCirID());
             prepStmt.setString(2, cirToInsert.getCitID());
@@ -82,7 +85,7 @@ public class DbCallerCir extends DbConnector {
                             "ATTRIBUTE_VALUE_5 = ?," +
                             "ATTRIBUTE_VALUE_6 = ?," +
                             "ATTRIBUTE_VALUE_7 = ? " +
-                            "WHERE ITEM_ID =" + cirToUpdate.getCirID()); // SQL Statement
+                            "WHERE ITEM_ID =" + cirToUpdate.getCirID());
 
             prepStmt.setString(1, cirToUpdate.getCirName());
 
@@ -110,7 +113,7 @@ public class DbCallerCir extends DbConnector {
     static public boolean deleteCir(Cir cirName) throws SQLException {
         boolean successful;
         try {
-            stmt.execute("DELETE FROM CIR WHERE ITEM_ID = " + cirName.getCirID()); // SQL Abfrage
+            stmt.execute("DELETE FROM CIR WHERE ITEM_ID = " + cirName.getCirID());
             successful = true;
         } catch (SQLNonTransientException c) {
             successful = false;
