@@ -81,8 +81,7 @@ public class StartpageController extends MainPagesController {
     private void initSearchTf() {
         searchTf = new CustomTextField();
         ImageView iv = new ImageView();
-        Image image = new Image(App.class.getResourceAsStream("icons/abbrechen_small.png"));
-        iv.setImage(image);
+        iv.setImage(new Image(App.class.getResourceAsStream("icons/abbrechen_small.png")));
         searchTf.setRight(iv);
         searchTf.setOnAction(actionEvent -> setTableWithFilterAndSearch());
         searchTf.getRight().setOnMouseClicked(mouseEvent -> {
