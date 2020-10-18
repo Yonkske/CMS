@@ -33,35 +33,32 @@ public class CIRViewController extends MainCirPopupsController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
-        editCirBtn.setOnAction(actionEvent -> {
-            try {
-                openPopUpCirEdit(cir);
-                Stage stClose = (Stage) editCirBtn.getScene().getWindow();
-                stClose.close();
+    }
 
-            }
-            //Fixme: Error Handling
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-
-        deleteBtn.setOnAction(actionEvent -> {
-            try {
-                openPopUpNotification(cir);
-            }
-            //Fixme: Error Handling
-            catch (IOException throwables) {
-                throwables.printStackTrace();
-            }
-
-        });
-        // Abbrechen Button, schließt das Popup
-        cancelBtn.setOnAction(actionEvent -> {
-            Stage stClose = (Stage) cancelBtn.getScene().getWindow();
+    public void editCir(){
+        try {
+            openPopUpCirEdit(cir);
+            Stage stClose = (Stage) editCirBtn.getScene().getWindow();
             stClose.close();
 
-        });
+        }
+        //Fixme: Error Handling
+            catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void deleteCir(){
+        try {
+            openPopUpNotification(cir);
+        }
+        //Fixme: Error Handling
+        catch (IOException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    public void cancel(){
+        Stage stClose = (Stage) cancelBtn.getScene().getWindow();
+        stClose.close();
     }
 
     /**

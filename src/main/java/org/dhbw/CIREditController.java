@@ -47,7 +47,7 @@ public class CIREditController extends MainCirPopupsController {
     }
 
     @FXML
-    public void cancelButton() {
+    public void cancel() {
         try {
             loadViewCir();
         }

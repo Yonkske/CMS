@@ -95,7 +95,7 @@
                   </image>
                </ImageView>
             </graphic></Button>
-            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#cancelButton" text="Abbrechen">
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#cancel" text="Abbrechen">
             <graphic>
                <ImageView fitHeight="15.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                   <image>

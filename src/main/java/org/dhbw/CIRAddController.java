@@ -126,7 +126,7 @@ public class CIRAddController extends Controller implements Initializable {
      * closes the popup on button click
      */
     @FXML
-    public void cancelButton() {
+    public void cancel() {
         closeWindow();
     }
 
