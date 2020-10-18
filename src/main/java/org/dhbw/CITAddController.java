@@ -68,7 +68,7 @@ public class CITAddController extends Controller implements Initializable {
      */
     @FXML
     public void fillIn() throws SQLException {
-        if (Objects.nonNull(citTf.getText())) {
+        if (citTf.getText().length() !=0) {
             DB_CALLER_CIT.createCit(new Cit(Integer.parseInt(idTf.getText()), citTf.getText(), getAttributeArray()));
             this.close();
         } else {
@@ -91,7 +91,7 @@ public class CITAddController extends Controller implements Initializable {
 
 
     @FXML
-    public void cancelButton(ActionEvent actionEvent) {
+    public void cancel(ActionEvent actionEvent) {
         this.close();
     }
     private void close() {

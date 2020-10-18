@@ -80,9 +80,9 @@
             <VBox.margin>
                 <Insets bottom="20.0" left="15.0" top="5.0" />
             </VBox.margin>
-            <Button fx:id="deleteBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Löschen" />
-            <Button fx:id="editCirBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Bearbeiten" />
-         <Button fx:id="cancelBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Abbrechen" />
+            <Button fx:id="deleteBtn" onAction="#deleteCir" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Löschen" />
+            <Button fx:id="editCirBtn" onAction="#editCir" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Bearbeiten" />
+         <Button fx:id="cancelBtn" onAction="#cancel" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Abbrechen" />
         </HBox>
     </VBox>
 </AnchorPane>

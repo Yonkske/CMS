@@ -81,7 +81,7 @@
             <Insets bottom="20.0" left="100.0" top="5.0" />
          </VBox.margin>
          <Button fx:id="submitBtn" onAction="#updateCir" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Speichern" />
-         <Button fx:id="cancelBtn" onAction="#cancelButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Abbrechen" />
+         <Button fx:id="cancelBtn" onAction="#cancel" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Abbrechen" />
       </HBox>
    </VBox>
 </AnchorPane>
