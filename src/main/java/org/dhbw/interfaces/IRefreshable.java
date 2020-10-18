@@ -1,4 +1,4 @@
-package org.dhbw;
+package org.dhbw.interfaces;
 
 public interface IRefreshable {
 
