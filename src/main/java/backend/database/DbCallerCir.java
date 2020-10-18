@@ -17,18 +17,17 @@ public class DbCallerCir extends DbConnector {
      */
     public Cir getCirById(int id) throws SQLException {
 
-        String[] sCirArray = new String[10]; // String zum Speichern der Resultset Daten
-        ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE ITEM_ID = " + id); // SQL Abfrage
+        String[] attributes = new String[10];
+        ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE ITEM_ID = " + id);
 
         rs.first();
-        for (int i = 0; i <= 9; i++) // Übertragen des Result Sets auf ein Array
-        {
-            sCirArray[i] = rs.getString(i + 1);
+        for (int i = 0; i < attributes.length; i++) {
+            attributes[i] = rs.getString(i + 1);
         }
 
-        Cir cirName; // initialisieren eines neuen Cir's
-        cirName = Cir.create(sCirArray); // Erzeugen des Cir's
-        return cirName; // Rückgabe des Cir's
+        Cir cirName;
+        cirName = Cir.create(attributes);
+        return cirName;
     }
 
     /**
@@ -49,14 +48,14 @@ public class DbCallerCir extends DbConnector {
             prepStmt.setString(2, cirToInsert.getCitID());
             prepStmt.setString(3, cirToInsert.getCirName());
 
-            for(int i = 0; i < attributes.length; i++) {
-                prepStmt.setString(i+2, attributes[i]);
+            for (int i = 0; i < attributes.length; i++) {
+                prepStmt.setString(i + 4, attributes[i]);
             }
 
             prepStmt.executeUpdate();
             prepStmt.close();
             successful = true;
-        } catch (SQLNonTransientException c) {
+        } catch (SQLNonTransientException e) {
             successful = false;
         }
 
@@ -82,13 +81,13 @@ public class DbCallerCir extends DbConnector {
                             "ATTRIBUTE_VALUE_4 = ?," +
                             "ATTRIBUTE_VALUE_5 = ?," +
                             "ATTRIBUTE_VALUE_6 = ?," +
-                            "ATTRIBUTE_VALUE_7 = ?" +
+                            "ATTRIBUTE_VALUE_7 = ? " +
                             "WHERE ITEM_ID =" + cirToUpdate.getCirID()); // SQL Statement
 
             prepStmt.setString(1, cirToUpdate.getCirName());
 
-            for(int i = 0; i < attributes.length; i++) {
-                prepStmt.setString(i+2, attributes[i]);
+            for (int i = 0; i < attributes.length; i++) {
+                prepStmt.setString(i + 2, attributes[i]);
             }
 
             prepStmt.executeUpdate();
@@ -109,15 +108,15 @@ public class DbCallerCir extends DbConnector {
      * @throws SQLException - on database access error or other errors
      */
     static public boolean deleteCir(Cir cirName) throws SQLException {
-        boolean bDeleteCir;
+        boolean successful;
         try {
             stmt.execute("DELETE FROM CIR WHERE ITEM_ID = " + cirName.getCirID()); // SQL Abfrage
-            bDeleteCir = true;
+            successful = true;
         } catch (SQLNonTransientException c) {
-            bDeleteCir = false;
+            successful = false;
         }
 
-        return bDeleteCir;
+        return successful;
     }
 
     /**
@@ -238,8 +237,8 @@ public class DbCallerCir extends DbConnector {
                 String typeName = rs.getString("TYPE_NAME");
 
                 String[] attributeNames = new String[7];
-                for (int i = 13; i <= rs.getMetaData().getColumnCount(); i++) {
-                    attributeNames[i - 13] = rs.getString(i);
+                for (int i = 0; i < attributeNames.length; i++) {
+                    attributeNames[i] = rs.getString("ATTRIBUTE_NAME_"+(i+1));
                 }
 
                 Cit type = new Cit(typId, typeName, attributeNames);
@@ -250,7 +249,7 @@ public class DbCallerCir extends DbConnector {
 
                 String[] attributeValues = new String[7];
                 for (int i = 0; i < attributeValues.length; i++) {
-                    attributeValues[i] = rs.getString(i + 4);
+                    attributeValues[i] = rs.getString("ATTRIBUTE_VALUE_"+(i+1));
                 }
 
                 records.add(new Cir(recordId, type, recordName, attributeValues));
