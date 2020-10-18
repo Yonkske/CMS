@@ -93,32 +93,29 @@ public class CIREditController extends Controller implements Initializable {
         attribut6Lbl.setText(cit.getCitAttributes()[6]);
         attribut7Lbl.setText(cit.getCitAttributes()[7]);
 
-
-        // Button Speichern
-        submitBtn.setOnAction(actionEvent -> {
-            try {
-                // Cir Ändern in der Datenbank
-                updateStatus();
-                // CIR View wird geladen und CirEdit wird geschlossen
-                loadViewCir();
-                //Fixme: Error Handling
-            } catch (SQLException | IOException throwables) {
-                throwables.printStackTrace();
-            }
-
-        });
-
-        // Button Abbrechen
-        cancelBtn.setOnAction(actionEvent -> {
-            try {
-                // CIR View wird geladen und CirEdit wird geschlossen
-                loadViewCir();
-            }
+    }
+    public void updateCir(ActionEvent actionEvent){
+        try {
+            // Cir Ändern in der Datenbank
+            updateStatus();
+            // CIR View wird geladen und CirEdit wird geschlossen
+            loadViewCir();
             //Fixme: Error Handling
-            catch (SQLException | IOException throwables) {
-                throwables.printStackTrace();
-            }
-        });
+        }
+        catch (SQLException | IOException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+  
+    public void cancelButton(ActionEvent actionEvent){
+        try {
+            // CIR View wird geladen und CirEdit wird geschlossen
+            loadViewCir();
+        }
+        //Fixme: Error Handling
+        catch (SQLException | IOException throwables) {
+            throwables.printStackTrace();
+        }
 
     }
 
