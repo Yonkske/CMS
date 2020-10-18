@@ -4,7 +4,6 @@ import backend.usability.Cir;
 import backend.usability.Cit;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -85,13 +84,9 @@ public class StartpageController extends MainPagesController {
         ImageView iv = new ImageView();
         iv.setImage(new Image(App.class.getResourceAsStream("icons/abbrechen_small.png")));
         searchTf.setRight(iv);
-
         searchTf.setOnAction(actionEvent -> setTableWithFilterAndSearch());
         searchTf.getRight().setOnMouseClicked(mouseEvent -> emptySearchTf());
-        Node m = searchTf.getRight();
-        m.setOnMouseEntered(mouseEvent -> {
-            m.setCursor(Cursor.HAND);
-        });
+        searchTf.getRight().setOnMouseEntered(mouseEvent -> searchTf.getRight().setCursor(Cursor.HAND));
         searchTf.setPromptText("Suche");
 
         hBoxSearch.getChildren().add(0, searchTf);
