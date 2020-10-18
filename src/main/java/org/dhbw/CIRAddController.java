@@ -40,6 +40,8 @@ public class CIRAddController extends Controller implements Initializable {
     public Label attribut6Lbl;
     @FXML
     public Label attribut7Lbl;
+    @FXML
+    public Label meldungLbl;
 
     @FXML
     public TextField idTf;
@@ -86,6 +88,10 @@ public class CIRAddController extends Controller implements Initializable {
      */
     @FXML
     public void fillIn() {
+        if(citChoicebox.getSelectionModel().getSelectedItem() == null ){
+            meldungLbl.setVisible(true);
+        }
+        else{
         Cit cit = citChoicebox.getSelectionModel().getSelectedItem();
         String[] sCirArray = new String[10];
         sCirArray[0] = idTf.getText();
@@ -120,7 +126,7 @@ public class CIRAddController extends Controller implements Initializable {
             e.printStackTrace();
         }
         closeWindow();
-    }
+    }}
 
     /**
      * closes the popup on button click
