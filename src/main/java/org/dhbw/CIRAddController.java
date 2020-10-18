@@ -88,45 +88,45 @@ public class CIRAddController extends Controller implements Initializable {
      */
     @FXML
     public void fillIn() {
-        if(citChoicebox.getSelectionModel().getSelectedItem() == null ){
+        if (citChoicebox.getSelectionModel().getSelectedItem() == null) {
             meldungLbl.setVisible(true);
-        }
-        else{
-        Cit cit = citChoicebox.getSelectionModel().getSelectedItem();
-        String[] sCirArray = new String[10];
-        sCirArray[0] = idTf.getText();
-        sCirArray[1] = String.valueOf(cit.getCitID());
-        sCirArray[2] = nameTf.getText();
-        sCirArray[3] = attribut1Tf.getText();
-        sCirArray[4] = attribut2Tf.getText();
-        sCirArray[5] = attribut3Tf.getText();
-        sCirArray[6] = attribut4Tf.getText();
-        sCirArray[7] = attribut5Tf.getText();
-        sCirArray[8] = attribut6Tf.getText();
-        sCirArray[9] = attribut7Tf.getText();
-        Cir cirName = Cir.create(sCirArray);
+        } else {
+            Cit cit = citChoicebox.getSelectionModel().getSelectedItem();
+            String[] sCirArray = new String[10];
+            sCirArray[0] = idTf.getText();
+            sCirArray[1] = String.valueOf(cit.getCitID());
+            sCirArray[2] = nameTf.getText();
+            sCirArray[3] = attribut1Tf.getText();
+            sCirArray[4] = attribut2Tf.getText();
+            sCirArray[5] = attribut3Tf.getText();
+            sCirArray[6] = attribut4Tf.getText();
+            sCirArray[7] = attribut5Tf.getText();
+            sCirArray[8] = attribut6Tf.getText();
+            sCirArray[9] = attribut7Tf.getText();
+            Cir cirName = Cir.create(sCirArray);
 
-        try {
-            //Fixme: Error Handling
-            DB_CALLER_CIR.insertCir(cirName);
-        } catch (SQLException e) {
-            e.printStackTrace();
+            try {
+                //Fixme: Error Handling
+                DB_CALLER_CIR.insertCir(cirName);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                CIRViewController CIRViewController = new CIRViewController(cirName);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("CIRView.fxml"));
+                loader.setController(CIRViewController);
+                Parent root = loader.load();
+                Stage stage = new Stage();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                scene.getWindow().sizeToScene();
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            closeWindow();
         }
-        try {
-            CIRViewController CIRViewController = new CIRViewController(cirName);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("CIRView.fxml"));
-            loader.setController(CIRViewController);
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            scene.getWindow().sizeToScene();
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        closeWindow();
-    }}
+    }
 
     /**
      * closes the popup on button click
