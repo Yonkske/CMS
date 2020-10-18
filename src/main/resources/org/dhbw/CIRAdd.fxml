@@ -19,7 +19,7 @@
          </VBox.margin>
 
          <Label fx:id="citLbl" alignment="BOTTOM_LEFT" prefWidth="50.0" text="CIT" />
-         <ChoiceBox fx:id="citChoicebox" prefWidth="210.0" />
+         <ChoiceBox onAction="#ChoiceBox" fx:id="citChoicebox" prefWidth="210.0" />
       </HBox>
       <HBox alignment="CENTER" cache="true" spacing="5.0">
          <VBox.margin>
@@ -81,8 +81,8 @@
          <VBox.margin>
             <Insets bottom="20.0" left="100.0" top="5.0" />
          </VBox.margin>
-         <Button fx:id="submitBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Speichern" />
-         <Button fx:id="cancelBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Abbrechen" />
+         <Button fx:id="submitBtn" onAction="#fillIn" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Speichern" />
+         <Button fx:id="cancelBtn" onAction="#cancelButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Abbrechen" />
       </HBox>
    </VBox>
 </AnchorPane>

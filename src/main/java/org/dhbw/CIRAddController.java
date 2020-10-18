@@ -81,81 +81,67 @@ public class CIRAddController extends Controller implements Initializable {
         catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
-        // Button Speichern
-        submitBtn.setOnAction(new EventHandler<>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                //Auslesen der Textfelder und speichern in einem String
-                Cit cit = citChoicebox.getSelectionModel().getSelectedItem();
-                String[] sCirArray = new String[10];
-                sCirArray[0] = idTf.getText();
-                sCirArray[1] = String.valueOf(cit.getCitID());
-                sCirArray[2] = nameTf.getText();
-                sCirArray[3] = attribut1Tf.getText();
-                sCirArray[4] = attribut2Tf.getText();
-                sCirArray[5] = attribut3Tf.getText();
-                sCirArray[6] = attribut4Tf.getText();
-                sCirArray[7] = attribut5Tf.getText();
-                sCirArray[8] = attribut6Tf.getText();
-                sCirArray[9] = attribut7Tf.getText();
-                // String übergeben und neues CIR Obejkt erzeugen
-                Cir cirName = Cir.create(sCirArray);
-
-
-                try {
-                    //Fixme: Error Handling
-                    // Neues CIR Objekt in die Datenbank schreiben
-                    DB_CALLER_CIR.insertCir(cirName);
-
-                } catch (SQLException e) {
-
-                    e.printStackTrace();
-
-                }
-                try {
-                    // loadViewCir
-                    CIRViewController CIRViewController = new CIRViewController(cirName);
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("CIRView.fxml"));
-                    loader.setController(CIRViewController);
-                    Parent root = loader.load();
-                    Stage stage = new Stage();
-                    Scene scene = new Scene(root);
-                    // Neue View an Fenster anpassen
-                    stage.setScene(scene);
-                    scene.getWindow().sizeToScene();
-                    stage.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-
-                // Methode Fenster schließen
-                closeWindow();
-
-            }
-        });
-        // Abbrechen Button, schließt das Popup
-        cancelBtn.setOnAction(actionEvent -> {
-            // Methode Fenster schließen
-            //todo: aktuelle ohne Startseite neu laden, --> User/Admin?
-            closeWindow();
-
-        });
-
-        // Abbrechen Button, schließt das Popup
-        citChoicebox.setOnAction(actionEvent -> {
-            Cit cit = citChoicebox.getSelectionModel().getSelectedItem();
-            attribut1Lbl.setText(cit.getCitAttributes()[1]);
-            attribut2Lbl.setText(cit.getCitAttributes()[2]);
-            attribut3Lbl.setText(cit.getCitAttributes()[3]);
-            attribut4Lbl.setText(cit.getCitAttributes()[4]);
-            attribut5Lbl.setText(cit.getCitAttributes()[5]);
-            attribut6Lbl.setText(cit.getCitAttributes()[6]);
-            attribut7Lbl.setText(cit.getCitAttributes()[7]);
-        });
-
     }
+    //Button speichern
+    public void fillIn(ActionEvent actionEvent){
+        //Auslesen der Textfelder und speichern in einem String
+        Cit cit = (Cit) citChoicebox.getSelectionModel().getSelectedItem();
+        String[] sCirArray = new String[10];
+        sCirArray[0] = idTf.getText();
+        sCirArray[1] = String.valueOf(cit.getCitID());
+        sCirArray[2] = nameTf.getText();
+        sCirArray[3] = attribut1Tf.getText();
+        sCirArray[4] = attribut2Tf.getText();
+        sCirArray[5] = attribut3Tf.getText();
+        sCirArray[6] = attribut4Tf.getText();
+        sCirArray[7] = attribut5Tf.getText();
+        sCirArray[8] = attribut6Tf.getText();
+        sCirArray[9] = attribut7Tf.getText();
+        // String übergeben und neues CIR Obejkt erzeugen
+        Cir cirName = Cir.create(sCirArray);
+
+        try {
+            //Fixme: Error Handling
+            // Neues CIR Objekt in die Datenbank schreiben
+            DB_CALLER_CIR.insertCir(cirName);
+
+        } catch (SQLException throwables) {
+
+            throwables.printStackTrace();
+
+        }
+        try {
+            // loadViewCir
+            CIRViewController CIRViewController = new CIRViewController(cirName);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CIRView.fxml"));
+            loader.setController(CIRViewController);
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            // Neue View an Fenster anpassen
+            stage.setScene(scene);
+            scene.getWindow().sizeToScene();
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // Methode Fenster schließen
+        fensterSchließen();
+    }
+    public void cancelButton(ActionEvent actionEvent){
+        fensterSchließen();
+    }
+    public void ChoiceBox(ActionEvent actionEvent){
+        Cit cit = (Cit) citChoicebox.getSelectionModel().getSelectedItem();
+        attribut1Lbl.setText(cit.getCitAttributes()[1]);
+        attribut2Lbl.setText(cit.getCitAttributes()[2]);
+        attribut3Lbl.setText(cit.getCitAttributes()[3]);
+        attribut4Lbl.setText(cit.getCitAttributes()[4]);
+        attribut5Lbl.setText(cit.getCitAttributes()[5]);
+        attribut6Lbl.setText(cit.getCitAttributes()[6]);
+        attribut7Lbl.setText(cit.getCitAttributes()[7]);
+    }
+
 
     /**
      * Methode close Window
