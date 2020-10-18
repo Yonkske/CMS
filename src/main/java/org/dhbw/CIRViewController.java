@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,35 +34,47 @@ public class CIRViewController extends MainCirPopupsController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
-        editCirBtn.setOnAction(actionEvent -> {
-            try {
-                openPopUpCirEdit(cir);
-                Stage stClose = (Stage) editCirBtn.getScene().getWindow();
-                stClose.close();
 
-            }
-            //Fixme: Error Handling
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
+    }
 
-        deleteBtn.setOnAction(actionEvent -> {
-            try {
-                openPopUpNotification(cir);
-            }
-            //Fixme: Error Handling
-            catch (IOException throwables) {
-                throwables.printStackTrace();
-            }
+    /**
+     *
+     * @param actionEvent - cancel the action
+     */
+    public void cancelButton(ActionEvent actionEvent){
+        Stage stClose = (Stage) cancelBtn.getScene().getWindow();
+        stClose.close();
+    }
 
-        });
-        // Abbrechen Button, schließt das Popup
-        cancelBtn.setOnAction(actionEvent -> {
-            Stage stClose = (Stage) cancelBtn.getScene().getWindow();
+    /**
+     *
+     * @param actionEvent- delete Cir if Button was clicked
+     */
+    public void deleteButton(ActionEvent actionEvent){
+        try {
+            openPopUpNotification(cir);
+        }
+        //Fixme: Error Handling
+        catch (IOException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    /**
+     *
+     * @param actionEvent- edit a new CIR Objekt
+     */
+    public void editButton(ActionEvent actionEvent){
+        try {
+            openPopUpCirEdit(cir);
+            Stage stClose = (Stage) editCirBtn.getScene().getWindow();
             stClose.close();
 
-        });
+        }
+        //Fixme: Error Handling
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -85,6 +98,7 @@ public class CIRViewController extends MainCirPopupsController {
         NotificationController notificationController = new NotificationController(selectedCir, "Startpage");
         openPopUp(notificationController, "Notification.fxml");
     }
+
 
     private void openPopUp(Controller controller, String fxmlName) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));

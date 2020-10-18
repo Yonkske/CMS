@@ -70,7 +70,7 @@ public class CITAddController extends Controller implements Initializable {
     public void fillIn() throws SQLException {
         if (Objects.nonNull(citTf.getText())) {
             DB_CALLER_CIT.createCit(new Cit(Integer.parseInt(idTf.getText()), citTf.getText(), getAttributeArray()));
-            this.close();
+            this.closeWindow();
         } else {
             this.showError();
         }
@@ -89,16 +89,28 @@ public class CITAddController extends Controller implements Initializable {
         return sCitArray;
     }
 
-
+    /**
+     *
+     * @param actionEvent- cancel the action
+     */
     @FXML
     public void cancelButton(ActionEvent actionEvent) {
-        this.close();
+        this.closeWindow();
     }
-    private void close() {
+
+    /**
+     * Methode close Window
+     */
+
+    private void closeWindow() {
         Stage stClose = (Stage) submitBtn.getScene().getWindow();
         stClose.close();
     }
 
+    /**
+     *
+     * Methode showError
+     */
     private void showError() {
         meldungLbl.setVisible(true);
     }
