@@ -1,6 +1,7 @@
 package backend.usability;
 
 
+import backend.database.DbCallerCir;
 import backend.database.DbConnector;
 import junit.framework.AssertionFailedError;
 import org.junit.Assert;
@@ -128,20 +129,8 @@ public class CirTest {
     // Testen ob das Zählen funktioniert und den richtigen Wert ausgiebt
     @Test
     public void getCount() throws SQLException {
-        int iTest= Cir.getCount();
+        int iTest= new DbCallerCir().getCirCount();
         Assert.assertEquals(1,iTest);
-    }
-    @Test
-    // Test ob das Zählen von CIR's bei einem gegeben CIT klappt
-    public void getCountForType() throws SQLException{
-        String sTest = "1";
-        Assert.assertEquals(2, Cir.getCountForType(sTest));
-    }
-    @Test
-    // Test ob das Zählen von einem CIT den es nicht gibt funktioniert
-    public void getCountForType2() throws SQLException{
-        String sTest = "2";
-        Assert.assertEquals(0,Cir.getCountForType(sTest));
     }
     @Test
     // Test Array Liste, funktioniert, Test Methode noch neu schreiben

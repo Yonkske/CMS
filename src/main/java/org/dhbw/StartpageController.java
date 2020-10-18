@@ -44,7 +44,7 @@ public class StartpageController extends MainPagesController {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
         try {
-            setTableContent(DB_CALLER_CIR.getAll());
+            setTableContent(DB_CALLER_CIR.getRecords());
 
             Cit placeholder = new Cit(0, "CIT", new String[]{null, null, null, null, null, null, null});
             filterCitCb.getItems().add(placeholder);
@@ -124,14 +124,13 @@ public class StartpageController extends MainPagesController {
     public void setTableWithFilterAndSearch() {
         Cit selectedCit = filterCitCb.getSelectionModel().getSelectedItem();
         String searchValue = searchTf.getText();
-        try {
-            if (selectedCit.getCitID() == 0) {
-                setTableContent(DB_CALLER_CIR.getAllCirSearchValue(searchValue));
-            } else {
-                setTableContent(DB_CALLER_CIR.getAllWithFilterAndSearch(selectedCit, searchValue));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if(selectedCit.getCitID() == 0 && Objects.isNull(searchValue)) {
+
+        }
+        else if (selectedCit.getCitID() == 0) {
+            setTableContent(DB_CALLER_CIR.getRecords(searchValue));
+        } else {
+            setTableContent(DB_CALLER_CIR.getRecords(searchValue, selectedCit));
         }
     }
 

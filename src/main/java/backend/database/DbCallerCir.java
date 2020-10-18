@@ -2,9 +2,11 @@ package backend.database;
 
 import backend.usability.Cir;
 import backend.usability.Cit;
-import com.sun.javafx.scene.layout.region.Margins;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.SQLNonTransientException;
 import java.util.ArrayList;
 
 public class DbCallerCir extends DbConnector {
@@ -14,71 +16,65 @@ public class DbCallerCir extends DbConnector {
      *
      * @param id - Int ID of the CIR's
      * @return cirName - the CIR Objekt
-     * @throws SQLException
+     * @throws SQLException - on database access error or other errors
      */
-    public static Cir getCirById(int id) throws SQLException {
+    public Cir getCirById(int id) throws SQLException {
 
-        String[] sCirArray = new String[10]; // String zum Speichern der Resultset Daten
-        ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE ITEM_ID = " + id); // SQL Abfrage
+        String[] attributes = new String[10];
+        ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE ITEM_ID = " + id);
 
         rs.first();
-        for (int i = 0; i <= 9; i++) // Übertragen des Result Sets auf ein Array
-        {
-            sCirArray[i] = rs.getString(i + 1);
+        for (int i = 0; i < attributes.length; i++) {
+            attributes[i] = rs.getString(i + 1);
         }
 
-        Cir cirName; // initialisieren eines neuen Cir's
-        cirName = Cir.create(sCirArray); // Erzeugen des Cir's
-        return cirName; // Rückgabe des Cir's
+        Cir cirName;
+        cirName = Cir.create(attributes);
+        return cirName;
     }
 
     /**
      * Writes a new CIR into the database, requires a CIR object
      *
-     * @param cirName - Type Cir
+     * @param cirToInsert - Type Cir
      * @return bWorks - Boolean
-     * @throws SQLException
+     * @throws SQLException - on database access error or other errors
      */
-    public boolean insertCir(Cir cirName) throws SQLException {
-        String[] sCirAttributes = cirName.getCirAttributes();
-        boolean bWorks;
+    public boolean insertCir(Cir cirToInsert) throws SQLException {
+        String[] attributes = cirToInsert.getCirAttributes();
+        boolean successful;
         try {
             PreparedStatement prepStmt = con.prepareStatement
-                    ("INSERT INTO CIR VALUES (?,?,?,?,?,?,?,?,?,?)"); // SQL Statement
+                    ("INSERT INTO CIR VALUES (?,?,?,?,?,?,?,?,?,?)");
 
-            prepStmt.setInt(1, cirName.getCirID());
-            prepStmt.setString(2, cirName.getCitID()); //todo: change String to CIT type
-            prepStmt.setString(3, cirName.getCirName());
-            prepStmt.setString(4, sCirAttributes[0]);
-            prepStmt.setString(5, sCirAttributes[1]);
-            prepStmt.setString(6, sCirAttributes[2]);
-            prepStmt.setString(7, sCirAttributes[3]);
-            prepStmt.setString(8, sCirAttributes[4]);
-            prepStmt.setString(9, sCirAttributes[5]);
-            prepStmt.setString(10, sCirAttributes[6]);
+            prepStmt.setInt(1, cirToInsert.getCirID());
+            prepStmt.setString(2, cirToInsert.getCitID());
+            prepStmt.setString(3, cirToInsert.getCirName());
+
+            for (int i = 0; i < attributes.length; i++) {
+                prepStmt.setString(i + 4, attributes[i]);
+            }
+
             prepStmt.executeUpdate();
             prepStmt.close();
-            bWorks = true;
-        } catch (SQLSyntaxErrorException a) {
-            bWorks = false;
-        } catch (SQLIntegrityConstraintViolationException b) {
-            bWorks = false;
+            successful = true;
+        } catch (SQLNonTransientException e) {
+            successful = false;
         }
 
-
-        return bWorks;
+        return successful;
     }
 
     /**
      * Update a CIR in the database, requires a CIR object and returns a boolean value
      *
-     * @param cirName - CirObjekt
+     * @param cirToUpdate - CirObjekt
      * @return bUpdateCir - Boolean with true/false
-     * @throws SQLException
+     * @throws SQLException - on database access error or other errors
      */
-    public boolean updateCir(Cir cirName) throws SQLException {
-        boolean bUpdateCir;
-        String[] sCirAttributes = cirName.getCirAttributes();
+    public boolean updateCir(Cir cirToUpdate) throws SQLException {
+        boolean successful;
+        String[] attributes = cirToUpdate.getCirAttributes();
         try {
             PreparedStatement prepStmt = con.prepareStatement
                     ("UPDATE CIR SET RECORD_NAME = ?," +
@@ -87,28 +83,24 @@ public class DbCallerCir extends DbConnector {
                             "ATTRIBUTE_VALUE_3 = ?," +
                             "ATTRIBUTE_VALUE_4 = ?," +
                             "ATTRIBUTE_VALUE_5 = ?," +
-                            "ATTRIBUTE_VALUE_6 = ? ," +
-                            "ATTRIBUTE_VALUE_7 = ?" +
-                            "WHERE ITEM_ID =" + cirName.getCirID()); // SQL Statement
+                            "ATTRIBUTE_VALUE_6 = ?," +
+                            "ATTRIBUTE_VALUE_7 = ? " +
+                            "WHERE ITEM_ID =" + cirToUpdate.getCirID());
 
-            prepStmt.setString(1, cirName.getCirName());
-            prepStmt.setString(2, sCirAttributes[0]);
-            prepStmt.setString(3, sCirAttributes[1]);
-            prepStmt.setString(4, sCirAttributes[2]);
-            prepStmt.setString(5, sCirAttributes[3]);
-            prepStmt.setString(6, sCirAttributes[4]);
-            prepStmt.setString(7, sCirAttributes[5]);
-            prepStmt.setString(8, sCirAttributes[6]);
+            prepStmt.setString(1, cirToUpdate.getCirName());
+
+            for (int i = 0; i < attributes.length; i++) {
+                prepStmt.setString(i + 2, attributes[i]);
+            }
+
             prepStmt.executeUpdate();
             prepStmt.close();
-            bUpdateCir = true;
-        } catch (SQLSyntaxErrorException a) {
-            bUpdateCir = false;
-        } catch (SQLIntegrityConstraintViolationException b) {
-            bUpdateCir = false;
+            successful = true;
+        } catch (SQLNonTransientException c) {
+            successful = false;
         }
 
-        return bUpdateCir;
+        return successful;
     }
 
     /**
@@ -116,150 +108,53 @@ public class DbCallerCir extends DbConnector {
      *
      * @param cirName - CIR Objekt
      * @return bDeleteCir - boolean
-     * @throws SQLException
+     * @throws SQLException - on database access error or other errors
      */
     static public boolean deleteCir(Cir cirName) throws SQLException {
-        boolean bDeleteCir;
+        boolean successful;
         try {
-            stmt.execute("DELETE FROM CIR WHERE ITEM_ID = " + cirName.getCirID()); // SQL Abfrage
-            bDeleteCir = true;
-        } catch (SQLSyntaxErrorException a) {
-            bDeleteCir = false;
-        } catch (SQLIntegrityConstraintViolationException b) {
-            bDeleteCir = false;
+            stmt.execute("DELETE FROM CIR WHERE ITEM_ID = " + cirName.getCirID());
+            successful = true;
         } catch (SQLNonTransientException c) {
-            bDeleteCir = false;
+            successful = false;
         }
 
-        return bDeleteCir;
-    }
-
-    /**
-     * Returns all CIR's from a given CIT as CIR list
-     *
-     * @param sCit -String later CIT type
-     * @return cirListe - List of all Cirs of a given CIT
-     * @throws SQLException
-     */
-    //todo: Ersetzen von String sCit durch Type CIT
-    public static ArrayList<Cir> getAllCirForType(String sCit) throws SQLException {
-        Cir cirName;
-        int iIDCir;
-        int iCit = Integer.parseInt(sCit); // Muss später gelöscht werden
-        ArrayList<Cir> cirListe = new ArrayList<Cir>(); // Erzeugen einer Cir Liste
-        ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE TYPE_ID = " + iCit); // DB Abfrage
-        //FIXME: FIXEN new DbConnector...
-        new DbConnector().startConnection(); // Warum???!
-        while (rs.next()) {
-            iIDCir = rs.getInt(1); // ID des ResultSet
-            cirName = Cir.showCir(iIDCir); // Über die ID ein CIR Objekt erzeugen
-            cirListe.add(cirName); // CIR Objekt in Liste eintragen
-
-        }
-
-        return cirListe;
-    }
-
-    /**
-     * Returns all CIR's from a given CIT as CIR list
-     *
-     * @param cit -String later CIT type
-     * @return cirListe - List of all Cirs of a given CIT
-     * @throws SQLException
-     */
-    //todo: Ersetzen von String sCit durch Type CIT
-    public ArrayList<Cir> getAllCirForType(Cit cit) throws SQLException {
-        ArrayList<Cir> cirListe = new ArrayList<Cir>();
-
-        ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE TYPE_ID = " + cit.getCitID()); // DB Abfrage
-
-        //FIXME: FIXEN new DbConnector...
-        new DbConnector().startConnection(); // Warum???!
-        while (rs.next()) {
-            String[] attributes = new String[10];
-
-            for (int i = 0; i < attributes.length; i++) {
-                attributes[i] = rs.getString(i + 1);
-            }
-
-            cirListe.add(new Cir(attributes));
-        }
-
-        return cirListe;
+        return successful;
     }
 
     /**
      * The number of all CIR's
      *
      * @return iCirCount - int CIR Count of all Cir's
-     * @throws SQLException
+     * @throws SQLException - on database access error or other errors
      */
-    public static int getCirCount() throws SQLException {
+    public int getCirCount() throws SQLException {
         int iCirCount;
         try {
             ResultSet rs = stmt.executeQuery("SELECT count(ITEM_ID) FROM CIR");
             rs.first();
             iCirCount = rs.getInt(1);
-        } catch (SQLSyntaxErrorException a) {
-            iCirCount = 0;
-        } catch (SQLIntegrityConstraintViolationException b) {
-            iCirCount = 0;
         } catch (SQLNonTransientException c) {
             iCirCount = 0;
         }
+
         return iCirCount;
     }
 
     /**
-     * The Number of alle Cir's from a specific Cit
-     *
-     * @param sCit - String later CIT Type
-     * @return iCountCIRofCIT -Integer Count of Cir form a specific CIT
-     * @throws SQLException
-     */
-    public static int getCirCountForType(String sCit) throws SQLException {
-        int iCountCIRofCIT;
-        int iCit = Integer.parseInt(sCit);
-        try {
-            ResultSet rs = stmt.executeQuery("SELECT count(ITEM_ID) FROM CIR WHERE TYPE_ID =" + iCit);
-            rs.first();
-            iCountCIRofCIT = rs.getInt(1);
-        } catch (SQLSyntaxErrorException a) {
-            iCountCIRofCIT = 0;
-        } catch (SQLIntegrityConstraintViolationException b) {
-            iCountCIRofCIT = 0;
-        } catch (SQLNonTransientException c) {
-            iCountCIRofCIT = 0;
-        }
-        return iCountCIRofCIT;
-
-    }
-    /**
      * The Number of all Cir's from a specific Cit
      *
      * @param type which should
-     * @return  count of Cir form a specific CIT
-     * @throws SQLException
+     * @return count of Cir form a specific CIT
+     * @throws SQLException - on database access error or other errors
      */
     public int getCirCountForType(Cit type) throws SQLException {
         int iCountCIRofCIT;
-        try{
-            ResultSet rs = stmt.executeQuery("SELECT count(ITEM_ID) FROM CIR WHERE TYPE_ID ="+type.getCitID());
+        try {
+            ResultSet rs = stmt.executeQuery("SELECT count(ITEM_ID) FROM CIR WHERE TYPE_ID =" + type.getCitID());
             rs.first();
             iCountCIRofCIT = rs.getInt(1);
-        }
-        catch (SQLSyntaxErrorException a)
-        {
-            iCountCIRofCIT = 0;
-            a.printStackTrace();
-        }
-        catch (SQLIntegrityConstraintViolationException b)
-        {
-            iCountCIRofCIT = 0;
-            b.printStackTrace();
-        }
-        catch (SQLNonTransientException c)
-        {
+        } catch (SQLNonTransientException c) {
             iCountCIRofCIT = 0;
             c.printStackTrace();
         }
@@ -268,33 +163,10 @@ public class DbCallerCir extends DbConnector {
     }
 
     /**
-     * Get all CIRs from the database
-     *
-     * @return allCirs
-     * @throws SQLException
-     */
-    public ArrayList<Cir> getAll() throws SQLException {
-        startConnection();
-        ArrayList<Cir> allCirs = new ArrayList<Cir>();
-
-        ResultSet rs = stmt.executeQuery("Select * from CIR");
-
-        while (rs.next()) {
-            String[] attributes = new String[10];
-            for (int i = 0; i < attributes.length; i++) {
-                attributes[i] = rs.getString(i + 1);
-            }
-            allCirs.add(new Cir(attributes));
-        }
-
-        return allCirs;
-    }
-
-    /**
      * Get the highest item_id from the database
      *
      * @return the highest item_id if there are entries, 0 if there are no entires in the db
-     * @throws SQLException
+     * @throws SQLException - on database access error or other errors
      */
     public int getMaxItemId() throws SQLException {
         startConnection();
@@ -308,56 +180,88 @@ public class DbCallerCir extends DbConnector {
     }
 
     /**
-     * Returns all CIR's as a result of a search (case sensitive, has to be changed to case insensitive )
+     * Gets all CIRs from the database
      *
-     * @param searchValue - String that has to be searched for
-     * @return cirListe - List of all cirs that are the result of the search
-     * @throws SQLException
+     * @return ArrayList containing all CIRs
      */
-    public ArrayList<Cir> getAllCirSearchValue(String searchValue) throws SQLException {
-        ArrayList<Cir> cirListe = new ArrayList<Cir>();
+    public ArrayList<Cir> getRecords() {
+        String query = "SELECT * FROM CIR R JOIN CIT T on T.TYPE_ID = R.TYPE_ID";
 
-        //ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE RECORD_NAME LIKE '%"+ searchValue + "%'"); // DB Abfrage
-        ResultSet rs = stmt.executeQuery("select R.* From CIR R JOIN CIT T on T.TYPE_ID = R.TYPE_ID WHERE LOWER(R.RECORD_NAME) LIKE LOWER('%"
-                + searchValue + "%') OR LOWER(T.TYPE_NAME) LIKE LOWER('%"
-                + searchValue + "%')");
-
-        //FIXME: FIXEN new DbConnector...
-        new DbConnector().startConnection(); // Warum???!
-        while (rs.next()) {
-            String[] attributes = new String[10];
-
-            for (int i = 0; i < attributes.length; i++) {
-                attributes[i] = rs.getString(i + 1);
-            }
-
-            cirListe.add(new Cir(attributes));
-        }
-
-        return cirListe;
+        return getCirs(query);
     }
 
-    public ArrayList<Cir> getAllWithFilterAndSearch(Cit selectedCit, String searchValue) throws SQLException {
-        ArrayList<Cir> cirListe = new ArrayList<Cir>();
+    /**
+     * Gets all CIRs containing the searchValue in either the type name or
+     * record name
+     *
+     * @param searchValue String - value that should be searched for
+     * @return ArrayList containing all CIRs matching the search criteria
+     */
+    public ArrayList<Cir> getRecords(String searchValue) {
+        String query = "SELECT * FROM CIR R JOIN CIT T on T.TYPE_ID = R.TYPE_ID"
+                + " WHERE (LOWER(R.RECORD_NAME) LIKE LOWER('%" + searchValue
+                + "%') OR LOWER(T.TYPE_NAME) LIKE LOWER('%" + searchValue + "%'))";
 
-        String query = "select R.* From CIR R JOIN CIT T on T.TYPE_ID = R.TYPE_ID WHERE R.TYPE_ID = "
-                + selectedCit.getCitID() + " AND (LOWER(R.RECORD_NAME) LIKE LOWER('%"
+        return getCirs(query);
+    }
+
+    /**
+     * Gets all CIRs containing the searchValue in either the type name or
+     * the record name and matching the filterType
+     *
+     * @param searchValue String - value that should be searched for
+     * @param filterType  Cit - type that should be filtered on
+     * @return ArrayList containing all CIRs matching the search criteria
+     */
+    public ArrayList<Cir> getRecords(String searchValue, Cit filterType) {
+        String query = "SELECT * FROM CIR R JOIN CIT T on T.TYPE_ID = R.TYPE_ID WHERE R.TYPE_ID = "
+                + filterType.getCitID() + " AND (LOWER(R.RECORD_NAME) LIKE LOWER('%"
                 + searchValue + "%') OR LOWER(T.TYPE_NAME) LIKE LOWER('%" + searchValue + "%'))";
 
-        ResultSet rs = stmt.executeQuery(query);
+        return getCirs(query);
+    }
 
-        //FIXME: FIXEN new DbConnector...
-        new DbConnector().startConnection(); // Warum???!
-        while (rs.next()) {
-            String[] attributes = new String[10];
+    /**
+     * Returns all CIRs as specified in the query
+     *
+     * @param query String - sql query
+     * @return ArrayList containing all CIRs returned by the query
+     */
+    private ArrayList<Cir> getCirs(String query) {
+        ArrayList<Cir> records = new ArrayList<>();
 
-            for (int i = 0; i < attributes.length; i++) {
-                attributes[i] = rs.getString(i + 1);
+        try {
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+
+                // Create the CIT
+                int typId = rs.getInt("TYPE_ID");
+                String typeName = rs.getString("TYPE_NAME");
+
+                String[] attributeNames = new String[7];
+                for (int i = 0; i < attributeNames.length; i++) {
+                    attributeNames[i] = rs.getString("ATTRIBUTE_NAME_"+(i+1));
+                }
+
+                Cit type = new Cit(typId, typeName, attributeNames);
+
+                // Create the CIT
+                int recordId = rs.getInt("ITEM_ID");
+                String recordName = rs.getString("RECORD_NAME");
+
+                String[] attributeValues = new String[7];
+                for (int i = 0; i < attributeValues.length; i++) {
+                    attributeValues[i] = rs.getString("ATTRIBUTE_VALUE_"+(i+1));
+                }
+
+                records.add(new Cir(recordId, type, recordName, attributeValues));
             }
-
-            cirListe.add(new Cir(attributes));
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-        return cirListe;
+        return records;
     }
+
 }
