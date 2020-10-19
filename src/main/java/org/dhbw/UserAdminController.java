@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -57,6 +58,7 @@ public class UserAdminController extends MainPagesController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
+        filterUser.getItems().addAll("Rechte", "User", "Admin");
         this.getData();
     }
 
@@ -70,7 +72,6 @@ public class UserAdminController extends MainPagesController {
             userTable.getItems().setAll(allUsers);
             userColumn.setCellValueFactory(new PropertyValueFactory<User, String>("UserName"));
             rightColumn.setCellValueFactory(new PropertyValueFactory<User, String>("Right"));
-            filterUser.getItems().addAll("Rechte", "User", "Admin");
             filterUser.setValue("Rechte");
         } catch (Exception e) {
             e.printStackTrace();
@@ -181,18 +182,14 @@ public class UserAdminController extends MainPagesController {
      */
     @FXML
     public void clickAction(MouseEvent mouseEvent) {
-        boolean userSelected = false;
-        if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
-            userSelected = true;
-        }
 
-        if (userSelected) {
+        if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
             editBtn.setDisable(false);
             deleteBtn.setDisable(false);
-        }
 
-        if (userTable.getSelectionModel().getSelectedItem().getUserName().equals("admin")) {
-            deleteBtn.setDisable(true);
+            if (userTable.getSelectionModel().getSelectedItem().getUserName().equals("admin")) {
+                deleteBtn.setDisable(true);
+            }
         }
 
         if (mouseEvent.getClickCount() == 2) {
@@ -207,7 +204,7 @@ public class UserAdminController extends MainPagesController {
 // Following is to Filter and to Search
 
     /**
-     *  This method fills the Table depending on filter and search.
+     * This method fills the Table depending on filter and search.
      */
     @FXML
     private void setTableContent(ArrayList<User> user) {
@@ -217,56 +214,11 @@ public class UserAdminController extends MainPagesController {
     }
 
     /**
-     * This method creates ArrayLists for each authorisation.
-     * Returns the list depending on the searchValue.
-     *
-     * @param selectedFilter - Either User or Admin.
-     * @return
-     */
-    public ArrayList<User> getAllUserSearchValue(String selectedFilter) {
-        ArrayList<User> answerListAdmin = new ArrayList<>();
-        ArrayList<User> answerListUser = new ArrayList<>();
-
-        for (User u : allUsers) {
-            if (u.getIsAdmin()) {
-                answerListAdmin.add(u);
-            } else {
-                answerListUser.add(u);
-            }
-        }
-
-        if (selectedFilter.equals("Admin")) {
-            return answerListAdmin;
-        } else {
-            return answerListUser;
-        }
-    }
-
-    /**
-     * This method gets a List of Users depending on search and filter.
-     *
-     * @param selectedFilter - Either user or admin
-     * @param searchValue    - SearchField value
-     * @return
-     */
-    public ArrayList<User> getAllWithFilterAndSearch(String selectedFilter, String searchValue) {
-        ArrayList<User> outputList = new ArrayList<>();
-        ArrayList<User> filteredUserList = this.getAllUserSearchValue(selectedFilter);
-
-        for (User u : filteredUserList) {
-            if (u.getUserName().contains(searchValue)) {
-                outputList.add(u);
-            }
-        }
-        return outputList;
-    }
-
-    /**
-     *  This method says what to do when filter and search are set.
+     * This method says what to do when filter and search are set.
      */
     @FXML
-    public void setTableWithFilterAndSearch() {
-        String selectedUser = filterUser.getSelectionModel().getSelectedItem();
+    public void setTableWithFilterAndSearch() throws SQLException {
+        String selectedFilter = filterUser.getSelectionModel().getSelectedItem();
         String searchValue = searchTextField.getText();
         ArrayList<User> filteredList = new ArrayList<>();
 
@@ -298,7 +250,6 @@ public class UserAdminController extends MainPagesController {
                 }
             });
             this.setTableContent(containQuery);
-
         } else {
             this.setTableContent(allUsers);
         }

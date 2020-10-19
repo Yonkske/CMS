@@ -1,6 +1,5 @@
 package backend.database;
 
-
 import backend.usability.User;
 
 import java.sql.PreparedStatement;
