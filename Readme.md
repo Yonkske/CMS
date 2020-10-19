@@ -35,10 +35,19 @@ A list of technologies used within the project:
 ###Installation
 A quick guide to run the application on your computer.
 
+Download the repo via:
 ```
 $ git clone https://github.com/Yonkske/CMS.git
 ```
-
+Change into the directory and run 
+```
+$ mvn install
+```
+Change into the /target/ directory and click the "CMS-1.0-SNAPSHOT-shaded.jar" or run:
+```
+$ java -jar CMS-1.0-SNAPSHOT-shaded.jar
+```
+Please keep in mind, that the h2-Database ist put in to your user directory at /CMSdb/
 ***
 
 
