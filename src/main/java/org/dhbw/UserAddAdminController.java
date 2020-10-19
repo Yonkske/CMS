@@ -1,6 +1,10 @@
 package org.dhbw;
 
 import backend.usability.User;
+import java.net.URL;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -8,11 +12,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import java.net.URL;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.util.ResourceBundle;
 
 public class UserAddAdminController extends Controller implements Initializable {
 
@@ -35,28 +34,28 @@ public class UserAddAdminController extends Controller implements Initializable 
     @FXML
     private Label meldungLbl;
 
-
-    @Override
     /**
-     * Methode from the interface Initializable that auto generates the PopUp to add a user
+     * Methode from the interface initializable that auto generates the PopUp to add a user.
+     *
      * @Param url url
      * @Param resourceBundle resourceBundle
      */
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         authorizationChoiceBox.getItems().addAll("Admin", "User");
         authorizationChoiceBox.setValue("User");
     }
 
-    @FXML
     /**
      * Method checks if both given passwords are identical.
      * Method additionally checks if Username ans Password are given.
      * If both checks are true the given Password will be encrypt.
      * Additionally the new User will be saved in the Database.
      *
-     * @throws InvalidKeySpecException
-     * @throws NoSuchAlgorithmException
+     * @throws InvalidKeySpecException - Exception
+     * @throws NoSuchAlgorithmException - Exception
      */
+    @FXML
     public void submit() throws InvalidKeySpecException, NoSuchAlgorithmException {
 
         if (initialPasswordTf.getText().equals(repeatInitialPasswordTf.getText())) {
@@ -69,7 +68,8 @@ public class UserAddAdminController extends Controller implements Initializable 
                 isAdmin = true;
             }
 
-            if (userName.length() > 0 && initialPasswordTf.getText().length() > 0 && repeatInitialPasswordTf.getText().length() > 0) {
+            if (userName.length() > 0 && initialPasswordTf.getText().length() > 0
+                                && repeatInitialPasswordTf.getText().length() > 0) {
                 String passwordEncrypted = super.encryptPassword(initialPasswordTf.getText());
                 User user = new User(userName, passwordEncrypted, true, isAdmin, name, surName);
                 DB_CALLER_USER.insertUser(user);
@@ -78,7 +78,6 @@ public class UserAddAdminController extends Controller implements Initializable 
                 showError();
                 clearPasswordAndUser();
             }
-
         } else {
             showError();
             initialPasswordTf.setText("");
@@ -109,7 +108,10 @@ public class UserAddAdminController extends Controller implements Initializable 
     public void showError() {
         meldungLbl.setVisible(true);
     }
-    
+
+    /**
+     * Method clears password and user textFields.
+     */
     public void clearPasswordAndUser() {
         usernameTf.setText("");
         initialPasswordTf.setText("");

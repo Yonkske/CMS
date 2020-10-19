@@ -1,22 +1,26 @@
 package org.dhbw;
 
 import backend.usability.User;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class UserAdminController extends MainPagesController {
 
@@ -49,11 +53,10 @@ public class UserAdminController extends MainPagesController {
 // Following are to show correct data on the user page
 
     /**
-     * Methode from the interface Initializable that auto generates the page on
-     * start
+     * Methode from the interface Initializable that auto generates the page on start.
      *
-     * @param url
-     * @param resourceBundle
+     * @param url - url
+     * @param resourceBundle - resource bundle
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -83,11 +86,13 @@ public class UserAdminController extends MainPagesController {
     /**
      * This method is to show a selected user in a popup.
      *
-     * @throws IOException
+     * @throws IOException - IOException
      */
     public void showUser() throws IOException {
         if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
-            openPopup(new UserViewAdminController(userTable.getSelectionModel().getSelectedItem()), "UserViewAdmin.fxml", true, false);
+            openPopup(new UserViewAdminController(userTable.getSelectionModel()
+                    .getSelectedItem()), "UserViewAdmin.fxml", true,
+                    false);
             this.disableButtons();
         }
     }
@@ -95,23 +100,25 @@ public class UserAdminController extends MainPagesController {
     /**
      * This method opens a Popup. With that you can add a new User to the database.
      *
-     * @throws IOException
+     * @throws IOException - IOException
      */
     public void addUser() throws IOException {
         // TODO: Test method
-        openPopup(new UserAddAdminController(), "UserAddAdmin.fxml", true, true);
+        openPopup(new UserAddAdminController(), "UserAddAdmin.fxml",
+                    true, true);
         this.disableButtons();
     }
 
     /**
      * This method opens a popup where you can edit the selected user.
      *
-     * @throws IOException
+     * @throws IOException - IOException
      */
     public void editUser() throws IOException {
         // TODO: Test der Methode
         if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
-            openPopup(new UserEditAdminController(userTable.getSelectionModel().getSelectedItem()), "UserEditAdmin.fxml", true, false);
+            openPopup(new UserEditAdminController(userTable.getSelectionModel().getSelectedItem()),
+                    "UserEditAdmin.fxml", true, false);
             this.disableButtons();
         }
     }
@@ -120,12 +127,13 @@ public class UserAdminController extends MainPagesController {
      * With this method you can delete the selected user.
      * It also opens a popup to secure you do not accidental delete a user.
      *
-     * @throws IOException
+     * @throws IOException - IOException
      */
     public void deleteUser() throws IOException {
-        // TODO: Test der Methode
         if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
-            openPopup(new NotificationController(userTable.getSelectionModel().getSelectedItem(), PAGE_NAME), "Notification.fxml", false, false);
+            openPopup(new NotificationController(userTable.getSelectionModel()
+                            .getSelectedItem(), PAGE_NAME), "Notification.fxml",
+                    false, false);
             this.disableButtons();
         }
     }
@@ -135,11 +143,14 @@ public class UserAdminController extends MainPagesController {
     /**
      * This method opens the popup.
      *
-     * @param controller      - you define a new controller for the fxml page you want to open
+     * @param controller      - you define a new controller for the fxml
+     *                          page you want to open
      * @param fxmlName        - this fxml page should be opened
-     * @param onHidingRefresh - when the calling page should be refreshed after closing the popup: true
-     * @param onHindingClose  - when the calling page should be closed after closing the popup: true
-     * @throws IOException
+     * @param onHidingRefresh - when the calling page should be refreshed
+     *                          after closing the popup: true
+     * @param onHindingClose  - when the calling page should be closed after closing
+     *                          the popup: true
+     * @throws IOException - IOException
      */
     void openPopup(Controller controller, String fxmlName, boolean onHidingRefresh, boolean onHindingClose) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
@@ -220,32 +231,15 @@ public class UserAdminController extends MainPagesController {
     public void setTableWithFilterAndSearch() throws SQLException {
         String selectedUser = filterUser.getSelectionModel().getSelectedItem();
         String searchValue = searchTextField.getText();
-        ArrayList<User> filteredList = new ArrayList<>();
 
-        if (selectedUser.equals("Rechte") && searchValue.length() != 0) {
+        if (selectedFilter.equals("Rechte") && searchValue.length() != 0) {
+             this.setTableContent(getUsersBySearchValue(searchValue));
+        } else if (!selectedFilter.equals("Rechte")) {
             ArrayList<User> containQuery = new ArrayList<>();
-
-            allUsers.forEach(user1 -> {
-                if (user1.getUserName().contains(searchValue)) {
-                    containQuery.add(user1);
-                }
-            });
-
-            this.setTableContent(containQuery);
-
-        } else if (!selectedUser.equals("Rechte")) {
-
-            ArrayList<User> memory = new ArrayList<>();
-            ArrayList<User> containQuery = new ArrayList<>();
-
-            allUsers.forEach(user1 -> {
-                if (user1.getUserName().contains(searchValue)) {
-                    memory.add(user1);
-                }
-            });
+            ArrayList<User> memory = getUsersBySearchValue(searchValue);
 
             memory.forEach(user3 -> {
-                if (user3.getRight().equals(selectedUser)) {
+                if (user3.getRight().equals(selectedFilter)) {
                     containQuery.add(user3);
                 }
             });
@@ -253,6 +247,18 @@ public class UserAdminController extends MainPagesController {
         } else {
             this.setTableContent(allUsers);
         }
+    }
+
+    private ArrayList<User> getUsersBySearchValue(String searchValue) {
+        ArrayList<User> containQuery = new ArrayList<>();
+
+        allUsers.forEach(user1 -> {
+            if (user1.getUserName().contains(searchValue)) {
+                containQuery.add(user1);
+            }
+        });
+
+        return containQuery;
     }
 
     @Override

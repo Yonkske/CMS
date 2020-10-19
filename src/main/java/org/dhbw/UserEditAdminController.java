@@ -1,15 +1,14 @@
 package org.dhbw;
 
 import backend.usability.User;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class UserEditAdminController extends Controller implements Initializable {
 
@@ -28,6 +27,9 @@ public class UserEditAdminController extends Controller implements Initializable
     public Button cancelBtn;
     private User user;
 
+    /**
+     * Button Action for submit Button.
+     */
     @FXML
     public void submit() {
         String surName = surnameTf.getText();
@@ -46,20 +48,37 @@ public class UserEditAdminController extends Controller implements Initializable
         closeScene();
     }
 
+    /**
+     * Button action for cancel Button.
+     */
     public void cancel() {
         closeScene();
     }
 
+    /**
+     * Method closes Popup.
+     */
     @FXML
     public void closeScene() {
         Stage close = (Stage) submitBtn.getScene().getWindow();
         close.close();
     }
 
+    /**
+     * Constructor.
+     *
+     * @param user - userToEdit
+     */
     public UserEditAdminController(User user) {
         this.user = user;
     }
 
+    /**
+     * Initialization.
+     *
+     * @param url - url
+     * @param resourceBundle - resource bundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         surnameTf.setText(user.getSurName());
