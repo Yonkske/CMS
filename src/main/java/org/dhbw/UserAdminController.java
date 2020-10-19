@@ -1,8 +1,6 @@
 package org.dhbw;
 
-import backend.database.DbCallerUser;
 import backend.usability.User;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -184,18 +182,14 @@ public class UserAdminController extends MainPagesController {
      */
     @FXML
     public void clickAction(MouseEvent mouseEvent) {
-        boolean userSelected = false;
-        if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
-            userSelected = true;
-        }
 
-        if (userSelected) {
+        if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
             editBtn.setDisable(false);
             deleteBtn.setDisable(false);
-        }
 
-        if (userTable.getSelectionModel().getSelectedItem().getUserName().equals("admin")) {
-            deleteBtn.setDisable(true);
+            if (userTable.getSelectionModel().getSelectedItem().getUserName().equals("admin")) {
+                deleteBtn.setDisable(true);
+            }
         }
 
         if (mouseEvent.getClickCount() == 2) {
@@ -210,7 +204,7 @@ public class UserAdminController extends MainPagesController {
 // Following is to Filter and to Search
 
     /**
-     *  This method fills the Table depending on filter and search.
+     * This method fills the Table depending on filter and search.
      */
     @FXML
     private void setTableContent(ArrayList<User> user) {
@@ -220,7 +214,7 @@ public class UserAdminController extends MainPagesController {
     }
 
     /**
-     *  This method says what to do when filter and search are set.
+     * This method says what to do when filter and search are set.
      */
     @FXML
     public void setTableWithFilterAndSearch() throws SQLException {
