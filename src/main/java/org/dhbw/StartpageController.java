@@ -125,19 +125,6 @@ public class StartpageController extends MainPagesController {
     @FXML
     public void setTableWithFilterAndSearch() {
         setTableContent(filterCirs());
-
-        /*
-        Cit selectedCit = filterCitCb.getSelectionModel().getSelectedItem();
-        String searchValue = searchTf.getText();
-        if(selectedCit.getCitID() == 0 && Objects.isNull(searchValue)) {
-
-        }
-        else if (selectedCit.getCitID() == 0) {
-            setTableContent(DB_CALLER_CIR.getRecords(searchValue));
-        } else {
-            setTableContent(DB_CALLER_CIR.getRecords(searchValue, selectedCit));
-        }
-         */
     }
 
     /**
@@ -178,9 +165,17 @@ public class StartpageController extends MainPagesController {
      */
     @Override
     public void refresh() {
+        allCir = DB_CALLER_CIR.getRecords();
         this.setTableWithFilterAndSearch();
     }
 
+    /**
+     * Filters all CIRs loaded into the RAM at initialize. If they match the selected
+     * filter and the search criteria they are added to the ArrayList which is returned
+     * after all loaded CIRs have been checked.
+     *
+     * @return ArrayList containing the CIRs matching the search criteria
+     */
     private ArrayList<Cir> filterCirs() {
         ArrayList<Cir> filteredCirs = new ArrayList<>();
         String searchValue = searchTf.getText().toLowerCase();
@@ -205,6 +200,13 @@ public class StartpageController extends MainPagesController {
         return filteredCirs;
     }
 
+    /**
+     * Checks if the given CIR contains the given search value in either the record name or type name
+     *
+     * @param record      CIR - record to be checked
+     * @param searchValue String - value to be checked for
+     * @return true if the CIR contains the search value, false if not
+     */
     private boolean checkForSearchValue(Cir record, String searchValue) {
         if (record.getCirName().toLowerCase().contains(searchValue) || record.getCit().getCitName().toLowerCase().contains(searchValue)) {
             return true;
