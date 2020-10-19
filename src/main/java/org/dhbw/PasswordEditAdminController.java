@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 
 
 public class PasswordEditAdminController extends Controller {
@@ -22,12 +21,20 @@ public class PasswordEditAdminController extends Controller {
     private Button cancelBtn;
     @FXML
     private Label meldungLbl;
-    private User userToChangePw;
+    private final User userToChangePw;
 
+    /**
+     * Constructor.
+     *
+     * @param user - userToChangePw
+     */
     public PasswordEditAdminController(User user) {
         this.userToChangePw = user;
     }
 
+    /**
+     * Button Action for submit button.
+     */
     public void submit() {
         boolean enteredPwCheck = this.checkNewPasswords();
         boolean noEmptyInputCheck = this.checkNoEmptyInput();
@@ -42,14 +49,24 @@ public class PasswordEditAdminController extends Controller {
         }
     }
 
+    /**
+     * Method checks if all fields are filled.
+     *
+     * @return boolean
+     */
     private boolean checkNoEmptyInput() {
-        if (newPasswordPf.getText().length() !=0 && passwordRepeatPf.getText().length() !=0) {
+        if (newPasswordPf.getText().length() != 0 && passwordRepeatPf.getText().length() != 0) {
             return true;
         } else {
             return false;
         }
     }
 
+    /**
+     * Mehtod checks if both given passwords are the same.
+     *
+     * @return boolean
+     */
     private boolean checkNewPasswords() {
         if (newPasswordPf.getText().equals(passwordRepeatPf.getText())) {
             return true;
