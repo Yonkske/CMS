@@ -1,6 +1,8 @@
 package backend.database;
 
 
+import backend.usability.Cir;
+import backend.usability.Cit;
 import backend.usability.User;
 
 import java.sql.PreparedStatement;
@@ -162,5 +164,53 @@ public class DbCallerUser extends DbConnector {
             throwables.printStackTrace();
         }
         return allUsers;
+    }
+
+    public ArrayList<User> getRecords(String searchValue, String selectedFilter) {
+        boolean adminStatus = false;
+        if (selectedFilter.equals("Admin")) {
+            adminStatus = true;
+        }
+
+        String query = "SELECT * FROM USER WHERE IS_ADMIN = " + adminStatus + " AND IS_ADMIN LIKE '%"
+                + searchValue + "%' OR USER_NAME LIKE '%" + searchValue + "%'";
+
+        return getRecords(query);
+    }
+
+    public ArrayList<User> getRecords(String searchValue) {
+
+        boolean adminState = Boolean.parseBoolean(null);
+
+        if (searchValue.toLowerCase().contains("admin")) {
+            adminState = true;
+        } else if (searchValue.toLowerCase().contains("user")) {
+            adminState = false;
+        }
+        String query = "SELECT * FROM USER WHERE USER_NAME LIKE '%" + searchValue + "%' OR IS_ADMIN LIKE '%" + adminState + "%'";
+
+        return getRecords(query);
+    }
+
+    private ArrayList<User> getContent(String query) {
+        ArrayList<User> users = new ArrayList<User>();
+
+        try {
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+
+                String userName = rs.getString("USER_NAME");
+                String password = rs.getString("PASSWORD");
+                boolean isAdmin = rs.getBoolean("IS_ADMIN");
+                boolean isInitial = rs.getBoolean("IS_INITIAL");
+                String name = rs.getString("NAME");
+                String surname = rs.getString("SURNAME");
+
+                users.add(new User(userName, password, isInitial, isAdmin, name, surname));}
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    return users;
     }
 }
