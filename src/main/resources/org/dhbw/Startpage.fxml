@@ -5,10 +5,9 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
-<VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.StartpageController">
+<VBox alignment="TOP_RIGHT" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.StartpageController">
    <children>
-      <HBox alignment="TOP_RIGHT" prefHeight="40.0" style="-fx-background-color: #313c48;">
+      <HBox alignment="TOP_RIGHT" style="-fx-background-color: #313c48;">
          <children>
             <MenuButton fx:id="adminUserMB" mnemonicParsing="false" style="-fx-background-color: #313c48;" text="Vorname, Nachname" textFill="WHITE">
                <items>
@@ -39,7 +38,7 @@
                </font></Button>
          </children>
       </HBox>
-      <HBox>
+      <HBox VBox.vgrow="ALWAYS">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="519.0" prefWidth="85.0" style="-fx-background-color: #3D4956;">
                <children>
@@ -79,7 +78,7 @@
                   <Insets />
                </HBox.margin>
             </VBox>
-            <VBox alignment="CENTER" prefWidth="800.0" style="-fx-background-color: #f0f0f8;">
+            <VBox style="-fx-background-color: #f0f0f8;" HBox.hgrow="ALWAYS">
                <children>
                   <HBox alignment="BOTTOM_LEFT" prefHeight="33.0" prefWidth="287.0" style="-fx-background-color: #f0f0f8;">
                      <children>
@@ -88,7 +87,7 @@
                               <Image url="@icons/suchen.png" />
                            </image>
                         </ImageView>
-                        <TextField fx:id="searchTf" onAction="#setTableWithFilterAndSearch" prefHeight="31.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc; -fx-background-insets: #313c48;">
+                        <TextField fx:id="searchTf" onAction="#setTableWithFilterAndSearch" prefHeight="31.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets top="20.0" />
                            </HBox.margin></TextField>
@@ -102,7 +101,6 @@
                            </font></Button>
                      </children>
                   </HBox>
-                  <HBox prefHeight="21.0" prefWidth="274.0" />
                   <TableView fx:id="cirTable" maxWidth="-Infinity" minHeight="200.0" minWidth="-Infinity" onMouseClicked="#openCirView" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: #f0f0f8; -fx-border-color: #d8dce4; -fx-font-size: 14; -fx-font-family: AppleGothic;">
                     <columns>
                       <TableColumn fx:id="citColumn" editable="false" minWidth="350.0" prefWidth="350.0" style="-fx-background-color: #c4c4cc;" text="CIT">
@@ -116,7 +114,7 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <HBox alignment="BOTTOM_RIGHT" prefHeight="51.0" prefWidth="274.0">
+                  <HBox prefHeight="51.0" prefWidth="274.0">
                      <children>
                         <Button fx:id="citEditBtn" mnemonicParsing="false" onAction="#openAddCit" style="-fx-background-color: #e1a6ad;" text="CIT" textFill="WHITE">
                            <HBox.margin>
@@ -204,6 +202,9 @@
                </padding>
             </VBox>
          </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
 
       </HBox>
    </children>
