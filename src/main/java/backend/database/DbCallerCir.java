@@ -191,37 +191,6 @@ public class DbCallerCir extends DbConnector {
     }
 
     /**
-     * Gets all CIRs containing the searchValue in either the type name or
-     * record name
-     *
-     * @param searchValue String - value that should be searched for
-     * @return ArrayList containing all CIRs matching the search criteria
-     */
-    public ArrayList<Cir> getRecords(String searchValue) {
-        String query = "SELECT * FROM CIR R JOIN CIT T on T.TYPE_ID = R.TYPE_ID"
-                + " WHERE (LOWER(R.RECORD_NAME) LIKE LOWER('%" + searchValue
-                + "%') OR LOWER(T.TYPE_NAME) LIKE LOWER('%" + searchValue + "%'))";
-
-        return getCirs(query);
-    }
-
-    /**
-     * Gets all CIRs containing the searchValue in either the type name or
-     * the record name and matching the filterType
-     *
-     * @param searchValue String - value that should be searched for
-     * @param filterType  Cit - type that should be filtered on
-     * @return ArrayList containing all CIRs matching the search criteria
-     */
-    public ArrayList<Cir> getRecords(String searchValue, Cit filterType) {
-        String query = "SELECT * FROM CIR R JOIN CIT T on T.TYPE_ID = R.TYPE_ID WHERE R.TYPE_ID = "
-                + filterType.getCitID() + " AND (LOWER(R.RECORD_NAME) LIKE LOWER('%"
-                + searchValue + "%') OR LOWER(T.TYPE_NAME) LIKE LOWER('%" + searchValue + "%'))";
-
-        return getCirs(query);
-    }
-
-    /**
      * Returns all CIRs as specified in the query
      *
      * @param query String - sql query
