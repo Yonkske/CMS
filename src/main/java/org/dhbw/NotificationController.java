@@ -4,19 +4,24 @@ import backend.usability.Cir;
 import backend.usability.Cit;
 import backend.usability.User;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class NotificationController extends Controller  {
+public class NotificationController extends Controller implements Initializable {
 
     @FXML
     private Button yesBtn;
-
     @FXML
     private Button noBtn;
+    @FXML
+    private Label notificationLbl;
 
 
     private Cit citToDelete;
@@ -92,6 +97,23 @@ public class NotificationController extends Controller  {
     public NotificationController(Cir inCir) {
         this.cirToDelete = inCir;
         this.itemToDelete = "cir";
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        switch (itemToDelete) {
+            case "cir":
+                notificationLbl.setText("Sind Sie sicher, dass sie den CIR \"" + cirToDelete.getCirName() + "\" und löschen wollen?");
+                break;
+            case "cit":
+                notificationLbl.setText("Sind Sie sicher, dass sie den CIT \"" + citToDelete.getCitName() + "\" und alle zugehörigen CIRs löschen wollen?");
+                break;
+            case "user":
+                notificationLbl.setText("Sind Sie sicher, dass sie den Benutzer \"" + userToDelete.getUserName() + "\" löschen wollen?");
+                break;
+            default:
+        }
     }
 
 
