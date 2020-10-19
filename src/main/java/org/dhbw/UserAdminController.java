@@ -245,6 +245,12 @@ public class UserAdminController extends MainPagesController {
         }
     }
 
+
+    /**
+     * Gets List of Users that contain searchValue in the Username.
+     * @param searchValue The value
+     * @return the ArrayList of Users containing the searchValue
+     */
     private ArrayList<User> getUsersBySearchValue(String searchValue) {
         ArrayList<User> containQuery = new ArrayList<>();
 
