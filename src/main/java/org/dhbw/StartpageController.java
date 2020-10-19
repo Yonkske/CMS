@@ -32,6 +32,7 @@ public class StartpageController extends MainPagesController {
     private TextField searchTf;
     @FXML
     private ComboBox<Cit> filterCitCb;
+    private ArrayList<Cir> allCir;
 
     /**
      * Methode from the interface Initializable that auto generates the page on
@@ -44,7 +45,8 @@ public class StartpageController extends MainPagesController {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
         try {
-            setTableContent(DB_CALLER_CIR.getRecords());
+            allCir = DB_CALLER_CIR.getRecords();
+            setTableContent(allCir);
 
             Cit placeholder = new Cit(0, "CIT", new String[]{null, null, null, null, null, null, null});
             filterCitCb.getItems().add(placeholder);
@@ -122,16 +124,7 @@ public class StartpageController extends MainPagesController {
      */
     @FXML
     public void setTableWithFilterAndSearch() {
-        Cit selectedCit = filterCitCb.getSelectionModel().getSelectedItem();
-        String searchValue = searchTf.getText();
-        if(selectedCit.getCitID() == 0 && Objects.isNull(searchValue)) {
-
-        }
-        else if (selectedCit.getCitID() == 0) {
-            setTableContent(DB_CALLER_CIR.getRecords(searchValue));
-        } else {
-            setTableContent(DB_CALLER_CIR.getRecords(searchValue, selectedCit));
-        }
+        setTableContent(filterCirs());
     }
 
     /**
@@ -152,6 +145,7 @@ public class StartpageController extends MainPagesController {
      *
      * @param cirs to be displayed in the table
      */
+    @FXML
     private void setTableContent(ArrayList<Cir> cirs) {
         cirTable.getItems().setAll(cirs);
         citColumn.setCellValueFactory(new PropertyValueFactory<>("CitName"));
@@ -172,6 +166,48 @@ public class StartpageController extends MainPagesController {
      */
     @Override
     public void refresh() {
+        allCir = DB_CALLER_CIR.getRecords();
         this.setTableWithFilterAndSearch();
+    }
+
+    /**
+     * Filters all CIRs loaded into the RAM at initialize. If they match the selected
+     * filter and the search criteria they are added to the ArrayList which is returned
+     * after all loaded CIRs have been checked.
+     *
+     * @return ArrayList containing the CIRs matching the search criteria
+     */
+    private ArrayList<Cir> filterCirs() {
+        ArrayList<Cir> filteredCirs = new ArrayList<>();
+        String searchValue = searchTf.getText().toLowerCase();
+        Cit selectedCit = filterCitCb.getSelectionModel().getSelectedItem();
+
+        if (selectedCit.getCitID() == 0) {
+
+            allCir.forEach(record -> {
+                if (checkForSearchValue(record, searchValue)) {
+                    filteredCirs.add(record);
+                }
+            });
+        } else {
+            allCir.forEach(record -> {
+                if (checkForSearchValue(record, searchValue) && record.getCit().getCitID() == selectedCit.getCitID()) {
+                    filteredCirs.add(record);
+                }
+            });
+        }
+
+        return filteredCirs;
+    }
+
+    /**
+     * Checks if the given CIR contains the given search value in either the record name or type name
+     *
+     * @param record      CIR - record to be checked
+     * @param searchValue String - value to be checked for
+     * @return true if the CIR contains the search value, false if not
+     */
+    private boolean checkForSearchValue(Cir record, String searchValue) {
+        return record.getCirName().toLowerCase().contains(searchValue) || record.getCit().getCitName().toLowerCase().contains(searchValue);
     }
 }
