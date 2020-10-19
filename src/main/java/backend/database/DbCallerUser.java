@@ -1,8 +1,5 @@
 package backend.database;
 
-
-import backend.usability.Cir;
-import backend.usability.Cit;
 import backend.usability.User;
 
 import java.sql.PreparedStatement;

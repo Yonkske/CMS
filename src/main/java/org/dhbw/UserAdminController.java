@@ -60,6 +60,7 @@ public class UserAdminController extends MainPagesController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
+        filterUser.getItems().addAll("Rechte", "User", "Admin");
         this.getData();
     }
 
@@ -73,7 +74,6 @@ public class UserAdminController extends MainPagesController {
             userTable.getItems().setAll(allUsers);
             userColumn.setCellValueFactory(new PropertyValueFactory<User, String>("UserName"));
             rightColumn.setCellValueFactory(new PropertyValueFactory<User, String>("Right"));
-            filterUser.getItems().addAll("Rechte", "User", "Admin");
             filterUser.setValue("Rechte");
         } catch (Exception e) {
             e.printStackTrace();
