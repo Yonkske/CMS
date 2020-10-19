@@ -220,32 +220,15 @@ public class UserAdminController extends MainPagesController {
     public void setTableWithFilterAndSearch() throws SQLException {
         String selectedFilter = filterUser.getSelectionModel().getSelectedItem();
         String searchValue = searchTextField.getText();
-        ArrayList<User> filteredList = new ArrayList<>();
 
-        if (selectedUser.equals("Rechte") && searchValue.length() != 0) {
+        if (selectedFilter.equals("Rechte") && searchValue.length() != 0) {
+             this.setTableContent(getUsersBySearchValue(searchValue));
+        } else if (!selectedFilter.equals("Rechte")) {
             ArrayList<User> containQuery = new ArrayList<>();
-
-            allUsers.forEach(user1 -> {
-                if (user1.getUserName().contains(searchValue)) {
-                    containQuery.add(user1);
-                }
-            });
-
-            this.setTableContent(containQuery);
-
-        } else if (!selectedUser.equals("Rechte")) {
-
-            ArrayList<User> memory = new ArrayList<>();
-            ArrayList<User> containQuery = new ArrayList<>();
-
-            allUsers.forEach(user1 -> {
-                if (user1.getUserName().contains(searchValue)) {
-                    memory.add(user1);
-                }
-            });
+            ArrayList<User> memory = getUsersBySearchValue(searchValue);
 
             memory.forEach(user3 -> {
-                if (user3.getRight().equals(selectedUser)) {
+                if (user3.getRight().equals(selectedFilter)) {
                     containQuery.add(user3);
                 }
             });
@@ -253,6 +236,18 @@ public class UserAdminController extends MainPagesController {
         } else {
             this.setTableContent(allUsers);
         }
+    }
+
+    private ArrayList<User> getUsersBySearchValue(String searchValue) {
+        ArrayList<User> containQuery = new ArrayList<>();
+
+        allUsers.forEach(user1 -> {
+            if (user1.getUserName().contains(searchValue)) {
+                containQuery.add(user1);
+            }
+        });
+
+        return containQuery;
     }
 
     @Override

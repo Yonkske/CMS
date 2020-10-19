@@ -1,14 +1,12 @@
 package org.dhbw;
 
 import backend.usability.User;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-
 
 public class ChangePasswordController extends Controller {
 
@@ -29,12 +27,17 @@ public class ChangePasswordController extends Controller {
     /**
      * Constructor.
      *
-     * @param user
+     * @param user - The password of this user will be changed.
      */
     public ChangePasswordController(User user) {
         this.userToCangePassword = user;
     }
 
+    /**
+     * Action when submit Button is pushed.
+     *
+     * @throws IOException
+     */
     @FXML
     public void submit() throws IOException {
         boolean oldPwCheck = super.checkPassword(oldPasswordPf.getText(), userToCangePassword.getPassword());
