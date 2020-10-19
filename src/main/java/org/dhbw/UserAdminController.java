@@ -1,26 +1,22 @@
 package org.dhbw;
 
 import backend.usability.User;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 
 public class UserAdminController extends MainPagesController {
 
@@ -232,14 +228,14 @@ public class UserAdminController extends MainPagesController {
         String selectedUser = filterUser.getSelectionModel().getSelectedItem();
         String searchValue = searchTextField.getText();
 
-        if (selectedFilter.equals("Rechte") && searchValue.length() != 0) {
+        if (selectedUser.equals("Rechte") && searchValue.length() != 0) {
              this.setTableContent(getUsersBySearchValue(searchValue));
-        } else if (!selectedFilter.equals("Rechte")) {
+        } else if (!selectedUser.equals("Rechte")) {
             ArrayList<User> containQuery = new ArrayList<>();
             ArrayList<User> memory = getUsersBySearchValue(searchValue);
 
             memory.forEach(user3 -> {
-                if (user3.getRight().equals(selectedFilter)) {
+                if (user3.getRight().equals(selectedUser)) {
                     containQuery.add(user3);
                 }
             });
@@ -249,6 +245,12 @@ public class UserAdminController extends MainPagesController {
         }
     }
 
+
+    /**
+     * Gets List of Users that contain searchValue in the Username.
+     * @param searchValue The value
+     * @return the ArrayList of Users containing the searchValue
+     */
     private ArrayList<User> getUsersBySearchValue(String searchValue) {
         ArrayList<User> containQuery = new ArrayList<>();
 
