@@ -82,7 +82,9 @@ public class StartpageController extends MainPagesController {
      */
     @FXML
     public void openDeleteCitPopup() throws IOException {
-        openPopup(new NotificationController(cirTable.getSelectionModel().getSelectedItem().getCit()), "Notification.fxml", true);
+        if (Objects.nonNull(cirTable.getSelectionModel().getSelectedItem())) {
+            openPopup(new NotificationController(cirTable.getSelectionModel().getSelectedItem().getCit()), "Notification.fxml", true);
+        }
     }
 
     /**
