@@ -175,11 +175,11 @@ public class DbCallerUser extends DbConnector {
 
         if (searchValue.toLowerCase().equals("admin") || searchValue.toLowerCase().equals("user")) {
             query = "SELECT * FROM USER WHERE IS_ADMIN = " + adminStatus + " AND IS_ADMIN LIKE '%"
-                    + adminStatus + "%' OR USER_NAME LIKE '%" + searchValue + "%'";
+                    + adminStatus + "%' OR UPPER(USER_NAME) LIKE '%" + searchValue.toUpperCase() + "%'";
 
         } else {
             query = "SELECT * FROM USER WHERE IS_ADMIN = " + adminStatus + " AND" +
-                    " USER_NAME LIKE '%" + searchValue + "%'";
+                    " UPPER(USER_NAME) LIKE '%" + searchValue.toUpperCase() + "%'";
         }
         return getContent(query);
     }
@@ -188,15 +188,15 @@ public class DbCallerUser extends DbConnector {
         String query;
         boolean adminState = false;
 
-        if (searchValue.toLowerCase().contains("admin")) {
+        if (searchValue.equalsIgnoreCase("ADMIN")) {
             adminState = true;
         }
 
-        if (searchValue.toLowerCase().equals("admin") || searchValue.toLowerCase().equals("user")) {
-        query = "SELECT * FROM USER WHERE USER_NAME LIKE '%" + searchValue
-                + "%' OR IS_ADMIN LIKE '%" + adminState + "%'";
+        if (searchValue.equalsIgnoreCase("ADMIN") || searchValue.equalsIgnoreCase("USER")) {
+            query = "SELECT * FROM USER WHERE UPPER(USER_NAME) LIKE '%" + searchValue.toUpperCase()
+                    + "%' OR IS_ADMIN LIKE '%" + adminState + "%'";
         } else {
-            query = "SELECT * FROM USER WHERE USER_NAME LIKE '%" + searchValue + "%'";
+            query = "SELECT * FROM USER WHERE UPPER(USER_NAME) LIKE '%" + searchValue.toUpperCase() + "%'";
         }
 
         return getContent(query);
