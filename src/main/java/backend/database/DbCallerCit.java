@@ -1,10 +1,11 @@
 package backend.database;
 
 import backend.usability.Cit;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.SQLNonTransientException;
 import java.util.ArrayList;
 
 public class DbCallerCit extends DbConnector {
@@ -26,8 +27,7 @@ public class DbCallerCit extends DbConnector {
             sCitArray[i] = rs.getString(i + 3);
         }
 
-        Cit citToGet = new Cit(id, citName, sCitArray);
-        return citToGet;
+        return new Cit(id, citName, sCitArray);
     }
 
 
@@ -39,7 +39,6 @@ public class DbCallerCit extends DbConnector {
      */
     public boolean createCit(Cit type) throws SQLException {
         String[] sCitAttributes = type.getCitAttributes();
-        boolean bWorks;
         try {
             PreparedStatement prepStmt = con.prepareStatement
                     ("INSERT INTO CIT VALUES (?,?,?,?,?,?,?,?,?)"); // SQL Statement
@@ -60,14 +59,10 @@ public class DbCallerCit extends DbConnector {
             prepStmt.setString(9, sCitAttributes[7]);
             prepStmt.executeUpdate();
             prepStmt.close();
-            bWorks = true;
-        } catch (SQLSyntaxErrorException a) {
-            bWorks = false;
-        } catch (SQLIntegrityConstraintViolationException b) {
-            bWorks = false;
+            return true;
+        } catch (SQLNonTransientException c) {
+            return false;
         }
-
-        return bWorks;
     }
 
 
@@ -78,19 +73,13 @@ public class DbCallerCit extends DbConnector {
      * @return true if the CIT is deleted/ false if not
      */
     public boolean deleteCit(Cit type) throws SQLException {
-        boolean bDeleteCit;
         try {
-            stmt.execute("DELETE FROM CIT WHERE Type_ID= " + type.getCitID()); // SQL Abfrage
-            bDeleteCit = true;
-        } catch (SQLSyntaxErrorException a) {
-            bDeleteCit = false;
-        } catch (SQLIntegrityConstraintViolationException b) {
-            bDeleteCit = false;
+            stmt.execute("DELETE FROM CIR WHERE TYPE_ID = " + type.getCitID());
+            stmt.execute("DELETE FROM CIT WHERE Type_ID = " + type.getCitID());
+            return true;
         } catch (SQLNonTransientException c) {
-            bDeleteCit = false;
+            return false;
         }
-
-        return bDeleteCit;
     }
 
     /**
@@ -100,7 +89,7 @@ public class DbCallerCit extends DbConnector {
      */
     public ArrayList<Cit> getAllCits() throws SQLException {
 
-        ArrayList<Cit> citList = new ArrayList<Cit>();
+        ArrayList<Cit> citList = new ArrayList<>();
         ResultSet rs = stmt.executeQuery("Select * From CIT");
         while (rs.next()) {
             /*
@@ -120,23 +109,6 @@ public class DbCallerCit extends DbConnector {
         return citList;
     }
 
-    public String[] getCitNamelist() throws SQLException {
-        final ObservableList citNameList = FXCollections.observableArrayList();
-        ResultSet rs = stmt.executeQuery("Select TYPE_NAME from CIT");
-        String[] citNames = new String[getCitCount()];
-        while (rs.next()) {
-            for (int i = 0; i < getCitCount(); i++) {
-                citNameList.add(rs.getString("TYPE_NAME"));
-                System.out.println(citNameList);
-            }
-        }
-        stmt.close();
-        rs.close();
-        return citNames;
-
-
-    }
-
     /**
      * Database Query to get sum of all CIT in table
      *
@@ -148,10 +120,6 @@ public class DbCallerCit extends DbConnector {
             ResultSet rs = stmt.executeQuery("SELECT count(*) FROM CIT");
             rs.first();
             iCountCIT = rs.getInt(1);
-        } catch (SQLSyntaxErrorException a) {
-            iCountCIT = 0;
-        } catch (SQLIntegrityConstraintViolationException b) {
-            iCountCIT = 0;
         } catch (SQLNonTransientException c) {
             iCountCIT = 0;
         }
