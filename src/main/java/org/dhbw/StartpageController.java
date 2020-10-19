@@ -32,6 +32,7 @@ public class StartpageController extends MainPagesController {
     private TextField searchTf;
     @FXML
     private ComboBox<Cit> filterCitCb;
+    private ArrayList<Cir> allCir;
 
     /**
      * Methode from the interface Initializable that auto generates the page on
@@ -44,7 +45,8 @@ public class StartpageController extends MainPagesController {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
         try {
-            setTableContent(DB_CALLER_CIR.getRecords());
+            allCir = DB_CALLER_CIR.getRecords();
+            setTableContent(allCir);
 
             Cit placeholder = new Cit(0, "CIT", new String[]{null, null, null, null, null, null, null});
             filterCitCb.getItems().add(placeholder);
@@ -122,6 +124,9 @@ public class StartpageController extends MainPagesController {
      */
     @FXML
     public void setTableWithFilterAndSearch() {
+        setTableContent(filterCirs());
+
+        /*
         Cit selectedCit = filterCitCb.getSelectionModel().getSelectedItem();
         String searchValue = searchTf.getText();
         if(selectedCit.getCitID() == 0 && Objects.isNull(searchValue)) {
@@ -132,6 +137,7 @@ public class StartpageController extends MainPagesController {
         } else {
             setTableContent(DB_CALLER_CIR.getRecords(searchValue, selectedCit));
         }
+         */
     }
 
     /**
@@ -173,5 +179,37 @@ public class StartpageController extends MainPagesController {
     @Override
     public void refresh() {
         this.setTableWithFilterAndSearch();
+    }
+
+    private ArrayList<Cir> filterCirs() {
+        ArrayList<Cir> filteredCirs = new ArrayList<>();
+        String searchValue = searchTf.getText().toLowerCase();
+
+        Cit selectedCit = filterCitCb.getSelectionModel().getSelectedItem();
+
+        if (selectedCit.getCitID() == 0) {
+
+            allCir.forEach(record -> {
+                if (checkForSearchValue(record, searchValue)) {
+                    filteredCirs.add(record);
+                }
+            });
+        } else {
+            allCir.forEach(record -> {
+                if (checkForSearchValue(record, searchValue) && record.getCit().getCitID() == selectedCit.getCitID()) {
+                    filteredCirs.add(record);
+                }
+            });
+        }
+
+        return filteredCirs;
+    }
+
+    private boolean checkForSearchValue(Cir record, String searchValue) {
+        if (record.getCirName().toLowerCase().contains(searchValue) || record.getCit().getCitName().toLowerCase().contains(searchValue)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
