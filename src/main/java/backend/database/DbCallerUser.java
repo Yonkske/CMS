@@ -167,29 +167,40 @@ public class DbCallerUser extends DbConnector {
     }
 
     public ArrayList<User> getRecords(String searchValue, String selectedFilter) {
+        String query;
         boolean adminStatus = false;
         if (selectedFilter.equals("Admin")) {
             adminStatus = true;
         }
 
-        String query = "SELECT * FROM USER WHERE IS_ADMIN = " + adminStatus + " AND IS_ADMIN LIKE '%"
-                + searchValue + "%' OR USER_NAME LIKE '%" + searchValue + "%'";
+        if (searchValue.toLowerCase().equals("admin") || searchValue.toLowerCase().equals("user")) {
+            query = "SELECT * FROM USER WHERE IS_ADMIN = " + adminStatus + " AND IS_ADMIN LIKE '%"
+                    + adminStatus + "%' OR USER_NAME LIKE '%" + searchValue + "%'";
 
+        } else {
+            query = "SELECT * FROM USER WHERE IS_ADMIN = " + adminStatus + " AND" +
+                    " USER_NAME LIKE '%" + searchValue + "%'";
+        }
         return getRecords(query);
     }
 
     public ArrayList<User> getRecords(String searchValue) {
-
-        boolean adminState = Boolean.parseBoolean(null);
+        String query;
+        boolean adminState = false;
 
         if (searchValue.toLowerCase().contains("admin")) {
             adminState = true;
-        } else if (searchValue.toLowerCase().contains("user")) {
-            adminState = false;
         }
-        String query = "SELECT * FROM USER WHERE USER_NAME LIKE '%" + searchValue + "%' OR IS_ADMIN LIKE '%" + adminState + "%'";
+
+        if (searchValue.toLowerCase().equals("admin") || searchValue.toLowerCase().equals("user")) {
+        query = "SELECT * FROM USER WHERE USER_NAME LIKE '%" + searchValue
+                + "%' OR IS_ADMIN LIKE '%" + adminState + "%'";
+        } else {
+            query = "SELECT * FROM USER WHERE USER_NAME LIKE '%" + searchValue + "%'";
+        }
 
         return getRecords(query);
+
     }
 
     private ArrayList<User> getContent(String query) {
