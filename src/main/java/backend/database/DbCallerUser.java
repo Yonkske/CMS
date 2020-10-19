@@ -173,9 +173,15 @@ public class DbCallerUser extends DbConnector {
             adminStatus = true;
         }
 
+        boolean adminState = false;
+
+        if (searchValue.equalsIgnoreCase("ADMIN")) {
+            adminState = true;
+        }
+
         if (searchValue.toLowerCase().equals("admin") || searchValue.toLowerCase().equals("user")) {
             query = "SELECT * FROM USER WHERE IS_ADMIN = " + adminStatus + " AND IS_ADMIN LIKE '%"
-                    + adminStatus + "%' OR UPPER(USER_NAME) LIKE '%" + searchValue.toUpperCase() + "%'";
+                    + adminState + "%' OR UPPER(USER_NAME) LIKE '%" + searchValue.toUpperCase() + "%'";
 
         } else {
             query = "SELECT * FROM USER WHERE IS_ADMIN = " + adminStatus + " AND" +
