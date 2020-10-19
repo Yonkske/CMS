@@ -218,7 +218,7 @@ public class UserAdminController extends MainPagesController {
      */
     @FXML
     public void setTableWithFilterAndSearch() throws SQLException {
-        String selectedFilter = filterUser.getSelectionModel().getSelectedItem();
+        String selectedUser = filterUser.getSelectionModel().getSelectedItem();
         String searchValue = searchTextField.getText();
         ArrayList<User> filteredList = new ArrayList<>();
 

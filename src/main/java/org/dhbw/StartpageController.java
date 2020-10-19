@@ -145,6 +145,7 @@ public class StartpageController extends MainPagesController {
      *
      * @param cirs to be displayed in the table
      */
+    @FXML
     private void setTableContent(ArrayList<Cir> cirs) {
         cirTable.getItems().setAll(cirs);
         citColumn.setCellValueFactory(new PropertyValueFactory<>("CitName"));
@@ -179,7 +180,6 @@ public class StartpageController extends MainPagesController {
     private ArrayList<Cir> filterCirs() {
         ArrayList<Cir> filteredCirs = new ArrayList<>();
         String searchValue = searchTf.getText().toLowerCase();
-
         Cit selectedCit = filterCitCb.getSelectionModel().getSelectedItem();
 
         if (selectedCit.getCitID() == 0) {
@@ -208,10 +208,6 @@ public class StartpageController extends MainPagesController {
      * @return true if the CIR contains the search value, false if not
      */
     private boolean checkForSearchValue(Cir record, String searchValue) {
-        if (record.getCirName().toLowerCase().contains(searchValue) || record.getCit().getCitName().toLowerCase().contains(searchValue)) {
-            return true;
-        } else {
-            return false;
-        }
+        return record.getCirName().toLowerCase().contains(searchValue) || record.getCit().getCitName().toLowerCase().contains(searchValue);
     }
 }
