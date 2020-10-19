@@ -17,7 +17,7 @@ We have to distinguish specifically between configuration item types (CIT) and C
 The CIR's are representing entities of CIT's and may be considered as an actual configuration item.
 CIT's typically include software, documentation, buildings or hardware like servers or printers.
 ***
-###Technologies
+###Technologies  
 A list of technologies used within the project:
 * OpenJDK (https://openjdk.java.net): Version 15
 * JavaFX (https://www.oracle.com/java/technologies/javase/javafx-overview.html): Version 15
