@@ -181,7 +181,7 @@ public class DbCallerUser extends DbConnector {
             query = "SELECT * FROM USER WHERE IS_ADMIN = " + adminStatus + " AND" +
                     " USER_NAME LIKE '%" + searchValue + "%'";
         }
-        return getRecords(query);
+        return getContent(query);
     }
 
     public ArrayList<User> getRecords(String searchValue) {
@@ -199,7 +199,7 @@ public class DbCallerUser extends DbConnector {
             query = "SELECT * FROM USER WHERE USER_NAME LIKE '%" + searchValue + "%'";
         }
 
-        return getRecords(query);
+        return getContent(query);
 
     }
 
