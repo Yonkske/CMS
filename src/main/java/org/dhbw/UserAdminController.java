@@ -1,8 +1,6 @@
 package org.dhbw;
 
-import backend.database.DbCallerUser;
 import backend.usability.User;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -270,11 +268,37 @@ public class UserAdminController extends MainPagesController {
     public void setTableWithFilterAndSearch() {
         String selectedUser = filterUser.getSelectionModel().getSelectedItem();
         String searchValue = searchTextField.getText();
+        ArrayList<User> filteredList = new ArrayList<>();
 
         if (selectedUser.equals("Rechte") && searchValue.length() != 0) {
-            this.setTableContent(this.getAllUserSearchValue(searchValue));
+            ArrayList<User> containQuery = new ArrayList<>();
+
+            allUsers.forEach(user1 -> {
+                if (user1.getUserName().contains(searchValue)) {
+                    containQuery.add(user1);
+                }
+            });
+
+            this.setTableContent(containQuery);
+
         } else if (!selectedUser.equals("Rechte")) {
-            this.setTableContent(this.getAllWithFilterAndSearch(selectedUser, searchValue));
+
+            ArrayList<User> memory = new ArrayList<>();
+            ArrayList<User> containQuery = new ArrayList<>();
+
+            allUsers.forEach(user1 -> {
+                if (user1.getUserName().contains(searchValue)) {
+                    memory.add(user1);
+                }
+            });
+
+            memory.forEach(user3 -> {
+                if (user3.getRight().equals(selectedUser)) {
+                    containQuery.add(user3);
+                }
+            });
+            this.setTableContent(containQuery);
+
         } else {
             this.setTableContent(allUsers);
         }
