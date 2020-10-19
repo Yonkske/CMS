@@ -22,7 +22,7 @@ public class ChangePasswordController extends Controller {
     private Button submitBtn;
     @FXML
     private Label meldungLbl;
-    private User userToCangePassword;
+    private final User userToCangePassword;
 
     /**
      * Constructor.
@@ -36,26 +36,24 @@ public class ChangePasswordController extends Controller {
     /**
      * Action when submit Button is pushed.
      *
-     * @throws IOException
+     * @throws IOException - Exception
      */
     @FXML
     public void submit() throws IOException {
-        boolean oldPwCheck = super.checkPassword(oldPasswordPf.getText(), userToCangePassword.getPassword());
+        boolean oldPwCheck = super.checkPassword(oldPasswordPf.getText(),
+                userToCangePassword.getPassword());
         boolean enteredPwCheck = this.checkNewPasswords();
         boolean noEmptyInputCheck = this.checkNoEmptyInput();
 
         if (oldPwCheck && enteredPwCheck && noEmptyInputCheck) {
             userToCangePassword.setNewPassword(super.encryptPassword(newPasswordPf.getText()));
-
             userToCangePassword.setIsInitial(false);
             DB_CALLER_USER.updateUser(userToCangePassword);
             this.switchToStartpage(DB_CALLER_USER.getUser(userToCangePassword.getUserName()));
-
             this.closeScene();
         } else {
             this.showError();
         }
-
     }
 
     /**
@@ -75,6 +73,11 @@ public class ChangePasswordController extends Controller {
         close.close();
     }
 
+    /**
+     * Method checks if both given passwords are the same.
+     *
+     * @return boolean
+     */
     private boolean checkNewPasswords() {
         if (newPasswordPf.getText().equals(repeatPasswordPf.getText())) {
             return true;
@@ -82,8 +85,15 @@ public class ChangePasswordController extends Controller {
             return false;
         }
     }
+
+    /**
+     * Method checks if all fields are filled.
+     *
+     * @return boolean
+     */
     private boolean checkNoEmptyInput() {
-        if (oldPasswordPf.getText().length() !=0 && newPasswordPf.getText().length() !=0 && repeatPasswordPf.getText().length() !=0) {
+        if (oldPasswordPf.getText().length() != 0 && newPasswordPf.getText().length() != 0
+                && repeatPasswordPf.getText().length() != 0) {
             return true;
         } else {
             return false;
