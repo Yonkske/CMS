@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.UserAdminController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/MainPagesStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.UserAdminController">
     <children>
         <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
             <children>
@@ -17,7 +16,7 @@
                         </MenuItem>
                         <MenuItem fx:id="itemPassword" mnemonicParsing="false">
                             <graphic>
-                                <Button fx:id="passwordEditBtn" mnemonicParsing="false" onAction="#openChangePassword" text="Passwort ändern"/>
+                                <Button fx:id="passwordEditBtn" mnemonicParsing="false" onAction="#openChangePassword" text="Passwort ändern" />
                             </graphic>
                         </MenuItem>
                     </items>
