@@ -2,6 +2,7 @@ package org.dhbw;
 
 import backend.database.DbCallerUser;
 import backend.usability.User;
+import java.io.IOException;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,8 +15,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.util.Objects;
 
 public class LoginController extends Controller {
 
@@ -46,10 +45,12 @@ public class LoginController extends Controller {
                 showError();
             } else if (givenPassword.length() == 0) {
                 showError();
-            } else if (checkPassword(givenPassword, DB_CALLER_USER.getEncryptedPassword(givenName)) & user.getIsInitial()) {
+            } else if (checkPassword(givenPassword, DB_CALLER_USER.getEncryptedPassword(givenName))
+                    && user.getIsInitial()) {
                 Controller.user = User.getUser(givenName);
                 openPopUpEditPassword(User.getUser(givenName));
-            } else if (checkPassword(givenPassword, DB_CALLER_USER.getEncryptedPassword(givenName)) & !user.getIsInitial()) {
+            } else if (checkPassword(givenPassword, DB_CALLER_USER.getEncryptedPassword(givenName))
+                    && !user.getIsInitial()) {
                 Controller.user = User.getUser(givenName);
                 switchToStartpage(User.getUser(givenName));
             } else {
@@ -68,6 +69,8 @@ public class LoginController extends Controller {
 
     /**
      * This method forwards to the Startpage.
+     *
+     * @param user - userToLogin
      */
     @FXML
     private void switchToStartpage(User user) throws IOException {
@@ -75,11 +78,14 @@ public class LoginController extends Controller {
     }
 
     /**
-     * this methode open the PopUp to edit the password if the user logs in for the first time
+     * this methode open the PopUp to edit the password if the user logs in for the first time.
+     *
+     * @param user - userToLogin
      */
     @FXML
     private void openPopUpEditPassword(User user) throws IOException {
-        ChangePasswordController changePasswordController = new ChangePasswordController(new DbCallerUser().getUser(usernameTf.getText()));
+        ChangePasswordController changePasswordController = new ChangePasswordController(
+                new DbCallerUser().getUser(usernameTf.getText()));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ChangePassword.fxml"));
         loader.setController(changePasswordController);
         Parent root = loader.load();
@@ -94,7 +100,7 @@ public class LoginController extends Controller {
     }
 
     /**
-     * this methode terminates the program
+     * this methode terminates the program.
      */
     @FXML
     public void exit(ActionEvent event) {
