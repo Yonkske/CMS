@@ -22,7 +22,8 @@
                   </MenuItem>
                   <MenuItem fx:id="itemPassword" mnemonicParsing="false">
                      <graphic>
-                        <Button fx:id="passwordEditBtn" mnemonicParsing="false" onAction="#openChangePassword" text="Passwort ändern" />
+                        <Button fx:id="passwordEditBtn" mnemonicParsing="false" onAction="#openChangePassword"
+                                text="Passwort ändern"/>
                      </graphic>
                   </MenuItem>
                </items>
@@ -59,10 +60,10 @@
                   <Button fx:id="citBtn" mnemonicParsing="false" onAction="#swapToCit" prefWidth="85.0" text="CIT"
                           textFill="#fcfcfc">
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets top="20.0"/>
                      </VBox.margin>
                      <font>
-                        <Font name="Hiragino Sans W2" size="15.0" />
+                        <Font name="Hiragino Sans W2" size="15.0"/>
                      </font>
                   </Button>
                   <Button fx:id="statisticsBtn" mnemonicParsing="false" onAction="#swapToStatistic" prefWidth="85.0" text="Statistik" textFill="WHITE">
@@ -116,9 +117,9 @@
                         <TableColumn fx:id="citColumn" editable="false" minWidth="175.0" prefWidth="350.0"
                                      style="-fx-background-color: #c4c4cc;" text="CIT">
                            <graphic>
-                              <ComboBox fx:id="filterCitCb" onAction="#setTableWithFilterAndSearch" prefHeight="32.0"
-                                        prefWidth="350.0" promptText="CIT"
-                                        style="-fx-background-color: #c4c4cc;  -fx-font-size: 15;"/>
+                              <ComboBox fx:id="filterCitCb" maxWidth="1.7976931348623157E308"
+                                        onAction="#setTableWithFilterAndSearch" prefHeight="32.0" prefWidth="350.0"
+                                        promptText="CIT" style="-fx-background-color: #c4c4cc;  -fx-font-size: 15;"/>
                            </graphic>
                         </TableColumn>
                         <TableColumn fx:id="cirNameColumn" editable="false" minWidth="175.0" prefWidth="350.0"

@@ -21,7 +21,8 @@
                         </MenuItem>
                         <MenuItem fx:id="itemPassword" mnemonicParsing="false">
                             <graphic>
-                                <Button fx:id="passwordEditBtn" mnemonicParsing="false" onAction="#openChangePassword" text="Passwort ändern" />
+                                <Button fx:id="passwordEditBtn" mnemonicParsing="false" onAction="#openChangePassword"
+                                        text="Passwort ändern"/>
                             </graphic>
                         </MenuItem>
                     </items>
@@ -54,11 +55,11 @@
                         <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToCit" text="CIT"
                                 textFill="WHITE">
                             <VBox.margin>
-                                <Insets top="20.0" />
+                                <Insets top="20.0"/>
                             </VBox.margin>
-                     <font>
-                        <Font name="Hiragino Sans W1" size="15.0" />
-                     </font>
+                            <font>
+                                <Font name="Hiragino Sans W1" size="15.0"/>
+                            </font>
                         </Button>
                         <Button fx:id="statisticBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStatistic" text="Statistik" textFill="WHITE">
                             <VBox.margin>
@@ -104,7 +105,7 @@
                                              style="-fx-background-color: #c4c4cc; -fx-font-size: 15;">
                                     <graphic>
                                         <ComboBox fx:id="filterUser" onAction="#setTableWithFilterAndSearch"
-                                                  prefHeight="25.0" prefWidth="135.0" promptText="Rechte"
+                                                  prefHeight="25.0" prefWidth="350.0" promptText="Rechte"
                                                   style="-fx-background-color: #c4c4cc; -fx-font-family: Hiragino Sans W1;"/>
                                     </graphic>
                                 </TableColumn>
