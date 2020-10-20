@@ -127,7 +127,6 @@ public class DbCallerCit extends DbConnector {
     }
 
     public int getMaxItemId() throws SQLException {
-        startConnection();
         ResultSet rs = stmt.executeQuery("Select max(TYPE_ID) FROM CIT");
 
         if (rs.first()) {
