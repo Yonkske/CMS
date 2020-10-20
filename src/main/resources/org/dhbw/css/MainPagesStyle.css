@@ -1,6 +1,6 @@
 Button:hover {
     -fx-background-color: #303a44;
-    -fx-translate-y: 2;
+    -fx-translate-y: 1;
     -fx-text-fill:  #e1a6ad;
 }
 
@@ -9,11 +9,7 @@ Button {
 }
 
 Button#logoutBtn:hover {
-    -fx-background-color: red;
-}
-
-VBox {
-    -fx-background-color: red;
+    -fx-scale-y: 1;
 }
 ChoiceBox .context-menu{
     -fx-background-color: #c4c4cc;
@@ -28,6 +24,40 @@ ChoiceBox .menu-item > .label {
     -fx-text-fill: black;
 }
 ChoiceBox .menu-item:focused > .label {
+    -fx-text-fill: #e1a6ad;
+}
+TableView {
+    -fx-background-color: #c4c4cc;
+}
+TableView .column-header-background {
+    -fx-background-color: #c4c4cc;
+}
+TableView .column-header-background .label {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+}
+TableView .column-header {
+    -fx-background-color: transparent;
+}
+TableView .table-cell {
+    -fx-text-fill: black;
+}
+TableView .combo-box {
+    -fx-background-color: #c4c4cc;
+}
+TableView .combo-box .context-menu{
+    -fx-background-color: #c4c4cc;
+    -fx-font-family: "Harlow Solid Italic";
+    -fx-font-size: 14;
+    -fx-text-fill: black;
+}
+TableView .combo-box .menu-item:focused {
+    -fx-text-fill: #e1a6ad;
+}
+TableView .combo-box .menu-item > .label {
+    -fx-text-fill: black;
+}
+TableView .combo-box .menu-item:focused > .label {
     -fx-text-fill: #e1a6ad;
 }
 

@@ -26,6 +26,7 @@ ChoiceBox .context-menu{
     -fx-font-family: "Harlow Solid Italic";
     -fx-font-size: 14;
     -fx-text-fill: black;
+    -fx-pref-width: 210;
 }
 ChoiceBox .menu-item:focused {
     -fx-text-fill: #e1a6ad;
