@@ -46,7 +46,7 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-            <TextField fx:id="attribut1Tf" editable="false" prefWidth="210.0" />
+            <TextField fx:id="attribut1Tf" visible="false" editable="false" prefWidth="210.0" />
         </HBox>
         <HBox alignment="CENTER" cache="true" spacing="5.0">
             <VBox.margin>
@@ -56,7 +56,7 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-            <TextField fx:id="attribut2Tf" editable="false" prefWidth="210.0" />
+            <TextField fx:id="attribut2Tf" visible="false" editable="false" prefWidth="210.0" />
         </HBox>
         <HBox alignment="CENTER" cache="true" spacing="5.0">
             <VBox.margin>
@@ -66,7 +66,7 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-            <TextField fx:id="attribut3Tf" editable="false" prefWidth="210.0" />
+            <TextField fx:id="attribut3Tf" visible="false" editable="false" prefWidth="210.0" />
         </HBox>
         <HBox alignment="CENTER" cache="true" spacing="5.0">
             <VBox.margin>
@@ -76,7 +76,7 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-            <TextField fx:id="attribut4Tf" editable="false" prefWidth="210.0" />
+            <TextField fx:id="attribut4Tf" visible="false" editable="false" prefWidth="210.0" />
         </HBox>
         <HBox alignment="CENTER" cache="true" spacing="5.0">
             <VBox.margin>
@@ -86,7 +86,7 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-            <TextField fx:id="attribut5Tf" editable="false" prefWidth="210.0" />
+            <TextField fx:id="attribut5Tf" visible="false" editable="false" prefWidth="210.0" />
         </HBox>
         <HBox alignment="CENTER" cache="true" spacing="5.0">
             <VBox.margin>
@@ -96,7 +96,7 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-            <TextField fx:id="attribut6Tf" editable="false" prefWidth="210.0" />
+            <TextField fx:id="attribut6Tf" visible="false" editable="false" prefWidth="210.0" />
         </HBox>
         <HBox alignment="CENTER" cache="true" spacing="5.0">
             <VBox.margin>
@@ -106,7 +106,7 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-            <TextField fx:id="attribut7Tf" editable="false" prefWidth="210.0" />
+            <TextField fx:id="attribut7Tf" visible="false" editable="false" prefWidth="210.0" />
         </HBox>
         <HBox alignment="CENTER" cache="true" spacing="5.0">
             <VBox.margin>

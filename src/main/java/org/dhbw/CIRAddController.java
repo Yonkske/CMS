@@ -143,12 +143,57 @@ public class CIRAddController extends Controller implements Initializable {
     public void setLabelTexts() {
         Cit cit = citChoicebox.getSelectionModel().getSelectedItem();
         attribut1Lbl.setText(cit.getCitAttributes()[1]);
+        if(attribut1Lbl.getText().length()>0){
+            attribut1Lbl.setVisible(true);
+            attribut1Tf.setVisible(true);
+        }else {
+            attribut1Tf.setVisible(false);
+        }
         attribut2Lbl.setText(cit.getCitAttributes()[2]);
+        if(attribut2Lbl.getText().length()>0){
+            attribut2Lbl.setVisible(true);
+            attribut2Tf.setVisible(true);
+        }
+        else {
+            attribut2Tf.setVisible(false);
+        }
         attribut3Lbl.setText(cit.getCitAttributes()[3]);
+        if(attribut3Lbl.getText().length()>0){
+            attribut3Lbl.setVisible(true);
+            attribut3Tf.setVisible(true);
+        }
+        else {
+            attribut3Tf.setVisible(false);
+        }
         attribut4Lbl.setText(cit.getCitAttributes()[4]);
+        if(attribut4Lbl.getText().length()>0){
+            attribut4Lbl.setVisible(true);
+            attribut4Tf.setVisible(true);
+        }else {
+            attribut4Tf.setVisible(false);
+        }
         attribut5Lbl.setText(cit.getCitAttributes()[5]);
+        if(attribut5Lbl.getText().length()>0){
+            attribut5Lbl.setVisible(true);
+            attribut5Tf.setVisible(true);
+        }else {
+            attribut5Tf.setVisible(false);
+        }
         attribut6Lbl.setText(cit.getCitAttributes()[6]);
+        if(attribut6Lbl.getText().length()>0){
+            attribut6Lbl.setVisible(true);
+            attribut6Tf.setVisible(true);
+        }else {
+            attribut6Tf.setVisible(false);
+        }
         attribut7Lbl.setText(cit.getCitAttributes()[7]);
+        if(attribut7Lbl.getText().length()>0){
+            attribut7Lbl.setVisible(true);
+            attribut7Tf.setVisible(true);
+        }
+        else {
+            attribut7Tf.setVisible(false);
+        }
     }
 
 
