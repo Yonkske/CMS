@@ -5,7 +5,6 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
 <VBox alignment="TOP_RIGHT" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.CITController">
 
     <HBox alignment="TOP_RIGHT" prefHeight="40.0" style="-fx-background-color: #313c48;">
@@ -40,19 +39,22 @@
             </font></Button>
         </children>
     </HBox>
-      <HBox prefHeight="670.0" prefWidth="767.0">
+      <HBox>
 
-            <VBox alignment="TOP_CENTER" prefHeight="670.0" prefWidth="170.0" style="-fx-background-color: #3D4956;">
+          <VBox alignment="TOP_CENTER" maxWidth="170.0" minWidth="85.0" prefHeight="833.0"
+                style="-fx-background-color: #3D4956;" HBox.hgrow="ALWAYS">
 
-                  <Button fx:id="startpageBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStartpage" style="-fx-background-color: #3D4956;" text="Startseite" textFill="WHITE">
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-            <font>
-               <Font name="Hiragino Sans W1" size="15.0" />
-            </font>
-                  </Button>
-                  <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToCit" prefWidth="78.0" style="-fx-background-color: #3D4956;" text="CIT" textFill="WHITE">
+              <Button fx:id="startpageBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStartpage"
+                      style="-fx-background-color: #3D4956;" text="Startseite" textFill="WHITE">
+                  <VBox.margin>
+                      <Insets top="20.0"/>
+                  </VBox.margin>
+                  <font>
+                      <Font name="Hiragino Sans W1" size="15.0"/>
+                  </font>
+              </Button>
+              <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToCit" prefWidth="78.0"
+                      style="-fx-background-color: #3D4956;" text="CIT" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
