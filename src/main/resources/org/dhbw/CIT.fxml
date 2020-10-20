@@ -26,7 +26,7 @@
             <graphic>
                <ImageView fitHeight="28.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@icons/benutzerS.png" />
+                     <Image url="@icons/benutzer.png" />
                   </image>
                </ImageView>
             </graphic>
@@ -246,7 +246,7 @@
                   <graphic>
                      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                         <image>
-                           <Image url="@icons/loeschenS.png" />
+                           <Image url="@icons/loeschen.png" />
                         </image>
                      </ImageView>
                   </graphic>
@@ -257,7 +257,7 @@
                   <graphic>
                      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                         <image>
-                           <Image url="@icons/datei-hinzufuegenS.png" />
+                           <Image url="@icons/datei-hinzufuegen.png" />
                         </image>
                      </ImageView>
                   </graphic>
