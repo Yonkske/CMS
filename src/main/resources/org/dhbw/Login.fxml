@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="600.0" style="-fx-background-color: #f0f0f8;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.LoginController">
     <children>
         <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -47,7 +47,7 @@
                         <HBox.margin>
                             <Insets />
                         </HBox.margin></Label>
-                    <Button fx:id="loginBtn" alignment="CENTER" mnemonicParsing="false" onAction="#logIn" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #94d0e1;" text="Anmelden">
+                    <Button fx:id="loginBtn" alignment="CENTER" mnemonicParsing="false" onAction="#logIn" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #94d0e1;" text="Anmelden" textFill="WHITE">
                         <graphic>
                             <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
@@ -68,7 +68,7 @@
         </VBox>
       <ImageView fitHeight="170.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="20.0">
          <image>
-            <Image url="@icons/cms%20(3).png" />
+            <Image url="@icons/favicon.png" />
          </image>
       </ImageView>
     </children>

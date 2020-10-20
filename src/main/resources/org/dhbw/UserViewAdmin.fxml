@@ -103,7 +103,7 @@
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/benutzer-bearbeiten.png" />
+                              <Image url="@icons/benutzer-bearbeitenS.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>
@@ -111,7 +111,7 @@
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/benutzer-löschen.png" />
+                              <Image url="@icons/benutzer-loeschen.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>
@@ -129,7 +129,7 @@
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/passwort.png" />
+                              <Image url="@icons/passwortS.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>

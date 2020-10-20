@@ -44,7 +44,7 @@
                   <font>
                      <Font size="15.0" />
                   </font></Label>
-               <TextField fx:id="nameTf" prefWidth="210.0">
+               <TextField fx:id="nameTf" prefWidth="210.0" style="-fx-text-fill: white;">
                   <HBox.margin>
                      <Insets />
                   </HBox.margin>
@@ -151,7 +151,7 @@
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/speichern.png" />
+                              <Image url="@icons/speichernS.png" />
                            </image></ImageView>
                      </graphic>
                      <HBox.margin>
@@ -161,7 +161,7 @@
                      <graphic>
                         <ImageView fitHeight="15.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/abbrechen.png" />
+                              <Image url="@icons/abbrechenS.png" />
                            </image></ImageView>
                      </graphic>
                      <HBox.margin>

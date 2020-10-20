@@ -25,7 +25,7 @@
                <graphic>
                   <ImageView fitHeight="26.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons/benutzer.png" />
+                        <Image url="@icons/benutzerS.png" />
                      </image></ImageView>
                </graphic>
                <font>
@@ -84,7 +84,7 @@
                      <children>
                         <ImageView fitHeight="31.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-colour: #c4c4cc;">
                            <image>
-                              <Image url="@icons/suchen.png" />
+                              <Image url="@icons/suchenS.png" />
                            </image>
                         </ImageView>
                         <TextField fx:id="searchTf" onAction="#setTableWithFilterAndSearch" prefHeight="31.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
@@ -123,7 +123,7 @@
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/datei-hinzufuegen.png" />
+                                    <Image url="@icons/datei-hinzufuegenS.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -138,7 +138,7 @@
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/datei-loeschen.png" />
+                                    <Image url="@icons/datei-loeschenS.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -153,7 +153,7 @@
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/datei-hinzufuegen.png" />
+                                    <Image url="@icons/datei-hinzufuegenS.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -168,7 +168,7 @@
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/datei-bearbeiten.png" />
+                                    <Image url="@icons/datei-bearbeitenS.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -183,7 +183,7 @@
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/datei-loeschen.png" />
+                                    <Image url="@icons/datei-loeschenS.png" />
                                  </image>
                               </ImageView>
                            </graphic>
