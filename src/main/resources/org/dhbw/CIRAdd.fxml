@@ -33,81 +33,81 @@
          <VBox.margin>
             <Insets bottom="5.0" top="5.0" />
          </VBox.margin>
-         <Label fx:id="nameLbl" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Name">
+         <Label fx:id="nameLbl"  visible="false" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Name">
             <font>
                <Font size="15.0" />
             </font></Label>
-         <TextField fx:id="nameTf" prefWidth="210.0" />
+         <TextField fx:id="nameTf" visible="false" prefWidth="210.0" />
       </HBox>
       <HBox alignment="CENTER" cache="true" spacing="5.0">
          <VBox.margin>
             <Insets bottom="5.0" top="5.0" />
          </VBox.margin>
-         <Label fx:id="attribut1Lbl" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut1">
+         <Label fx:id="attribut1Lbl" visible="false" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut1">
             <font>
                <Font size="15.0" />
             </font></Label>
-         <TextField fx:id="attribut1Tf" prefWidth="210.0" />
+         <TextField fx:id="attribut1Tf" visible="false" prefWidth="210.0" />
       </HBox>
       <HBox alignment="CENTER" cache="true" spacing="5.0">
          <VBox.margin>
             <Insets bottom="5.0" top="5.0" />
          </VBox.margin>
-         <Label fx:id="attribut2Lbl" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut2">
+         <Label fx:id="attribut2Lbl" visible="false" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut2">
             <font>
                <Font size="15.0" />
             </font></Label>
-         <TextField fx:id="attribut2Tf" prefWidth="210.0" />
+         <TextField fx:id="attribut2Tf" visible="false" prefWidth="210.0" />
       </HBox>
       <HBox alignment="CENTER" cache="true" spacing="5.0">
          <VBox.margin>
             <Insets bottom="5.0" top="5.0" />
          </VBox.margin>
-         <Label fx:id="attribut3Lbl" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut3">
+         <Label fx:id="attribut3Lbl" visible="false" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut3">
             <font>
                <Font size="15.0" />
             </font></Label>
-         <TextField fx:id="attribut3Tf" prefWidth="210.0" />
+         <TextField fx:id="attribut3Tf" visible="false" prefWidth="210.0" />
       </HBox>
       <HBox alignment="CENTER" cache="true" spacing="5.0">
          <VBox.margin>
             <Insets bottom="5.0" top="5.0" />
          </VBox.margin>
-         <Label fx:id="attribut4Lbl" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut4">
+         <Label fx:id="attribut4Lbl" visible="false" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut4">
             <font>
                <Font size="15.0" />
             </font></Label>
-         <TextField fx:id="attribut4Tf" prefWidth="210.0" />
+         <TextField fx:id="attribut4Tf" visible="false" prefWidth="210.0" />
       </HBox>
       <HBox alignment="CENTER" cache="true" spacing="5.0">
          <VBox.margin>
             <Insets bottom="5.0" top="5.0" />
          </VBox.margin>
-         <Label fx:id="attribut5Lbl" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut5">
+         <Label fx:id="attribut5Lbl" visible="false" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut5">
             <font>
                <Font size="15.0" />
             </font></Label>
-         <TextField fx:id="attribut5Tf" prefWidth="210.0" />
+         <TextField fx:id="attribut5Tf" visible="false" prefWidth="210.0" />
       </HBox>
       <HBox alignment="CENTER" cache="true" prefHeight="38.0" prefWidth="193.0" spacing="5.0">
          <VBox.margin>
             <Insets bottom="5.0" top="5.0" />
          </VBox.margin>
-         <Label fx:id="attribut6Lbl" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut6">
+         <Label fx:id="attribut6Lbl" visible="false" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut6">
             <font>
                <Font size="15.0" />
             </font></Label>
-         <TextField fx:id="attribut6Tf" prefWidth="210.0" />
+         <TextField fx:id="attribut6Tf" visible="false" prefWidth="210.0" />
       </HBox>
       <HBox alignment="CENTER" cache="true" spacing="5.0">
          <VBox.margin>
             <Insets bottom="5.0" top="5.0" />
          </VBox.margin>
-         <Label fx:id="attribut7Lbl" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut7">
+         <Label fx:id="attribut7Lbl" visible="false" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut7">
             <font>
                <Font size="15.0" />
             </font></Label>
-         <TextField fx:id="attribut7Tf" prefWidth="210.0" />
+         <TextField fx:id="attribut7Tf" visible="false" prefWidth="210.0" />
       </HBox>
       <HBox alignment="CENTER" cache="true" spacing="5.0">
          <VBox.margin>
