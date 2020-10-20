@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="414.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="414.0" prefWidth="600.0" stylesheets="@css/PopupStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="110.2" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="110.2">
             <children>
@@ -19,7 +19,7 @@
                         <font>
                             <Font size="15.0" />
                         </font></Label>
-                    <TextField fx:id="surnameTf" prefWidth="210.0" style="-fx-background-color: #f2f2f2;">
+                    <TextField fx:id="surnameTf" prefWidth="210.0">
                         <HBox.margin>
                             <Insets />
                         </HBox.margin>
@@ -44,7 +44,7 @@
                         <font>
                             <Font size="15.0" />
                         </font></Label>
-                    <TextField fx:id="nameTf" prefWidth="210.0" style="-fx-background-color: #f2f2f2;">
+                    <TextField fx:id="nameTf" prefWidth="210.0">
                         <HBox.margin>
                             <Insets />
                         </HBox.margin>
@@ -66,7 +66,7 @@
                         <font>
                             <Font size="15.0" />
                         </font></Label>
-                    <TextField fx:id="usernameTf" disable="false" editable="false" prefWidth="210.0" style="-fx-background-color: #f2f2f2;">
+                    <TextField fx:id="usernameTf" disable="false" editable="false" prefWidth="210.0">
                         <HBox.margin>
                             <Insets />
                         </HBox.margin>
@@ -85,7 +85,7 @@
                         <font>
                             <Font size="15.0" />
                         </font></Label>
-                    <ChoiceBox fx:id="authorizationChoiceBox" prefWidth="210.0" style="-fx-background-color: #f2f2f2; -fx-font-size: 14;">
+                    <ChoiceBox fx:id="authorizationChoiceBox" prefWidth="210.0">
                         <HBox.margin>
                             <Insets />
                         </HBox.margin></ChoiceBox>
@@ -95,14 +95,14 @@
                 </HBox>
                 <HBox alignment="CENTER" minHeight="-Infinity" spacing="10.0">
                     <children>
-                        <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#submit" style="-fx-background-color: #ccebc5;" text="Speichern">
+                        <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#submit" text="Speichern">
                         <graphic>
                             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
                                     <Image url="@icons/speichern.png" />
                                 </image></ImageView>
                         </graphic></Button>
-                        <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#cancel" prefHeight="32.0" prefWidth="96.4" style="-fx-background-color: #f5a9a9;" text="Abbrechen">
+                        <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#cancel" prefHeight="32.0" prefWidth="96.4" text="Abbrechen">
                         <graphic>
                             <ImageView fitHeight="15.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                 <image>

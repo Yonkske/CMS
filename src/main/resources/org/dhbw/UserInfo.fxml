@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="600.0" stylesheets="@css/PopupStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="49.4" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.4">
             <children>
@@ -17,7 +17,7 @@
                         <font>
                             <Font size="15.0" />
                         </font></Label>
-                    <TextField fx:id="surnameTf" editable="false" focusTraversable="false" prefWidth="210.0" style="-fx-background-color: #f2f2f2;">
+                    <TextField fx:id="surnameTf" editable="false" focusTraversable="false" prefWidth="210.0">
                         <HBox.margin>
                             <Insets />
                         </HBox.margin>
@@ -39,7 +39,7 @@
                         <font>
                             <Font size="15.0" />
                         </font></Label>
-                    <TextField fx:id="nameTf" disable="false" editable="false" focusTraversable="false" prefWidth="210.0" style="-fx-background-color: #f2f2f2;">
+                    <TextField fx:id="nameTf" disable="false" editable="false" focusTraversable="false" prefWidth="210.0">
                         <HBox.margin>
                             <Insets />
                         </HBox.margin>
@@ -58,7 +58,7 @@
                         <font>
                             <Font size="15.0" />
                         </font></Label>
-                    <TextField fx:id="usernameTf" editable="false" prefWidth="210.0" style="-fx-background-color: f2f2f2;">
+                    <TextField fx:id="usernameTf" editable="false" prefWidth="210.0">
                         <HBox.margin>
                             <Insets />
                         </HBox.margin>

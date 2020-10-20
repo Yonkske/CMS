@@ -30,7 +30,7 @@
                     </opaqueInsets>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" cache="true" spacing="5.0">
-                    <PasswordField fx:id="passwordField" onAction="#logIn" prefWidth="250.0" promptText="Passwort" style="-fx-background-color: #f2f2f2;">
+                    <PasswordField fx:id="passwordField" onAction="#logIn" prefWidth="250.0" promptText="Passwort" style="-fx-background-color: #fafafa;">
                         <font>
                             <Font size="14.0" />
                         </font>
@@ -68,7 +68,7 @@
         </VBox>
       <ImageView fitHeight="170.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="20.0">
          <image>
-            <Image url="@icons/favicon1.jpg" />
+            <Image url="@icons/cms%20(3).png" />
          </image>
       </ImageView>
     </children>

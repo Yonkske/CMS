@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="600.0" stylesheets="@css/PopupStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="89.2" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="89.2">
             <children>
@@ -19,7 +19,7 @@
                             <Font size="15.0" />
                         </font>
                     </Label>
-                    <TextField fx:id="surnameTf" editable="false" focusTraversable="false" prefWidth="210.0" style="-fx-background-color: #f2f2f2;">
+                    <TextField fx:id="surnameTf" editable="false" focusTraversable="false" prefWidth="210.0">
                         <HBox.margin>
                             <Insets />
                         </HBox.margin>
@@ -43,7 +43,7 @@
                             <Font size="15.0" />
                         </font>
                     </Label>
-                    <TextField fx:id="nameTf" editable="false" focusTraversable="false" prefWidth="210.0" style="-fx-background-color: #f2f2f2;">
+                    <TextField fx:id="nameTf" editable="false" focusTraversable="false" prefWidth="210.0">
                         <HBox.margin>
                             <Insets />
                         </HBox.margin>
@@ -64,7 +64,7 @@
                             <Font size="15.0" />
                         </font>
                     </Label>
-                    <TextField fx:id="usernameTf" editable="false" focusTraversable="false" prefWidth="210.0" style="-fx-background-color: #f2f2f2;">
+                    <TextField fx:id="usernameTf" editable="false" focusTraversable="false" prefWidth="210.0">
                         <HBox.margin>
                             <Insets />
                         </HBox.margin>
@@ -85,7 +85,7 @@
                             <Font size="15.0" />
                         </font>
                     </Label>
-                    <TextField fx:id="authorizationTf" editable="false" focusTraversable="false" prefWidth="210.0" style="-fx-background-color: f2f2f2;">
+                    <TextField fx:id="authorizationTf" editable="false" focusTraversable="false" prefWidth="210.0">
                         <HBox.margin>
                             <Insets />
                         </HBox.margin>
@@ -99,7 +99,7 @@
                 </HBox>
                 <HBox alignment="CENTER" minHeight="-Infinity" spacing="10.0">
                     <children>
-                        <Button fx:id="editUserBtn" mnemonicParsing="false" onAction="#switchToUserEditAdmin" style="-fx-background-color: #94d0e1;" text="Bearbeiten">
+                        <Button fx:id="editUserBtn" mnemonicParsing="false" onAction="#switchToUserEditAdmin" text="Bearbeiten">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -107,7 +107,7 @@
                            </image>
                         </ImageView>
                      </graphic></Button>
-                        <Button fx:id="deleteUserBtn" mnemonicParsing="false" onAction="#deleteUser" prefWidth="98.0" style="-fx-background-color: #94d0e1;" text="Löschen">
+                        <Button fx:id="deleteUserBtn" mnemonicParsing="false" onAction="#deleteUser" prefWidth="98.0" text="Löschen">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -125,7 +125,7 @@
                 </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                        <Button fx:id="editPasswordBtn" mnemonicParsing="false" onAction="#swapToChangePassword" style="-fx-background-color: #94d0e1;" text=" Passwort ändern">
+                        <Button fx:id="editPasswordBtn" mnemonicParsing="false" onAction="#swapToChangePassword" text=" Passwort ändern">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
