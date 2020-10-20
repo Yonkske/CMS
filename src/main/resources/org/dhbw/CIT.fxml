@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_RIGHT" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.CITController">
+<VBox alignment="TOP_RIGHT" stylesheets="@css/MainPagesStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.CITController">
 
-    <HBox alignment="TOP_RIGHT" prefHeight="38.0" style="-fx-background-color: #313c48;">
+    <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" style="-fx-background-color: #313c48;">
         <children>
             <MenuButton fx:id="adminUserMB" mnemonicParsing="false" style="-fx-background-color: #313c48;" text="Vorname, Nachname" textFill="WHITE">
                 <items>
@@ -87,7 +87,7 @@
             </VBox>
             <VBox style="-fx-background-color: #f0f0f8;" stylesheets="@css/MainPagesStyle.css" HBox.hgrow="ALWAYS">
 
-                  <HBox alignment="CENTER" prefHeight="54.0" prefWidth="389.0">
+                  <HBox alignment="CENTER" prefHeight="54.0" prefWidth="389.0" spacing="5.0">
             <Label prefWidth="100.0" />
 
                       <ChoiceBox fx:id="choiceBox" nodeOrientation="LEFT_TO_RIGHT" onAction="#fillingIn" prefWidth="210.0" style="-fx-background-color: #92979f; -fx-font-size: 14;">
