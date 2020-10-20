@@ -91,7 +91,7 @@
             <graphic>
                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@icons/speichern.png" />
+                     <Image url="@icons/speichernS.png" />
                   </image>
                </ImageView>
             </graphic></Button>
@@ -99,7 +99,7 @@
             <graphic>
                <ImageView fitHeight="15.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@icons/abbrechen.png" />
+                     <Image url="@icons/abbrechenS.png" />
                   </image>
                </ImageView>
             </graphic></Button>

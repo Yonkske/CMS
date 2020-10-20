@@ -23,7 +23,7 @@ public class FXMLFactory extends Application {
         scene = new Scene(loadFXML("Login"));
         stage.setScene(scene);
         stage.setResizable(false);
-        stage.getIcons().add(new Image(App.class.getResourceAsStream("icons/favicon1.jpg")));
+        stage.getIcons().add(new Image(App.class.getResourceAsStream("icons/favicon.jpg")));
         stage.setTitle("CMS - Configuration Management System");
         stage.show();
     }

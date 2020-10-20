@@ -44,7 +44,7 @@
                   <font>
                      <Font size="15.0" />
                   </font></Label>
-               <TextField fx:id="nameTf" prefWidth="210.0">
+               <TextField fx:id="nameTf" prefWidth="210.0" style="-fx-text-fill: white;">
                   <HBox.margin>
                      <Insets />
                   </HBox.margin>
