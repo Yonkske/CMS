@@ -29,12 +29,13 @@ public class NotificationController extends Controller implements Initializable 
     private User userToDelete;
     private String itemToDelete;
     private String callingPage;
+    private String customMessage;
 
     public NotificationController() {
     }
 
     /**
-     * Creates a new NotificationController
+     * Creates a new NotificationController for deleting an user
      *
      * @param inUser      - the user that you want to delete
      * @param callingPage - name of the fxml file to be refreshed
@@ -46,7 +47,7 @@ public class NotificationController extends Controller implements Initializable 
     }
 
     /**
-     * Creates a new NotificationController
+     * Creates a new NotificationController for deleting an user
      *
      * @param inUser - the user that you want to delete
      */
@@ -56,7 +57,7 @@ public class NotificationController extends Controller implements Initializable 
     }
 
     /**
-     * Creates a new NotificationController
+     * Creates a new NotificationController for deleting a CIT
      *
      * @param inCit       - the cit that you want to delete
      * @param callingPage - name of the fxml file to be refreshed
@@ -68,7 +69,7 @@ public class NotificationController extends Controller implements Initializable 
     }
 
     /**
-     * Creates a new NotificationController
+     * Creates a new NotificationController for deleting a CIT
      *
      * @param inCit - the cit that you want to delete
      */
@@ -78,7 +79,7 @@ public class NotificationController extends Controller implements Initializable 
     }
 
     /**
-     * Creates a new NotificationController
+     * Creates a new NotificationController for deleting a CIR
      *
      * @param inCir       - the cir that you want to delete
      * @param callingPage - name of the fxml file to be refreshed
@@ -90,13 +91,23 @@ public class NotificationController extends Controller implements Initializable 
     }
 
     /**
-     * Creates a new NotificationController
+     * Creates a new NotificationController for deleting CIR
      *
      * @param inCir - the cir that you want to delete
      */
     public NotificationController(Cir inCir) {
         this.cirToDelete = inCir;
         this.itemToDelete = "cir";
+    }
+
+    /**
+     * Creates a new NotificationController with a custom message
+     *
+     * @param message String - a custom message to be displayed in the popup
+     */
+    public NotificationController(String message) {
+        this.customMessage = message;
+        this.itemToDelete = "custom";
     }
 
     @Override
@@ -112,6 +123,10 @@ public class NotificationController extends Controller implements Initializable 
             case "user":
                 notificationLbl.setText("Sind Sie sicher, dass sie den Benutzer \"" + userToDelete.getUserName() + "\" löschen wollen?");
                 break;
+            case "custom":
+                notificationLbl.setText(customMessage);
+                yesBtn.setVisible(false);
+                noBtn.setText("OK");
             default:
         }
     }
