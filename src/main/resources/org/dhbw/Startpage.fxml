@@ -5,6 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+
 <VBox alignment="TOP_RIGHT" stylesheets="@css/MainPagesStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.StartpageController">
    <children>
       <HBox alignment="TOP_RIGHT" style="-fx-background-color: #313c48;">
@@ -29,12 +30,12 @@
                      </image></ImageView>
                </graphic>
                <font>
-                  <Font name="AppleGothic Regular" size="15.0" />
+                  <Font name="Hiragino Sans W1" size="15.0" />
                </font>
             </MenuButton>
             <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" prefHeight="36.0" prefWidth="70.0" text="Logout" textFill="WHITE">
                <font>
-                  <Font name="AppleGothic Regular" size="15.0" />
+                  <Font name="Hiragino Sans W1" size="15.0" />
                </font></Button>
          </children>
       </HBox>
@@ -47,7 +48,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                      <font>
-                        <Font name="AppleGothic Regular" size="15.0" />
+                        <Font name="Hiragino Sans W1" size="15.0" />
                      </font>
                   </Button>
                   <Button fx:id="citBtn" mnemonicParsing="false" onAction="#swapToCit" prefWidth="85.0" text="CIT" textFill="#fcfcfc">
@@ -55,7 +56,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                      <font>
-                        <Font name="AppleGothic Regular" size="15.0" />
+                        <Font name="Hiragino Sans W1" size="15.0" />
                      </font>
                   </Button>
                   <Button fx:id="statisticsBtn" mnemonicParsing="false" onAction="#swapToStatistic" prefWidth="85.0" text="Statistik" textFill="WHITE">
@@ -63,7 +64,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                      <font>
-                        <Font name="AppleGothic Regular" size="15.0" />
+                        <Font name="Hiragino Sans W1" size="15.0" />
                      </font>
                   </Button>
                   <Button fx:id="userBtn" mnemonicParsing="false" onAction="#swapToUserAdmin" prefWidth="85.0" text="Benutzer" textFill="WHITE">
@@ -71,7 +72,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                      <font>
-                        <Font name="AppleGothic Regular" size="15.0" />
+                        <Font name="Hiragino Sans W1" size="15.0" />
                      </font></Button>
                </children>
                <HBox.margin>
@@ -87,7 +88,7 @@
                               <Image url="@icons/suchen.png" />
                            </image>
                         </ImageView>
-                        <TextField fx:id="searchTf" onAction="#setTableWithFilterAndSearch" prefHeight="31.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="searchTf" onAction="#setTableWithFilterAndSearch" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets top="20.0" />
                            </HBox.margin></TextField>
@@ -97,7 +98,7 @@
                               <Insets left="15.0" top="20.0" />
                            </HBox.margin>
                            <font>
-                              <Font name="AppleGothic Regular" size="15.0" />
+                              <Font name="Hiragino Sans W1" size="15.0" />
                            </font></Button>
                      </children>
                   </HBox>
@@ -105,18 +106,21 @@
                     <columns>
                       <TableColumn fx:id="citColumn" editable="false" minWidth="350.0" prefWidth="350.0" style="-fx-background-color: #c4c4cc;" text="CIT">
                            <graphic>
-                              <ComboBox fx:id="filterCitCb" onAction="#setTableWithFilterAndSearch" prefHeight="32.0" prefWidth="350.0" promptText="CIT" style="-fx-background-color: #c4c4cc; -fx-font-family: AppleGothic; -fx-font-size: 15;" />
+                              <ComboBox fx:id="filterCitCb" onAction="#setTableWithFilterAndSearch" prefHeight="32.0" prefWidth="350.0" promptText="CIT" style="-fx-background-color: #c4c4cc;  -fx-font-size: 15;" />
                            </graphic>
                         </TableColumn>
-                      <TableColumn fx:id="cirNameColumn" editable="false" minWidth="350.0" prefWidth="350.0" style="-fx-background-color: #c4c4cc;" text="CIR-Bezeichnung" />
+                      <TableColumn fx:id="cirNameColumn" editable="false" minWidth="350.0" prefWidth="350.0" style="-fx-background-color: #c4c4cc;-fx-font-family: Hiragino Sans W1;" text="CIR-Bezeichnung"  />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
                   </TableView>
                   <HBox prefHeight="51.0" prefWidth="274.0">
                      <children>
-                        <Button fx:id="citEditBtn" mnemonicParsing="false" onAction="#openAddCit" style="-fx-background-color: #e1a6ad;" text="CIT" textFill="WHITE">
+                        <Button fx:id="citEditBtn" mnemonicParsing="false" onAction="#openAddCit" style="-fx-background-color: #92979f;" text="CIT" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
@@ -131,7 +135,7 @@
                               <Font name="AppleGothic Regular" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="citDeleteBtn" mnemonicParsing="false" onAction="#openDeleteCitPopup" style="-fx-background-color: #e1a6ad;" text="CIT" textFill="WHITE">
+                        <Button fx:id="citDeleteBtn" mnemonicParsing="false" onAction="#openDeleteCitPopup" style="-fx-background-color: #92979f;" text="CIT" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
@@ -146,7 +150,7 @@
                               <Font name="AppleGothic Regular" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="cirAddBtn" mnemonicParsing="false" onAction="#openAddCir" prefHeight="34.0" prefWidth="75.0" style="-fx-background-color: #ecd5dc;" text="CIR" textFill="WHITE">
+                        <Button fx:id="cirAddBtn" mnemonicParsing="false" onAction="#openAddCir" prefHeight="34.0" prefWidth="75.0" style="-fx-background-color: #92979f;" text="CIR" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
@@ -161,7 +165,7 @@
                               <Font name="AppleGothic Regular" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="cirEditBtn" mnemonicParsing="false" onAction="#openEditCir" style="-fx-background-color: #ecd5dc;" text="CIR" textFill="WHITE">
+                        <Button fx:id="cirEditBtn" mnemonicParsing="false" onAction="#openEditCir" style="-fx-background-color: #92979f;" text="CIR" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
@@ -176,7 +180,7 @@
                               <Font name="AppleGothic Regular" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="cirDeleteBtn" mnemonicParsing="false" onAction="#openDeleteCirPopup" style="-fx-background-color: #ecd5dc;" text="CIR" textFill="WHITE">
+                        <Button fx:id="cirDeleteBtn" mnemonicParsing="false" onAction="#openDeleteCirPopup" style="-fx-background-color: #92979f;" text="CIR" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
