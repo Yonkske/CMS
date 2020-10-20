@@ -36,9 +36,41 @@ public class FXMLFactory extends Application {
      */
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
-        scene.getWindow().sizeToScene();
+        setUpStage(scene, fxml);
+    }
+
+    /**
+     * Sets root of actual scene to scene in file of @param fxml. Scene is set to new size.
+     *
+     * @param fxml            String name <b>without</b> suffix.
+     * @param setSizeToScreen if true, the window will be set to the standard size of the scene
+     * @throws IOException the exception.
+     */
+    static void setRoot(String fxml, boolean setSizeToScreen) throws IOException {
+        scene.setRoot(loadFXML(fxml));
+        if (setSizeToScreen) {
+            scene.getWindow().sizeToScene();
+        }
+        setUpStage(scene, fxml);
+    }
+
+    /**
+     * Sets up the stage
+     *
+     * @param scene scene which should be displayed on the stage
+     * @param fxml  String name <b>without</b> suffix.
+     */
+    private static void setUpStage(Scene scene, String fxml) {
         Stage stage = (Stage) scene.getWindow();
-        stage.setResizable(fxml.equals("Startpage") || fxml.equals("CIT") || fxml.equals("UserAdmin") || fxml.equals("Statistic"));
+        if (fxml.equals("Startpage") || fxml.equals("CIT") || fxml.equals("UserAdmin") || fxml.equals("Statistic")) {
+            stage.setResizable(true);
+            stage.setMinWidth(575);
+            stage.setWidth(stage.getWidth());
+            stage.setMinHeight(575);
+            stage.setHeight(stage.getHeight());
+        } else {
+            stage.setResizable(false);
+        }
     }
 
     /**

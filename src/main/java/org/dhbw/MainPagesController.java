@@ -82,7 +82,7 @@ public abstract class MainPagesController extends Controller implements IRefresh
      */
     public void logOut() throws IOException {
         Controller.user = null;
-        FXMLFactory.setRoot("Login");
+        FXMLFactory.setRoot("Login", true);
     }
 
     /**
