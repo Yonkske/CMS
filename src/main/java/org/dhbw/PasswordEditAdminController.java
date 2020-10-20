@@ -39,7 +39,7 @@ public class PasswordEditAdminController extends Controller {
         boolean enteredPwCheck = this.checkNewPasswords();
         boolean noEmptyInputCheck = this.checkNoEmptyInput();
 
-        if (enteredPwCheck && noEmptyInputCheck) {
+        if (enteredPwCheck && noEmptyInputCheck && checkForRegex(newPasswordPf.getText())) {
             userToChangePw.setNewPassword(super.encryptPassword(newPasswordPf.getText()));
             userToChangePw.setIsInitial(true);
             DB_CALLER_USER.updateUser(userToChangePw);
@@ -97,5 +97,9 @@ public class PasswordEditAdminController extends Controller {
      */
     public void showError() {
         meldungLbl.setVisible(true);
+    }
+
+    private boolean checkForRegex(String password) {
+        return !password.matches("^[\\s]+$");
     }
 }

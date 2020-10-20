@@ -1,12 +1,13 @@
 package org.dhbw;
 
 import backend.usability.User;
-import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class ChangePasswordController extends Controller {
 
@@ -45,7 +46,7 @@ public class ChangePasswordController extends Controller {
         boolean enteredPwCheck = this.checkNewPasswords();
         boolean noEmptyInputCheck = this.checkNoEmptyInput();
 
-        if (oldPwCheck && enteredPwCheck && noEmptyInputCheck) {
+        if (oldPwCheck && enteredPwCheck && noEmptyInputCheck && checkForRegex(newPasswordPf.getText())) {
             userToCangePassword.setNewPassword(super.encryptPassword(newPasswordPf.getText()));
             userToCangePassword.setIsInitial(false);
             DB_CALLER_USER.updateUser(userToCangePassword);
@@ -112,6 +113,10 @@ public class ChangePasswordController extends Controller {
      */
     private void switchToStartpage(User user) throws IOException {
         FXMLFactory.setRoot("Startpage");
+    }
+
+    private boolean checkForRegex(String password) {
+        return !password.matches("^[\\s]+$");
     }
 
 }
