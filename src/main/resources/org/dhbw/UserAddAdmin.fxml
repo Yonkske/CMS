@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414" prefWidth="600.0" stylesheets="@css/PopupStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="67.8" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="67.8">
          <children>
@@ -19,7 +19,7 @@
                   <font>
                      <Font size="15.0" />
                   </font></Label>
-               <TextField fx:id="surnameTf" prefWidth="210.0" style="-fx-background-color: #f2f2f2;">
+               <TextField fx:id="surnameTf" prefWidth="210.0">
                   <HBox.margin>
                      <Insets />
                   </HBox.margin>
@@ -44,7 +44,7 @@
                   <font>
                      <Font size="15.0" />
                   </font></Label>
-               <TextField fx:id="nameTf" prefWidth="210.0" style="-fx-background-color: #f2f2f2;">
+               <TextField fx:id="nameTf" prefWidth="210.0">
                   <HBox.margin>
                      <Insets />
                   </HBox.margin>
@@ -66,7 +66,7 @@
                   <font>
                      <Font size="15.0" />
                   </font></Label>
-               <TextField fx:id="usernameTf" prefWidth="210.0" style="-fx-background-color: #f2f2f2;">
+               <TextField fx:id="usernameTf" prefWidth="210.0">
                   <HBox.margin>
                      <Insets />
                   </HBox.margin>
@@ -88,7 +88,7 @@
                   <font>
                      <Font size="15.0" />
                   </font></Label>
-               <ChoiceBox fx:id="authorizationChoiceBox" prefWidth="210.0" style="-fx-background-color: #f2f2f2; -fx-font-size: 14;">
+               <ChoiceBox fx:id="authorizationChoiceBox" prefWidth="210.0">
                   <HBox.margin>
                      <Insets />
                   </HBox.margin></ChoiceBox>
@@ -104,7 +104,7 @@
                   <font>
                      <Font size="15.0" />
                   </font></Label>
-               <PasswordField fx:id="initialPasswordTf" prefWidth="210.0" promptText="Initiales Passwort eingeben" style="-fx-background-color: #f2f2f2;">
+               <PasswordField fx:id="initialPasswordTf" prefWidth="210.0" promptText="Initiales Passwort eingeben">
                   <HBox.margin>
                      <Insets />
                   </HBox.margin>
@@ -126,7 +126,7 @@
                   <font>
                      <Font size="15.0" />
                   </font></Label>
-               <PasswordField fx:id="repeatInitialPasswordTf" onAction="#submit" prefWidth="210.0" promptText="Initiales Passwort wiederholen" style="-fx-background-color: #f2f2f2;">
+               <PasswordField fx:id="repeatInitialPasswordTf" onAction="#submit" prefWidth="210.0" promptText="Initiales Passwort wiederholen">
                   <HBox.margin>
                      <Insets />
                   </HBox.margin>
@@ -147,7 +147,7 @@
                      <HBox.margin>
                         <Insets />
                      </HBox.margin></Label>
-                  <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#submit" style="-fx-background-color: #ccebc5;" text="Speichern">
+                  <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#submit" text="Speichern">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -157,7 +157,7 @@
                      <HBox.margin>
                         <Insets />
                      </HBox.margin></Button>
-                  <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#cancel" prefHeight="32.0" prefWidth="96.4" style="-fx-background-color: #F5A9A9;" text="Abbrechen">
+                  <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#cancel" prefHeight="32.0" prefWidth="96.4" text="Abbrechen">
                      <graphic>
                         <ImageView fitHeight="15.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
