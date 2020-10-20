@@ -3,6 +3,8 @@ package org.dhbw;
 import backend.database.DbCallerUser;
 import backend.database.DbConnector;
 import backend.usability.User;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +17,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+
 
 
 public class LoginController extends Controller {
@@ -89,7 +92,7 @@ public class LoginController extends Controller {
      */
     @FXML
     private void switchToStartpage(User user) throws IOException {
-        FXMLFactory.setRoot("Startpage");
+        FXMLFactory.setRoot("Startpage", true);
     }
 
     /**

@@ -9,6 +9,8 @@ Button {
 }
 
 Button#logoutBtn:hover {
+    -fx-background-color:  #3D4956;
+    -fx-text-fill:  #e1a6ad;
     -fx-scale-y: 1;
 }
 ChoiceBox .context-menu{
@@ -79,3 +81,6 @@ TableView .combo-box-base:showing {
     -fx-color: -fx-pressed-base;
 }
 
+.tableview .column-header,.tableview .filler{
+    -fx-background-color: #c4c4cc;
+}
