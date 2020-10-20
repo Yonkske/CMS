@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<VBox alignment="TOP_RIGHT" minHeight="575.0" minWidth="575.0" style="-fx-background-color: #f0f0f8;"
-      xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.dhbw.StatisticController">
+
+<VBox alignment="TOP_RIGHT" minHeight="575.0" minWidth="575.0" stylesheets="@css/MainPagesStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.StatisticController">
    <children>
-      <HBox alignment="TOP_RIGHT" minHeight="37.0" style="-fx-background-color: #313c48;">
+      <HBox alignment="TOP_RIGHT" minHeight="38.0" style="-fx-background-color: #313c48;">
          <children>
-            <MenuButton fx:id="adminUserMB" mnemonicParsing="false" style="-fx-background-color: #313c48;"
-                        text="Vorname, Nachname" textFill="WHITE">
+            <MenuButton fx:id="adminUserMB" mnemonicParsing="false" style="-fx-background-color: #313c48;" text="Vorname, Nachname" textFill="WHITE">
                <items>
                   <MenuItem mnemonicParsing="false">
                      <graphic>
-                        <Button fx:id="benutzerDropDownBtn" mnemonicParsing="false" onAction="#openUserInfo"
-                                text="Benutzer"/>
+                        <Button fx:id="benutzerDropDownBtn" mnemonicParsing="false" onAction="#openUserInfo" text="Benutzer" />
                      </graphic>
                   </MenuItem>
                   <MenuItem fx:id="itemPassword" mnemonicParsing="false">
@@ -28,33 +26,35 @@
                   </MenuItem>
                </items>
                <font>
-                  <Font name="Hiragino Sans W2" size="15.0" />
+                  <Font size="14.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/benutzer.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </MenuButton>
-            <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" prefHeight="36.0" prefWidth="78.0"
-                    style="-fx-background-color: #313c48;" text="Logout" textFill="WHITE">
+            <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" prefHeight="34.0" style="-fx-background-color: #313c48;" text="Logout" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/ausloggen.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
                <font>
-                  <Font name="Hiragino Sans W2" size="15.0"/>
+                  <Font size="14.0" />
                </font>
             </Button>
          </children>
       </HBox>
       <HBox minWidth="85.0" VBox.vgrow="ALWAYS">
          <children>
-            <VBox alignment="TOP_CENTER" maxWidth="170.0" minWidth="85.0" style="-fx-background-color: #3D4956;"
-                  HBox.hgrow="ALWAYS">
+            <VBox alignment="TOP_CENTER" maxWidth="150.0" minWidth="100.0" style="-fx-background-color: #3D4956;" HBox.hgrow="ALWAYS">
                <children>
-                  <Button fx:id="startpageBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStartpage"
-                          style="-fx-background-color: #3D4956;" text="Startseite" textFill="WHITE">
-                     <VBox.margin>
-                        <Insets top="20.0"/>
-                     </VBox.margin>
-                     <font>
-                        <Font name="Hiragino Sans W2" size="15.0"/>
-                     </font>
-                  </Button>
-                  <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToCit"
-                          style="-fx-background-color: #3D4956;" text="CIT" textFill="WHITE">
+                  <Button fx:id="startpageBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToStartpage" style="-fx-background-color: #3D4956;" text="Startseite" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -62,7 +62,7 @@
                         <Font name="Hiragino Sans W2" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="statisticBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStatistic" style="-fx-background-color: #3D4956;" text="Statistik" textFill="WHITE">
+                  <Button fx:id="citBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToCit" style="-fx-background-color: #3D4956;" text="CIT" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -70,7 +70,15 @@
                         <Font name="Hiragino Sans W2" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="userBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToUserAdmin" style="-fx-background-color: #3D4956;" text="Benutzer" textFill="WHITE">
+                  <Button fx:id="statisticBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToStatistic" style="-fx-background-color: #3D4956;" text="Statistik" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Hiragino Sans W2" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="userBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToUserAdmin" style="-fx-background-color: #3D4956;" text="Benutzer" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -87,7 +95,7 @@
                <children>
                   <HBox prefHeight="35.0" prefWidth="323.0">
                      <VBox.margin>
-                        <Insets top="20.0"/>
+                        <Insets top="20.0" />
                      </VBox.margin>
                   </HBox>
                   <VBox prefHeight="74.0" prefWidth="323.0">
@@ -101,7 +109,7 @@
                                  <font>
                                     <Font name="Hiragino Sans W2" size="15.0" />
                                  </font></Label>
-                              <TextField fx:id="numberCIRTf" alignment="TOP_CENTER" disable="true" prefWidth="50.0" style="-fx-background-color: #c4c4cc;">
+                              <TextField fx:id="numberCIRTf" alignment="TOP_CENTER" prefWidth="50.0" style="-fx-background-color: #c4c4cc;">
                                  <HBox.margin>
                                     <Insets bottom="15.0" />
                                  </HBox.margin></TextField>
@@ -116,7 +124,7 @@
                                  <HBox.margin>
                                     <Insets left="20.0" right="40.0" />
                                  </HBox.margin></Label>
-                              <TextField fx:id="numberCITTf" alignment="TOP_CENTER" disable="true" editable="false" prefWidth="50.0" style="-fx-background-color: #c4c4cc;" />
+                              <TextField fx:id="numberCITTf" alignment="TOP_CENTER" editable="false" prefWidth="50.0" style="-fx-background-color: #c4c4cc;" />
                            </children>
                         </HBox>
                      </children>
@@ -125,7 +133,7 @@
                      <children>
                         <PieChart fx:id="adminPieChart" HBox.hgrow="ALWAYS">
                            <effect>
-                              <Blend/>
+                              <Blend />
                            </effect>
                         </PieChart>
                      </children>

@@ -3,11 +3,9 @@ Button:hover {
     -fx-translate-y: 1;
     -fx-text-fill:  #e1a6ad;
 }
-
 Button {
     -fx-background-color:  #3D4956;
 }
-
 Button#logoutBtn:hover {
     -fx-background-color:  #3D4956;
     -fx-text-fill:  #e1a6ad;
@@ -80,8 +78,6 @@ TableView .combo-box-base:hover {
 TableView .combo-box-base:showing {
     -fx-color: -fx-pressed-base;
 }
-
-
 .tableview .column-header,.tableview .filler{
     -fx-background-color: #c4c4cc;
 }
