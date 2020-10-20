@@ -15,4 +15,19 @@ Button#logoutBtn:hover {
 VBox {
     -fx-background-color: red;
 }
+ChoiceBox .context-menu{
+    -fx-background-color: #c4c4cc;
+    -fx-font-family: "Harlow Solid Italic";
+    -fx-font-size: 14;
+    -fx-text-fill: black;
+}
+ChoiceBox .menu-item:focused {
+    -fx-text-fill: #e1a6ad;
+}
+ChoiceBox .menu-item > .label {
+    -fx-text-fill: black;
+}
+ChoiceBox .menu-item:focused > .label {
+    -fx-text-fill: #e1a6ad;
+}
 
