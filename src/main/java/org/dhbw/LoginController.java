@@ -3,8 +3,6 @@ package org.dhbw;
 import backend.database.DbCallerUser;
 import backend.database.DbConnector;
 import backend.usability.User;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -114,13 +112,5 @@ public class LoginController extends Controller {
         stage.setScene(scene);
         scene.getWindow().sizeToScene();
         stage.show();
-    }
-
-    /**
-     * this methode terminates the program.
-     */
-    @FXML
-    public void exit(ActionEvent event) {
-        Platform.exit();
     }
 }

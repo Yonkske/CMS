@@ -169,7 +169,6 @@ public class DbCallerCir extends DbConnector {
      * @throws SQLException - on database access error or other errors
      */
     public int getMaxItemId() throws SQLException {
-        startConnection();
         ResultSet rs = stmt.executeQuery("Select max(ITEM_ID) FROM CIR");
 
         if (rs.first()) {

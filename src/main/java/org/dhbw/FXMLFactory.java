@@ -1,6 +1,7 @@
 package org.dhbw;
 
 
+import backend.database.DbConnector;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,6 +28,7 @@ public class FXMLFactory extends Application {
         stage.getIcons().add(new Image(App.class.getResourceAsStream("icons/favicon.png")));
         stage.setTitle("CMS - Configuration Management System");
         stage.show();
+        stage.setOnCloseRequest(windowEvent -> DbConnector.closeConnection());
     }
 
     /**
