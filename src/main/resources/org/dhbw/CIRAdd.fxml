@@ -33,11 +33,11 @@
          <VBox.margin>
             <Insets bottom="5.0" top="5.0" />
          </VBox.margin>
-         <Label fx:id="nameLbl"  visible="false" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Name">
+         <Label fx:id="nameLbl"  alignment="BOTTOM_LEFT" prefWidth="175.0" text="Name">
             <font>
                <Font size="15.0" />
             </font></Label>
-         <TextField fx:id="nameTf" visible="false" prefWidth="210.0" />
+         <TextField fx:id="nameTf"  prefWidth="210.0" />
       </HBox>
       <HBox alignment="CENTER" cache="true" spacing="5.0">
          <VBox.margin>
