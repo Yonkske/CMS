@@ -3,11 +3,8 @@ package org.dhbw;
 import backend.database.DbCallerCir;
 import backend.database.DbCallerCit;
 import backend.database.DbCallerUser;
-import backend.database.DbConnector;
 import backend.usability.User;
 import org.jasypt.util.password.StrongPasswordEncryptor;
-
-import java.sql.SQLException;
 
 public abstract class Controller {
 
@@ -18,11 +15,6 @@ public abstract class Controller {
 
     public Controller() {
 
-        try {
-            new DbConnector().startConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         DB_CALLER_USER = new DbCallerUser();
         DB_CALLER_CIR = new DbCallerCir();
         DB_CALLER_CIT = new DbCallerCit();

@@ -1,8 +1,8 @@
 package org.dhbw;
 
 import backend.database.DbCallerUser;
+import backend.database.DbConnector;
 import backend.usability.User;
-import java.io.IOException;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +15,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.sql.SQLException;
+
 
 public class LoginController extends Controller {
 
@@ -24,6 +27,20 @@ public class LoginController extends Controller {
     private PasswordField passwordField;
     @FXML
     private Label meldungLbl;
+
+    /**
+     * Creates a new login controller
+     *
+     * @param isFirstCall true to start a new database connection, false if you dont want a new database connection
+     * @throws SQLException
+     */
+    public LoginController(Boolean isFirstCall) throws SQLException {
+        super();
+        if (isFirstCall) {
+            new DbConnector().startConnection();
+
+        }
+    }
 
     /**
      * This method is for a user logIn, it is checked whether the user is a admin.
