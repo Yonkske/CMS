@@ -5,12 +5,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.StatisticController">
+<VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f0f0f8;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.StatisticController">
    <children>
-      <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="TOP_RIGHT" minHeight="30.0" style="-fx-background-color: #313c48;">
          <children>
-            <MenuButton fx:id="adminUserMB" mnemonicParsing="false" text="Vorname, Nachname">
+            <MenuButton fx:id="adminUserMB" mnemonicParsing="false" style="-fx-background-color: #313c48;" text="Vorname, Nachname" textFill="WHITE">
                <items>
                   <MenuItem mnemonicParsing="false">
                      <graphic>
@@ -23,33 +24,51 @@
                      </graphic>
                   </MenuItem>
                </items>
+               <font>
+                  <Font name="Hiragino Sans W2" size="15.0" />
+               </font>
             </MenuButton>
-            <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" text="Logout" />
+            <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: #313c48;" text="Logout" textFill="WHITE">
+               <font>
+                  <Font name="Hiragino Sans W2" size="15.0" />
+               </font></Button>
          </children>
       </HBox>
       <HBox prefHeight="389.0" prefWidth="600.0">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="383.0" prefWidth="136.0">
+            <VBox alignment="TOP_CENTER" prefHeight="383.0" prefWidth="170.0" style="-fx-background-color: #3D4956;">
                <children>
-                  <Button fx:id="startpageBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStartpage" text="Startseite">
+                  <Button fx:id="startpageBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStartpage" style="-fx-background-color: #3D4956;" text="Startseite" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="Hiragino Sans W2" size="15.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToCit" text="CIT">
+                  <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToCit" style="-fx-background-color: #3D4956;" text="CIT" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="Hiragino Sans W2" size="15.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="statisticBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStatistic" text="Statistik">
+                  <Button fx:id="statisticBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStatistic" style="-fx-background-color: #3D4956;" text="Statistik" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="Hiragino Sans W2" size="15.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="userBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToUserAdmin" text="Benutzer">
+                  <Button fx:id="userBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToUserAdmin" style="-fx-background-color: #3D4956;" text="Benutzer" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="Hiragino Sans W2" size="15.0" />
+                     </font>
                   </Button>
                </children>
                <HBox.margin>
@@ -69,18 +88,27 @@
                            <children>
                               <Label fx:id="cirLabel" minWidth="30.0" text="Anzahl CIR">
                                  <HBox.margin>
-                                    <Insets right="40.0" />
-                                 </HBox.margin></Label>
-                              <TextField fx:id="numberCIRTf" alignment="TOP_CENTER" disable="true" prefWidth="50.0" />
+                                    <Insets left="20.0" right="40.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Hiragino Sans W2" size="15.0" />
+                                 </font></Label>
+                              <TextField fx:id="numberCIRTf" alignment="TOP_CENTER" disable="true" prefWidth="50.0" style="-fx-background-color: #c4c4cc;">
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" />
+                                 </HBox.margin></TextField>
                            </children>
                         </HBox>
                         <HBox prefHeight="27.0" prefWidth="251.0">
                            <children>
-                              <Label fx:id="citLabel" text="Anzahl CIT">
-                                 <padding>
-                                    <Insets right="40.0" />
-                                 </padding></Label>
-                              <TextField fx:id="numberCITTf" alignment="TOP_CENTER" disable="true" editable="false" prefWidth="50.0" />
+                              <Label fx:id="citLabel" minWidth="30.0" text="Anzahl CIT">
+                                 <font>
+                                    <Font name="Hiragino Sans W2" size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="20.0" right="40.0" />
+                                 </HBox.margin></Label>
+                              <TextField fx:id="numberCITTf" alignment="TOP_CENTER" disable="true" editable="false" prefWidth="50.0" style="-fx-background-color: #c4c4cc;" />
                            </children>
                         </HBox>
                      </children>
@@ -95,11 +123,6 @@
                   </HBox>
                </children>
             </VBox>
-         </children>
-      </HBox>
-      <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Label text="(Status)" />
          </children>
       </HBox>
    </children>

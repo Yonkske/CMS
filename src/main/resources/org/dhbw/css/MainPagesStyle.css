@@ -9,10 +9,15 @@ Button {
 }
 
 Button#logoutBtn:hover {
-    -fx-background-color: red;
+    -fx-background-color:  #3D4956;
+     -fx-translate-y: 2;
+    -fx-text-fill:  #e1a6ad;
 }
 
 VBox {
     -fx-background-color: red;
 }
 
+.tableview .column-header,.tableview .filler{
+    -fx-background-color: #c4c4cc;
+}

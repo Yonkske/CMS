@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/MainPagesStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.UserAdminController">
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f0f0f8;" stylesheets="@css/MainPagesStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.UserAdminController">
     <children>
-        <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+        <HBox alignment="TOP_RIGHT" minHeight="30.0" style="-fx-background-color: #313c48;">
             <children>
-                <MenuButton fx:id="adminUserMB" mnemonicParsing="false" text="Vorname, Nachname">
+                <MenuButton fx:id="adminUserMB" mnemonicParsing="false" style="-fx-background-color: #313c48;" text="Vorname, Nachname" textFill="WHITE">
                     <items>
                         <MenuItem mnemonicParsing="false">
                             <graphic>
@@ -20,63 +22,84 @@
                             </graphic>
                         </MenuItem>
                     </items>
+               <font>
+                  <Font name="Hiragino Sans W1" size="15.0" />
+               </font>
                 </MenuButton>
-                <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" text="Logout" />
+                <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" prefHeight="19.0" prefWidth="71.0" style="-fx-background-color: #313c48;" text="Logout" textFill="WHITE">
+               <font>
+                  <Font name="Hiragino Sans W1" size="15.0" />
+               </font></Button>
             </children>
         </HBox>
         <HBox prefHeight="577.0" prefWidth="600.0">
             <children>
-                <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                <VBox alignment="TOP_CENTER" prefWidth="170.0" style="-fx-background-color: #3D4956;">
                     <children>
-                        <Button fx:id="startpagerBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStartpage" prefWidth="78.0" text="Startseite">
+                        <Button fx:id="startpagerBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStartpage" text="Startseite" textFill="WHITE">
                             <VBox.margin>
                                 <Insets top="20.0" />
                             </VBox.margin>
+                     <font>
+                        <Font name="Hiragino Sans W1" size="15.0" />
+                     </font>
                         </Button>
-                        <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToCit" prefWidth="78.0" text="CIT">
+                        <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToCit" text="CIT" textFill="WHITE">
                             <VBox.margin>
                                 <Insets top="20.0" />
                             </VBox.margin>
+                     <font>
+                        <Font name="Hiragino Sans W1" size="15.0" />
+                     </font>
                         </Button>
-                        <Button fx:id="statisticBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStatistic" prefWidth="78.0" text="Statistik">
+                        <Button fx:id="statisticBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStatistic" text="Statistik" textFill="WHITE">
                             <VBox.margin>
                                 <Insets top="20.0" />
                             </VBox.margin>
+                     <font>
+                        <Font name="Hiragino Sans W1" size="15.0" />
+                     </font>
                         </Button>
-                        <Button fx:id="userBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToUserAdmin" prefWidth="78.0" text="Benutzer">
+                        <Button fx:id="userBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToUserAdmin" text="Benutzer" textFill="WHITE">
                             <VBox.margin>
                                 <Insets top="20.0" />
                             </VBox.margin>
+                     <font>
+                        <Font name="Hiragino Sans W1" size="15.0" />
+                     </font>
                         </Button>
                     </children>
                 </VBox>
-                <VBox prefHeight="343.0" prefWidth="458.0">
+                <VBox prefHeight="343.0" prefWidth="458.0" style="-fx-background-color: #f0f0f8;">
                     <children>
-                        <HBox alignment="CENTER" prefHeight="67.0" prefWidth="458.0">
+                        <HBox alignment="CENTER" prefHeight="67.0" prefWidth="458.0" style="-fx-background-color: #f0f0f8;">
                             <children>
-                                <TextField fx:id="searchTextField" onAction="#setTableWithFilterAndSearch" prefWidth="150.0" />
-                                <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#setTableWithFilterAndSearch" text="Suche" />
+                                <TextField fx:id="searchTextField" onAction="#setTableWithFilterAndSearch" prefWidth="150.0" style="-fx-background-color: #c4c4cc;" />
+                                <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#setTableWithFilterAndSearch" text="Suche" textFill="WHITE">
+                           <font>
+                              <Font name="Hiragino Sans W2" size="15.0" />
+                           </font></Button>
                             </children>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="211.0" prefWidth="455.0">
+                        <HBox alignment="CENTER" prefHeight="211.0" prefWidth="455.0" style="-fx-background-color: #f0f0f8;">
                             <children>
-                                  <TableView fx:id="userTable" onMouseClicked="#clickAction" prefHeight="194.0" prefWidth="240.0">
+                                  <TableView fx:id="userTable" onMouseClicked="#clickAction" style="-fx-background-color: #f0f0f8; -fx-border-color: #d8dce4; -fx-font-size: 15; -fx-font-family: Hiragino Sans W1;">
                                       <columns>
-                                          <TableColumn fx:id="userColumn" prefWidth="120.0" text="Benutzer" />
+                                          <TableColumn fx:id="userColumn" prefWidth="120.0" style="-fx-font-family: Hiragino Sans W1;" text="Benutzer" />
                                           <TableColumn fx:id="rightColumn" prefWidth="120.0">
                                               <graphic>
-                                                  <ComboBox fx:id="filterUser" onAction="#setTableWithFilterAndSearch" prefHeight="25.0" prefWidth="135.0" promptText="Rechte" />
+                                                  <ComboBox fx:id="filterUser" onAction="#setTableWithFilterAndSearch" prefHeight="25.0" prefWidth="135.0" promptText="Rechte" style="-fx-background-color: #c4c4cc; -fx-font-family: Hiragino Sans W1;" />
                                               </graphic>
                                           </TableColumn>
                                       </columns>
                                   </TableView>
                             </children>
                         </HBox>
-                        <HBox alignment="BOTTOM_RIGHT" prefHeight="97.0" prefWidth="458.0">
+                        <HBox alignment="CENTER" style="-fx-background-color: #f0f0f8;">
                             <children>
-                                <Button fx:id="addBtn" mnemonicParsing="false" onAction="#addUser" text="+" />
-                                <Button fx:id="deleteBtn" disable="true" mnemonicParsing="false" onAction="#deleteUser" text="Löschen" />
-                                <Button fx:id="editBtn" disable="true" mnemonicParsing="false" onAction="#editUser" text="Bearbeiten" />
+                                <Button fx:id="addBtn" mnemonicParsing="false" onAction="#addUser" style="-fx-background-color: #92979f;" text="+" textFill="WHITE" />
+                                <Button fx:id="deleteBtn" disable="true" mnemonicParsing="false" onAction="#deleteUser" style="-fx-background-color: #92979f;" text="Löschen" textFill="WHITE" />
+                                <Button fx:id="editBtn" disable="true" mnemonicParsing="false" onAction="#editUser" style="-fx-background-color: #92979f;" text="Bearbeiten" textFill="WHITE" />
                             </children>
                         </HBox>
 
@@ -85,7 +108,5 @@
                 </VBox>
             </children>
         </HBox>
-        <DialogPane prefHeight="17.0" prefWidth="600.0" />
-        <VBox prefHeight="200.0" prefWidth="100.0" />
     </children>
 </VBox>

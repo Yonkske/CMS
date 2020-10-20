@@ -42,7 +42,7 @@
     </HBox>
       <HBox prefHeight="670.0" prefWidth="767.0">
 
-            <VBox alignment="TOP_CENTER" prefHeight="670.0" prefWidth="128.0" style="-fx-background-color: #3D4956;">
+            <VBox alignment="TOP_CENTER" prefHeight="670.0" prefWidth="170.0" style="-fx-background-color: #3D4956;">
 
                   <Button fx:id="startpageBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStartpage" style="-fx-background-color: #3D4956;" text="Startseite" textFill="WHITE">
                      <VBox.margin>
