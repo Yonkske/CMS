@@ -8,7 +8,7 @@
 
 <VBox alignment="TOP_RIGHT" stylesheets="@css/MainPagesStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.StartpageController">
    <children>
-      <HBox alignment="TOP_RIGHT" style="-fx-background-color: #313c48;">
+      <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" style="-fx-background-color: #313c48;">
          <children>
             <MenuButton fx:id="adminUserMB" mnemonicParsing="false" style="-fx-background-color: #313c48;" text="Vorname, Nachname" textFill="WHITE">
                <items>
@@ -24,26 +24,33 @@
                   </MenuItem>
                </items>
                <graphic>
-                  <ImageView fitHeight="26.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons/benutzerS.png" />
+                        <Image url="@icons/benutzer.png" />
                      </image></ImageView>
                </graphic>
                <font>
-                  <Font name="Hiragino Sans W1" size="15.0" />
+                  <Font size="14.0" />
                </font>
             </MenuButton>
-            <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" prefHeight="36.0" prefWidth="70.0" text="Logout" textFill="WHITE">
+            <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" prefHeight="36.0" style="-fx-background-color: #313c48;" text="Logout" textFill="WHITE">
                <font>
-                  <Font name="Hiragino Sans W1" size="15.0" />
-               </font></Button>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/ausloggen.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
          </children>
       </HBox>
       <HBox VBox.vgrow="ALWAYS">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="519.0" prefWidth="85.0" style="-fx-background-color: #3D4956;">
+            <VBox alignment="TOP_CENTER" maxWidth="100.0" minWidth="100.0" style="-fx-background-color: #3D4956;">
                <children>
-                  <Button fx:id="startpageBtn" mnemonicParsing="false" onAction="#swapToStartpage" prefWidth="85.0" text="Startseite" textFill="WHITE">
+                  <Button fx:id="startpageBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToStartpage" text="Startseite" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -51,7 +58,7 @@
                         <Font name="Hiragino Sans W1" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="citBtn" mnemonicParsing="false" onAction="#swapToCit" prefWidth="85.0" text="CIT" textFill="#fcfcfc">
+                  <Button fx:id="citBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToCit" text="CIT" textFill="#fcfcfc">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -59,7 +66,7 @@
                         <Font name="Hiragino Sans W1" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="statisticsBtn" mnemonicParsing="false" onAction="#swapToStatistic" prefWidth="85.0" text="Statistik" textFill="WHITE">
+                  <Button fx:id="statisticsBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToStatistic" text="Statistik" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -67,7 +74,7 @@
                         <Font name="Hiragino Sans W1" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="userBtn" mnemonicParsing="false" onAction="#swapToUserAdmin" prefWidth="85.0" text="Benutzer" textFill="WHITE">
+                  <Button fx:id="userBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToUserAdmin" text="Benutzer" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -91,8 +98,18 @@
                         <TextField fx:id="searchTf" onAction="#setTableWithFilterAndSearch" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets top="20.0" />
-                           </HBox.margin></TextField>
-                        <Button fx:id="deleteSearchBtn" mnemonicParsing="false" onAction="#emptySearchTf" prefHeight="32.0" prefWidth="29.0" style="-fx-background-color: #c4c4cc;" text="X" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font></TextField>
+                        <Button fx:id="deleteSearchBtn" mnemonicParsing="false" onAction="#emptySearchTf" prefHeight="32.0" prefWidth="29.0" style="-fx-background-color: #c4c4cc;">
+                           <graphic>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/abbrechenS.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                         <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#setTableWithFilterAndSearch" prefHeight="27.0" prefWidth="104.0" style="-fx-background-color: #3D4956;" text="Suchen" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="15.0" top="20.0" />
@@ -102,14 +119,14 @@
                            </font></Button>
                      </children>
                   </HBox>
-                  <TableView fx:id="cirTable" maxWidth="-Infinity" minHeight="200.0" minWidth="-Infinity" onMouseClicked="#openCirView" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: #f0f0f8; -fx-border-color: #d8dce4; -fx-font-size: 14; -fx-font-family: AppleGothic;">
+                  <TableView fx:id="cirTable" onMouseClicked="#openCirView" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #f0f0f8; -fx-border-color: #d8dce4; -fx-font-size: 14; -fx-font-family: AppleGothic;">
                     <columns>
-                      <TableColumn fx:id="citColumn" editable="false" minWidth="350.0" prefWidth="350.0" style="-fx-background-color: #c4c4cc;" text="CIT">
+                      <TableColumn fx:id="citColumn" editable="false" maxWidth="600.0" minWidth="175.0" prefWidth="300.0" style="-fx-background-color: #c4c4cc;" text="CIT">
                            <graphic>
                               <ComboBox fx:id="filterCitCb" onAction="#setTableWithFilterAndSearch" prefHeight="32.0" prefWidth="350.0" promptText="CIT" style="-fx-background-color: #c4c4cc;  -fx-font-size: 15;" />
                            </graphic>
                         </TableColumn>
-                      <TableColumn fx:id="cirNameColumn" editable="false" minWidth="350.0" prefWidth="350.0" style="-fx-background-color: #c4c4cc;-fx-font-family: Hiragino Sans W1;" text="CIR-Bezeichnung"  />
+                      <TableColumn fx:id="cirNameColumn" editable="false" maxWidth="600.0" minWidth="175.0" prefWidth="300.0" style="-fx-background-color: #c4c4cc;-fx-font-family: Hiragino Sans W1;" text="CIR-Bezeichnung" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -127,7 +144,7 @@
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/datei-hinzufuegenS.png" />
+                                    <Image url="@icons/datei-hinzufuegen.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -142,7 +159,7 @@
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/datei-loeschenS.png" />
+                                    <Image url="@icons/datei-loeschen.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -157,7 +174,7 @@
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/datei-hinzufuegenS.png" />
+                                    <Image url="@icons/datei-hinzufuegen.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -172,7 +189,7 @@
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/datei-bearbeitenS.png" />
+                                    <Image url="@icons/datei-bearbeiten.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -187,7 +204,7 @@
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/datei-loeschenS.png" />
+                                    <Image url="@icons/datei-loeschen.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -202,7 +219,7 @@
                   </HBox>
                </children>
                <padding>
-                  <Insets left="40.0" right="40.0" />
+                  <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
                </padding>
             </VBox>
          </children>

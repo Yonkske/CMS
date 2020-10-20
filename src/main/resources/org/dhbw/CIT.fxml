@@ -5,18 +5,16 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<VBox alignment="TOP_RIGHT" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.dhbw.CITController">
 
-    <HBox alignment="TOP_RIGHT" prefHeight="40.0" style="-fx-background-color: #313c48;">
+<VBox alignment="TOP_RIGHT" stylesheets="@css/MainPagesStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.CITController">
+
+    <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" style="-fx-background-color: #313c48;">
         <children>
-            <MenuButton fx:id="adminUserMB" mnemonicParsing="false" style="-fx-background-color: #313c48;"
-                        text="Vorname, Nachname" textFill="WHITE">
+            <MenuButton fx:id="adminUserMB" mnemonicParsing="false" style="-fx-background-color: #313c48;" text="Vorname, Nachname" textFill="WHITE">
                 <items>
                     <MenuItem mnemonicParsing="false">
                         <graphic>
-                            <Button fx:id="benutzerDropDownBtn" mnemonicParsing="false" onAction="#openUserInfo"
-                                    text="Benutzer"/>
+                            <Button fx:id="benutzerDropDownBtn" mnemonicParsing="false" onAction="#openUserInfo" text="Benutzer" />
                         </graphic>
                     </MenuItem>
                     <MenuItem fx:id="itemPassword" mnemonicParsing="false">
@@ -26,46 +24,50 @@
                     </MenuItem>
                 </items>
             <graphic>
-               <ImageView fitHeight="28.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@icons/benutzer.png" />
                   </image>
                </ImageView>
             </graphic>
             <font>
-               <Font name="Hiragino Sans W1" size="15.0" />
+               <Font size="14.0" />
             </font>
             </MenuButton>
-            <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" prefHeight="36.0" style="-fx-background-color: #313c48;" text="Logout" textFill="#f5f5f5">
+            <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" prefHeight="36.0" style="-fx-background-color: #313c48;" text="Logout" textFill="WHITE">
             <font>
-               <Font name="Hiragino Sans W1" size="15.0" />
-            </font></Button>
+               <Font size="14.0" />
+            </font>
+            <graphic>
+               <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@icons/ausloggen.png" />
+                  </image>
+               </ImageView>
+            </graphic></Button>
         </children>
     </HBox>
-      <HBox>
+      <HBox VBox.vgrow="ALWAYS">
 
-          <VBox alignment="TOP_CENTER" maxWidth="170.0" minWidth="85.0" prefHeight="833.0"
-                style="-fx-background-color: #3D4956;" HBox.hgrow="ALWAYS">
+          <VBox alignment="TOP_CENTER" maxWidth="150.0" minWidth="100.0" style="-fx-background-color: #3D4956;">
 
-              <Button fx:id="startpageBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStartpage"
-                      style="-fx-background-color: #3D4956;" text="Startseite" textFill="WHITE">
+              <Button fx:id="startpageBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToStartpage" style="-fx-background-color: #3D4956;" text="Startseite" textFill="WHITE">
                   <VBox.margin>
-                      <Insets top="20.0"/>
+                      <Insets top="20.0" />
                   </VBox.margin>
                   <font>
-                      <Font name="Hiragino Sans W1" size="15.0"/>
+                      <Font name="Hiragino Sans W1" size="15.0" />
                   </font>
               </Button>
-              <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToCit" prefWidth="78.0"
-                      style="-fx-background-color: #3D4956;" text="CIT" textFill="WHITE">
+              <Button fx:id="citBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToCit" style="-fx-background-color: #3D4956;" text="CIT" textFill="WHITE">
                   <VBox.margin>
-                      <Insets top="20.0"/>
+                      <Insets top="20.0" />
                   </VBox.margin>
                   <font>
-                      <Font name="Hiragino Sans W1" size="15.0"/>
+                      <Font name="Hiragino Sans W1" size="15.0" />
                   </font>
               </Button>
-                  <Button fx:id="statisticBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStatistic" prefWidth="78.0" style="-fx-background-color: #3D4956;" text="Statistik" textFill="WHITE">
+                  <Button fx:id="statisticBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToStatistic" style="-fx-background-color: #3D4956;" text="Statistik" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -73,7 +75,7 @@
                <Font name="Hiragino Sans W1" size="15.0" />
             </font>
                   </Button>
-                  <Button fx:id="userBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToUserAdmin" style="-fx-background-color: #3D4956;" text="Benutzer" textFill="WHITE">
+                  <Button fx:id="userBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToUserAdmin" style="-fx-background-color: #3D4956;" text="Benutzer" textFill="WHITE">
                         <VBox.margin>
                             <Insets top="20.0" />
                         </VBox.margin>
@@ -83,13 +85,14 @@
                   </Button>
 
             </VBox>
-            <VBox prefHeight="727.0" prefWidth="710.0" style="-fx-background-color: #f0f0f8;">
+            <VBox style="-fx-background-color: #f0f0f8;" stylesheets="@css/MainPagesStyle.css" HBox.hgrow="ALWAYS">
 
-                  <HBox alignment="CENTER" prefHeight="54.0" prefWidth="389.0">
+                  <HBox alignment="CENTER" prefHeight="54.0" prefWidth="389.0" spacing="5.0">
+            <Label prefWidth="100.0" />
 
-                      <ChoiceBox fx:id="choiceBox" nodeOrientation="LEFT_TO_RIGHT" onAction="#fillingIn" prefWidth="150.0" style="-fx-background-color: #92979f;">
+                      <ChoiceBox fx:id="choiceBox" nodeOrientation="LEFT_TO_RIGHT" onAction="#fillingIn" prefWidth="210.0" style="-fx-background-color: #92979f; -fx-font-size: 14;">
                <HBox.margin>
-                  <Insets bottom="5.0" left="100.0" right="10.0" />
+                  <Insets bottom="5.0" />
                </HBox.margin></ChoiceBox>
                  </HBox>
                   <HBox alignment="CENTER" spacing="5.0">
@@ -102,10 +105,13 @@
                   <Font name="Hiragino Sans W1" size="15.0" />
                </font>
                         </Label>
-                        <TextField fx:id="idTf" disable="true" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="idTf" disable="true" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="5.0" />
                            </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
                         </TextField>
 
                      <VBox.margin>
@@ -122,10 +128,13 @@
                   <Font name="Hiragino Sans W1" size="15.0" />
                </font>
                         </Label>
-                        <TextField fx:id="citTf" disable="true" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="citTf" disable="true" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
                         </TextField>
 
                      <VBox.margin>
@@ -142,10 +151,13 @@
                   <Font name="Hiragino Sans W1" size="15.0" />
                </font>
                         </Label>
-                        <TextField fx:id="attribut1Tf" disable="true" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="attribut1Tf" disable="true" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
                         </TextField>
 
                      <VBox.margin>
@@ -158,11 +170,17 @@
                         <HBox.margin>
                             <Insets />
                         </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
                     </Label>
-                    <TextField fx:id="attribut2Tf" disable="true" style="-fx-background-color: #c4c4cc;">
+                    <TextField fx:id="attribut2Tf" disable="true" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
                         <HBox.margin>
                             <Insets bottom="5.0" top="5.0" />
                         </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
                     </TextField>
 
                     <VBox.margin>
@@ -170,12 +188,18 @@
                     </VBox.margin>
                 </HBox>
                   <HBox alignment="CENTER" spacing="5.0">
-            <Label prefWidth="100.0" text=" " />
+            <Label prefWidth="100.0" text=" ">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
 
-                        <TextField fx:id="attribut3Tf" disable="true" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="attribut3Tf" disable="true" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
                         </TextField>
             <VBox.margin>
                <Insets />
@@ -183,67 +207,103 @@
 
                   </HBox>
                   <HBox alignment="CENTER" spacing="5.0">
-            <Label prefWidth="100.0" text=" " />
+            <Label prefWidth="100.0" text=" ">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
 
-                        <TextField fx:id="attribut4Tf" disable="true" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="attribut4Tf" disable="true" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
                         </TextField>
 
                   </HBox>
                   <HBox alignment="CENTER" spacing="5.0">
-            <Label prefWidth="100.0" />
+            <Label prefWidth="100.0">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
 
-                        <TextField fx:id="attribut5Tf" disable="true" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="attribut5Tf" disable="true" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
                         </TextField>
 
                   </HBox>
                   <HBox alignment="CENTER" spacing="5.0">
-            <Label prefWidth="100.0" />
+            <Label prefWidth="100.0">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
 
 
-                        <TextField fx:id="attribut6Tf" disable="true" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="attribut6Tf" disable="true" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
                         </TextField>
 
                   </HBox>
                   <HBox alignment="CENTER" spacing="5.0">
-            <Label prefWidth="100.0" />
+            <Label prefWidth="100.0">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
 
 
-                        <TextField fx:id="attribut7Tf" disable="true" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="attribut7Tf" disable="true" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
                         </TextField>
 
                   </HBox>
                   <HBox alignment="CENTER" spacing="5.0">
-            <Label prefWidth="100.0" />
+            <Label prefWidth="100.0">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
 
 
 
-                        <TextField fx:id="attribut8Tf" disable="true" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="attribut8Tf" disable="true" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="15.0" top="5.0" />
                            </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
                         </TextField>
 
                   </HBox>
          <HBox alignment="CENTER" prefHeight="47.0" prefWidth="396.0">
             <children>
-               <Label fx:id="numberCIRLbl" prefHeight="17.0" text="Anzahl CIR: ">
+               <Label fx:id="numberCIRLbl" prefWidth="100.0" text="Anzahl CIR: ">
                   <font>
                      <Font name="Hiragino Sans W1" size="15.0" />
                   </font></Label>
-               <TextField fx:id="numberCIRTf" alignment="BOTTOM_RIGHT" editable="false" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: #92979f;" />
+               <TextField fx:id="numberCIRTf" alignment="BOTTOM_RIGHT" editable="false" prefWidth="100.0" style="-fx-background-color: #92979f;">
+                  <font>
+                     <Font size="14.0" />
+                  </font></TextField>
             </children>
+            <padding>
+               <Insets right="103.0" />
+            </padding>
          </HBox>
                 <HBox alignment="CENTER" prefHeight="47.0" prefWidth="396.0" spacing="5.0">
             <children>
@@ -251,14 +311,14 @@
                   <graphic>
                      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                         <image>
-                           <Image url="@icons/loeschen.png" />
+                           <Image url="@icons/datei-loeschen.png" />
                         </image>
                      </ImageView>
                   </graphic>
                   <font>
                      <Font name="Hiragino Sans W1" size="15.0" />
                   </font></Button>
-               <Button fx:id="citaddBtn" mnemonicParsing="false" onAction="#swapToCITAdd" style="-fx-background-color: #92979f;" text="CIT erstellen" textFill="WHITE">
+               <Button fx:id="citaddBtn" mnemonicParsing="false" onAction="#swapToCITAdd" style="-fx-background-color: #92979f;" text="CIT" textFill="WHITE">
                   <graphic>
                      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                         <image>
@@ -272,9 +332,12 @@
             </children>
             <VBox.margin>
                <Insets />
-            </VBox.margin></HBox>
+            </VBox.margin>
+            <padding>
+               <Insets left="110.0" />
+            </padding></HBox>
          <padding>
-            <Insets bottom="10.0" left="20.0" right="20.0" />
+            <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
          </padding>
             </VBox>
 
