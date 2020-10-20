@@ -103,7 +103,7 @@
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/benutzer-bearbeitenS.png" />
+                              <Image url="@icons/benutzer-bearbeiten.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>
@@ -129,7 +129,7 @@
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/passwortS.png" />
+                              <Image url="@icons/passwort.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>

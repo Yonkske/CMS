@@ -151,7 +151,7 @@
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/speichernS.png" />
+                              <Image url="@icons/speichern.png" />
                            </image></ImageView>
                      </graphic>
                      <HBox.margin>
@@ -161,7 +161,7 @@
                      <graphic>
                         <ImageView fitHeight="15.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/abbrechenS.png" />
+                              <Image url="@icons/abbrechen.png" />
                            </image></ImageView>
                      </graphic>
                      <HBox.margin>
