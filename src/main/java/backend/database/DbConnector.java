@@ -108,12 +108,24 @@ public class DbConnector {
      *
      * @throws SQLException
      */
-    private void insertFirstUser() throws SQLException{
+    private void insertFirstUser() throws SQLException {
         String query = "INSERT INTO USER "
                 + "SELECT 'admin', 'f3BZyl1b+cGrUn+HPjvPfkZcBRCfj0VoocwLEUbB4ZaTyEfyw2ppAOxQP05f64tW', false, true, 'Strator', 'Admini'"
                 + "WHERE NOT EXISTS (SELECT * FROM USER)";
 
         stmt.execute(query);
+    }
+
+    /**
+     * Closes the database connection if it is still open.
+     */
+    public static void closeConnection() {
+        try {
+            stmt.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -5,28 +5,35 @@ anchorPane {
     -fx-text-fill: black;
 }
 
-TextField, ChoiceBox{
+TextField, ChoiceBox, PasswordField{
     -fx-background-color: #c4c4cc;
     -fx-font-size: 14;
     -fx-text-fill: black;
 }
 Button {
     -fx-background-color: #3D4956;
+    -fx-font-family: AppleGothic Regular;
     -fx-font-size: 12;
     -fx-text-fill: white;
 }
 Button:hover {
     -fx-background-color: #313c48;
+    -fx-text-fill: #e1a6ad;
     -fx-scale-y: 1;
 }
-
-Button#yesBtn, Button#noBtn {
-    -fx-background-color: #ecd5dc;
-    -fx-font-family: AppleGothic Regular;
-    -fx-font-size: 12;
-    -fx-text-fill: white;
+ChoiceBox .context-menu{
+    -fx-background-color: #c4c4cc;
+    -fx-font-family: "Harlow Solid Italic";
+    -fx-font-size: 14;
+    -fx-text-fill: black;
+    -fx-pref-width: 210;
 }
-Button#yesBtn:hover, Button#noBtn:hover {
-    -fx-background-color: #e1a6ad;
-    -fx-scale-y: 1;
+ChoiceBox .menu-item:focused {
+    -fx-text-fill: #e1a6ad;
+}
+ChoiceBox .menu-item > .label {
+    -fx-text-fill: black;
+}
+ChoiceBox .menu-item:focused > .label {
+    -fx-text-fill: #e1a6ad;
 }

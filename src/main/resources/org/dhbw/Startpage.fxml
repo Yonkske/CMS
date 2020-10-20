@@ -92,7 +92,7 @@
                      <children>
                         <ImageView fitHeight="31.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-colour: #c4c4cc;">
                            <image>
-                              <Image url="@icons/suchen.png" />
+                              <Image url="@icons/suchenS.png" />
                            </image>
                         </ImageView>
                         <TextField fx:id="searchTf" onAction="#setTableWithFilterAndSearch" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
@@ -126,6 +126,8 @@
                                      style="-fx-background-color: #c4c4cc;-fx-font-family: Hiragino Sans W1;"
                                      text="CIR-Bezeichnung"/>
                      </columns>
+                      <TableColumn fx:id="cirNameColumn" editable="false" minWidth="350.0" prefWidth="350.0" style="-fx-background-color: #c4c4cc;-fx-font-family: Hiragino Sans W1;" text="CIR-Bezeichnung" />
+                    </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
                      </columnResizePolicy>

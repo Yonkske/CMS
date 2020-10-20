@@ -111,7 +111,7 @@
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/benutzer-löschen.png" />
+                              <Image url="@icons/benutzer-loeschen.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>

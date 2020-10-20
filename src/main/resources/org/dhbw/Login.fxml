@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.LoginController">
+<?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0"
+            prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="0.0">
+        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="2.0">
             <children>
                 <HBox alignment="CENTER_RIGHT" cache="true" spacing="5.0">
-                    <TextField fx:id="usernameTf" editable="true" prefWidth="250.0" promptText="Benutzername" style="-fx-background-color: #f2f2f2;">
+                    <TextField fx:id="usernameTf" editable="true" prefWidth="250.0" promptText="Benutzername"
+                               style="-fx-background-color: #f0f0f8;">
                         <HBox.margin>
-                            <Insets />
+                            <Insets/>
                         </HBox.margin>
                         <font>
-                            <Font size="14.0" />
+                            <Font size="14.0"/>
                         </font>
-                  <cursor>
-                     <Cursor fx:constant="TEXT" />
-                  </cursor></TextField>
+                        <cursor>
+                            <Cursor fx:constant="TEXT"/>
+                        </cursor>
+                    </TextField>
                     <VBox.margin>
                         <Insets bottom="5.0" />
                     </VBox.margin>
@@ -30,7 +38,7 @@
                     </opaqueInsets>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" cache="true" spacing="5.0">
-                    <PasswordField fx:id="passwordField" onAction="#logIn" prefWidth="250.0" promptText="Passwort" style="-fx-background-color: #fafafa;">
+                    <PasswordField fx:id="passwordField" onAction="#logIn" prefWidth="250.0" promptText="Passwort" style="-fx-background-color: #f0f0f8;">
                         <font>
                             <Font size="14.0" />
                         </font>
@@ -47,11 +55,11 @@
                         <HBox.margin>
                             <Insets />
                         </HBox.margin></Label>
-                    <Button fx:id="loginBtn" alignment="CENTER" mnemonicParsing="false" onAction="#logIn" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #94d0e1;" text="Anmelden">
+                    <Button fx:id="loginBtn" alignment="CENTER" mnemonicParsing="false" onAction="#logIn" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #e1a6ad;" text="Anmelden">
                         <graphic>
                             <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="@icons/anmelden.png" />
+                                    <Image url="@icons/anmeldenS.png" />
                                 </image></ImageView>
                         </graphic></Button>
                     <VBox.margin>
@@ -68,7 +76,7 @@
         </VBox>
       <ImageView fitHeight="170.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="20.0">
          <image>
-            <Image url="@icons/cms%20(3).png" />
+            <Image url="@icons/favicon.png" />
          </image>
       </ImageView>
     </children>

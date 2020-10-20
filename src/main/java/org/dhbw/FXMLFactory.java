@@ -1,6 +1,7 @@
 package org.dhbw;
 
 
+import backend.database.DbConnector;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 
 /**
@@ -23,9 +25,10 @@ public class FXMLFactory extends Application {
         scene = new Scene(loadFXML("Login"));
         stage.setScene(scene);
         stage.setResizable(false);
-        stage.getIcons().add(new Image(App.class.getResourceAsStream("icons/favicon1.jpg")));
+        stage.getIcons().add(new Image(App.class.getResourceAsStream("icons/favicon.png")));
         stage.setTitle("CMS - Configuration Management System");
         stage.show();
+        stage.setOnCloseRequest(windowEvent -> DbConnector.closeConnection());
     }
 
     /**
@@ -79,7 +82,22 @@ public class FXMLFactory extends Application {
      * @throws IOException the exception.
      */
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        FXMLLoader fxmlLoader;
+
+        // Logic that shows an error message instead of the login page if the database is already in use
+        if (fxml.equals("Login")) {
+            try {
+                fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+                fxmlLoader.setController(new LoginController(true));
+            } catch (SQLException e) {
+                fxmlLoader = new FXMLLoader(App.class.getResource("Notification.fxml"));
+                fxmlLoader.setController(new NotificationController("Die Datenbank ist bereits in Verwendung. Bitte schließen" +
+                        " Sie alle laufenenden Instanzen des Programms und starten Sie das Programm neu."));
+            }
+        } else {
+            fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        }
+
         return fxmlLoader.load();
     }
 
