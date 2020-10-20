@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 
@@ -68,7 +67,8 @@ public class CITAddController extends Controller implements Initializable {
      */
     @FXML
     public void fillIn() throws SQLException {
-        if (citTf.getText().length() !=0) {
+
+        if (citTf.getText().length() !=0 && !citTf.getText().matches("^[\\s]+$")) {
             DB_CALLER_CIT.createCit(new Cit(Integer.parseInt(idTf.getText()), citTf.getText(), getAttributeArray()));
             this.close();
         } else {
