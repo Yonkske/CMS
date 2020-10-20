@@ -31,12 +31,12 @@
                </ImageView>
             </graphic>
             <font>
-               <Font name="AppleGothic Regular" size="15.0" />
+               <Font name="Hiragino Sans W1" size="15.0" />
             </font>
             </MenuButton>
             <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" prefHeight="36.0" style="-fx-background-color: #313c48;" text="Logout" textFill="#f5f5f5">
             <font>
-               <Font name="AppleGothic Regular" size="15.0" />
+               <Font name="Hiragino Sans W1" size="15.0" />
             </font></Button>
         </children>
     </HBox>
@@ -49,7 +49,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
             <font>
-               <Font name="AppleGothic Regular" size="15.0" />
+               <Font name="Hiragino Sans W1" size="15.0" />
             </font>
                   </Button>
                   <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToCit" prefWidth="78.0" style="-fx-background-color: #3D4956;" text="CIT" textFill="WHITE">
@@ -57,7 +57,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
             <font>
-               <Font name="AppleGothic Regular" size="15.0" />
+               <Font name="Hiragino Sans W1" size="15.0" />
             </font>
                   </Button>
                   <Button fx:id="statisticBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStatistic" prefWidth="78.0" style="-fx-background-color: #3D4956;" text="Statistik" textFill="WHITE">
@@ -65,7 +65,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
             <font>
-               <Font name="AppleGothic Regular" size="15.0" />
+               <Font name="Hiragino Sans W1" size="15.0" />
             </font>
                   </Button>
                   <Button fx:id="userBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToUserAdmin" style="-fx-background-color: #3D4956;" text="Benutzer" textFill="WHITE">
@@ -73,7 +73,7 @@
                             <Insets top="20.0" />
                         </VBox.margin>
             <font>
-               <Font name="AppleGothic Regular" size="15.0" />
+               <Font name="Hiragino Sans W1" size="15.0" />
             </font>
                   </Button>
 
@@ -82,7 +82,7 @@
 
                   <HBox alignment="CENTER" prefHeight="54.0" prefWidth="389.0">
 
-                      <ChoiceBox fx:id="choiceBox" nodeOrientation="LEFT_TO_RIGHT" onAction="#fillingIn" prefWidth="150.0" style="-fx-background-color: #e1a6ad;">
+                      <ChoiceBox fx:id="choiceBox" nodeOrientation="LEFT_TO_RIGHT" onAction="#fillingIn" prefWidth="150.0" style="-fx-background-color: #92979f;">
                <HBox.margin>
                   <Insets bottom="5.0" left="100.0" right="10.0" />
                </HBox.margin></ChoiceBox>
@@ -94,7 +94,7 @@
                               <Insets />
                            </HBox.margin>
                <font>
-                  <Font name="AppleGothic Regular" size="15.0" />
+                  <Font name="Hiragino Sans W1" size="15.0" />
                </font>
                         </Label>
                         <TextField fx:id="idTf" disable="true" style="-fx-background-color: #c4c4cc;">
@@ -114,7 +114,7 @@
                               <Insets />
                            </HBox.margin>
                <font>
-                  <Font name="AppleGothic Regular" size="15.0" />
+                  <Font name="Hiragino Sans W1" size="15.0" />
                </font>
                         </Label>
                         <TextField fx:id="citTf" disable="true" style="-fx-background-color: #c4c4cc;">
@@ -134,7 +134,7 @@
                               <Insets />
                            </HBox.margin>
                <font>
-                  <Font name="AppleGothic Regular" size="15.0" />
+                  <Font name="Hiragino Sans W1" size="15.0" />
                </font>
                         </Label>
                         <TextField fx:id="attribut1Tf" disable="true" style="-fx-background-color: #c4c4cc;">
@@ -235,14 +235,14 @@
             <children>
                <Label fx:id="numberCIRLbl" prefHeight="17.0" text="Anzahl CIR: ">
                   <font>
-                     <Font name="AppleGothic Regular" size="15.0" />
+                     <Font name="Hiragino Sans W1" size="15.0" />
                   </font></Label>
-               <TextField fx:id="numberCIRTf" alignment="BOTTOM_RIGHT" editable="false" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: #e1a6ad;" />
+               <TextField fx:id="numberCIRTf" alignment="BOTTOM_RIGHT" editable="false" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: #92979f;" />
             </children>
          </HBox>
                 <HBox alignment="CENTER" prefHeight="47.0" prefWidth="396.0" spacing="5.0">
             <children>
-               <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#openDeleteCitPopup" style="-fx-background-color: #e1a6ad;" text="CIT" textFill="WHITE">
+               <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#openDeleteCitPopup" style="-fx-background-color: #92979f;" text="CIT" textFill="WHITE">
                   <graphic>
                      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                         <image>
@@ -251,9 +251,9 @@
                      </ImageView>
                   </graphic>
                   <font>
-                     <Font name="AppleGothic Regular" size="15.0" />
+                     <Font name="Hiragino Sans W1" size="15.0" />
                   </font></Button>
-               <Button fx:id="citaddBtn" mnemonicParsing="false" onAction="#swapToCITAdd" style="-fx-background-color: #e1a6ad;" text="CIT erstellen" textFill="WHITE">
+               <Button fx:id="citaddBtn" mnemonicParsing="false" onAction="#swapToCITAdd" style="-fx-background-color: #92979f;" text="CIT erstellen" textFill="WHITE">
                   <graphic>
                      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                         <image>
@@ -262,7 +262,7 @@
                      </ImageView>
                   </graphic>
                   <font>
-                     <Font name="AppleGothic Regular" size="15.0" />
+                     <Font name="Hiragino Sans W1" size="15.0" />
                   </font></Button>
             </children>
             <VBox.margin>
