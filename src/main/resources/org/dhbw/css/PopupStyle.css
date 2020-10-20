@@ -18,6 +18,22 @@ Button {
 }
 Button:hover {
     -fx-background-color: #313c48;
-    -fx-text-fill:  #e1a6ad;
+    -fx-text-fill: #e1a6ad;
     -fx-scale-y: 1;
+}
+ChoiceBox .context-menu{
+    -fx-background-color: #c4c4cc;
+    -fx-font-family: "Harlow Solid Italic";
+    -fx-font-size: 14;
+    -fx-text-fill: black;
+    -fx-pref-width: 210;
+}
+ChoiceBox .menu-item:focused {
+    -fx-text-fill: #e1a6ad;
+}
+ChoiceBox .menu-item > .label {
+    -fx-text-fill: black;
+}
+ChoiceBox .menu-item:focused > .label {
+    -fx-text-fill: #e1a6ad;
 }

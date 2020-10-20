@@ -1,6 +1,6 @@
 Button:hover {
     -fx-background-color: #303a44;
-    -fx-translate-y: 2;
+    -fx-translate-y: 1;
     -fx-text-fill:  #e1a6ad;
 }
 
@@ -9,10 +9,73 @@ Button {
 }
 
 Button#logoutBtn:hover {
-    -fx-background-color: red;
+    -fx-scale-y: 1;
 }
-
-VBox {
-    -fx-background-color: red;
+ChoiceBox .context-menu{
+    -fx-background-color: #c4c4cc;
+    -fx-font-family: "Harlow Solid Italic";
+    -fx-font-size: 14;
+    -fx-text-fill: black;
+}
+ChoiceBox .menu-item:focused {
+    -fx-text-fill: #e1a6ad;
+}
+ChoiceBox .menu-item > .label {
+    -fx-text-fill: black;
+}
+ChoiceBox .menu-item:focused > .label {
+    -fx-text-fill: #e1a6ad;
+}
+TableView {
+    -fx-background-color: #c4c4cc;
+}
+TableView .column-header-background {
+    -fx-background-color: #c4c4cc;
+}
+TableView .column-header-background .label {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+}
+TableView .column-header {
+    -fx-background-color: transparent;
+}
+TableView .table-cell {
+    -fx-text-fill: black;
+}
+TableView .list-cell {
+    -fx-background: #c4c4cc;
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-base-color;
+}
+TableView .combo-box .list-view {
+    -fx-background-color: #c4c4cc;
+    -fx-font-family: "Harlow Solid Italic";
+    -fx-text-fill: black;
+    -fx-font-size: 15;
+}
+TableView .combo-box-popup .list-view {
+    -fx-background-color: #c4c4cc;
+}
+TableView .combo-box-popup .list-view .list-cell{
+    -fx-background-color: #c4c4cc;
+}
+TableView .combo-box-popup .list-view .list-cell:filled:selected,
+TableView .combo-box-popup .list-view .list-cell:filled:selected:hover {
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-selection-bar;
+    -fx-text-fill: -fx-selection-bar;
+}
+TableView .combo-box-popup .list-view .list-cell:filled:hover {
+    -fx-text-fill: -fx-text-inner-color;
+    -fx-background-color: #c4c4cc;
+}
+TableView .combo-box-base {
+    -fx-padding: 1;
+}
+TableView .combo-box-base:hover {
+    -fx-color: -fx-hover-base;
+}
+TableView .combo-box-base:showing {
+    -fx-color: -fx-pressed-base;
 }
 
