@@ -81,6 +81,7 @@ TableView .combo-box-base:showing {
     -fx-color: -fx-pressed-base;
 }
 
+
 .tableview .column-header,.tableview .filler{
     -fx-background-color: #c4c4cc;
 }
