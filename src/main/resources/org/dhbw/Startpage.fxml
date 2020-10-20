@@ -2,13 +2,14 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-
-<VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.StartpageController">
+<?import javafx.scene.text.*?>
+<VBox alignment="TOP_RIGHT" stylesheets="@css/MainPagesStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.StartpageController">
    <children>
-      <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="TOP_RIGHT" style="-fx-background-color: #313c48;">
          <children>
-            <MenuButton fx:id="adminUserMB" mnemonicParsing="false" text="Vorname, Nachname">
+            <MenuButton fx:id="adminUserMB" mnemonicParsing="false" style="-fx-background-color: #313c48;" text="Vorname, Nachname" textFill="WHITE">
                <items>
                   <MenuItem mnemonicParsing="false">
                      <graphic>
@@ -21,112 +22,190 @@
                      </graphic>
                   </MenuItem>
                </items>
+               <graphic>
+                  <ImageView fitHeight="26.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/benutzer.png" />
+                     </image></ImageView>
+               </graphic>
+               <font>
+                  <Font name="AppleGothic Regular" size="15.0" />
+               </font>
             </MenuButton>
-            <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" text="Logout" />
+            <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" prefHeight="36.0" prefWidth="70.0" text="Logout" textFill="WHITE">
+               <font>
+                  <Font name="AppleGothic Regular" size="15.0" />
+               </font></Button>
          </children>
       </HBox>
-      <HBox prefHeight="389.0" prefWidth="600.0">
+      <HBox VBox.vgrow="ALWAYS">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+            <VBox alignment="TOP_CENTER" prefHeight="519.0" prefWidth="85.0" style="-fx-background-color: #3D4956;">
                <children>
-                  <Button fx:id="startpageBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStartpage" text="Startseite">
+                  <Button fx:id="startpageBtn" mnemonicParsing="false" onAction="#swapToStartpage" prefWidth="85.0" text="Startseite" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="AppleGothic Regular" size="15.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="citBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToCit" text="CIT">
+                  <Button fx:id="citBtn" mnemonicParsing="false" onAction="#swapToCit" prefWidth="85.0" text="CIT" textFill="#fcfcfc">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="AppleGothic Regular" size="15.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="statisticsBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToStatistic" text="Statistik">
+                  <Button fx:id="statisticsBtn" mnemonicParsing="false" onAction="#swapToStatistic" prefWidth="85.0" text="Statistik" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="AppleGothic Regular" size="15.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="userBtn" minWidth="65.6" mnemonicParsing="false" onAction="#swapToUserAdmin" text="Benutzer">
+                  <Button fx:id="userBtn" mnemonicParsing="false" onAction="#swapToUserAdmin" prefWidth="85.0" text="Benutzer" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="20.0" />
-                     </VBox.margin></Button>
+                     </VBox.margin>
+                     <font>
+                        <Font name="AppleGothic Regular" size="15.0" />
+                     </font></Button>
                </children>
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="383.0" prefWidth="274.0">
+            <VBox style="-fx-background-color: #f0f0f8;" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox alignment="BOTTOM_LEFT" prefHeight="33.0" prefWidth="274.0">
+                  <HBox alignment="BOTTOM_LEFT" prefHeight="33.0" prefWidth="287.0" style="-fx-background-color: #f0f0f8;">
                      <children>
-                        <TextField fx:id="searchTf" onAction="#setTableWithFilterAndSearch">
+                        <ImageView fitHeight="31.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-colour: #c4c4cc;">
+                           <image>
+                              <Image url="@icons/suchen.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="searchTf" onAction="#setTableWithFilterAndSearch" prefHeight="31.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets top="20.0" />
                            </HBox.margin></TextField>
-                        <Button fx:id="deleteSearchBtn" mnemonicParsing="false" onAction="#emptySearchTf" text="X" />
-                        <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#setTableWithFilterAndSearch" text="Suchen">
+                        <Button fx:id="deleteSearchBtn" mnemonicParsing="false" onAction="#emptySearchTf" prefHeight="32.0" prefWidth="29.0" style="-fx-background-color: #c4c4cc;" text="X" />
+                        <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#setTableWithFilterAndSearch" prefHeight="27.0" prefWidth="104.0" style="-fx-background-color: #3D4956;" text="Suchen" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="15.0" top="20.0" />
-                           </HBox.margin></Button>
+                           </HBox.margin>
+                           <font>
+                              <Font name="AppleGothic Regular" size="15.0" />
+                           </font></Button>
                      </children>
                   </HBox>
-                  <TableView fx:id="cirTable" onMouseClicked="#openCirView" prefHeight="276.0" prefWidth="270.0">
+                  <TableView fx:id="cirTable" maxWidth="-Infinity" minHeight="200.0" minWidth="-Infinity" onMouseClicked="#openCirView" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: #f0f0f8; -fx-border-color: #d8dce4; -fx-font-size: 14; -fx-font-family: AppleGothic;">
                     <columns>
-                      <TableColumn fx:id="citColumn" editable="false" prefWidth="135.0" text="CIT">
+                      <TableColumn fx:id="citColumn" editable="false" minWidth="350.0" prefWidth="350.0" style="-fx-background-color: #c4c4cc;" text="CIT">
                            <graphic>
-                              <ComboBox fx:id="filterCitCb" onAction="#setTableWithFilterAndSearch" prefHeight="25.0" prefWidth="135.0" promptText="CIT" />
+                              <ComboBox fx:id="filterCitCb" onAction="#setTableWithFilterAndSearch" prefHeight="32.0" prefWidth="350.0" promptText="CIT" style="-fx-background-color: #c4c4cc; -fx-font-family: AppleGothic; -fx-font-size: 15;" />
                            </graphic>
                         </TableColumn>
-                      <TableColumn fx:id="cirNameColumn" editable="false" prefWidth="135.0" text="CIR-Bezeichnung" />
+                      <TableColumn fx:id="cirNameColumn" editable="false" minWidth="350.0" prefWidth="350.0" style="-fx-background-color: #c4c4cc;" text="CIR-Bezeichnung" />
                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
                   </TableView>
-               </children>
-            </VBox>
-            <VBox prefHeight="383.0" prefWidth="228.0">
-               <children>
-                  <HBox alignment="TOP_RIGHT" prefHeight="27.0" prefWidth="228.0">
+                  <HBox prefHeight="51.0" prefWidth="274.0">
                      <children>
-                        <Button fx:id="citEditBtn" mnemonicParsing="false" onAction="#openAddCit" text=" CIT erstellen">
+                        <Button fx:id="citEditBtn" mnemonicParsing="false" onAction="#openAddCit" style="-fx-background-color: #e1a6ad;" text="CIT" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/datei-hinzufuegen.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="AppleGothic Regular" size="15.0" />
+                           </font>
                         </Button>
-                        <Button fx:id="citDeleteBtn" mnemonicParsing="false" onAction="#openDeleteCitPopup" text="CIT löschen">
+                        <Button fx:id="citDeleteBtn" mnemonicParsing="false" onAction="#openDeleteCitPopup" style="-fx-background-color: #e1a6ad;" text="CIT" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/datei-loeschen.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="AppleGothic Regular" size="15.0" />
+                           </font>
                         </Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="272.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox alignment="TOP_RIGHT" prefHeight="32.0" prefWidth="228.0">
-                     <children>
-                        <Button fx:id="cirAddBtn" mnemonicParsing="false" onAction="#openAddCir" text="CIR erstellen">
+                        <Button fx:id="cirAddBtn" mnemonicParsing="false" onAction="#openAddCir" prefHeight="34.0" prefWidth="75.0" style="-fx-background-color: #ecd5dc;" text="CIR" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/datei-hinzufuegen.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="AppleGothic Regular" size="15.0" />
+                           </font>
                         </Button>
-                        <Button fx:id="cirEditBtn" mnemonicParsing="false" onAction="#openEditCir" text="CIR bearbeiten">
+                        <Button fx:id="cirEditBtn" mnemonicParsing="false" onAction="#openEditCir" style="-fx-background-color: #ecd5dc;" text="CIR" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/datei-bearbeiten.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="AppleGothic Regular" size="15.0" />
+                           </font>
                         </Button>
-                        <Button fx:id="cirDeleteBtn" mnemonicParsing="false" onAction="#openDeleteCirPopup" text="CIR löschen">
+                        <Button fx:id="cirDeleteBtn" mnemonicParsing="false" onAction="#openDeleteCirPopup" style="-fx-background-color: #ecd5dc;" text="CIR" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/datei-loeschen.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="AppleGothic Regular" size="15.0" />
+                           </font>
                         </Button>
                      </children>
                      <VBox.margin>
-                        <Insets top="6.0" />
+                        <Insets bottom="5.0" top="10.0" />
                      </VBox.margin>
                   </HBox>
                </children>
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
+               <padding>
+                  <Insets left="40.0" right="40.0" />
+               </padding>
             </VBox>
          </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+
       </HBox>
    </children>
 </VBox>

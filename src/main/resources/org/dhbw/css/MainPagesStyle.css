@@ -1,0 +1,18 @@
+Button:hover {
+    -fx-background-color: #303a44;
+    -fx-translate-y: 2;
+    -fx-text-fill:  #e1a6ad;
+}
+
+Button {
+    -fx-background-color:  #3D4956;
+}
+
+Button#logoutBtn:hover {
+    -fx-background-color: red;
+}
+
+VBox {
+    -fx-background-color: red;
+}
+
