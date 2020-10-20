@@ -10,7 +10,7 @@
 
 <VBox alignment="TOP_RIGHT" minHeight="575.0" minWidth="575.0" stylesheets="@css/MainPagesStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.StatisticController">
    <children>
-      <HBox alignment="TOP_RIGHT" minHeight="38.0" style="-fx-background-color: #313c48;">
+      <HBox alignment="TOP_RIGHT" prefHeight="38.0" style="-fx-background-color: #313c48;">
          <children>
             <MenuButton fx:id="adminUserMB" mnemonicParsing="false" style="-fx-background-color: #313c48;" text="Vorname, Nachname" textFill="WHITE">
                <items>
@@ -52,7 +52,7 @@
       </HBox>
       <HBox minWidth="85.0" VBox.vgrow="ALWAYS">
          <children>
-            <VBox alignment="TOP_CENTER" maxWidth="150.0" minWidth="100.0" style="-fx-background-color: #3D4956;" HBox.hgrow="ALWAYS">
+            <VBox alignment="TOP_CENTER" maxWidth="150.0" minWidth="100.0" style="-fx-background-color: #3D4956;">
                <children>
                   <Button fx:id="startpageBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToStartpage" style="-fx-background-color: #3D4956;" text="Startseite" textFill="WHITE">
                      <VBox.margin>

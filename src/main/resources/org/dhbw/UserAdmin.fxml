@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minWidth="450.0" style="-fx-background-color: #f0f0f8;" stylesheets="@css/MainPagesStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.UserAdminController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-background-color: #f0f0f8;" stylesheets="@css/MainPagesStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.UserAdminController">
     <children>
-        <HBox alignment="CENTER_RIGHT" minHeight="38.0" style="-fx-background-color: #313c48;">
+        <HBox alignment="CENTER_RIGHT" prefHeight="38.0" style="-fx-background-color: #313c48;">
             <children>
                 <MenuButton fx:id="adminUserMB" mnemonicParsing="false" style="-fx-background-color: #313c48;" text="Vorname, Nachname" textFill="WHITE">
                     <items>
@@ -50,7 +50,7 @@
         </HBox>
         <HBox>
             <children>
-                <VBox alignment="TOP_CENTER" maxWidth="150.0" minWidth="100.0" prefHeight="833.0" style="-fx-background-color: #3D4956;" HBox.hgrow="ALWAYS">
+                <VBox alignment="TOP_CENTER" maxWidth="150.0" minWidth="100.0" style="-fx-background-color: #3D4956;">
                     <children>
                         <Button fx:id="startpagerBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToStartpage" text="Startseite" textFill="WHITE">
                             <VBox.margin>
