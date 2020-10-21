@@ -109,12 +109,12 @@
                         </ImageView>
                         <TextField fx:id="searchTf" onAction="#setTableWithFilterAndSearch" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
-                              <Insets top="20.0" />
+                              <Insets />
                            </HBox.margin>
                            <font>
                               <Font size="14.0" />
                            </font></TextField>
-                        <Button fx:id="deleteSearchBtn" mnemonicParsing="false" onAction="#emptySearchTf" prefHeight="32.0" prefWidth="29.0" style="-fx-background-color: #c4c4cc;">
+                        <Button fx:id="deleteSearchBtn" mnemonicParsing="false" onAction="#emptySearchTf" prefHeight="32.0" style="-fx-background-color: #c4c4cc;">
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -122,9 +122,9 @@
                                  </image>
                               </ImageView>
                            </graphic></Button>
-                        <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#setTableWithFilterAndSearch" prefHeight="27.0" prefWidth="104.0" style="-fx-background-color: #3D4956;" text="Suchen" textFill="WHITE">
+                        <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#setTableWithFilterAndSearch" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #3D4956;" text="Suchen" textFill="WHITE">
                            <HBox.margin>
-                              <Insets left="15.0" top="20.0" />
+                              <Insets left="10.0" />
                            </HBox.margin>
                            <font>
                               <Font name="Hiragino Sans W1" size="15.0" />
@@ -147,11 +147,56 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </TableView>
-                  <HBox>
+                  <HBox spacing="10.0">
                      <children>
+                        <Button fx:id="showCirBtn" disable="true" mnemonicParsing="false" onAction="#showCir" style="-fx-background-color: #92979f;" text="CIR anzeigen" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/datei.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="AppleGothic Regular" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="cirAddBtn" mnemonicParsing="false" onAction="#openAddCir" style="-fx-background-color: #92979f;" text="CIR hinzufügen" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/datei-hinzufuegen.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="AppleGothic Regular" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="cirDeleteBtn" disable="true" mnemonicParsing="false" onAction="#openDeleteCirPopup" style="-fx-background-color: #92979f;" text="CIR löschen" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icons/datei-loeschen.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="AppleGothic Regular" size="15.0" />
+                           </font>
+                        </Button>
                         <Button fx:id="citAddBtn" mnemonicParsing="false" onAction="#openAddCit" style="-fx-background-color: #92979f;" text="CIT hinzufügen" textFill="WHITE">
                            <HBox.margin>
-                              <Insets right="5.0" />
+                              <Insets />
                            </HBox.margin>
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
@@ -166,52 +211,7 @@
                         </Button>
                         <Button fx:id="citDeleteBtn" disable="true" mnemonicParsing="false" onAction="#openDeleteCitPopup" style="-fx-background-color: #92979f;" text="CIT löschen" textFill="WHITE">
                            <HBox.margin>
-                              <Insets right="10.0" />
-                           </HBox.margin>
-                           <graphic>
-                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/datei-loeschen.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font name="AppleGothic Regular" size="15.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="cirAddBtn" mnemonicParsing="false" onAction="#openAddCir" style="-fx-background-color: #92979f;" text="CIR hinzufügen" textFill="WHITE">
-                           <HBox.margin>
-                              <Insets right="5.0" />
-                           </HBox.margin>
-                           <graphic>
-                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/datei-hinzufuegen.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font name="AppleGothic Regular" size="15.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="showCirBtn" disable="true" mnemonicParsing="false" onAction="#showCir" style="-fx-background-color: #92979f;" text="CIR anzeigen" textFill="WHITE">
-                           <HBox.margin>
-                              <Insets right="5.0" />
-                           </HBox.margin>
-                           <graphic>
-                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/datei.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font name="AppleGothic Regular" size="15.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="cirDeleteBtn" disable="true" mnemonicParsing="false" onAction="#openDeleteCirPopup" style="-fx-background-color: #92979f;" text="CIR löschen" textFill="WHITE">
-                           <HBox.margin>
-                              <Insets right="10.0" />
+                              <Insets />
                            </HBox.margin>
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
