@@ -40,7 +40,23 @@ public class CIREditController extends MainCirPopupsController {
         super.initialize(url, resourceBundle);
     }
 
+    /**
+     * updates an cir
+     */
+    @FXML
+    public void updateCir() {
+        try {
+            updateStatus();
+            loadViewCir();
+            //Fixme: Error Handling
+        } catch (SQLException | IOException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 
+    /**
+     * cancles the dialog.
+     */
     @FXML
     public void cancel() {
         try {
