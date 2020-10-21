@@ -15,11 +15,11 @@ import java.util.ResourceBundle;
 
 public class CIRViewController extends MainCirPopupsController {
     @FXML
-    public Button deleteBtn;
+    private Button deleteBtn;
     @FXML
-    public Button editCirBtn;
+    private Button editCirBtn;
     @FXML
-    public Button cancelBtn;
+    private Button cancelBtn;
 
     /**
      * Contrktor of the Method CIRViewController
