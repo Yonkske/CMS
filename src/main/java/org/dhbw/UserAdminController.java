@@ -30,7 +30,7 @@ public class UserAdminController extends MainPagesController {
     @FXML
     private Button deleteBtn;
     @FXML
-    private Button editBtn;
+    private Button showUserBtn;
 
     @FXML
     private TableView<User> userTable;
@@ -108,20 +108,6 @@ public class UserAdminController extends MainPagesController {
     }
 
     /**
-     * This method opens a popup where you can edit the selected user.
-     *
-     * @throws IOException - IOException
-     */
-    public void editUser() throws IOException {
-        // TODO: Test der Methode
-        if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
-            openPopup(new UserEditAdminController(userTable.getSelectionModel().getSelectedItem()),
-                    "UserEditAdmin.fxml", true, false);
-            this.disableButtons();
-        }
-    }
-
-    /**
      * With this method you can delete the selected user.
      * It also opens a popup to secure you do not accidental delete a user.
      *
@@ -182,7 +168,7 @@ public class UserAdminController extends MainPagesController {
      */
     @FXML
     private void disableButtons() {
-        editBtn.setDisable(true);
+        showUserBtn.setDisable(true);
         deleteBtn.setDisable(true);
     }
 
@@ -193,7 +179,7 @@ public class UserAdminController extends MainPagesController {
     public void clickAction(MouseEvent mouseEvent) {
 
         if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
-            editBtn.setDisable(false);
+            showUserBtn.setDisable(false);
             deleteBtn.setDisable(false);
 
             if (userTable.getSelectionModel().getSelectedItem().getUserName().equals("admin")) {
