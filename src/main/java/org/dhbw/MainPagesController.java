@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.dhbw.interfaces.IRefreshable;
 
@@ -150,7 +151,9 @@ public abstract class MainPagesController extends Controller implements IRefresh
         Scene scene = new Scene(root);
         stage.setScene(scene);
         scene.getWindow().sizeToScene();
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
+
     }
 
 }

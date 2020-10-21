@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -151,6 +152,7 @@ public class UserAdminController extends MainPagesController {
         stage.setTitle("CMS - Configuration Management System");
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
         scene.getWindow().sizeToScene();
         stage.show();
 
