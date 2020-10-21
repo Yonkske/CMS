@@ -12,9 +12,9 @@
    <children>
       <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" style="-fx-background-color: #313c48;">
          <children>
-            <MenuButton fx:id="adminUserMB" mnemonicParsing="false" style="-fx-background-color: #313c48;" text="Vorname, Nachname" textFill="WHITE">
+            <MenuButton fx:id="adminUserMB" minWidth="-Infinity" mnemonicParsing="false" text="Vorname, Nachname" textFill="WHITE">
                <items>
-                  <MenuItem mnemonicParsing="false">
+                  <MenuItem fx:id="itemUser" mnemonicParsing="false">
                      <graphic>
                         <Button fx:id="benutzerDropDownBtn" mnemonicParsing="false" onAction="#openUserInfo" text="Benutzer" />
                      </graphic>
