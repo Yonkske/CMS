@@ -69,10 +69,14 @@ public class CITAddController extends Controller implements Initializable {
     public void fillIn() throws SQLException {
 
         if (citTf.getText().length() !=0 && !citTf.getText().matches("^[\\s]+$")) {
-            DB_CALLER_CIT.createCit(new Cit(Integer.parseInt(idTf.getText()), citTf.getText(), getAttributeArray()));
-            this.close();
+            if (DB_CALLER_CIT.isTypeNameAvailable(citTf.getText())) {
+                DB_CALLER_CIT.createCit(new Cit(Integer.parseInt(idTf.getText()), citTf.getText(), getAttributeArray()));
+                this.close();
+            } else {
+                this.showError("CIT bereits in Verwendung!");
+            }
         } else {
-            this.showError();
+            this.showError("CIT darf nicht leer sein!");
         }
     }
 
@@ -106,15 +110,17 @@ public class CITAddController extends Controller implements Initializable {
     /**
      * closes this stage.
      */
+
     private void close() {
         Stage stClose = (Stage) submitBtn.getScene().getWindow();
         stClose.close();
     }
 
-    /**
+     /**
      * shows an Error.
      */
-    private void showError() {
+    private void showError(String errorMessage) {
+        meldungLbl.setText(errorMessage);
         meldungLbl.setVisible(true);
     }
 }
