@@ -69,6 +69,11 @@ public class CIRAddController extends Controller implements Initializable {
     @FXML
     public Button submitBtn;
 
+    /**
+     * Initializes the Object.
+     * @param url an url
+     * @param resourceBundle an resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {

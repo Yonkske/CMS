@@ -76,6 +76,10 @@ public class CITAddController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * get all attributes of the attributeTextfields into an array.
+     * @return the array
+     */
     private String[] getAttributeArray() {
         String[] sCitArray = new String[7];
         sCitArray[0] = attribut1Tf.getText();
@@ -90,15 +94,26 @@ public class CITAddController extends Controller implements Initializable {
     }
 
 
+    /**
+     * cancels.
+     * @param actionEvent
+     */
     @FXML
     public void cancel(ActionEvent actionEvent) {
         this.close();
     }
+
+    /**
+     * closes this stage.
+     */
     private void close() {
         Stage stClose = (Stage) submitBtn.getScene().getWindow();
         stClose.close();
     }
 
+    /**
+     * shows an Error.
+     */
     private void showError() {
         meldungLbl.setVisible(true);
     }

@@ -30,11 +30,19 @@ public class CIREditController extends MainCirPopupsController {
         super(selectedCir);
     }
 
+    /**
+     * Initializes the Object.
+     * @param url an url
+     * @param resourceBundle an resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
     }
 
+    /**
+     * updates an cir
+     */
     @FXML
     public void updateCir() {
         try {
@@ -46,6 +54,9 @@ public class CIREditController extends MainCirPopupsController {
         }
     }
 
+    /**
+     * cancles the dialog.
+     */
     @FXML
     public void cancel() {
         try {

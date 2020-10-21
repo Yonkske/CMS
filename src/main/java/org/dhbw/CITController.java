@@ -81,7 +81,9 @@ public class CITController extends MainPagesController {
         }
 
     }
-
+    /**
+     * gets Data for the init.
+     */
     private void getData() {
         ObservableList<Cit> list = FXCollections.observableArrayList();
         choiceBox.setItems(list);
@@ -133,14 +135,14 @@ public class CITController extends MainPagesController {
      */
     @FXML
     public void openDeleteCitPopup() throws IOException {
-        // FIXME
-        String PAGE_NAME = "CIT";
         if (Objects.nonNull(choiceBox.getSelectionModel().getSelectedItem())) {
-            openPopup(new NotificationController(choiceBox.getSelectionModel().getSelectedItem(), PAGE_NAME), "Notification.fxml", false);
+            openPopup(new NotificationController(choiceBox.getSelectionModel().getSelectedItem(), "CIT"), "Notification.fxml", false);
         }
     }
 
-
+    /**
+     * From the interface, not needed right now-
+     */
     @Override
     public void refresh() {
         this.getData();

@@ -132,8 +132,5 @@ public class ChangePasswordController extends Controller {
         FXMLFactory.setRoot("Startpage");
     }
 
-    private boolean checkForRegex(String password) {
-        return !password.matches("^[\\s]+$");
-    }
 
 }

@@ -114,7 +114,5 @@ public class PasswordEditAdminController extends Controller {
         meldungLbl.setVisible(true);
     }
 
-    private boolean checkForRegex(String password) {
-        return !password.matches("^[\\s]+$");
-    }
+
 }
