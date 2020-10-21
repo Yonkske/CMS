@@ -111,62 +111,49 @@ ChoiceBox .menu-item:focused > .label {
 /*
     Style for the table on the start page and the user page
  */
+
 TableView {
-    -fx-background-color: #c4c4cc;
-}
-TableView .column-header-background {
-    -fx-background-color: #c4c4cc;
+    -fx-background-color: #f0f0f8;
+    -fx-border-color: #92979f;
 }
 TableView .column-header-background .label {
-    -fx-background-color: transparent;
-    -fx-text-fill: black;
-}
-TableView .column-header {
-    -fx-background-color: transparent;
-}
-TableView .table-cell {
-    -fx-text-fill: black;
-}
-TableView .list-cell {
-    -fx-background: #c4c4cc;
-    -fx-background-color: transparent;
-    -fx-text-fill: -fx-text-base-color;
-}
-TableView .combo-box .list-view {
-    -fx-background-color: #c4c4cc;
-    -fx-font-family: "Harlow Solid Italic";
+    -fx-background-color: #92979f;
     -fx-text-fill: black;
     -fx-font-size: 15;
+    -fx-font-family: "Hiragino Sans W1";
 }
-TableView .combo-box-popup .list-view {
-    -fx-background-color: #c4c4cc;
-}
-TableView .combo-box-popup .list-view .list-cell{
-    -fx-background-color: #c4c4cc;
-}
-TableView .combo-box-popup .list-view .list-cell:filled:selected,
-TableView .combo-box-popup .list-view .list-cell:filled:selected:hover {
-    -fx-background: -fx-accent;
-    -fx-background-color: -fx-selection-bar;
-    -fx-text-fill: -fx-selection-bar;
-}
-TableView .combo-box-popup .list-view .list-cell:filled:hover {
-    -fx-text-fill: -fx-text-inner-color;
-    -fx-background-color: #c4c4cc;
-}
-TableView .combo-box-base {
-    -fx-padding: 1;
-}
-TableView .combo-box-base:hover {
-    -fx-color: -fx-hover-base;
-}
-TableView .combo-box-base:showing {
-    -fx-color: -fx-pressed-base;
-}
-.tableview .column-header,.tableview .filler{
-    -fx-background-color: #c4c4cc;
+TableView .column-header {
+    -fx-background-color: #92979f;
 }
 
 /*
     Style for the ComboBox in the TableView on the start page and the user page
  */
+.combo-box {
+    -fx-background-color: #92979f;
+    -fx-font-size: 15;
+    -fx-font-family: "Hiragino Sans W1";
+}
+.combo-box:hover {
+    -fx-text-fill: white;
+}
+.combo-box-base {
+    -fx-background-color: #92979f;
+}
+.combo-box .list-view {
+    -fx-font-family: "Hiragino Sans W1";
+    -fx-font-size: 14;
+    -fx-background-color: #c4c4cc;
+    -fx-text-fill: black;
+}
+.combo-box .list-view:hover {
+    -fx-text-fill: white;
+    -fx-background-color: #92979f;
+}
+.combo-box-popup .list-view .list-cell{
+    -fx-background-color: #c4c4cc;
+}
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: #92979f;
+    -fx-text-fill: white;
+}
