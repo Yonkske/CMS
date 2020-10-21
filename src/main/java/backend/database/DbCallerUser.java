@@ -96,7 +96,6 @@ public class DbCallerUser extends DbConnector {
             statement.close();
             return true;
         } catch (SQLException updateFailed) {
-            updateFailed.printStackTrace();
             return false;
         }
     }
