@@ -15,11 +15,11 @@ import java.util.ResourceBundle;
 
 public class CIRViewController extends MainCirPopupsController {
     @FXML
-    public Button deleteBtn;
+    private Button deleteBtn;
     @FXML
-    public Button editCirBtn;
+    private Button editCirBtn;
     @FXML
-    public Button cancelBtn;
+    private Button cancelBtn;
 
     /**
      * Contrktor of the Method CIRViewController
@@ -30,11 +30,20 @@ public class CIRViewController extends MainCirPopupsController {
         super(selectedCir);
     }
 
+    /**
+     * Initializes the Object.
+     * @param url an url
+     * @param resourceBundle an resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
     }
 
+    /**
+     *  opens the Edit CIR dialog
+     */
+    @FXML
     public void editCir(){
         try {
             openPopUpCirEdit(cir);
@@ -47,6 +56,10 @@ public class CIRViewController extends MainCirPopupsController {
             e.printStackTrace();
         }
     }
+
+    /**
+     * opens the delete CIR dialog
+     */
     public void deleteCir(){
         try {
             openPopUpNotification(cir);
@@ -56,11 +69,18 @@ public class CIRViewController extends MainCirPopupsController {
             throwables.printStackTrace();
         }
     }
+
+    /**
+     * cancels the stage
+     */
     public void cancel(){
         Stage stClose = (Stage) cancelBtn.getScene().getWindow();
         stClose.close();
     }
 
+    /**
+     * opens the edit dialog
+     */
     /**
      * open the Cir Edit View
      *
@@ -68,10 +88,12 @@ public class CIRViewController extends MainCirPopupsController {
      * @throws IOException - if fxml file isn't found
      */
     private void openPopUpCirEdit(Cir selectedCir) throws IOException {
-        CIREditController CIREditController = new CIREditController(selectedCir);
-        openPopUp(CIREditController, "CIREdit.fxml");
+        openPopUp(new CIREditController(selectedCir), "CIREdit.fxml");
     }
 
+    /**
+     * opens a notification
+     */
     /**
      * Opens the popup to delete the selected cir
      *
@@ -79,10 +101,15 @@ public class CIRViewController extends MainCirPopupsController {
      * @throws IOException - if fxml file isn't found
      */
     private void openPopUpNotification(Cir selectedCir) throws IOException {
-        NotificationController notificationController = new NotificationController(selectedCir, "Startpage");
-        openPopUp(notificationController, "Notification.fxml");
+        openPopUp(new NotificationController(selectedCir, "Startpage"), "Notification.fxml");
     }
 
+    /**
+     * Opens a Popup of a Controller.
+     * @param controller The controller class.
+     * @param fxmlName the fxml name.
+     * @throws IOException - an exception
+     */
     private void openPopUp(Controller controller, String fxmlName) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
         loader.setController(controller);

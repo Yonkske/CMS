@@ -1,30 +1,34 @@
 package org.dhbw;
 
 import backend.usability.User;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class UserEditAdminController extends Controller implements Initializable {
 
     @FXML
-    public TextField surnameTf;
+    private TextField surnameTf;
     @FXML
-    public TextField nameTf;
+    private TextField nameTf;
     @FXML
-    public TextField usernameTf;
+    private TextField usernameTf;
+    @FXML
+    private Label meldungLbl;
 
     @FXML
-    public ChoiceBox<String> authorizationChoiceBox;
+    private ChoiceBox<String> authorizationChoiceBox;
     @FXML
-    public Button submitBtn;
+    private Button submitBtn;
     @FXML
-    public Button cancelBtn;
+    private Button cancelBtn;
     private User user;
 
     /**
@@ -43,9 +47,12 @@ public class UserEditAdminController extends Controller implements Initializable
         }
 
         User user = new User(userName, password, false, isAdmin, name, surName);
-        DB_CALLER_USER.updateUser(user);
+        if (DB_CALLER_USER.updateUser(user)) {
+            closeScene();
+        } else {
+            meldungLbl.setVisible(true);
+        }
 
-        closeScene();
     }
 
     /**

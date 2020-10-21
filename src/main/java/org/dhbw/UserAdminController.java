@@ -1,6 +1,7 @@
 package org.dhbw;
 
 import backend.usability.User;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -263,7 +264,13 @@ public class UserAdminController extends MainPagesController {
         return containQuery;
     }
 
+
     @Override
     public void refresh() {
+    }
+
+    public void emptySearchTf(ActionEvent actionEvent) throws SQLException {
+        searchTextField.setText("");
+        this.setTableWithFilterAndSearch();
     }
 }

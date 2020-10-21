@@ -1,6 +1,8 @@
 package backend.database;
 
 import backend.usability.User;
+import org.h2.jdbc.JdbcSQLDataException;
+import org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -47,7 +49,7 @@ public class DbCallerUser extends DbConnector {
      * @param userToCreate - this user should be saved
      * @return boolean - if true: user was saved, if false: user can´t be saved
      */
-    public boolean insertUser(User userToCreate) {
+    public int insertUser(User userToCreate) {
 
         try {
             PreparedStatement statement = con.prepareStatement("INSERT INTO USER VALUES (?, ?, ?, ?, ?, ?)");
@@ -62,13 +64,13 @@ public class DbCallerUser extends DbConnector {
             statement.execute();
             statement.close();
 
-            return true;
-
-        } catch (SQLException creationFailed) {
-
-            creationFailed.printStackTrace();
-
-            return false;
+            return 0;
+        } catch (JdbcSQLIntegrityConstraintViolationException usernameInUse) {
+            return 1;
+        } catch (JdbcSQLDataException inputToLong) {
+            return 2;
+        } catch (SQLException e) {
+            return -1;
         }
     }
 
@@ -94,7 +96,6 @@ public class DbCallerUser extends DbConnector {
             statement.close();
             return true;
         } catch (SQLException updateFailed) {
-            updateFailed.printStackTrace();
             return false;
         }
     }
