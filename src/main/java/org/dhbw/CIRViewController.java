@@ -70,6 +70,9 @@ public class CIRViewController extends MainCirPopupsController {
         }
     }
 
+    /**
+     * cancels the stage
+     */
     public void cancel(){
         Stage stClose = (Stage) cancelBtn.getScene().getWindow();
         stClose.close();
