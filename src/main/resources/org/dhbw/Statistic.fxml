@@ -56,46 +56,46 @@
                <children>
                   <Button fx:id="startpageBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToStartpage" text="Startseite" textFill="WHITE">
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets />
                      </VBox.margin>
                      <font>
                         <Font name="Hiragino Sans W2" size="15.0" />
                      </font>
                      <padding>
-                        <Insets bottom="10.0" top="10.0" />
+                        <Insets bottom="20.0" top="20.0" />
                      </padding>
                   </Button>
                   <Button fx:id="citBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToCit" text="CIT" textFill="WHITE">
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets />
                      </VBox.margin>
                      <font>
                         <Font name="Hiragino Sans W2" size="15.0" />
                      </font>
                      <padding>
-                        <Insets bottom="10.0" top="10.0" />
+                        <Insets bottom="20.0" top="20.0" />
                      </padding>
                   </Button>
                   <Button fx:id="statisticBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToStatistic" style="-fx-text-fill: #e1a6ad;" text="Statistik" textFill="WHITE">
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets />
                      </VBox.margin>
                      <font>
                         <Font name="Hiragino Sans W2" size="15.0" />
                      </font>
                      <padding>
-                        <Insets bottom="10.0" top="10.0" />
+                        <Insets bottom="20.0" top="20.0" />
                      </padding>
                   </Button>
                   <Button fx:id="userBtn" maxWidth="150.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToUserAdmin" text="Benutzer" textFill="WHITE">
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets />
                      </VBox.margin>
                      <font>
                         <Font name="Hiragino Sans W2" size="15.0" />
                      </font>
                      <padding>
-                        <Insets bottom="10.0" top="10.0" />
+                        <Insets bottom="20.0" top="10.0" />
                      </padding>
                   </Button>
                </children>

@@ -6,14 +6,27 @@ VBox {
 }
 
 /*
-    Style for the buttons to switch between the main pages
+    Style for all buttons
  */
 Button {
     -fx-background-color:  #3D4956;
     -fx-text-fill: white;
-    -fx-font-size: 18;
 }
 Button:hover {
+    -fx-background-color:  #313c48;
+    -fx-translate-y: 1;
+    -fx-text-fill:  #e1a6ad;
+}
+
+/*
+    Style for the buttons to switch between the main pages
+ */
+Button#startpageBtn, Button#statisticsBtn, Button#citBtn, Button#userBtn {
+    -fx-background-color:  #3D4956;
+    -fx-text-fill: white;
+    -fx-font-size: 17;
+}
+Button#startpageBtn:hover, Button#statisticsBtn:hover, Button#citBtn:hover, Button#userBtn:hover {
     -fx-background-color:  #313c48;
     -fx-translate-y: 1;
     -fx-text-fill:  #e1a6ad;
