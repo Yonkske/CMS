@@ -12,9 +12,9 @@
    <children>
       <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" style="-fx-background-color: #313c48;">
          <children>
-            <MenuButton fx:id="adminUserMB" mnemonicParsing="false" style="-fx-background-color: #313c48;" text="Vorname, Nachname" textFill="WHITE">
+            <MenuButton fx:id="adminUserMB" minWidth="-Infinity" mnemonicParsing="false" text="Vorname, Nachname" textFill="WHITE">
                <items>
-                  <MenuItem mnemonicParsing="false">
+                  <MenuItem fx:id="itemUser" mnemonicParsing="false">
                      <graphic>
                         <Button fx:id="benutzerDropDownBtn" mnemonicParsing="false" onAction="#openUserInfo" text="Benutzer" />
                      </graphic>
@@ -36,7 +36,7 @@
                   </ImageView>
                </graphic>
             </MenuButton>
-            <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" prefHeight="36.0" style="-fx-background-color: #313c48;" text="Logout" textFill="WHITE">
+            <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" prefHeight="36.0" text="Logout" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -52,39 +52,51 @@
       </HBox>
       <HBox minWidth="85.0" VBox.vgrow="ALWAYS">
          <children>
-            <VBox alignment="TOP_CENTER" maxWidth="150.0" minWidth="100.0" style="-fx-background-color: #3D4956;">
+            <VBox alignment="TOP_CENTER" maxWidth="180.0" minWidth="130.0" style="-fx-background-color: #3D4956;">
                <children>
-                  <Button fx:id="startpageBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToStartpage" style="-fx-background-color: #3D4956;" text="Startseite" textFill="WHITE">
+                  <Button fx:id="startpageBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToStartpage" text="Startseite" textFill="WHITE">
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets />
                      </VBox.margin>
                      <font>
                         <Font name="Hiragino Sans W2" size="15.0" />
                      </font>
+                     <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                     </padding>
                   </Button>
-                  <Button fx:id="citBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToCit" style="-fx-background-color: #3D4956;" text="CIT" textFill="WHITE">
+                  <Button fx:id="citBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToCit" text="CIT" textFill="WHITE">
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets />
                      </VBox.margin>
                      <font>
                         <Font name="Hiragino Sans W2" size="15.0" />
                      </font>
+                     <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                     </padding>
                   </Button>
-                  <Button fx:id="statisticBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToStatistic" style="-fx-background-color: #3D4956;" text="Statistik" textFill="WHITE">
+                  <Button fx:id="statisticBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToStatistic" style="-fx-text-fill: #e1a6ad;" text="Statistik" textFill="WHITE">
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets />
                      </VBox.margin>
                      <font>
                         <Font name="Hiragino Sans W2" size="15.0" />
                      </font>
+                     <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                     </padding>
                   </Button>
-                  <Button fx:id="userBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToUserAdmin" style="-fx-background-color: #3D4956;" text="Benutzer" textFill="WHITE">
+                  <Button fx:id="userBtn" maxWidth="150.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToUserAdmin" text="Benutzer" textFill="WHITE">
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets />
                      </VBox.margin>
                      <font>
                         <Font name="Hiragino Sans W2" size="15.0" />
                      </font>
+                     <padding>
+                        <Insets bottom="20.0" top="10.0" />
+                     </padding>
                   </Button>
                </children>
                <HBox.margin>

@@ -1,19 +1,98 @@
+/*
+    Font for the complete main pages
+ */
+VBox {
+    -fx-font-family: "Hiragino Sans W1";
+}
+
+/*
+    Style for all buttons
+ */
+Button {
+    -fx-background-color:  #3D4956;
+    -fx-text-fill: white;
+}
 Button:hover {
-    -fx-background-color: #303a44;
+    -fx-background-color:  #313c48;
     -fx-translate-y: 1;
     -fx-text-fill:  #e1a6ad;
 }
-Button {
+
+/*
+    Style for the buttons to switch between the main pages
+ */
+Button#startpageBtn, Button#statisticsBtn, Button#citBtn, Button#userBtn {
     -fx-background-color:  #3D4956;
+    -fx-text-fill: white;
+    -fx-font-size: 17;
+}
+Button#startpageBtn:hover, Button#statisticsBtn:hover, Button#citBtn:hover, Button#userBtn:hover {
+    -fx-background-color:  #313c48;
+    -fx-translate-y: 1;
+    -fx-text-fill:  #e1a6ad;
+}
+
+/*
+    Style for the logout button
+ */
+Button#logoutBtn {
+    -fx-background-color: #313c48;
+    -fx-text-fill: white;
 }
 Button#logoutBtn:hover {
-    -fx-background-color:  #3D4956;
     -fx-text-fill:  #e1a6ad;
     -fx-scale-y: 1;
 }
+
+/*
+    Style for the menu button
+ */
+MenuButton#adminUserMB {
+    -fx-background-color: #313c48;
+    -fx-text-fill: white;
+}
+MenuButton#adminUserMB:hover {
+    -fx-text-fill: #e1a6ad;
+    -fx-scale-y: 1;
+}
+
+/*
+    Style for the menu item(s) in the opened menu button
+ */
+MenuButton .label {
+    -fx-text-fill: white;
+    -fx-background-color: #313c48;
+}
+MenuButton .menu-item .label{
+    -fx-background-color: #313c48;
+    -fx-font-size: 14;
+}
+MenuButton .menu-item:focused {
+    -fx-background-color: #313c48;
+}
+MenuButton .context-menu {
+    -fx-background-color: #313c48;
+}
+Button#benutzerDropDownBtn, Button#passwordEditBtn {
+    -fx-text-fill: white;
+    -fx-font-family: "Hiragino Sans W1";
+    -fx-font-size: 14;
+    -fx-background-color: #313c48;
+    -fx-min-width: 194;
+    -fx-pref-height: 27;
+    -fx-alignment: CENTER_LEFT;
+}
+Button#benutzerDropDownBtn:hover, Button#passwordEditBtn:hover {
+    -fx-text-fill: #e1a6ad;
+    -fx-scale-y: 1;
+}
+
+/*
+    Style for the ChoiceBox on the CIT page
+ */
 ChoiceBox .context-menu{
     -fx-background-color: #c4c4cc;
-    -fx-font-family: "Harlow Solid Italic";
+    -fx-font-family: "Hiragino Sans W1";
     -fx-font-size: 14;
     -fx-text-fill: black;
 }
@@ -26,6 +105,10 @@ ChoiceBox .menu-item > .label {
 ChoiceBox .menu-item:focused > .label {
     -fx-text-fill: #e1a6ad;
 }
+
+/*
+    Style for the table on the start page and the user page
+ */
 TableView {
     -fx-background-color: #c4c4cc;
 }
@@ -81,3 +164,7 @@ TableView .combo-box-base:showing {
 .tableview .column-header,.tableview .filler{
     -fx-background-color: #c4c4cc;
 }
+
+/*
+    Style for the ComboBox in the TableView on the start page and the user page
+ */

@@ -12,10 +12,9 @@
         <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0"
               style="-fx-background-color: #313c48;">
             <children>
-                <MenuButton fx:id="adminUserMB" mnemonicParsing="false" style="-fx-background-color: #313c48;"
-                            text="Vorname, Nachname" textFill="WHITE">
+                <MenuButton fx:id="adminUserMB" minWidth="196.8" mnemonicParsing="false" text="Vorname, Nachname" textFill="WHITE">
                     <items>
-                        <MenuItem mnemonicParsing="false">
+                        <MenuItem fx:id="itemUser" mnemonicParsing="false">
                             <graphic>
                                 <Button fx:id="benutzerDropDownBtn" mnemonicParsing="false" onAction="#openUserInfo"
                                         text="Benutzer"/>
@@ -39,60 +38,67 @@
                         </ImageView>
                     </graphic>
                 </MenuButton>
-                <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" prefHeight="36.0"
-                        style="-fx-background-color: #313c48;" text="Logout" textFill="WHITE">
-                    <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@icons/ausloggen.png"/>
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <font>
-                        <Font size="14.0"/>
-                    </font>
+                <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" prefHeight="36.0" text="Logout" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/ausloggen.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font>
                 </Button>
             </children>
         </HBox>
         <HBox>
             <children>
-                <VBox alignment="TOP_CENTER" maxWidth="150.0" minWidth="100.0" style="-fx-background-color: #3D4956;">
+                <VBox alignment="TOP_CENTER" maxWidth="180.0" minWidth="130.0" style="-fx-background-color: #3D4956;">
                     <children>
-                        <Button fx:id="startpagerBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false"
-                                onAction="#swapToStartpage" text="Startseite" textFill="WHITE">
+                        <Button fx:id="startpagerBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToStartpage" text="Startseite" textFill="WHITE">
                             <VBox.margin>
-                                <Insets top="20.0"/>
+                                <Insets />
                             </VBox.margin>
                             <font>
                                 <Font name="Hiragino Sans W1" size="15.0"/>
                             </font>
+                     <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                     </padding>
                         </Button>
-                        <Button fx:id="citBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false"
-                                onAction="#swapToCit" text="CIT" textFill="WHITE">
+                        <Button fx:id="citBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToCit" text="CIT" textFill="WHITE">
                             <VBox.margin>
-                                <Insets top="20.0"/>
+                                <Insets />
                             </VBox.margin>
                             <font>
                                 <Font name="Hiragino Sans W1" size="15.0"/>
                             </font>
+                     <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                     </padding>
                         </Button>
-                        <Button fx:id="statisticBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false"
-                                onAction="#swapToStatistic" text="Statistik" textFill="WHITE">
+                        <Button fx:id="statisticBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToStatistic" text="Statistik" textFill="WHITE">
                             <VBox.margin>
-                                <Insets top="20.0"/>
+                                <Insets />
                             </VBox.margin>
-                            <font>
-                                <Font name="Hiragino Sans W1" size="15.0"/>
-                            </font>
+                     <font>
+                        <Font name="Hiragino Sans W1" size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                     </padding>
                         </Button>
-                        <Button fx:id="userBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false"
-                                onAction="#swapToUserAdmin" text="Benutzer" textFill="WHITE">
+                        <Button fx:id="userBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToUserAdmin" style="-fx-text-fill: #e1a6ad;" text="Benutzer" textFill="WHITE">
                             <VBox.margin>
-                                <Insets top="20.0"/>
+                                <Insets />
                             </VBox.margin>
-                            <font>
-                                <Font name="Hiragino Sans W1" size="15.0"/>
-                            </font>
+                     <font>
+                        <Font name="Hiragino Sans W1" size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                     </padding>
                         </Button>
                     </children>
                 </VBox>
