@@ -103,8 +103,7 @@ public class UserAddAdminController extends Controller implements Initializable 
      */
     @FXML
     public void closeScene() {
-        Stage close = new Stage();
-        close = (Stage) submitBtn.getScene().getWindow();
+        Stage  close = (Stage) submitBtn.getScene().getWindow();
         close.close();
     }
 
