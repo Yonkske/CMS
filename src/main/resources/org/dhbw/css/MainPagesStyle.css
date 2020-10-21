@@ -95,15 +95,17 @@ ChoiceBox .context-menu{
     -fx-font-family: "Hiragino Sans W1";
     -fx-font-size: 14;
     -fx-text-fill: black;
+    -fx-min-width: 210;
 }
 ChoiceBox .menu-item:focused {
     -fx-text-fill: #e1a6ad;
+    -fx-background-color: #92979f;
 }
 ChoiceBox .menu-item > .label {
     -fx-text-fill: black;
 }
 ChoiceBox .menu-item:focused > .label {
-    -fx-text-fill: #e1a6ad;
+    -fx-text-fill: white;
 }
 
 /*
