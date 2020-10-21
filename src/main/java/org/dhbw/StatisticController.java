@@ -17,23 +17,23 @@ import java.util.ResourceBundle;
 public class StatisticController extends MainPagesController {
 
     @FXML
-    public Button startpageBtn;
+    private Button startpageBtn;
     @FXML
-    public Button citBtn;
+    private Button citBtn;
     @FXML
-    public Button statisticBtn;
+    private Button statisticBtn;
     @FXML
-    public Button userBtn;
+    private Button userBtn;
     @FXML
-    public Label cirLbl;
+    private Label cirLbl;
     @FXML
-    public TextField numberCIRTf;
+    private TextField numberCIRTf;
     @FXML
-    public Label citLabel;
+    private Label citLabel;
     @FXML
-    public TextField numberCITTf;
+    private TextField numberCITTf;
     @FXML
-    public PieChart adminPieChart;
+    private PieChart adminPieChart;
 
     /**
      * Methode from the interface Initializable that auto generates the page on
