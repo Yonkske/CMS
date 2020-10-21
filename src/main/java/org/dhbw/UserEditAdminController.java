@@ -13,18 +13,18 @@ import javafx.stage.Stage;
 public class UserEditAdminController extends Controller implements Initializable {
 
     @FXML
-    public TextField surnameTf;
+    private TextField surnameTf;
     @FXML
-    public TextField nameTf;
+    private TextField nameTf;
     @FXML
-    public TextField usernameTf;
+    private TextField usernameTf;
 
     @FXML
-    public ChoiceBox<String> authorizationChoiceBox;
+    private ChoiceBox<String> authorizationChoiceBox;
     @FXML
-    public Button submitBtn;
+    private Button submitBtn;
     @FXML
-    public Button cancelBtn;
+    private Button cancelBtn;
     private User user;
 
     /**
