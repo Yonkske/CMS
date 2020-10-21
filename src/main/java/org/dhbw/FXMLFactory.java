@@ -4,9 +4,11 @@ package org.dhbw;
 import backend.database.DbConnector;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -71,6 +73,11 @@ public class FXMLFactory extends Application {
             stage.setWidth(stage.getWidth());
             stage.setMinHeight(575);
             stage.setHeight(stage.getHeight());
+            Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+            double x = bounds.getMinX() + (bounds.getWidth() - scene.getWidth()) * 0.5;
+            double y = bounds.getMinY() + (bounds.getHeight() - scene.getHeight()) * 0.5;
+            stage.setX(x);
+            stage.setY(y);
         } else {
             stage.setResizable(false);
         }
