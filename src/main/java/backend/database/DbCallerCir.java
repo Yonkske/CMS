@@ -36,11 +36,11 @@ public class DbCallerCir extends DbConnector {
     /**
      * Writes a new CIR into the database, requires a CIR object
      *
-     * @param cirToInsert - Type Cir
+     * @param cirToInsert Cir - the CIR to be inserted
      * @return bWorks - Boolean
      * @throws SQLException - on database access error or other errors
      */
-    public boolean insertCir(Cir cirToInsert) throws SQLException {
+    public boolean insertCir(Cir cirToInsert) {
         String[] attributes = cirToInsert.getCirAttributes();
         boolean successful;
         try {
@@ -48,7 +48,7 @@ public class DbCallerCir extends DbConnector {
                     ("INSERT INTO CIR VALUES (?,?,?,?,?,?,?,?,?,?)");
 
             prepStmt.setInt(1, cirToInsert.getCirID());
-            prepStmt.setString(2, cirToInsert.getCitID());
+            prepStmt.setInt(2, cirToInsert.getCit().getCitID());
             prepStmt.setString(3, cirToInsert.getCirName());
 
             for (int i = 0; i < attributes.length; i++) {
@@ -58,7 +58,7 @@ public class DbCallerCir extends DbConnector {
             prepStmt.executeUpdate();
             prepStmt.close();
             successful = true;
-        } catch (SQLNonTransientException e) {
+        } catch (SQLException e) {
             successful = false;
         }
 
@@ -176,6 +176,18 @@ public class DbCallerCir extends DbConnector {
         } else {
             return 0;
         }
+    }
+
+    /**
+     * Gets the CIR for the given ID
+     *
+     * @param id int
+     * @return Cir with the ID
+     */
+    public Cir getRecordById(int id) {
+        String query = "SELECT * FROM CIR R JOIN CIT T on T.TYPE_ID = R.TYPE_ID WHERE R.ITEM_ID = " + id;
+
+        return getCirs(query).get(0);
     }
 
     /**
