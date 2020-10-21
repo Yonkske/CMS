@@ -129,7 +129,8 @@ public class ChangePasswordController extends Controller {
      * This method forwards to the Startpage.
      */
     private void switchToStartpage(User user) throws IOException {
-        FXMLFactory.setRoot("Startpage");
+        FXMLFactory.setRoot("Startpage", true);
+
     }
 
 
