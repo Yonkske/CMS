@@ -132,6 +132,11 @@ public class UserAddAdminController extends Controller implements Initializable 
         meldungLbl.setVisible(true);
     }
 
+    /**
+     * Shows a custom error message.
+     *
+     * @param errorMessage String - error message to be displayed
+     */
     public void showError(String errorMessage) {
         meldungLbl.setText(errorMessage);
         meldungLbl.setVisible(true);
