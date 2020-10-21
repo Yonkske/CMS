@@ -44,4 +44,14 @@ public abstract class Controller {
         StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
         return encryptor.checkPassword(inputPassword, encryptedStoredPassword);
     }
+
+    /**
+     * checks for
+     * @param password
+     * @return
+     */
+    boolean checkForRegex(String password) {
+        return !password.matches("^[\\s]+$");
+    }
+
 }
