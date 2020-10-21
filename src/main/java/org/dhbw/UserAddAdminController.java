@@ -75,8 +75,14 @@ public class UserAddAdminController extends Controller implements Initializable 
                     && checkForRegex(initialPasswordTf.getText(), userName) && checkPasswordCriteria) {
                 String passwordEncrypted = super.encryptPassword(initialPasswordTf.getText());
                 User user = new User(userName, passwordEncrypted, true, isAdmin, name, surName);
-                if (DB_CALLER_USER.insertUser(user)) {
+
+                int returnCode = DB_CALLER_USER.insertUser(user);
+                if (returnCode == 0) {
                     closeScene();
+                } else if (returnCode == 1) {
+                    showError("Benutzername vergeben!");
+                } else if (returnCode == 2) {
+                    showError("Maximal 255 Zeichen!");
                 } else {
                     showError();
                 }
@@ -122,6 +128,12 @@ public class UserAddAdminController extends Controller implements Initializable 
      * When a error warning will be implemented this method will show it when needed.
      */
     public void showError() {
+        meldungLbl.setText("Eingabe überprüfen");
+        meldungLbl.setVisible(true);
+    }
+
+    public void showError(String errorMessage) {
+        meldungLbl.setText(errorMessage);
         meldungLbl.setVisible(true);
     }
 
