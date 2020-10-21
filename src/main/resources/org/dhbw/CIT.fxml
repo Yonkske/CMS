@@ -97,7 +97,7 @@
                   </Button>
 
             </VBox>
-            <VBox style="-fx-background-color: #f0f0f8;" stylesheets="@css/MainPagesStyle.css" HBox.hgrow="ALWAYS">
+            <VBox alignment="CENTER_LEFT" style="-fx-background-color: #f0f0f8;" stylesheets="@css/MainPagesStyle.css" HBox.hgrow="ALWAYS">
 
                   <HBox alignment="CENTER" prefHeight="54.0" prefWidth="389.0" spacing="5.0">
             <Label prefWidth="100.0" />

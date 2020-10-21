@@ -115,6 +115,9 @@ Button#benutzerDropDownBtn:hover, Button#passwordEditBtn:hover {
 TableView {
     -fx-background-color: #f0f0f8;
     -fx-border-color: #92979f;
+    -fx-font-size: 14;
+    -fx-font-family: "Hiragino Sans W1";
+    -fx-text-fill: black;
 }
 TableView .column-header-background .label {
     -fx-background-color: #92979f;
@@ -124,9 +127,6 @@ TableView .column-header-background .label {
 }
 TableView .column-header {
     -fx-background-color: #92979f;
-}
-TableView .table-cell{
-    i
 }
 
 /*
