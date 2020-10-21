@@ -1,19 +1,71 @@
-Button:hover {
-    -fx-background-color: #303a44;
-    -fx-translate-y: 1;
-    -fx-text-fill:  #e1a6ad;
+/*
+    Font for the complete main pages
+ */
+VBox {
+    -fx-font-family: "Hiragino Sans W1";
 }
+
+/*
+    Style for the buttons to switch between the main pages
+ */
 Button {
     -fx-background-color:  #3D4956;
 }
+Button:hover {
+    -fx-background-color:  #313c48;
+    -fx-translate-y: 1;
+    -fx-text-fill:  #e1a6ad;
+}
+
+/*
+    Style for the logout button
+ */
+Button#logoutBtn {
+    -fx-background-color: #313c48;
+}
 Button#logoutBtn:hover {
-    -fx-background-color:  #3D4956;
     -fx-text-fill:  #e1a6ad;
     -fx-scale-y: 1;
 }
+
+/*
+    Style for the menu button
+ */
+MenuButton#adminUserMB {
+    -fx-background-color: #313c48;
+    -fx-text-fill: white;
+}
+MenuButton#adminUserMB:hover {
+    -fx-text-fill: #e1a6ad;
+    -fx-scale-y: 1;
+}
+
+/*
+    Style for the menu item(s) in the opened menu button
+ */
+MenuButton .menu-item .label{
+    -fx-text-fill: white;
+    -fx-background-color: #313c48;
+    -fx-font-size: 14;
+}
+MenuButton .menu-item:focused {
+    -fx-background-color: #313c48;
+}
+MenuButton .menu-item:focused .label {
+    -fx-text-fill: #e1a6ad;
+}
+MenuButton .context-menu {
+    -fx-background-color: #313c48;
+    -fx-pref-width: 196.8;
+    -fx-alignment: LEFT_CENTER;
+}
+
+/*
+    Style for the ChoiceBox on the CIT page
+ */
 ChoiceBox .context-menu{
     -fx-background-color: #c4c4cc;
-    -fx-font-family: "Harlow Solid Italic";
+    -fx-font-family: "Hiragino Sans W1";
     -fx-font-size: 14;
     -fx-text-fill: black;
 }
@@ -26,6 +78,10 @@ ChoiceBox .menu-item > .label {
 ChoiceBox .menu-item:focused > .label {
     -fx-text-fill: #e1a6ad;
 }
+
+/*
+    Style for the table on the start page and the user page
+ */
 TableView {
     -fx-background-color: #c4c4cc;
 }
@@ -81,3 +137,7 @@ TableView .combo-box-base:showing {
 .tableview .column-header,.tableview .filler{
     -fx-background-color: #c4c4cc;
 }
+
+/*
+    Style for the ComboBox in the TableView on the start page and the user page
+ */

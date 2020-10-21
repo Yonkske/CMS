@@ -58,14 +58,20 @@
                   <font>
                       <Font name="Hiragino Sans W1" size="15.0" />
                   </font>
+            <padding>
+               <Insets bottom="10.0" top="10.0" />
+            </padding>
               </Button>
-              <Button fx:id="citBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToCit" style="-fx-background-color: #3D4956;" text="CIT" textFill="WHITE">
+              <Button fx:id="citBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToCit" style="-fx-text-fill: #e1a6ad;" text="CIT" textFill="WHITE">
                   <VBox.margin>
                       <Insets top="20.0" />
                   </VBox.margin>
                   <font>
                       <Font name="Hiragino Sans W1" size="15.0" />
                   </font>
+            <padding>
+               <Insets bottom="10.0" top="10.0" />
+            </padding>
               </Button>
                   <Button fx:id="statisticBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToStatistic" style="-fx-background-color: #3D4956;" text="Statistik" textFill="WHITE">
                      <VBox.margin>
@@ -74,6 +80,9 @@
             <font>
                <Font name="Hiragino Sans W1" size="15.0" />
             </font>
+            <padding>
+               <Insets bottom="10.0" top="10.0" />
+            </padding>
                   </Button>
                   <Button fx:id="userBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToUserAdmin" style="-fx-background-color: #3D4956;" text="Benutzer" textFill="WHITE">
                         <VBox.margin>
@@ -82,6 +91,9 @@
             <font>
                <Font name="Hiragino Sans W1" size="15.0" />
             </font>
+            <padding>
+               <Insets bottom="10.0" top="10.0" />
+            </padding>
                   </Button>
 
             </VBox>
