@@ -17,6 +17,12 @@ import java.util.ResourceBundle;
 public class StartpageController extends MainPagesController {
 
     @FXML
+    private Button cirEditBtn;
+    @FXML
+    private Button cirDeleteBtn;
+    @FXML
+    private Button cirAddBtn;
+    @FXML
     private TableView<Cir> cirTable;
     @FXML
     private TableColumn<Cir, String> citColumn;
@@ -25,7 +31,7 @@ public class StartpageController extends MainPagesController {
     @FXML
     private Button userBtn;
     @FXML
-    private Button citEditBtn;
+    private Button citAddBtn;
     @FXML
     private Button citDeleteBtn;
     @FXML
@@ -59,10 +65,11 @@ public class StartpageController extends MainPagesController {
 
         if (!Controller.user.getIsAdmin()) {
             userBtn.setVisible(false);
-            citEditBtn.setVisible(false);
+            citAddBtn.setVisible(false);
             citDeleteBtn.setVisible(false);
         }
 
+        this.setToolTips();
     }
 
     /**
@@ -212,4 +219,17 @@ public class StartpageController extends MainPagesController {
     private boolean checkForSearchValue(Cir record, String searchValue) {
         return record.getCirName().toLowerCase().contains(searchValue) || record.getCit().getCitName().toLowerCase().contains(searchValue);
     }
+
+    /**
+     * sets the tooltips;
+     */
+    private void setToolTips() {
+        citAddBtn.setTooltip(new Tooltip("Neuen CI Type hinzufügen"));
+        citDeleteBtn.setTooltip(new Tooltip("Ausgewählten CI Type löschen"));
+        cirAddBtn.setTooltip(new Tooltip("Neuen CI Record hinzufügen"));
+        cirDeleteBtn.setTooltip(new Tooltip("Ausgewählten CI Record löschen"));
+        cirEditBtn.setTooltip(new Tooltip("Ausgewählten CI Record bearbeiten"));
+
+    }
+
 }

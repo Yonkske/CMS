@@ -47,6 +47,7 @@ public abstract class MainPagesController extends Controller implements IRefresh
             itemPassword.setVisible(false);
         }
         adminUserMB.setText(name);
+
     }
 
     /**
