@@ -38,8 +38,9 @@ public class PasswordEditAdminController extends Controller {
     public void submit() {
         boolean enteredPwCheck = this.checkNewPasswords();
         boolean noEmptyInputCheck = this.checkNoEmptyInput();
+        boolean checkPasswordCriteria = this.checkPasswordCriteria(newPasswordPf.getText());
 
-        if (enteredPwCheck && noEmptyInputCheck && checkForRegex(newPasswordPf.getText())) {
+        if (enteredPwCheck && noEmptyInputCheck && checkForRegex(newPasswordPf.getText()) && checkPasswordCriteria) {
             userToChangePw.setNewPassword(super.encryptPassword(newPasswordPf.getText()));
             userToChangePw.setIsInitial(true);
             DB_CALLER_USER.updateUser(userToChangePw);
@@ -76,6 +77,20 @@ public class PasswordEditAdminController extends Controller {
     }
 
     /**
+     * Method checks if the password has a length of at least 5.
+     * Additionally the password should not contain empty spaces.
+     * @param newPassword - new password
+     * @return boolean
+     */
+    private boolean checkPasswordCriteria(String newPassword) {
+        if (newPassword.length() >= 5 && !newPassword.contains(" ")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * Action for the Cancel Button.
      */
     public void cancel() {
@@ -99,7 +114,5 @@ public class PasswordEditAdminController extends Controller {
         meldungLbl.setVisible(true);
     }
 
-    private boolean checkForRegex(String password) {
-        return !password.matches("^[\\s]+$");
-    }
+
 }

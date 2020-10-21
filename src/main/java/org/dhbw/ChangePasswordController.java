@@ -45,8 +45,9 @@ public class ChangePasswordController extends Controller {
                 userToCangePassword.getPassword());
         boolean enteredPwCheck = this.checkNewPasswords();
         boolean noEmptyInputCheck = this.checkNoEmptyInput();
+        boolean passwordCriteriaCheck = this.checkPasswordCriteria(newPasswordPf.getText(), oldPasswordPf.getText());
 
-        if (oldPwCheck && enteredPwCheck && noEmptyInputCheck && checkForRegex(newPasswordPf.getText())) {
+        if (oldPwCheck && enteredPwCheck && noEmptyInputCheck && checkForRegex(newPasswordPf.getText()) && passwordCriteriaCheck) {
             userToCangePassword.setNewPassword(super.encryptPassword(newPasswordPf.getText()));
             userToCangePassword.setIsInitial(false);
             DB_CALLER_USER.updateUser(userToCangePassword);
@@ -102,6 +103,22 @@ public class ChangePasswordController extends Controller {
     }
 
     /**
+     * Method checks if the password has a length of at least 5.
+     * Additionally the password should not contain empty spaces.
+     * Additionally the new password should not equal the old password.
+     * @param newPassword - new password
+     * @param oldPassword - old password
+     * @return boolean
+     */
+    private boolean checkPasswordCriteria(String newPassword, String oldPassword) {
+        if (newPassword.length() >= 5 && !newPassword.contains(" ") && !newPassword.equals(oldPassword)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * When a error warning will be implemented this method will show it when needed.
      */
     public void showError() {
@@ -115,8 +132,5 @@ public class ChangePasswordController extends Controller {
         FXMLFactory.setRoot("Startpage");
     }
 
-    private boolean checkForRegex(String password) {
-        return !password.matches("^[\\s]+$");
-    }
 
 }

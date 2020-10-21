@@ -64,6 +64,7 @@ public class UserAddAdminController extends Controller implements Initializable 
             String name = nameTf.getText();
             String userName = usernameTf.getText();
             boolean isAdmin = false;
+            boolean checkPasswordCriteria = this.checkPasswordCriteria(initialPasswordTf.getText());
 
             if (authorizationChoiceBox.getValue().equals("Admin")) {
                 isAdmin = true;
@@ -71,11 +72,14 @@ public class UserAddAdminController extends Controller implements Initializable 
 
             if ((userName.length() > 0 && initialPasswordTf.getText().length() > 0
                     && repeatInitialPasswordTf.getText().length() > 0)
-                    && checkForRegex(initialPasswordTf.getText(), userName)) {
+                    && checkForRegex(initialPasswordTf.getText(), userName) && checkPasswordCriteria) {
                 String passwordEncrypted = super.encryptPassword(initialPasswordTf.getText());
                 User user = new User(userName, passwordEncrypted, true, isAdmin, name, surName);
-                DB_CALLER_USER.insertUser(user);
-                closeScene();
+                if (DB_CALLER_USER.insertUser(user)) {
+                    closeScene();
+                } else {
+                    showError();
+                }
             } else {
                 showError();
                 clearPasswordAndUser();
@@ -103,8 +107,7 @@ public class UserAddAdminController extends Controller implements Initializable 
      */
     @FXML
     public void closeScene() {
-        Stage close = new Stage();
-        close = (Stage) submitBtn.getScene().getWindow();
+        Stage  close = (Stage) submitBtn.getScene().getWindow();
         close.close();
     }
 
@@ -122,6 +125,21 @@ public class UserAddAdminController extends Controller implements Initializable 
         usernameTf.setText("");
         initialPasswordTf.setText("");
         repeatInitialPasswordTf.setText("");
+    }
+
+    /**
+     * Method checks if the password has a length of at least 5.
+     * Additionally the password should not contain empty spaces.
+     * Additionally the new password should not equal the old password.
+     * @param password - new password
+     * @return boolean
+     */
+    private boolean checkPasswordCriteria(String password) {
+        if (password.length() >= 5 && !password.contains(" ")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
