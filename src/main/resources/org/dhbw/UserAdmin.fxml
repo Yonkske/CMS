@@ -52,9 +52,9 @@
             <children>
                 <VBox alignment="TOP_CENTER" maxWidth="180.0" minWidth="130.0" style="-fx-background-color: #3D4956;">
                     <children>
-                        <Button fx:id="startpagerBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToStartpage" text="Startseite" textFill="WHITE">
+                        <Button fx:id="startpageBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToStartpage" text="Startseite" textFill="WHITE">
                             <VBox.margin>
-                                <Insets />
+                                <Insets bottom="5.0" />
                             </VBox.margin>
                             <font>
                                 <Font name="Hiragino Sans W1" size="15.0" />
@@ -65,7 +65,7 @@
                         </Button>
                         <Button fx:id="citBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToCit" text="CIT" textFill="WHITE">
                             <VBox.margin>
-                                <Insets />
+                                <Insets bottom="5.0" />
                             </VBox.margin>
                             <font>
                                 <Font name="Hiragino Sans W1" size="15.0" />
@@ -74,9 +74,9 @@
                         <Insets bottom="20.0" top="20.0" />
                      </padding>
                         </Button>
-                        <Button fx:id="statisticBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToStatistic" text="Statistik" textFill="WHITE">
+                        <Button fx:id="statisticsBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToStatistic" text="Statistik" textFill="WHITE">
                             <VBox.margin>
-                                <Insets />
+                                <Insets bottom="5.0" />
                             </VBox.margin>
                      <font>
                         <Font name="Hiragino Sans W1" size="15.0" />
@@ -87,7 +87,7 @@
                         </Button>
                         <Button fx:id="userBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToUserAdmin" style="-fx-text-fill: #e1a6ad;" text="Benutzer" textFill="WHITE">
                             <VBox.margin>
-                                <Insets />
+                                <Insets bottom="5.0" />
                             </VBox.margin>
                      <font>
                         <Font name="Hiragino Sans W1" size="15.0" />
