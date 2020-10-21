@@ -5,6 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+
 <VBox alignment="TOP_RIGHT" stylesheets="@css/MainPagesStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.StartpageController">
    <children>
       <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" style="-fx-background-color: #313c48;">
@@ -51,7 +52,7 @@
                <children>
                   <Button fx:id="startpageBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToStartpage" style="-fx-text-fill: #e1a6ad;" text="Startseite" textFill="WHITE">
                      <VBox.margin>
-                        <Insets />
+                        <Insets bottom="5.0" />
                      </VBox.margin>
                      <font>
                         <Font name="Hiragino Sans W1" size="15.0" />
@@ -62,7 +63,7 @@
                   </Button>
                   <Button fx:id="citBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToCit" text="CIT" textFill="#fcfcfc">
                      <VBox.margin>
-                        <Insets />
+                        <Insets bottom="5.0" />
                      </VBox.margin>
                      <font>
                         <Font name="Hiragino Sans W1" size="15.0" />
@@ -73,7 +74,7 @@
                   </Button>
                   <Button fx:id="statisticsBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToStatistic" text="Statistik" textFill="WHITE">
                      <VBox.margin>
-                        <Insets />
+                        <Insets bottom="5.0" />
                      </VBox.margin>
                      <font>
                         <Font name="Hiragino Sans W1" size="15.0" />
@@ -84,7 +85,7 @@
                   </Button>
                   <Button fx:id="userBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToUserAdmin" text="Benutzer" textFill="WHITE">
                      <VBox.margin>
-                        <Insets />
+                        <Insets bottom="5.0" />
                      </VBox.margin>
                      <font>
                         <Font name="Hiragino Sans W1" size="15.0" />
