@@ -70,8 +70,11 @@ public class CITAddController extends Controller implements Initializable {
 
         if (citTf.getText().length() !=0 && !citTf.getText().matches("^[\\s]+$")) {
             if (DB_CALLER_CIT.isTypeNameAvailable(citTf.getText())) {
-                DB_CALLER_CIT.createCit(new Cit(Integer.parseInt(idTf.getText()), citTf.getText(), getAttributeArray()));
-                this.close();
+                if (DB_CALLER_CIT.createCit(new Cit(Integer.parseInt(idTf.getText()), citTf.getText(), getAttributeArray()))) {
+                    this.close();
+                } else {
+                    this.showError("Maximal 255 Zeichen!");
+                }
             } else {
                 this.showError("CIT bereits in Verwendung!");
             }
