@@ -12,7 +12,7 @@
          <children>
             <MenuButton fx:id="adminUserMB" minWidth="196.8" mnemonicParsing="false" text="Vorname, Nachname" textFill="WHITE">
                <items>
-                  <MenuItem id="itemUser" fx:id="itemUser" mnemonicParsing="false">
+                  <MenuItem id="itemUser" mnemonicParsing="false">
                      <graphic>
                         <Button fx:id="benutzerDropDownBtn" mnemonicParsing="false" onAction="#openUserInfo" text="Benutzer" />
                      </graphic>
