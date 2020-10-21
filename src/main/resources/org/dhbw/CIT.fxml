@@ -319,7 +319,7 @@
          </HBox>
                 <HBox alignment="CENTER" prefHeight="47.0" prefWidth="396.0" spacing="5.0">
             <children>
-               <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#openDeleteCitPopup" style="-fx-background-color: #92979f;" text="CIT" textFill="WHITE">
+               <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#openDeleteCitPopup" style="-fx-background-color: #92979f;" text="CIT löschen" textFill="WHITE">
                   <graphic>
                      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                         <image>
@@ -330,7 +330,7 @@
                   <font>
                      <Font name="Hiragino Sans W1" size="15.0" />
                   </font></Button>
-               <Button fx:id="citaddBtn" mnemonicParsing="false" onAction="#swapToCITAdd" style="-fx-background-color: #92979f;" text="CIT" textFill="WHITE">
+               <Button fx:id="citaddBtn" mnemonicParsing="false" onAction="#swapToCITAdd" style="-fx-background-color: #92979f;" text="CIT hinzufügen" textFill="WHITE">
                   <graphic>
                      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                         <image>

@@ -147,9 +147,9 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </TableView>
-                  <HBox prefHeight="51.0" prefWidth="274.0">
+                  <HBox>
                      <children>
-                        <Button fx:id="citAddBtn" mnemonicParsing="false" onAction="#openAddCit" style="-fx-background-color: #92979f;" text="CIT" textFill="WHITE">
+                        <Button fx:id="citAddBtn" mnemonicParsing="false" onAction="#openAddCit" style="-fx-background-color: #92979f;" text="CIT hinzufügen" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
@@ -164,7 +164,7 @@
                               <Font name="AppleGothic Regular" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="citDeleteBtn" disable="true" mnemonicParsing="false" onAction="#openDeleteCitPopup" style="-fx-background-color: #92979f;" text="CIT" textFill="WHITE">
+                        <Button fx:id="citDeleteBtn" disable="true" mnemonicParsing="false" onAction="#openDeleteCitPopup" style="-fx-background-color: #92979f;" text="CIT löschen" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
@@ -179,7 +179,7 @@
                               <Font name="AppleGothic Regular" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="cirAddBtn" mnemonicParsing="false" onAction="#openAddCir" prefHeight="34.0" prefWidth="75.0" style="-fx-background-color: #92979f;" text="CIR" textFill="WHITE">
+                        <Button fx:id="cirAddBtn" mnemonicParsing="false" onAction="#openAddCir" style="-fx-background-color: #92979f;" text="CIR hinzufügen" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
@@ -194,7 +194,7 @@
                               <Font name="AppleGothic Regular" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="showCirBtn" disable="true" mnemonicParsing="false" onAction="#showCir" style="-fx-background-color: #92979f;" text="CIR" textFill="WHITE">
+                        <Button fx:id="showCirBtn" disable="true" mnemonicParsing="false" onAction="#showCir" style="-fx-background-color: #92979f;" text="CIR anzeigen" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
@@ -209,7 +209,7 @@
                               <Font name="AppleGothic Regular" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="cirDeleteBtn" disable="true" mnemonicParsing="false" onAction="#openDeleteCirPopup" style="-fx-background-color: #92979f;" text="CIR" textFill="WHITE">
+                        <Button fx:id="cirDeleteBtn" disable="true" mnemonicParsing="false" onAction="#openDeleteCirPopup" style="-fx-background-color: #92979f;" text="CIR löschen" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
