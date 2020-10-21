@@ -17,9 +17,9 @@ import java.util.ResourceBundle;
 public class CIREditController extends MainCirPopupsController {
 
     @FXML
-    public Button cancelBtn;
+    private Button cancelBtn;
     @FXML
-    public Button submitBtn;
+    private Button submitBtn;
 
     /**
      * Construktor CIREditController

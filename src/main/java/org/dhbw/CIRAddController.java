@@ -23,51 +23,51 @@ import java.util.ResourceBundle;
 
 public class CIRAddController extends Controller implements Initializable {
     @FXML
-    public Label citLbl;
+    private Label citLbl;
     @FXML
-    public Label nameLbl;
+    private Label nameLbl;
     @FXML
-    public Label attribut1Lbl;
+    private Label attribut1Lbl;
     @FXML
-    public Label attribut2Lbl;
+    private Label attribut2Lbl;
     @FXML
-    public Label attribut3Lbl;
+    private Label attribut3Lbl;
     @FXML
-    public Label attribut4Lbl;
+    private Label attribut4Lbl;
     @FXML
-    public Label attribut5Lbl;
+    private Label attribut5Lbl;
     @FXML
-    public Label attribut6Lbl;
+    private Label attribut6Lbl;
     @FXML
-    public Label attribut7Lbl;
+    private Label attribut7Lbl;
     @FXML
-    public Label meldungLbl;
+    private Label meldungLbl;
 
     @FXML
-    public TextField idTf;
+    private TextField idTf;
     @FXML
-    public ChoiceBox<Cit> citChoicebox;
+    private ChoiceBox<Cit> citChoicebox;
     @FXML
-    public TextField nameTf;
+    private TextField nameTf;
     @FXML
-    public TextField attribut1Tf;
+    private TextField attribut1Tf;
     @FXML
-    public TextField attribut2Tf;
+    private TextField attribut2Tf;
     @FXML
-    public TextField attribut3Tf;
+    private TextField attribut3Tf;
     @FXML
-    public TextField attribut4Tf;
+    private TextField attribut4Tf;
     @FXML
-    public TextField attribut5Tf;
+    private TextField attribut5Tf;
     @FXML
-    public TextField attribut6Tf;
+    private TextField attribut6Tf;
     @FXML
-    public TextField attribut7Tf;
+    private TextField attribut7Tf;
 
     @FXML
-    public Button cancelBtn;
+    private Button cancelBtn;
     @FXML
-    public Button submitBtn;
+    private Button submitBtn;
 
     /**
      * Initializes the Object.

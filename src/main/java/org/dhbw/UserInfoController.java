@@ -10,11 +10,11 @@ import javafx.scene.control.TextField;
 public class UserInfoController extends Controller implements Initializable {
 
     @FXML
-    public TextField surnameTf;
+    private TextField surnameTf;
     @FXML
-    public TextField nameTf;
+    private TextField nameTf;
     @FXML
-    public TextField usernameTf;
+    private TextField usernameTf;
 
     private final User userToShow;
 
