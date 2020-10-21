@@ -72,7 +72,7 @@ public class DbCallerCir extends DbConnector {
      * @return bUpdateCir - Boolean with true/false
      * @throws SQLException - on database access error or other errors
      */
-    public boolean updateCir(Cir cirToUpdate) throws SQLException {
+    public boolean updateCir(Cir cirToUpdate) {
         boolean successful;
         String[] attributes = cirToUpdate.getCirAttributes();
         try {
@@ -96,7 +96,7 @@ public class DbCallerCir extends DbConnector {
             prepStmt.executeUpdate();
             prepStmt.close();
             successful = true;
-        } catch (SQLNonTransientException c) {
+        } catch (SQLException c) {
             successful = false;
         }
 

@@ -184,4 +184,17 @@ public class Cir {
         return this.cit;
     }
 
+    public void setName(String newName) {
+        this.name = newName;
+    }
+
+    /**
+     * Sets the attributes of the CIR
+     *
+     * @param newAttributes String[] length 7 with the new attributes
+     */
+    public void setAttributes(String[] newAttributes) {
+        this.attributes = newAttributes;
+    }
+
 }
