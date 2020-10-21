@@ -10,7 +10,7 @@
    <children>
       <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" style="-fx-background-color: #313c48;">
          <children>
-            <MenuButton fx:id="adminUserMB" mnemonicParsing="false" style="-fx-background-color: #313c48;" text="Vorname, Nachname" textFill="WHITE">
+            <MenuButton fx:id="adminUserMB" mnemonicParsing="false" text="Vorname, Nachname" textFill="WHITE">
                <items>
                   <MenuItem mnemonicParsing="false">
                      <graphic>
@@ -33,7 +33,7 @@
                   <Font size="14.0" />
                </font>
             </MenuButton>
-            <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" prefHeight="36.0" style="-fx-background-color: #313c48;" text="Logout" textFill="WHITE">
+            <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" prefHeight="36.0" text="Logout" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>

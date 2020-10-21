@@ -10,6 +10,7 @@ VBox {
  */
 Button {
     -fx-background-color:  #3D4956;
+    -fx-text-fill: white;
 }
 Button:hover {
     -fx-background-color:  #313c48;
@@ -22,6 +23,7 @@ Button:hover {
  */
 Button#logoutBtn {
     -fx-background-color: #313c48;
+    -fx-text-fill: white;
 }
 Button#logoutBtn:hover {
     -fx-text-fill:  #e1a6ad;
@@ -56,6 +58,7 @@ MenuButton .menu-item:focused .label {
 }
 MenuButton .context-menu {
     -fx-background-color: #313c48;
+    -fx-text-fill: red;
     -fx-pref-width: 196.8;
     -fx-alignment: LEFT_CENTER;
 }

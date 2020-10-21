@@ -36,7 +36,7 @@
                   </ImageView>
                </graphic>
             </MenuButton>
-            <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" prefHeight="36.0" style="-fx-background-color: #313c48;" text="Logout" textFill="WHITE">
+            <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" prefHeight="36.0" text="Logout" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
