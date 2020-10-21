@@ -45,6 +45,10 @@ MenuButton#adminUserMB:hover {
 /*
     Style for the menu item(s) in the opened menu button
  */
+MenuButton .label {
+    -fx-text-fill: white;
+    -fx-background-color: #313c48;
+}
 MenuButton .menu-item .label{
     -fx-text-fill: white;
     -fx-background-color: #313c48;
