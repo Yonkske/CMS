@@ -115,6 +115,11 @@ public class ChangePasswordController extends Controller {
         FXMLFactory.setRoot("Startpage");
     }
 
+    /**
+     * checks if Regex is matched by String. Regex checks for no emtpy strings.
+     * @param password The string to be checked.
+     * @return true, if does not have spaces only, false otherwise.
+     */
     private boolean checkForRegex(String password) {
         return !password.matches("^[\\s]+$");
     }
