@@ -83,7 +83,7 @@ public class PasswordEditAdminController extends Controller {
      * @return boolean
      */
     private boolean checkPasswordCriteria(String newPassword) {
-        if (newPassword.length() > 5 && !newPassword.contains(" ")) {
+        if (newPassword.length() >= 5 && !newPassword.contains(" ")) {
             return true;
         } else {
             return false;

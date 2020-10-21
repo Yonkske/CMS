@@ -133,7 +133,7 @@ public class UserAddAdminController extends Controller implements Initializable 
      * @return boolean
      */
     private boolean checkPasswordCriteria(String password) {
-        if (password.length() > 5 && !password.contains(" ")) {
+        if (password.length() >= 5 && !password.contains(" ")) {
             return true;
         } else {
             return false;

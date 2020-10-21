@@ -111,7 +111,7 @@ public class ChangePasswordController extends Controller {
      * @return boolean
      */
     private boolean checkPasswordCriteria(String newPassword, String oldPassword) {
-        if (newPassword.length() > 5 && !newPassword.contains(" ") && !newPassword.equals(oldPassword)) {
+        if (newPassword.length() >= 5 && !newPassword.contains(" ") && !newPassword.equals(oldPassword)) {
             return true;
         } else {
             return false;
