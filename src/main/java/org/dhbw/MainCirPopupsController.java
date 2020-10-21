@@ -13,44 +13,44 @@ import java.util.ResourceBundle;
 public abstract class MainCirPopupsController extends Controller implements Initializable {
 
     @FXML
-    public Label citLbl;
+    Label citLbl;
     @FXML
-    public Label nameLbl;
+    Label nameLbl;
     @FXML
-    public Label attribut1Lbl;
+    Label attribut1Lbl;
     @FXML
-    public Label attribut2Lbl;
+    Label attribut2Lbl;
     @FXML
-    public Label attribut3Lbl;
+    Label attribut3Lbl;
     @FXML
-    public Label attribut4Lbl;
+    Label attribut4Lbl;
     @FXML
-    public Label attribut5Lbl;
+    Label attribut5Lbl;
     @FXML
-    public Label attribut6Lbl;
+    Label attribut6Lbl;
     @FXML
-    public Label attribut7Lbl;
+    Label attribut7Lbl;
 
     @FXML
-    public TextField idTf;
+    TextField idTf;
     @FXML
-    public TextField citTf;
+    TextField citTf;
     @FXML
-    public TextField nameTf;
+    TextField nameTf;
     @FXML
-    public TextField attribut1Tf;
+    TextField attribut1Tf;
     @FXML
-    public TextField attribut2Tf;
+    TextField attribut2Tf;
     @FXML
-    public TextField attribut3Tf;
+    TextField attribut3Tf;
     @FXML
-    public TextField attribut4Tf;
+    TextField attribut4Tf;
     @FXML
-    public TextField attribut5Tf;
+    TextField attribut5Tf;
     @FXML
-    public TextField attribut6Tf;
+    TextField attribut6Tf;
     @FXML
-    public TextField attribut7Tf;
+    TextField attribut7Tf;
 
     Cir cir;
 
