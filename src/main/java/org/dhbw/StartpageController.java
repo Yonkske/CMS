@@ -50,18 +50,8 @@ public class StartpageController extends MainPagesController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
-        try {
-            allCir = DB_CALLER_CIR.getRecords();
-            setTableContent(allCir);
-
-            Cit placeholder = new Cit(0, "CIT", new String[]{null, null, null, null, null, null, null});
-            filterCitCb.getItems().add(placeholder);
-            filterCitCb.getItems().addAll(DB_CALLER_CIT.getAllCits());
-            filterCitCb.setValue(placeholder);
-            // DO IT!
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        allCir = DB_CALLER_CIR.getRecords();
+        refresh();
 
         if (!Controller.user.getIsAdmin()) {
             userBtn.setVisible(false);
@@ -188,6 +178,17 @@ public class StartpageController extends MainPagesController {
      */
     @Override
     public void refresh() {
+        try {
+            setTableContent(allCir);
+
+            Cit placeholder = new Cit(0, "CIT", new String[]{null, null, null, null, null, null, null});
+            filterCitCb.getItems().add(placeholder);
+            filterCitCb.getItems().addAll(DB_CALLER_CIT.getAllCits());
+            filterCitCb.setValue(placeholder);
+            // DO IT!
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         allCir = DB_CALLER_CIR.getRecords();
         this.setTableWithFilterAndSearch();
     }
