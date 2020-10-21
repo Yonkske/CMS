@@ -135,4 +135,21 @@ public class DbCallerCit extends DbConnector {
             return 0;
         }
     }
+
+    /**
+     * Checks if there is already a CIT with the given typeName
+     *
+     * @param typeName String - typeName to be checked for
+     * @return true if the name is available, false if it is already in use
+     */
+    public boolean isTypeNameAvailable(String typeName) {
+        String query = "SELECT count(*) FROM CIT WHERE TYPE_NAME = '" + typeName + "'";
+        try {
+            ResultSet rs = stmt.executeQuery(query);
+            rs.first();
+            return rs.getInt(1) == 0;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
 }
