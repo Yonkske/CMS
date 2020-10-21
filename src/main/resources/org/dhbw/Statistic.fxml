@@ -54,7 +54,7 @@
          <children>
             <VBox alignment="TOP_CENTER" maxWidth="150.0" minWidth="100.0" style="-fx-background-color: #3D4956;">
                <children>
-                  <Button fx:id="startpageBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToStartpage" style="-fx-background-color: #3D4956;" text="Startseite" textFill="WHITE">
+                  <Button fx:id="startpageBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToStartpage" text="Startseite" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -65,7 +65,7 @@
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="citBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToCit" style="-fx-background-color: #3D4956;" text="CIT" textFill="WHITE">
+                  <Button fx:id="citBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToCit" text="CIT" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -87,7 +87,7 @@
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="userBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToUserAdmin" style="-fx-background-color: #3D4956;" text="Benutzer" textFill="WHITE">
+                  <Button fx:id="userBtn" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#swapToUserAdmin" text="Benutzer" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
