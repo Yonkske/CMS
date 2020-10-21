@@ -1,5 +1,5 @@
 /*
-    Style for all text fields, password fields and the login button
+    Style for the username text fields, password field and the login button
  */
 TextField#usernameTf, TextField#passwordField, Button#loginBtn {
     -fx-font-family: "Hiragino Sans W1";
@@ -47,19 +47,23 @@ Button:hover {
     -fx-text-fill: #e1a6ad;
     -fx-scale-y: 1;
 }
+
+/*
+    Style for the choiceboxes rights and cit selection
+ */
 ChoiceBox .context-menu{
-    -fx-background-color: #c4c4cc;
+    -fx-background-color: #d9dbde;
     -fx-font-family: "Hiragino Sans W1";
     -fx-font-size: 14;
     -fx-text-fill: black;
-    -fx-pref-width: 210;
+    -fx-pref-width: 208;
 }
 ChoiceBox .menu-item:focused {
-    -fx-text-fill: #e1a6ad;
+    -fx-background-color: #c4c4cc;
 }
 ChoiceBox .menu-item > .label {
     -fx-text-fill: black;
 }
 ChoiceBox .menu-item:focused > .label {
-    -fx-text-fill: #e1a6ad;
+    -fx-text-fill: white;
 }
