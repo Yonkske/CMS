@@ -153,6 +153,7 @@ public class UserAdminController extends MainPagesController {
         stage.setScene(scene);
         scene.getWindow().sizeToScene();
         stage.show();
+
     }
 
     /**
@@ -181,10 +182,6 @@ public class UserAdminController extends MainPagesController {
         if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
             showUserBtn.setDisable(false);
             deleteBtn.setDisable(false);
-
-            if (userTable.getSelectionModel().getSelectedItem().getUserName().equals("admin")) {
-                deleteBtn.setDisable(true);
-            }
         }
 
         if (mouseEvent.getClickCount() == 2) {

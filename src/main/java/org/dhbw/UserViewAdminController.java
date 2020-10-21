@@ -2,9 +2,6 @@ package org.dhbw;
 
 
 import backend.usability.User;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +12,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
 public class UserViewAdminController extends Controller implements Initializable {
@@ -76,8 +77,7 @@ public class UserViewAdminController extends Controller implements Initializable
      */
     @FXML
     public void switchToUserEditAdmin(ActionEvent actionEvent) throws IOException {
-        // TODO: Test der Methode
-        openPopup(new UserEditAdminController(userToEdit), "UserEditAdmin.fxml", true, false);
+        this.openPopup(new UserEditAdminController(userToEdit), "UserEditAdmin.fxml", true, false);
     }
 
     /**
@@ -106,10 +106,6 @@ public class UserViewAdminController extends Controller implements Initializable
         nameTf.setText(userToEdit.getName());
         authorizationTf.setText(authorisation);
         usernameTf.setText(userToEdit.getUserName());
-
-        if (usernameTf.getText().equals("admin")) {
-            editPasswordBtn.setDisable(true);
-        }
     }
 
     /**
@@ -120,8 +116,7 @@ public class UserViewAdminController extends Controller implements Initializable
      */
     @FXML
     public void switchToPasswordEditAdmin(ActionEvent actionEvent) throws IOException {
-        // TODO: Methode testen
-        openPopup(new PasswordEditAdminController(userToEdit), "PasswordEditAdmin.fxml",
+        this.openPopup(new PasswordEditAdminController(userToEdit), "PasswordEditAdmin.fxml",
                 false, false);
     }
 

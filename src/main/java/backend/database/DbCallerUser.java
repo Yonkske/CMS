@@ -145,7 +145,7 @@ public class DbCallerUser extends DbConnector {
         User user = User.getUser("admin");
 
         try {
-            rs = stmt.executeQuery("SELECT * FROM USER");
+            rs = stmt.executeQuery("SELECT * FROM USER WHERE USER_NAME != 'admin'");
 
             while (rs.next()) {
                 String userName = rs.getString(1);
