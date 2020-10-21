@@ -117,7 +117,7 @@
                   <Font name="Hiragino Sans W1" size="15.0" />
                </font>
                         </Label>
-                        <TextField fx:id="idTf" disable="true" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="idTf" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="5.0" />
                            </HBox.margin>
@@ -140,7 +140,7 @@
                   <Font name="Hiragino Sans W1" size="15.0" />
                </font>
                         </Label>
-                        <TextField fx:id="citTf" disable="true" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="citTf" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
@@ -163,7 +163,7 @@
                   <Font name="Hiragino Sans W1" size="15.0" />
                </font>
                         </Label>
-                        <TextField fx:id="attribut1Tf" disable="true" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="attribut1Tf" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
@@ -186,7 +186,7 @@
                   <Font size="15.0" />
                </font>
                     </Label>
-                    <TextField fx:id="attribut2Tf" disable="true" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
+                    <TextField fx:id="attribut2Tf" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
                         <HBox.margin>
                             <Insets bottom="5.0" top="5.0" />
                         </HBox.margin>
@@ -205,7 +205,7 @@
                   <Font size="15.0" />
                </font></Label>
 
-                        <TextField fx:id="attribut3Tf" disable="true" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="attribut3Tf" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
@@ -224,7 +224,7 @@
                   <Font size="15.0" />
                </font></Label>
 
-                        <TextField fx:id="attribut4Tf" disable="true" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="attribut4Tf" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
@@ -240,24 +240,7 @@
                   <Font size="15.0" />
                </font></Label>
 
-                        <TextField fx:id="attribut5Tf" disable="true" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
-                           <HBox.margin>
-                              <Insets bottom="5.0" top="5.0" />
-                           </HBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
-                        </TextField>
-
-                  </HBox>
-                  <HBox alignment="CENTER" spacing="5.0">
-            <Label prefWidth="100.0">
-               <font>
-                  <Font size="15.0" />
-               </font></Label>
-
-
-                        <TextField fx:id="attribut6Tf" disable="true" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="attribut5Tf" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
@@ -274,7 +257,24 @@
                </font></Label>
 
 
-                        <TextField fx:id="attribut7Tf" disable="true" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="attribut6Tf" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
+                           <HBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+                        </TextField>
+
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="5.0">
+            <Label prefWidth="100.0">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+
+
+                        <TextField fx:id="attribut7Tf" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
@@ -292,7 +292,7 @@
 
 
 
-                        <TextField fx:id="attribut8Tf" disable="true" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="attribut8Tf" prefWidth="210.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="15.0" top="5.0" />
                            </HBox.margin>
