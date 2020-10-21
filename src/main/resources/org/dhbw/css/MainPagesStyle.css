@@ -11,6 +11,7 @@ VBox {
 Button {
     -fx-background-color:  #3D4956;
     -fx-text-fill: white;
+    -fx-font-size: 18;
 }
 Button:hover {
     -fx-background-color:  #313c48;
@@ -64,7 +65,7 @@ Button#benutzerDropDownBtn, Button#passwordEditBtn {
     -fx-font-family: "Hiragino Sans W1";
     -fx-font-size: 14;
     -fx-background-color: #313c48;
-    -fx-pref-width: 180;
+    -fx-min-width: 194;
     -fx-pref-height: 27;
     -fx-alignment: CENTER_LEFT;
 }

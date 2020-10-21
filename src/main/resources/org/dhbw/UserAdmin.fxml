@@ -10,7 +10,7 @@
     <children>
         <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" style="-fx-background-color: #313c48;">
             <children>
-                <MenuButton fx:id="adminUserMB" minWidth="-Infinity" mnemonicParsing="false" prefWidth="196.8" text="Vorname, Nachname" textFill="WHITE">
+                <MenuButton fx:id="adminUserMB" minWidth="196.8" mnemonicParsing="false" text="Vorname, Nachname" textFill="WHITE">
                     <items>
                         <MenuItem fx:id="itemUser" mnemonicParsing="false">
                             <graphic>
