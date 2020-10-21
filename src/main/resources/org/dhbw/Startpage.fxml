@@ -131,7 +131,7 @@
                            </font></Button>
                      </children>
                   </HBox>
-                  <TableView fx:id="cirTable" onMouseClicked="#clickAction" prefHeight="600.0" prefWidth="600.0">
+                  <TableView fx:id="cirTable" onMouseClicked="#clickAction" VBox.vgrow="ALWAYS">
                     <columns>
                       <TableColumn fx:id="citColumn" editable="false" maxWidth="600.0" minWidth="175.0" prefWidth="300.0">
                            <graphic>

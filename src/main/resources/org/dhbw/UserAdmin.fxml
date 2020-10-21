@@ -122,7 +122,7 @@
                                 </Button>
                             </children>
                         </HBox>
-                        <TableView fx:id="userTable" onMouseClicked="#clickAction" prefHeight="600.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+                        <TableView fx:id="userTable" onMouseClicked="#clickAction" VBox.vgrow="ALWAYS">
                             <columns>
                                 <TableColumn fx:id="userColumn" editable="false" maxWidth="600.0" minWidth="175.0" prefWidth="300.0" text="Benutzer" />
                                 <TableColumn fx:id="rightColumn" maxWidth="600.0" minWidth="175.0" prefWidth="300.0">

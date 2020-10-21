@@ -125,6 +125,9 @@ TableView .column-header-background .label {
 TableView .column-header {
     -fx-background-color: #92979f;
 }
+TableView .table-cell{
+    i
+}
 
 /*
     Style for the ComboBox in the TableView on the start page and the user page
