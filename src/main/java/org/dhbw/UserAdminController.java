@@ -164,7 +164,7 @@ public class UserAdminController extends MainPagesController {
     }
 
     /**
-     * This method sets the edit and the delete Button disable as long as no user is selected.
+     * This method sets the showUser and the delete Button disable as long as no user is selected.
      */
     @FXML
     private void disableButtons() {

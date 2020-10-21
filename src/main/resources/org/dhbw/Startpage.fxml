@@ -5,6 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+
 <VBox alignment="TOP_RIGHT" stylesheets="@css/MainPagesStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.StartpageController">
    <children>
       <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" style="-fx-background-color: #313c48;">
@@ -130,7 +131,7 @@
                            </font></Button>
                      </children>
                   </HBox>
-                  <TableView fx:id="cirTable" onMouseClicked="#openCirView" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #f0f0f8; -fx-border-color: #d8dce4; -fx-font-size: 14; -fx-font-family: AppleGothic;">
+                  <TableView fx:id="cirTable" onMouseClicked="#clickAction" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #f0f0f8; -fx-border-color: #d8dce4; -fx-font-size: 14; -fx-font-family: AppleGothic;">
                     <columns>
                       <TableColumn fx:id="citColumn" editable="false" maxWidth="600.0" minWidth="175.0" prefWidth="300.0" style="-fx-background-color: #c4c4cc;" text="CIT">
                            <graphic>
@@ -163,7 +164,7 @@
                               <Font name="AppleGothic Regular" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="citDeleteBtn" mnemonicParsing="false" onAction="#openDeleteCitPopup" style="-fx-background-color: #92979f;" text="CIT" textFill="WHITE">
+                        <Button fx:id="citDeleteBtn" disable="true" mnemonicParsing="false" onAction="#openDeleteCitPopup" style="-fx-background-color: #92979f;" text="CIT" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
@@ -193,14 +194,14 @@
                               <Font name="AppleGothic Regular" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="cirEditBtn" mnemonicParsing="false" onAction="#openEditCir" style="-fx-background-color: #92979f;" text="CIR" textFill="WHITE">
+                        <Button fx:id="showCirBtn" disable="true" mnemonicParsing="false" onAction="#showCir" style="-fx-background-color: #92979f;" text="CIR" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="5.0" />
                            </HBox.margin>
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@icons/datei-bearbeiten.png" />
+                                    <Image url="@icons/datei.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -208,7 +209,7 @@
                               <Font name="AppleGothic Regular" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="cirDeleteBtn" mnemonicParsing="false" onAction="#openDeleteCirPopup" style="-fx-background-color: #92979f;" text="CIR" textFill="WHITE">
+                        <Button fx:id="cirDeleteBtn" disable="true" mnemonicParsing="false" onAction="#openDeleteCirPopup" style="-fx-background-color: #92979f;" text="CIR" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
