@@ -52,7 +52,7 @@ public class UserEditAdminController extends Controller implements Initializable
         } else {
             meldungLbl.setVisible(true);
         }
-
+        Controller.user = user;
     }
 
     /**
@@ -96,6 +96,9 @@ public class UserEditAdminController extends Controller implements Initializable
             authorizationChoiceBox.setValue("Admin");
         } else {
             authorizationChoiceBox.setValue("User");
+        }
+        if (Controller.user.getUserName().equals(usernameTf.getText()))  {
+            authorizationChoiceBox.setDisable(true);
         }
     }
 }
