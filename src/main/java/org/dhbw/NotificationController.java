@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class NotificationController extends Controller implements Initializable {
@@ -149,18 +148,10 @@ public class NotificationController extends Controller implements Initializable 
 
         switch (itemToDelete) {
             case "cir":
-                try {
-                    DB_CALLER_CIR.deleteCir(cirToDelete);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+                DB_CALLER_CIR.deleteCir(cirToDelete);
                 break;
             case "cit":
-                try {
-                    DB_CALLER_CIT.deleteCit(citToDelete);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+                DB_CALLER_CIT.deleteCit(citToDelete);
                 break;
             case "user":
                 DB_CALLER_USER.deleteUser(userToDelete);

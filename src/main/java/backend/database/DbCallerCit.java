@@ -72,12 +72,12 @@ public class DbCallerCit extends DbConnector {
      * @param type which should be deleted
      * @return true if the CIT is deleted/ false if not
      */
-    public boolean deleteCit(Cit type) throws SQLException {
+    public boolean deleteCit(Cit type) {
         try {
             stmt.execute("DELETE FROM CIR WHERE TYPE_ID = " + type.getCitID());
             stmt.execute("DELETE FROM CIT WHERE TYPE_ID = " + type.getCitID());
             return true;
-        } catch (SQLNonTransientException c) {
+        } catch (SQLException c) {
             return false;
         }
     }

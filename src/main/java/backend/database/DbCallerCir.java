@@ -6,7 +6,6 @@ import backend.usability.Cit;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLNonTransientException;
 import java.util.ArrayList;
 
 public class DbCallerCir extends DbConnector {
@@ -88,12 +87,12 @@ public class DbCallerCir extends DbConnector {
      * @return bDeleteCir - boolean
      * @throws SQLException - on database access error or other errors
      */
-    static public boolean deleteCir(Cir cirName) throws SQLException {
+    static public boolean deleteCir(Cir cirName) {
         boolean successful;
         try {
             stmt.execute("DELETE FROM CIR WHERE ITEM_ID = " + cirName.getCirID());
             successful = true;
-        } catch (SQLNonTransientException c) {
+        } catch (SQLException c) {
             successful = false;
         }
 
@@ -106,13 +105,13 @@ public class DbCallerCir extends DbConnector {
      * @return iCirCount - int CIR Count of all Cir's
      * @throws SQLException - on database access error or other errors
      */
-    public int getCirCount() throws SQLException {
+    public int getCirCount() {
         int iCirCount;
         try {
             ResultSet rs = stmt.executeQuery("SELECT count(ITEM_ID) FROM CIR");
             rs.first();
             iCirCount = rs.getInt(1);
-        } catch (SQLNonTransientException c) {
+        } catch (SQLException c) {
             iCirCount = 0;
         }
 
@@ -126,13 +125,13 @@ public class DbCallerCir extends DbConnector {
      * @return count of Cir form a specific CIT
      * @throws SQLException - on database access error or other errors
      */
-    public int getCirCountForType(Cit type) throws SQLException {
+    public int getCirCountForType(Cit type) {
         int iCountCIRofCIT;
         try {
             ResultSet rs = stmt.executeQuery("SELECT count(ITEM_ID) FROM CIR WHERE TYPE_ID =" + type.getCitID());
             rs.first();
             iCountCIRofCIT = rs.getInt(1);
-        } catch (SQLNonTransientException c) {
+        } catch (SQLException c) {
             iCountCIRofCIT = 0;
             c.printStackTrace();
         }
