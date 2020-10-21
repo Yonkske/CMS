@@ -39,6 +39,7 @@ public class StartpageController extends MainPagesController {
     @FXML
     private ComboBox<Cit> filterCitCb;
     private ArrayList<Cir> allCir;
+    private final Cit placeholder = new Cit(0, "CIT", new String[]{null, null, null, null, null, null, null});
 
     /**
      * Methode from the interface Initializable that auto generates the page on
@@ -51,6 +52,7 @@ public class StartpageController extends MainPagesController {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
         allCir = DB_CALLER_CIR.getRecords();
+        filterCitCb.setValue(placeholder);
         refresh();
 
         if (!Controller.user.getIsAdmin()) {
@@ -81,7 +83,8 @@ public class StartpageController extends MainPagesController {
     public void openDeleteCitPopup() throws IOException {
         if (Objects.nonNull(cirTable.getSelectionModel().getSelectedItem())) {
             openPopup(new NotificationController(cirTable.getSelectionModel().getSelectedItem().getCit()), "Notification.fxml", true);
-        this.disableButtons();}
+            this.disableButtons();
+        }
     }
 
     /**
@@ -93,7 +96,7 @@ public class StartpageController extends MainPagesController {
     public void openDeleteCirPopup() throws IOException {
         if (Objects.nonNull(cirTable.getSelectionModel().getSelectedItem())) {
             openPopup(new NotificationController(cirTable.getSelectionModel().getSelectedItem()), "Notification.fxml", true);
-       this.disableButtons();
+            this.disableButtons();
         }
     }
 
@@ -107,7 +110,6 @@ public class StartpageController extends MainPagesController {
         openPopup(new CIRAddController(), "CIRAdd.fxml", true);
         this.disableButtons();
     }
-
 
 
     /**
@@ -127,9 +129,10 @@ public class StartpageController extends MainPagesController {
     public void showCir() throws IOException {
         if (Objects.nonNull(cirTable.getSelectionModel().getSelectedItem())) {
             openPopup(new CIRViewController(cirTable.getSelectionModel().getSelectedItem()), "CIRView.fxml", false);
-        this.disableButtons();
+            this.disableButtons();
         }
     }
+
     /**
      * This method says what to do by selecting a user and double clicking at a user.
      */
@@ -179,18 +182,43 @@ public class StartpageController extends MainPagesController {
     @Override
     public void refresh() {
         try {
-            setTableContent(allCir);
+            Cit temp = filterCitCb.getSelectionModel().getSelectedItem();
+            filterCitCb.getItems().clear();
 
-            Cit placeholder = new Cit(0, "CIT", new String[]{null, null, null, null, null, null, null});
             filterCitCb.getItems().add(placeholder);
+
+            ArrayList<Cit> allCits = DB_CALLER_CIT.getAllCits();
             filterCitCb.getItems().addAll(DB_CALLER_CIT.getAllCits());
-            filterCitCb.setValue(placeholder);
+
+            if (temp.getCitID() == 0) {
+                filterCitCb.setValue(placeholder);
+            } else {
+                filterCitCb.setValue(getSelectedFilterCit(temp.getCitID(), allCits));
+            }
+
+            setTableContent(allCir);
             // DO IT!
         } catch (SQLException e) {
             e.printStackTrace();
         }
         allCir = DB_CALLER_CIR.getRecords();
         this.setTableWithFilterAndSearch();
+    }
+
+    /**
+     * Gets the CIT with the given Id out of the given list of CITs
+     *
+     * @param id      int - id to be looked for
+     * @param allCits ArrayList from which the CIT should be selected
+     * @return the CIT with the given ID
+     */
+    private Cit getSelectedFilterCit(int id, ArrayList<Cit> allCits) {
+        for (Cit cit : allCits) {
+            if (cit.getCitID() == id) {
+                return cit;
+            }
+        }
+        return null;
     }
 
     /**
@@ -205,23 +233,26 @@ public class StartpageController extends MainPagesController {
         String searchValue = searchTf.getText().toLowerCase();
         Cit selectedCit = filterCitCb.getSelectionModel().getSelectedItem();
 
-        if (selectedCit.getCitID() == 0) {
+        if (Objects.nonNull(selectedCit)) {
+            if (selectedCit.getCitID() == 0) {
 
-            allCir.forEach(record -> {
-                if (checkForSearchValue(record, searchValue)) {
-                    filteredCirs.add(record);
-                }
-            });
-        } else {
-            allCir.forEach(record -> {
-                if (checkForSearchValue(record, searchValue) && record.getCit().getCitID() == selectedCit.getCitID()) {
-                    filteredCirs.add(record);
-                }
-            });
+                allCir.forEach(record -> {
+                    if (checkForSearchValue(record, searchValue)) {
+                        filteredCirs.add(record);
+                    }
+                });
+            } else {
+                allCir.forEach(record -> {
+                    if (checkForSearchValue(record, searchValue) && record.getCit().getCitID() == selectedCit.getCitID()) {
+                        filteredCirs.add(record);
+                    }
+                });
+            }
         }
 
         return filteredCirs;
     }
+
     /**
      * This method sets the showCIR and the delete Button disable as long as no user is selected.
      */
