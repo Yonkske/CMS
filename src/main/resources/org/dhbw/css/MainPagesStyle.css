@@ -128,8 +128,12 @@ TableView .column-header-background .label {
 TableView .column-header {
     -fx-background-color: #92979f;
 }
+TableView .table-row-cell {
+    -fx-table-cell-border-color: #92979f;
+}
 TableView .table-row-cell:selected {
     -fx-background-color: #e1a6ad;
+    -fx-table-cell-border-color: #92979f;
     -fx-text-fill: white;
 }
 
