@@ -5,17 +5,13 @@ import backend.usability.Cit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -71,7 +67,8 @@ public class CIRAddController extends Controller implements Initializable {
 
     /**
      * Initializes the Object.
-     * @param url an url
+     *
+     * @param url            an url
      * @param resourceBundle an resourceBundle
      */
     @Override
@@ -93,46 +90,29 @@ public class CIRAddController extends Controller implements Initializable {
      */
     @FXML
     public void fillIn() {
-        if (nameTf.getText().length() !=0 && !nameTf.getText().matches("^[\\s]+$")) {
+        if (nameTf.getText().length() != 0 && !nameTf.getText().matches("^[\\s]+$")) {
 
 
             if (citChoicebox.getSelectionModel().getSelectedItem() == null) {
-                meldungLbl.setVisible(true);
+                showError("CIT darf nicht leer sein!");
             } else {
-                Cit cit = citChoicebox.getSelectionModel().getSelectedItem();
-                String[] sCirArray = new String[10];
-                sCirArray[0] = idTf.getText();
-                sCirArray[1] = String.valueOf(cit.getCitID());
-                sCirArray[2] = nameTf.getText();
-                sCirArray[3] = attribut1Tf.getText();
-                sCirArray[4] = attribut2Tf.getText();
-                sCirArray[5] = attribut3Tf.getText();
-                sCirArray[6] = attribut4Tf.getText();
-                sCirArray[7] = attribut5Tf.getText();
-                sCirArray[8] = attribut6Tf.getText();
-                sCirArray[9] = attribut7Tf.getText();
-                Cir cirName = Cir.create(sCirArray);
 
-                try {
-                    //Fixme: Error Handling
-                    DB_CALLER_CIR.insertCir(cirName);
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                String[] attributes = new String[7];
+                attributes[0] = attribut1Tf.getText();
+                attributes[1] = attribut2Tf.getText();
+                attributes[2] = attribut3Tf.getText();
+                attributes[3] = attribut4Tf.getText();
+                attributes[4] = attribut5Tf.getText();
+                attributes[5] = attribut6Tf.getText();
+                attributes[6] = attribut7Tf.getText();
+
+                Cir cirToInsert = new Cir(Integer.parseInt(idTf.getText()), citChoicebox.getSelectionModel().getSelectedItem(), nameTf.getText(), attributes);
+
+                if (DB_CALLER_CIR.insertCir(cirToInsert)) {
+                    closeWindow();
+                } else {
+                    showError("Maximal 255 Zeichen!");
                 }
-                try {
-                    CIRViewController CIRViewController = new CIRViewController(cirName);
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("CIRView.fxml"));
-                    loader.setController(CIRViewController);
-                    Parent root = loader.load();
-                    Stage stage = new Stage();
-                    Scene scene = new Scene(root);
-                    stage.setScene(scene);
-                    scene.getWindow().sizeToScene();
-                    stage.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                closeWindow();
             }
         }
     }
@@ -143,6 +123,11 @@ public class CIRAddController extends Controller implements Initializable {
     @FXML
     public void cancel() {
         closeWindow();
+    }
+
+    private void showError(String errorMessage) {
+        meldungLbl.setText(errorMessage);
+        meldungLbl.setVisible(true);
     }
 
     /**
