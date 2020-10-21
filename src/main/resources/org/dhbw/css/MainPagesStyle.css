@@ -90,21 +90,21 @@ Button#benutzerDropDownBtn:hover, Button#passwordEditBtn:hover {
 /*
     Style for the ChoiceBox on the CIT page
  */
-ChoiceBox .context-menu{
+#choiceBox .context-menu{
     -fx-background-color: #c4c4cc;
     -fx-font-family: "Hiragino Sans W1";
     -fx-font-size: 14;
     -fx-text-fill: black;
     -fx-min-width: 210;
 }
-ChoiceBox .menu-item:focused {
+#choiceBox .menu-item:focused {
     -fx-text-fill: #e1a6ad;
     -fx-background-color: #92979f;
 }
-ChoiceBox .menu-item > .label {
+#choiceBox .menu-item > .label {
     -fx-text-fill: black;
 }
-ChoiceBox .menu-item:focused > .label {
+#choiceBox .menu-item:focused > .label {
     -fx-text-fill: white;
 }
 
@@ -124,6 +124,9 @@ TableView .column-header-background .label {
 }
 TableView .column-header {
     -fx-background-color: #92979f;
+}
+TableView .table-cell{
+    i
 }
 
 /*

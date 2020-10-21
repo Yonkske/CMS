@@ -100,29 +100,37 @@
                 </VBox>
                 <VBox style="-fx-background-color: #f0f0f8; -fx-border-color: #d8dce4; -fx-font-size: 15; -fx-font-family: AppleGothic;" HBox.hgrow="ALWAYS">
                     <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="67.0" prefWidth="458.0" spacing="10.0" style="-fx-background-color: #f0f0f8;">
+                        <HBox alignment="CENTER_LEFT" style="-fx-background-color: #f0f0f8;">
                             <children>
-                                <TextField fx:id="searchTextField" onAction="#setTableWithFilterAndSearch" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
+                        <ImageView fitHeight="31.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/suchenS.png" />
+                           </image>
+                        </ImageView>
+                                <TextField fx:id="searchTextField" onAction="#setTableWithFilterAndSearch" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
                                 </TextField>
-                                <Button fx:id="deleteSearchBtn" mnemonicParsing="false" onAction="#emptySearchTf" prefHeight="32.0" prefWidth="29.0" style="-fx-background-color: #c4c4cc;">
+                                <Button fx:id="deleteSearchBtn" mnemonicParsing="false" onAction="#emptySearchTf" prefHeight="32.0" style="-fx-background-color: #c4c4cc;">
                                     <graphic>
                                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@icons/abbrechenS.png" />
                                             </image>
                                         </ImageView>
-                                    </graphic></Button>
-                                <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#setTableWithFilterAndSearch" text="Suchen" textFill="WHITE">
+                                    </graphic>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></Button>
+                                <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#setTableWithFilterAndSearch" prefHeight="32.0" prefWidth="100.0" text="Suchen" textFill="WHITE">
                                     <font>
                                         <Font name="Hiragino Sans W2" size="15.0" />
                                     </font>
                                 </Button>
                             </children>
                         </HBox>
-                        <TableView fx:id="userTable" onMouseClicked="#clickAction" prefHeight="600.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+                        <TableView fx:id="userTable" onMouseClicked="#clickAction" VBox.vgrow="ALWAYS">
                             <columns>
                                 <TableColumn fx:id="userColumn" editable="false" maxWidth="600.0" minWidth="175.0" prefWidth="300.0" text="Benutzer" />
                                 <TableColumn fx:id="rightColumn" maxWidth="600.0" minWidth="175.0" prefWidth="300.0">
@@ -137,7 +145,19 @@
                         </TableView>
                         <HBox spacing="10.0" style="-fx-background-color: #f0f0f8;">
                             <children>
-                                <Button fx:id="addBtn" mnemonicParsing="false" onAction="#addUser" style="-fx-background-color: #92979f;" textFill="WHITE">
+                                <Button fx:id="showUserBtn" disable="true" mnemonicParsing="false" onAction="#showUser" style="-fx-background-color: #92979f;" text="Anzeigen" textFill="WHITE">
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                    <graphic>
+                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@icons/benutzer.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Button fx:id="addBtn" mnemonicParsing="false" onAction="#addUser" style="-fx-background-color: #92979f;" text="Hinzufügen" textFill="WHITE">
                                     <HBox.margin>
                                         <Insets />
                                     </HBox.margin>
@@ -157,18 +177,6 @@
                                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@icons/benutzer-loeschen.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </Button>
-                                <Button fx:id="showUserBtn" disable="true" mnemonicParsing="false" onAction="#showUser" style="-fx-background-color: #92979f;" text="Anzeigen" textFill="WHITE">
-                                    <HBox.margin>
-                                        <Insets />
-                                    </HBox.margin>
-                                    <graphic>
-                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@icons/benutzer.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>
