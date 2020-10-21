@@ -49,7 +49,6 @@ MenuButton .label {
     -fx-text-fill: white;
     -fx-background-color: #313c48;
 }
-
 MenuButton .menu-item .label{
     -fx-background-color: #313c48;
     -fx-font-size: 14;
@@ -59,8 +58,6 @@ MenuButton .menu-item:focused {
 }
 MenuButton .context-menu {
     -fx-background-color: #313c48;
-    -fx-pref-width: 196.8;
-    -fx-alignment: CENTER_LEFT;
 }
 Button#benutzerDropDownBtn, Button#passwordEditBtn {
     -fx-text-fill: white;
