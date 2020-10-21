@@ -124,8 +124,8 @@
                         </HBox>
                         <TableView fx:id="userTable" onMouseClicked="#clickAction" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #f0f0f8; -fx-border-color: #d8dce4; -fx-font-size: 15; -fx-font-family: Hiragino Sans W1;">
                             <columns>
-                                <TableColumn fx:id="userColumn" editable="false" maxWidth="600.0" minWidth="175.0" prefWidth="300.0" style="-fx-background-color: #c4c4cc; -fx-font-size: 15;" text="Benutzer" />
-                                <TableColumn fx:id="rightColumn" maxWidth="600.0" minWidth="175.0" prefWidth="300.0" style="-fx-background-color: #c4c4cc; -fx-font-size: 15;">
+                                <TableColumn fx:id="userColumn" editable="false" maxWidth="600.0" minWidth="175.0" prefWidth="300.0"  text="Benutzer" />
+                                <TableColumn fx:id="rightColumn" maxWidth="600.0" minWidth="175.0" prefWidth="300.0" >
                                     <graphic>
                                         <ComboBox fx:id="filterUser" onAction="#setTableWithFilterAndSearch" prefHeight="25.0" prefWidth="350.0" promptText="Rechte" style="-fx-background-color: #c4c4cc; -fx-font-family: Hiragino Sans W1;" />
                                     </graphic>
