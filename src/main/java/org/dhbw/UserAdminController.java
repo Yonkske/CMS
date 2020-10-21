@@ -60,6 +60,7 @@ public class UserAdminController extends MainPagesController {
         super.initialize(url, resourceBundle);
         filterUser.getItems().addAll("Rechte", "User", "Admin");
         this.getData();
+        addBtn.setTooltip(new Tooltip("Neuen Benutzer hinzufügen"));
     }
 
     /**

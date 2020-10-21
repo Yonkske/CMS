@@ -4,10 +4,7 @@ import backend.usability.Cit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -73,7 +70,7 @@ public class CITController extends MainPagesController {
         super.initialize(url, resourceBundle);
 
         this.getData();
-
+        this.setToolTips();
         if (!Controller.user.getIsAdmin()) {
             deleteBtn.setVisible(false);
             citaddBtn.setVisible(false);
@@ -195,5 +192,14 @@ public class CITController extends MainPagesController {
     @Override
     public void refresh() {
         this.getData();
+    }
+
+    /**
+     * sets the tooltips;
+     */
+    private void setToolTips() {
+        citaddBtn.setTooltip(new Tooltip("Neuen CI Type hinzufügen"));
+        deleteBtn.setTooltip(new Tooltip("Ausgewählten CI Type löschen"));
+
     }
 }
