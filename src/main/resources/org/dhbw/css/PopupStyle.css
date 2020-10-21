@@ -1,3 +1,6 @@
+/*
+    Style for all text fields, password fields and the login button
+ */
 TextField#usernameTf, TextField#passwordField, Button#loginBtn {
     -fx-font-family: "Hiragino Sans W1";
     -fx-text-fill: black;
@@ -5,6 +8,22 @@ TextField#usernameTf, TextField#passwordField, Button#loginBtn {
 TextField#usernameTf, TextField#passwordField {
     -fx-font-size: 14;
 }
+
+/*
+    Hover for the login button
+ */
+Button#loginBtn {
+    -fx-text-fill: black;
+    -fx-background-color: #e1a6ad;
+}
+Button#loginBtn:hover {
+    -fx-scale-y: 1;
+    -fx-background-color: #e7b9c0;
+}
+
+/*
+    General style for the popups
+ */
 anchorPane {
     -fx-background-color: #f0f0f8;
     -fx-font-family: "Hiragino Sans W1";

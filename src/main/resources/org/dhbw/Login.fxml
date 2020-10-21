@@ -48,12 +48,12 @@
                         <HBox.margin>
                             <Insets />
                         </HBox.margin></Label>
-                    <Button fx:id="loginBtn" alignment="CENTER" mnemonicParsing="false" onAction="#logIn" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #e1a6ad; -fx-text-fill: black;" text="Anmelden">
+                    <Button fx:id="loginBtn" alignment="CENTER" mnemonicParsing="false" onAction="#logIn" prefHeight="30.0" prefWidth="100.0" text="Anmelden">
                         <graphic>
-                            <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                <image>
-                                    <Image url="@icons/anmeldenS.png" />
-                                </image></ImageView>
+                            <ImageView fx:id="imgLogin" fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@icons/anmeldenS.png" />
+                        </image></ImageView>
                         </graphic></Button>
                     <VBox.margin>
                         <Insets top="5.0" />
