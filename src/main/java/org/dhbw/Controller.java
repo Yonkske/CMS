@@ -13,6 +13,9 @@ public abstract class Controller {
     final DbCallerUser DB_CALLER_USER;
     static User user;
 
+    /**
+     * The Controller Constructor.
+     */
     public Controller() {
 
         DB_CALLER_USER = new DbCallerUser();
@@ -21,11 +24,22 @@ public abstract class Controller {
 
     }
 
+    /**
+     * encrypts a password.
+     * @param password the password in cleartext.
+     * @return the encrypted password.
+     */
     String encryptPassword(String password) {
         StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
         return encryptor.encryptPassword(password);
     }
 
+    /**
+     * checks if a cleartext passwort matches an encrypted password.
+     * @param inputPassword the cleartext pw.
+     * @param encryptedStoredPassword the encrypted
+     * @return true | false depending on if they match or not.
+     */
     boolean checkPassword(String inputPassword, String encryptedStoredPassword) {
         StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
         return encryptor.checkPassword(inputPassword, encryptedStoredPassword);
