@@ -37,6 +37,11 @@ public class UserViewAdminController extends Controller implements Initializable
 
     private User userToEdit;
 
+    /**
+     * Constructor.
+     *
+     * @param user - this user info is showed
+     */
     public UserViewAdminController(User user) {
         this.userToEdit = user;
     }

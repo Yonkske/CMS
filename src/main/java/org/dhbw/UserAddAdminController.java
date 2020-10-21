@@ -87,6 +87,13 @@ public class UserAddAdminController extends Controller implements Initializable 
         }
     }
 
+    /**
+     * Methode is there space in the string
+     * @param initialPassword - String to be checked
+     * @param userName - String to be checked
+     * @return true when both are true
+     */
+
     private boolean checkForRegex(String initialPassword, String userName) {
         return !initialPassword.matches("^[\\s]+$") && !userName.matches("^[\\s]+$");
     }
