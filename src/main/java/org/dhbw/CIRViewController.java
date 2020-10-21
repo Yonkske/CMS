@@ -79,6 +79,9 @@ public class CIRViewController extends MainCirPopupsController {
     }
 
     /**
+     * opens the edit dialog
+     */
+    /**
      * open the Cir Edit View
      *
      * @param selectedCir - selected CIR
@@ -89,6 +92,9 @@ public class CIRViewController extends MainCirPopupsController {
     }
 
     /**
+     * opens a notification
+     */
+    /**
      * Opens the popup to delete the selected cir
      *
      * @param selectedCir - selected CIR
@@ -98,6 +104,12 @@ public class CIRViewController extends MainCirPopupsController {
         openPopUp(new NotificationController(selectedCir, "Startpage"), "Notification.fxml");
     }
 
+    /**
+     * Opens a Popup of a Controller.
+     * @param controller The controller class.
+     * @param fxmlName the fxml name.
+     * @throws IOException - an exception
+     */
     private void openPopUp(Controller controller, String fxmlName) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
         loader.setController(controller);
