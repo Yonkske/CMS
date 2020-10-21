@@ -12,28 +12,6 @@ import java.util.ArrayList;
 public class DbCallerCir extends DbConnector {
 
     /**
-     * Reads the CIR object from the database, needs the CIR ID
-     *
-     * @param id - Int ID of the CIR's
-     * @return cirName - the CIR Objekt
-     * @throws SQLException - on database access error or other errors
-     */
-    public Cir getCirById(int id) throws SQLException {
-
-        String[] attributes = new String[10];
-        ResultSet rs = stmt.executeQuery("SELECT * FROM CIR WHERE ITEM_ID = " + id);
-
-        rs.first();
-        for (int i = 0; i < attributes.length; i++) {
-            attributes[i] = rs.getString(i + 1);
-        }
-
-        Cir cirName;
-        cirName = Cir.create(attributes);
-        return cirName;
-    }
-
-    /**
      * Writes a new CIR into the database, requires a CIR object
      *
      * @param cirToInsert Cir - the CIR to be inserted
@@ -179,18 +157,6 @@ public class DbCallerCir extends DbConnector {
     }
 
     /**
-     * Gets the CIR for the given ID
-     *
-     * @param id int
-     * @return Cir with the ID
-     */
-    public Cir getRecordById(int id) {
-        String query = "SELECT * FROM CIR R JOIN CIT T on T.TYPE_ID = R.TYPE_ID WHERE R.ITEM_ID = " + id;
-
-        return getCirs(query).get(0);
-    }
-
-    /**
      * Gets all CIRs from the database
      *
      * @return ArrayList containing all CIRs
@@ -226,7 +192,7 @@ public class DbCallerCir extends DbConnector {
 
                 Cit type = new Cit(typId, typeName, attributeNames);
 
-                // Create the CIT
+                // Create the CIR
                 int recordId = rs.getInt("ITEM_ID");
                 String recordName = rs.getString("RECORD_NAME");
 
