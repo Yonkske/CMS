@@ -18,49 +18,49 @@ import java.util.ResourceBundle;
 
 public class CITController extends MainPagesController {
     @FXML
-    public Button startpageBtn;
+    private Button startpageBtn;
     @FXML
-    public Button citBtn;
+    private Button citBtn;
     @FXML
-    public Button statisticBtn;
+    private Button statisticBtn;
     @FXML
-    public ChoiceBox<Cit> choiceBox;
+    private ChoiceBox<Cit> choiceBox;
     @FXML
-    public Label idLbl;
+    private Label idLbl;
     @FXML
-    public TextField idTf;
+    private TextField idTf;
     @FXML
-    public Label citLbl;
+    private Label citLbl;
     @FXML
-    public TextField citTf;
+    private TextField citTf;
     @FXML
-    public Label attributeLbl;
+    private Label attributeLbl;
     @FXML
-    public TextField attribut1Tf;
+    private TextField attribut1Tf;
     @FXML
-    public TextField attribut2Tf;
+    private TextField attribut2Tf;
     @FXML
-    public TextField attribut3Tf;
+    private TextField attribut3Tf;
     @FXML
-    public TextField attribut4Tf;
+    private TextField attribut4Tf;
     @FXML
-    public TextField attribut5Tf;
+    private TextField attribut5Tf;
     @FXML
-    public TextField attribut6Tf;
+    private TextField attribut6Tf;
     @FXML
-    public TextField attribut7Tf;
+    private TextField attribut7Tf;
     @FXML
-    public TextField attribut8Tf;
+    private TextField attribut8Tf;
     @FXML
-    public Label numberCIRLbl;
+    private Label numberCIRLbl;
     @FXML
-    public TextField numberCIRTf;
+    private TextField numberCIRTf;
     @FXML
-    public Button deleteBtn;
+    private Button deleteBtn;
     @FXML
-    public Button citaddBtn;
+    private Button citaddBtn;
     @FXML
-    public Button userBtn;
+    private Button userBtn;
 
     /**
      * Methode from the interface Initializable that auto generates the page on
