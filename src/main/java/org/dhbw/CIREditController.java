@@ -30,21 +30,16 @@ public class CIREditController extends MainCirPopupsController {
         super(selectedCir);
     }
 
+    /**
+     * Initializes the Object.
+     * @param url an url
+     * @param resourceBundle an resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
     }
 
-    @FXML
-    public void updateCir() {
-        try {
-            updateStatus();
-            loadViewCir();
-            //Fixme: Error Handling
-        } catch (SQLException | IOException throwables) {
-            throwables.printStackTrace();
-        }
-    }
 
     @FXML
     public void cancel() {
