@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 public class StartpageController extends MainPagesController {
 
     @FXML
-    private Button cirEditBtn;
+    private Button showCirBtn;
     @FXML
     private Button cirDeleteBtn;
     @FXML
@@ -91,7 +91,7 @@ public class StartpageController extends MainPagesController {
     public void openDeleteCitPopup() throws IOException {
         if (Objects.nonNull(cirTable.getSelectionModel().getSelectedItem())) {
             openPopup(new NotificationController(cirTable.getSelectionModel().getSelectedItem().getCit()), "Notification.fxml", true);
-        }
+        this.disableButtons();}
     }
 
     /**
@@ -103,6 +103,7 @@ public class StartpageController extends MainPagesController {
     public void openDeleteCirPopup() throws IOException {
         if (Objects.nonNull(cirTable.getSelectionModel().getSelectedItem())) {
             openPopup(new NotificationController(cirTable.getSelectionModel().getSelectedItem()), "Notification.fxml", true);
+       this.disableButtons();
         }
     }
 
@@ -114,19 +115,10 @@ public class StartpageController extends MainPagesController {
     @FXML
     public void openAddCir() throws IOException {
         openPopup(new CIRAddController(), "CIRAdd.fxml", true);
+        this.disableButtons();
     }
 
-    /**
-     * Opens the CIREdit Popup on button click and gives the selected cir that has to be edited
-     *
-     * @throws IOException - if fxml file isn't found
-     */
-    @FXML
-    public void openEditCir() throws IOException {
-        if (Objects.nonNull(cirTable.getSelectionModel().getSelectedItem())) {
-            openPopup(new CIREditController(cirTable.getSelectionModel().getSelectedItem()), "CIREdit.fxml", true);
-        }
-    }
+
 
     /**
      * Changes the content of the table to fit the search and selected filter
@@ -136,16 +128,37 @@ public class StartpageController extends MainPagesController {
         setTableContent(filterCirs());
     }
 
+
     /**
-     * Opens the CirView on double click on table row
+     * This method is to show a selected cir in a popup.
      *
-     * @param me MouseEvent from javafx.scene.input
-     * @throws IOException - if fxml file isn't found
+     * @throws IOException - IOException
+     */
+    public void showCir() throws IOException {
+        if (Objects.nonNull(cirTable.getSelectionModel().getSelectedItem())) {
+            openPopup(new CIRViewController(cirTable.getSelectionModel().getSelectedItem()), "CIRView.fxml", false);
+        this.disableButtons();
+        }
+    }
+    /**
+     * This method says what to do by selecting a user and double clicking at a user.
      */
     @FXML
-    public void openCirView(MouseEvent me) throws IOException {
-        if (Objects.nonNull(cirTable.getSelectionModel().getSelectedItem()) && me.getClickCount() == 2) {
-            openPopup(new CIRViewController(cirTable.getSelectionModel().getSelectedItem()), "CIRView.fxml", false);
+    public void clickAction(MouseEvent mouseEvent) {
+
+        if (Objects.nonNull(cirTable.getSelectionModel().getSelectedItem())) {
+            showCirBtn.setDisable(false);
+            citDeleteBtn.setDisable(false);
+            cirDeleteBtn.setDisable(false);
+
+        }
+
+        if (mouseEvent.getClickCount() == 2) {
+            try {
+                showCir();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -208,6 +221,15 @@ public class StartpageController extends MainPagesController {
 
         return filteredCirs;
     }
+    /**
+     * This method sets the showCIR and the delete Button disable as long as no user is selected.
+     */
+    @FXML
+    private void disableButtons() {
+        showCirBtn.setDisable(true);
+        citDeleteBtn.setDisable(true);
+        cirDeleteBtn.setDisable(true);
+    }
 
     /**
      * Checks if the given CIR contains the given search value in either the record name or type name
@@ -228,7 +250,7 @@ public class StartpageController extends MainPagesController {
         citDeleteBtn.setTooltip(new Tooltip("Ausgewählten CI Type löschen"));
         cirAddBtn.setTooltip(new Tooltip("Neuen CI Record hinzufügen"));
         cirDeleteBtn.setTooltip(new Tooltip("Ausgewählten CI Record löschen"));
-        cirEditBtn.setTooltip(new Tooltip("Ausgewählten CI Record bearbeiten"));
+        showCirBtn.setTooltip(new Tooltip("Ausgewählten CI Record anschauen"));
 
     }
 
