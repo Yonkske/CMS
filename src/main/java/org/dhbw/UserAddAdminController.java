@@ -74,8 +74,11 @@ public class UserAddAdminController extends Controller implements Initializable 
                     && checkForRegex(initialPasswordTf.getText(), userName)) {
                 String passwordEncrypted = super.encryptPassword(initialPasswordTf.getText());
                 User user = new User(userName, passwordEncrypted, true, isAdmin, name, surName);
-                DB_CALLER_USER.insertUser(user);
-                closeScene();
+                if (DB_CALLER_USER.insertUser(user)) {
+                    closeScene();
+                } else {
+                    showError();
+                }
             } else {
                 showError();
                 clearPasswordAndUser();

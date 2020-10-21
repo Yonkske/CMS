@@ -63,11 +63,7 @@ public class DbCallerUser extends DbConnector {
             statement.close();
 
             return true;
-
         } catch (SQLException creationFailed) {
-
-            creationFailed.printStackTrace();
-
             return false;
         }
     }
