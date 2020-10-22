@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 public class UserAdminController extends MainPagesController {
 
     @FXML
-    private TextField searchTextField;
+    private TextField searchTf;
     @FXML
     private Button searchBtn;
     @FXML
@@ -213,7 +213,7 @@ public class UserAdminController extends MainPagesController {
     @FXML
     public void setTableWithFilterAndSearch() throws SQLException {
         String selectedUser = filterUser.getSelectionModel().getSelectedItem();
-        String searchValue = searchTextField.getText();
+        String searchValue = searchTf.getText();
 
         if (selectedUser.equals("Rechte") && searchValue.length() != 0) {
              this.setTableContent(getUsersBySearchValue(searchValue));
@@ -256,7 +256,7 @@ public class UserAdminController extends MainPagesController {
     }
 
     public void emptySearchTf(ActionEvent actionEvent) throws SQLException {
-        searchTextField.setText("");
+        searchTf.setText("");
         this.setTableWithFilterAndSearch();
     }
 }

@@ -55,7 +55,7 @@ public class CITController extends MainPagesController {
     @FXML
     private Button deleteBtn;
     @FXML
-    private Button citaddBtn;
+    private Button citAddBtn;
     @FXML
     private Button userBtn;
 
@@ -73,7 +73,7 @@ public class CITController extends MainPagesController {
         this.setToolTips();
         if (!Controller.user.getIsAdmin()) {
             deleteBtn.setVisible(false);
-            citaddBtn.setVisible(false);
+            citAddBtn.setVisible(false);
             userBtn.setVisible(false);
         }
 
@@ -198,7 +198,7 @@ public class CITController extends MainPagesController {
      * sets the tooltips;
      */
     private void setToolTips() {
-        citaddBtn.setTooltip(new Tooltip("Neuen CI Type hinzufügen"));
+        citAddBtn.setTooltip(new Tooltip("Neuen CI Type hinzufügen"));
         deleteBtn.setTooltip(new Tooltip("Ausgewählten CI Type löschen"));
 
     }
