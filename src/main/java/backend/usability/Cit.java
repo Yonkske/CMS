@@ -1,10 +1,5 @@
 package backend.usability;
 
-import backend.database.DbCallerCit;
-
-import java.sql.SQLException;
-import java.util.ArrayList;
-
 public class Cit {
 
     // FIXME: change DbCallers to non-static
@@ -32,51 +27,12 @@ public class Cit {
     }
 
     /**
-     * Shows the CIT of the given ID
-     *
-     * @param id of the CIT to be shown
-     * @return the CIT matching the id
-     */
-    public Cit show(int id) throws SQLException {
-        return new DbCallerCit().getCit(id);
-    }                            //Methode des DBCallerCit wird aufgerufen um Eintrag zu holen.
-
-    /**
-     * Delete the CIT of the given ID
-     *
-     * @param citToDelete - the CIT to be deleted
-     * @return boolean either it was successfully or not
-     */
-    public boolean delete(Cit citToDelete) throws SQLException {
-        return new DbCallerCit().deleteCit(citToDelete);
-    }                    //Methode des DBCallerCit wird aufgerufen um Eintrag zu löschen
-
-    /**
-     * Shows all CIT
-     *
-     * @return a list of CIT which are stored in the database
-     */
-    public static ArrayList<Cit> showAll() throws SQLException {                              //Methode des DBCallerCit wird aufgerufen um alle Einträge zu zeigen.
-        return new DbCallerCit().getAllCits();
-    }
-
-    /**
-     * Get the number of records in the CIT table
-     *
-     * @return a number of records which are stored in the database
-     */
-    public static int getCount() throws SQLException {
-        return new DbCallerCit().getCitCount();
-    }                        //Methode des DBCallerCit wird aufgerufen Anzahl an Einträgen zu zeigen.
-
-    /**
      * Just a methode to return a list of attributes
      *
      * @return a list of attributes
      */
     public String[] getCitAttributes() {
         return attributes;
-
     }
 
     /**
@@ -85,7 +41,6 @@ public class Cit {
      * @return ID of CIT
      */
     public int getCitID() {
-
         return id;
     }
 
@@ -96,7 +51,6 @@ public class Cit {
      */
     public String getCitName() {
         return typename;
-
     }
 
     @Override

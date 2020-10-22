@@ -1,6 +1,5 @@
 package org.dhbw;
 
-import backend.usability.Cir;
 import backend.usability.Cit;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
@@ -63,7 +62,7 @@ public class StatisticController extends MainPagesController {
                 adminPieChart.getData().add(slice[i]);
             }
             numberCIRTf.setText(String.valueOf(DB_CALLER_CIR.getCirCount()));
-            numberCITTf.setText(String.valueOf(Cit.getCount()));
+            numberCITTf.setText(String.valueOf(DB_CALLER_CIT.getCitCount()));
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
