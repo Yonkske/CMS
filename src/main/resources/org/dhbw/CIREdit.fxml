@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="600.0" stylesheets="@css/PopupStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <HBox alignment="CENTER" cache="true" spacing="5.0">
@@ -16,7 +17,10 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-         <TextField fx:id="idTf" editable="false" prefWidth="210.0" />
+         <TextField fx:id="idTf" editable="false" prefWidth="210.0">
+            <cursor>
+               <Cursor fx:constant="DISAPPEAR" />
+            </cursor></TextField>
       </HBox>
       <HBox alignment="CENTER" cache="true" spacing="5.0">
          <VBox.margin>
@@ -26,7 +30,10 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-         <TextField fx:id="citTf" editable="false" prefWidth="210.0" />
+         <TextField fx:id="citTf" editable="false" prefWidth="210.0">
+            <cursor>
+               <Cursor fx:constant="DISAPPEAR" />
+            </cursor></TextField>
       </HBox>
       <HBox alignment="CENTER" cache="true" spacing="5.0">
          <VBox.margin>
@@ -36,7 +43,10 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-         <TextField fx:id="nameTf" prefWidth="210.0"/>
+         <TextField fx:id="nameTf" prefWidth="210.0">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
       </HBox>
       <HBox alignment="CENTER" cache="true" spacing="5.0">
          <VBox.margin>
@@ -44,10 +54,13 @@
          </VBox.margin>
          <Label fx:id="attribut1Lbl" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut1">
             <font>
-               <Font size="15.0"/>
+               <Font size="15.0" />
             </font>
          </Label>
-         <TextField fx:id="attribut1Tf" editable="true" prefWidth="210.0" visible="false"/>
+         <TextField fx:id="attribut1Tf" editable="true" prefWidth="210.0" visible="false">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
       </HBox>
       <HBox alignment="CENTER" cache="true" spacing="5.0">
          <VBox.margin>
@@ -57,7 +70,10 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-         <TextField fx:id="attribut2Tf" editable="true" prefWidth="210.0" visible="false"/>
+         <TextField fx:id="attribut2Tf" editable="true" prefWidth="210.0" visible="false">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
       </HBox>
       <HBox alignment="CENTER" cache="true" spacing="5.0">
          <VBox.margin>
@@ -65,10 +81,13 @@
          </VBox.margin>
          <Label fx:id="attribut3Lbl" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut3">
             <font>
-               <Font size="15.0"/>
+               <Font size="15.0" />
             </font>
          </Label>
-         <TextField fx:id="attribut3Tf" editable="true" prefWidth="210.0" visible="false"/>
+         <TextField fx:id="attribut3Tf" editable="true" prefWidth="210.0" visible="false">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
       </HBox>
       <HBox alignment="CENTER" cache="true" spacing="5.0">
          <VBox.margin>
@@ -78,7 +97,10 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-         <TextField fx:id="attribut4Tf" editable="true" prefWidth="210.0" visible="false"/>
+         <TextField fx:id="attribut4Tf" editable="true" prefWidth="210.0" visible="false">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
       </HBox>
       <HBox alignment="CENTER" cache="true" spacing="5.0">
          <VBox.margin>
@@ -86,10 +108,13 @@
          </VBox.margin>
          <Label fx:id="attribut5Lbl" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut5">
             <font>
-               <Font size="15.0"/>
+               <Font size="15.0" />
             </font>
          </Label>
-         <TextField fx:id="attribut5Tf" editable="true" prefWidth="210.0" visible="false"/>
+         <TextField fx:id="attribut5Tf" editable="true" prefWidth="210.0" visible="false">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
       </HBox>
       <HBox alignment="CENTER" cache="true" spacing="5.0">
          <VBox.margin>
@@ -97,10 +122,13 @@
          </VBox.margin>
          <Label fx:id="attribut6Lbl" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut6">
             <font>
-               <Font size="15.0"/>
+               <Font size="15.0" />
             </font>
          </Label>
-         <TextField fx:id="attribut6Tf" editable="true" prefWidth="210.0" visible="false"/>
+         <TextField fx:id="attribut6Tf" editable="true" prefWidth="210.0" visible="false">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
       </HBox>
       <HBox alignment="CENTER" cache="true" spacing="5.0">
          <VBox.margin>
@@ -110,14 +138,16 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-         <TextField fx:id="attribut7Tf" editable="true" prefWidth="210.0" visible="false"/>
+         <TextField fx:id="attribut7Tf" editable="true" prefWidth="210.0" visible="false">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
       </HBox>
       <HBox alignment="CENTER" cache="true" spacing="5.0">
          <VBox.margin>
             <Insets bottom="20.0" left="190.0" top="5.0" />
          </VBox.margin>
-         <Label fx:id="meldungLbl" contentDisplay="CENTER" style="-fx-border-color: #cf0000;"
-                text="Name darf nicht leer sein!" textAlignment="CENTER" textFill="#cf0000" visible="false"/>
+         <Label fx:id="meldungLbl" contentDisplay="CENTER" style="-fx-border-color: #cf0000;" text="Name darf nicht leer sein!" textAlignment="CENTER" textFill="#cf0000" visible="false" />
          <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#updateCir" prefHeight="25.0" text="Speichern">
             <graphic>
                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">

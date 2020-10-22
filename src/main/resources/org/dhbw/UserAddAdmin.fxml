@@ -91,7 +91,10 @@
                <ChoiceBox fx:id="authorizationChoiceBox" prefWidth="210.0">
                   <HBox.margin>
                      <Insets />
-                  </HBox.margin></ChoiceBox>
+                  </HBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="DISAPPEAR" />
+                  </cursor></ChoiceBox>
                <VBox.margin>
                   <Insets bottom="5.0" top="5.0" />
                </VBox.margin>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
@@ -122,7 +123,10 @@
                                  </HBox.margin>
                                  <font>
                                     <Font size="14.0" />
-                                 </font></TextField>
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="DISAPPEAR" />
+                                 </cursor></TextField>
                            </children>
                            <VBox.margin>
                               <Insets bottom="15.0" />
@@ -140,8 +144,14 @@
                               <TextField fx:id="numberCITTf" editable="false" prefWidth="100.0" style="-fx-background-color: #c4c4cc; -fx-font-family: Hiragino Sans W1;">
                                  <font>
                                     <Font size="14.0" />
-                                 </font></TextField>
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="DISAPPEAR" />
+                                 </cursor></TextField>
                            </children>
+                           <VBox.margin>
+                              <Insets bottom="15.0" />
+                           </VBox.margin>
                         </HBox>
                      </children>
                      <VBox.margin>
@@ -157,6 +167,9 @@
                            <HBox.margin>
                               <Insets bottom="15.0" />
                            </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="DISAPPEAR" />
+                           </cursor>
                         </PieChart>
                      </children>
                   </HBox>

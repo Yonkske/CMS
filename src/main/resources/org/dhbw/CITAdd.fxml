@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -16,7 +17,10 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-            <TextField fx:id="idTf" editable="false" prefWidth="210.0" />
+            <TextField fx:id="idTf" editable="false" prefWidth="210.0">
+            <cursor>
+               <Cursor fx:constant="DISAPPEAR" />
+            </cursor></TextField>
         </HBox>
         <HBox alignment="CENTER" cache="true" spacing="5.0">
             <VBox.margin>
@@ -27,7 +31,10 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-         <TextField fx:id="citTf" prefWidth="210.0" />
+         <TextField fx:id="citTf" prefWidth="210.0">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
         </HBox>
 
         <HBox alignment="CENTER" cache="true" spacing="5.0">
@@ -38,7 +45,10 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-            <TextField fx:id="nameTf" editable="false" prefWidth="210.0" text="Name" />
+            <TextField fx:id="nameTf" editable="false" prefWidth="210.0" text="Name">
+            <cursor>
+               <Cursor fx:constant="DISAPPEAR" />
+            </cursor></TextField>
         </HBox>
         <HBox alignment="CENTER" cache="true" spacing="5.0">
             <VBox.margin>
@@ -48,7 +58,10 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-            <TextField fx:id="attribut1Tf" prefWidth="210.0" />
+            <TextField fx:id="attribut1Tf" prefWidth="210.0">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
         </HBox>
         <HBox alignment="CENTER" cache="true" spacing="5.0">
             <VBox.margin>
@@ -58,7 +71,10 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-            <TextField fx:id="attribut2Tf" prefWidth="210.0" />
+            <TextField fx:id="attribut2Tf" prefWidth="210.0">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
         </HBox>
         <HBox alignment="CENTER" cache="true" spacing="5.0">
             <VBox.margin>
@@ -68,7 +84,10 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-            <TextField fx:id="attribut3Tf" prefWidth="210.0" />
+            <TextField fx:id="attribut3Tf" prefWidth="210.0">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
         </HBox>
         <HBox alignment="CENTER" cache="true" spacing="5.0">
             <VBox.margin>
@@ -78,7 +97,10 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-            <TextField fx:id="attribut4Tf" prefWidth="210.0" />
+            <TextField fx:id="attribut4Tf" prefWidth="210.0">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
         </HBox>
         <HBox alignment="CENTER" cache="true" prefHeight="38.0" prefWidth="193.0" spacing="5.0">
             <VBox.margin>
@@ -88,7 +110,10 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-            <TextField fx:id="attribut5Tf" prefWidth="210.0" />
+            <TextField fx:id="attribut5Tf" prefWidth="210.0">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
         </HBox>
         <HBox alignment="CENTER" cache="true" spacing="5.0">
             <VBox.margin>
@@ -98,7 +123,10 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-            <TextField fx:id="attribut6Tf" prefWidth="210.0" />
+            <TextField fx:id="attribut6Tf" prefWidth="210.0">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
         </HBox>
         <HBox alignment="CENTER" cache="true" spacing="5.0">
             <VBox.margin>
@@ -108,7 +136,10 @@
             <font>
                <Font size="15.0" />
             </font></Label>
-            <TextField fx:id="attribut7Tf" prefWidth="210.0" />
+            <TextField fx:id="attribut7Tf" prefWidth="210.0">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
         </HBox>
         <HBox alignment="CENTER" cache="true" spacing="5.0">
             <VBox.margin>
