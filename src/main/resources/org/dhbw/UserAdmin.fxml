@@ -107,7 +107,7 @@
                               <Image url="@icons/suchenS.png" />
                            </image>
                         </ImageView>
-                                <TextField fx:id="searchTextField" onAction="#setTableWithFilterAndSearch" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
+                                <TextField fx:id="searchTf" onAction="#setTableWithFilterAndSearch" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
@@ -189,6 +189,11 @@
                                 <Insets bottom="5.0" top="10.0" />
                             </VBox.margin>
                         </HBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label fx:id="statusLbl" />
+                     </children>
+                  </HBox>
 
 
                     </children>

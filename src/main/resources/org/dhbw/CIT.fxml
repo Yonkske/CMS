@@ -99,7 +99,7 @@
             </VBox>
             <VBox style="-fx-background-color: #f0f0f8;" stylesheets="@css/MainPagesStyle.css" HBox.hgrow="ALWAYS">
 
-                  <HBox prefHeight="54.0" prefWidth="389.0" spacing="5.0">
+                  <HBox spacing="5.0">
             <Label prefWidth="100.0" />
 
                       <ChoiceBox fx:id="choiceBox" nodeOrientation="LEFT_TO_RIGHT" onAction="#fillingIn" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #92979f; -fx-font-size: 14;">
@@ -127,7 +127,7 @@
                         </TextField>
 
                      <VBox.margin>
-                        <Insets />
+                        <Insets top="15.0" />
                      </VBox.margin>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" spacing="5.0">
@@ -300,7 +300,6 @@
                   <Font size="14.0" />
                </font>
                         </TextField>
-
                   </HBox>
          <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="396.0" spacing="5.0">
             <children>
@@ -319,7 +318,7 @@
          </HBox>
                 <HBox spacing="5.0">
             <children>
-               <Button fx:id="citaddBtn" mnemonicParsing="false" onAction="#swapToCITAdd" style="-fx-background-color: #92979f;" text="CIT hinzufügen" textFill="WHITE">
+               <Button fx:id="citAddBtn" mnemonicParsing="false" onAction="#swapToCITAdd" style="-fx-background-color: #92979f;" text="CIT hinzufügen" textFill="WHITE">
                   <graphic>
                      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                         <image>
@@ -343,11 +342,19 @@
                   </font></Button>
             </children>
             <VBox.margin>
-               <Insets />
+               <Insets bottom="15.0" top="15.0" />
             </VBox.margin>
             <padding>
                <Insets left="105.0" />
             </padding></HBox>
+         <HBox alignment="CENTER">
+            <children>
+               <Label fx:id="statusLbl" />
+            </children>
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
+         </HBox>
          <padding>
             <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
          </padding>

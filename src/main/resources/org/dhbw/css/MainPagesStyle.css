@@ -64,20 +64,20 @@ MenuButton .label {
     -fx-background-color: #313c48;
 }
 MenuButton .menu-item .label{
-    -fx-background-color: #313c48;
+    -fx-background-color: transparent;
     -fx-font-size: 14;
 }
 MenuButton .menu-item:focused {
-    -fx-background-color: #313c48;
+    -fx-background-color: #3d4956;
 }
 MenuButton .context-menu {
-    -fx-background-color: #313c48;
+    -fx-background-color: #3d4956;
 }
 Button#benutzerDropDownBtn, Button#passwordEditBtn {
     -fx-text-fill: white;
     -fx-font-family: "Hiragino Sans W1";
     -fx-font-size: 14;
-    -fx-background-color: #313c48;
+    -fx-background-color: #3d4956;
     -fx-min-width: 194;
     -fx-pref-height: 27;
     -fx-alignment: CENTER_LEFT;
@@ -123,6 +123,7 @@ TableView .column-header-background .label {
     -fx-background-color: #92979f;
     -fx-text-fill: black;
     -fx-font-size: 15;
+    -fx-font-weight: normal;
     -fx-font-family: "Hiragino Sans W1";
 }
 TableView .column-header {
@@ -135,9 +136,12 @@ TableView .table-row-cell {
     -fx-table-cell-border-color: #92979f;
 }
 TableView .table-row-cell:selected {
-    -fx-background-color: #e1a6ad;
+    -fx-background-color: #e7b9c0;
     -fx-table-cell-border-color: #92979f;
-    -fx-text-fill: white;
+}
+TableView .table-column {
+    -fx-font-family: "Hiragino Sans W1";
+    -fx-font-size: 14;
 }
 
 /*
