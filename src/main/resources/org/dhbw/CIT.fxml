@@ -302,7 +302,7 @@
                         </TextField>
 
                   </HBox>
-         <HBox prefHeight="47.0" prefWidth="396.0" spacing="5.0">
+         <HBox spacing="5.0">
             <children>
                <Label fx:id="numberCIRLbl" prefWidth="100.0" text="Anzahl CIR: ">
                   <font>
@@ -343,7 +343,7 @@
                   </font></Button>
             </children>
             <VBox.margin>
-               <Insets />
+               <Insets top="15.0" />
             </VBox.margin>
             <padding>
                <Insets left="105.0" />
