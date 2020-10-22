@@ -1,7 +1,5 @@
 package backend.usability;
 
-import backend.database.DbCallerUser;
-
 public class User {
 
     private final String userName;
@@ -28,16 +26,6 @@ public class User {
         this.isAdmin = isAdmin;
         this.isInitial = isInitial;
     }
-
-    /**
-     * Within this method a user can be read out of the database.
-     * @param userName - the username of the user which should be got
-     * @return User - return of the user that should be got
-     */
-    public static User getUser(String userName) {
-        return new DbCallerUser().getUser(userName);
-    }
-
 
     /**
      * Within this method the user can change his own password.

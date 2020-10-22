@@ -138,7 +138,7 @@ public class UserViewAdminController extends Controller implements Initializable
         stage.setResizable(false);
         if (onHidingRefresh) {
             stage.setOnHiding(windowEvent -> {
-                this.userToEdit = User.getUser(usernameTf.getText());
+                this.userToEdit = DB_CALLER_USER.getUser(usernameTf.getText());
                 this.getData();
             });
         } else if (onHindingClose) {

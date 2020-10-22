@@ -39,7 +39,7 @@ public class UserEditAdminController extends Controller implements Initializable
         String surName = surnameTf.getText();
         String name = nameTf.getText();
         String userName = usernameTf.getText();
-        String password = User.getUser(userName).getPassword();
+        String password = DB_CALLER_USER.getUser(userName).getPassword();
         boolean isAdmin = false;
 
         if (authorizationChoiceBox.getValue().equals("Admin")) {
