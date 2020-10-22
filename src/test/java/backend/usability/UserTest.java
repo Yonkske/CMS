@@ -19,7 +19,7 @@ public class UserTest {
     @Test
     public void testCreate() throws SQLException {
         new DbConnector().startConnection();
-        Assert.assertNotNull(User.create("creation", "password", false, "", ""));
+        Assert.assertNotNull(new User("creation", "password", true, false, "", ""));
     } //is the function running without any failures?
 
 
