@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -26,6 +27,9 @@
                         <font>
                             <Font size="14.0" />
                         </font>
+                  <cursor>
+                     <Cursor fx:constant="DISAPPEAR" />
+                  </cursor>
                     </TextField>
                     <VBox.margin>
                         <Insets bottom="5.0" />
@@ -50,6 +54,9 @@
                         <font>
                             <Font size="14.0" />
                         </font>
+                  <cursor>
+                     <Cursor fx:constant="DISAPPEAR" />
+                  </cursor>
                     </TextField>
                     <VBox.margin>
                         <Insets bottom="5.0" top="5.0" />
@@ -71,6 +78,9 @@
                         <font>
                             <Font size="14.0" />
                         </font>
+                  <cursor>
+                     <Cursor fx:constant="DISAPPEAR" />
+                  </cursor>
                     </TextField>
                     <VBox.margin>
                         <Insets bottom="5.0" top="5.0" />
@@ -92,6 +102,9 @@
                         <font>
                             <Font size="14.0" />
                         </font>
+                  <cursor>
+                     <Cursor fx:constant="DISAPPEAR" />
+                  </cursor>
                     </TextField>
                     <VBox.margin>
                         <Insets bottom="5.0" top="5.0" />

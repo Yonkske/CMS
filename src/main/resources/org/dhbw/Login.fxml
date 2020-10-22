@@ -54,7 +54,10 @@
                         <image>
                            <Image url="@icons/anmeldenS.png" />
                         </image></ImageView>
-                        </graphic></Button>
+                        </graphic>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor></Button>
                     <VBox.margin>
                         <Insets top="5.0" />
                     </VBox.margin>

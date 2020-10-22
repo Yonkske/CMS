@@ -11,6 +11,7 @@ VBox {
 Button {
     -fx-background-color:  #3D4956;
     -fx-text-fill: white;
+    -fx-cursor: hand;
 }
 Button:hover {
     -fx-background-color:  #313c48;

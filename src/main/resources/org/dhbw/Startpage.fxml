@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -113,7 +114,10 @@
                            </HBox.margin>
                            <font>
                               <Font size="14.0" />
-                           </font></TextField>
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor></TextField>
                         <Button fx:id="deleteSearchBtn" mnemonicParsing="false" onAction="#emptySearchTf" prefHeight="32.0" prefWidth="35.0" style="-fx-background-color: #c4c4cc;">
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -128,7 +132,10 @@
                            </HBox.margin>
                            <font>
                               <Font name="Hiragino Sans W1" size="15.0" />
-                           </font></Button>
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
                   </HBox>
                   <TableView fx:id="cirTable" onMouseClicked="#clickAction" VBox.vgrow="ALWAYS">
@@ -146,6 +153,9 @@
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
+                     <cursor>
+                        <Cursor fx:constant="DISAPPEAR" />
+                     </cursor>
                   </TableView>
                   <HBox spacing="10.0">
                      <children>
@@ -163,6 +173,9 @@
                            <font>
                               <Font name="AppleGothic Regular" size="15.0" />
                            </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
                         <Button fx:id="cirAddBtn" mnemonicParsing="false" onAction="#openAddCir" style="-fx-background-color: #92979f;" text="CIR hinzufügen" textFill="WHITE">
                            <HBox.margin>
@@ -178,6 +191,9 @@
                            <font>
                               <Font name="AppleGothic Regular" size="15.0" />
                            </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
                         <Button fx:id="cirDeleteBtn" disable="true" mnemonicParsing="false" onAction="#openDeleteCirPopup" style="-fx-background-color: #92979f;" text="CIR löschen" textFill="WHITE">
                            <HBox.margin>
@@ -193,6 +209,9 @@
                            <font>
                               <Font name="AppleGothic Regular" size="15.0" />
                            </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
                         <Button fx:id="citAddBtn" mnemonicParsing="false" onAction="#openAddCit" style="-fx-background-color: #92979f;" text="CIT hinzufügen" textFill="WHITE">
                            <HBox.margin>
@@ -208,6 +227,9 @@
                            <font>
                               <Font name="AppleGothic Regular" size="15.0" />
                            </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
                         <Button fx:id="citDeleteBtn" disable="true" mnemonicParsing="false" onAction="#openDeleteCitPopup" style="-fx-background-color: #92979f;" text="CIT löschen" textFill="WHITE">
                            <HBox.margin>
@@ -223,6 +245,9 @@
                            <font>
                               <Font name="AppleGothic Regular" size="15.0" />
                            </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
                      </children>
                      <VBox.margin>

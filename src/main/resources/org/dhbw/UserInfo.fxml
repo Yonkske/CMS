@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -23,7 +24,10 @@
                         </HBox.margin>
                         <font>
                             <Font size="14.0" />
-                        </font></TextField>
+                        </font>
+                  <cursor>
+                     <Cursor fx:constant="DISAPPEAR" />
+                  </cursor></TextField>
                     <VBox.margin>
                         <Insets bottom="5.0" />
                     </VBox.margin>
@@ -45,7 +49,10 @@
                         </HBox.margin>
                         <font>
                             <Font size="14.0" />
-                        </font></TextField>
+                        </font>
+                  <cursor>
+                     <Cursor fx:constant="DISAPPEAR" />
+                  </cursor></TextField>
                     <VBox.margin>
                         <Insets bottom="5.0" top="5.0" />
                     </VBox.margin>
@@ -64,7 +71,10 @@
                         </HBox.margin>
                         <font>
                             <Font size="14.0" />
-                        </font></TextField>
+                        </font>
+                  <cursor>
+                     <Cursor fx:constant="DISAPPEAR" />
+                  </cursor></TextField>
                     <VBox.margin>
                         <Insets top="5.0" />
                     </VBox.margin>
