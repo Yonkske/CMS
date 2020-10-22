@@ -151,7 +151,7 @@
                      <children>
                         <Button fx:id="showCirBtn" disable="true" mnemonicParsing="false" onAction="#showCir" style="-fx-background-color: #92979f;" text="CIR anzeigen" textFill="WHITE">
                            <HBox.margin>
-                              <Insets />
+                              <Insets bottom="15.0" />
                            </HBox.margin>
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
@@ -228,6 +228,11 @@
                      <VBox.margin>
                         <Insets bottom="5.0" top="10.0" />
                      </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label fx:id="statusLbl" />
+                     </children>
                   </HBox>
                </children>
                <padding>

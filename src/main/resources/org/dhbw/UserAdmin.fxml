@@ -189,6 +189,11 @@
                                 <Insets bottom="5.0" top="10.0" />
                             </VBox.margin>
                         </HBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label fx:id="statusLbl" />
+                     </children>
+                  </HBox>
 
 
                     </children>
