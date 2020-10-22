@@ -3,8 +3,6 @@ package org.dhbw;
 import backend.database.DbCallerUser;
 import backend.database.DbConnector;
 import backend.usability.User;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -65,12 +63,12 @@ public class LoginController extends Controller {
                 showError();
             } else if (checkPassword(givenPassword, DB_CALLER_USER.getEncryptedPassword(givenName))
                     && user.getIsInitial()) {
-                Controller.user = User.getUser(givenName);
-                openPopUpEditPassword(User.getUser(givenName));
+                Controller.user = DB_CALLER_USER.getUser(givenName);
+                openPopUpEditPassword(DB_CALLER_USER.getUser(givenName));
             } else if (checkPassword(givenPassword, DB_CALLER_USER.getEncryptedPassword(givenName))
                     && !user.getIsInitial()) {
-                Controller.user = User.getUser(givenName);
-                switchToStartpage(User.getUser(givenName));
+                Controller.user = DB_CALLER_USER.getUser(givenName);
+                switchToStartpage(Controller.user);
             } else {
                 showError();
             }
