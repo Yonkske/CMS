@@ -50,15 +50,6 @@ public class Cir {
     }
 
     /**
-     * This method is only used for testing and should never be used otherwise
-     *
-     * @param id - int of the new Cir ID
-     */
-    public void setCirID(int id) {
-        this.id = id;
-    }
-
-    /**
      * Gets the name of the associated CIT
      *
      * @return String - name of the CIT
