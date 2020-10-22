@@ -330,7 +330,7 @@
                   <font>
                      <Font name="Hiragino Sans W1" size="15.0" />
                   </font></Button>
-               <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#openDeleteCitPopup" style="-fx-background-color: #92979f;" text="CIT löschen" textFill="WHITE">
+               <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#openDeleteCitPopup" prefWidth="147.5" style="-fx-background-color: #92979f;" text="CIT löschen" textFill="WHITE">
                   <graphic>
                      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                         <image>
