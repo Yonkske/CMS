@@ -46,6 +46,8 @@ public class UserAdminController extends MainPagesController {
     private final String PAGE_NAME = "UserAdmin";
     @FXML
     private ComboBox<String> filterUser;
+    @FXML
+    private Label statusLbl;
     private ArrayList<User> allUsers = new ArrayList<>();
 
 // Following are to show correct data on the user page
@@ -53,7 +55,7 @@ public class UserAdminController extends MainPagesController {
     /**
      * Methode from the interface Initializable that auto generates the page on start.
      *
-     * @param url - url
+     * @param url            - url
      * @param resourceBundle - resource bundle
      */
     @Override
