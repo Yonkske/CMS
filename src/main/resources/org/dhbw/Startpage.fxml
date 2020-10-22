@@ -131,13 +131,14 @@
                            </font></Button>
                      </children>
                   </HBox>
-                  <TableView fx:id="cirTable" onMouseClicked="#clickAction" VBox.vgrow="ALWAYS">
+                  <TableView fx:id="cirTable" onMouseClicked="#clickAction" VBox.vgrow="ALWAYS" >
                     <columns>
-                      <TableColumn fx:id="citColumn" editable="false" maxWidth="600.0" minWidth="175.0" prefWidth="300.0">
+                      <TableColumn fx:id="citColumn" editable="false" maxWidth="600.0" minWidth="175.0" prefWidth="300.0" >
                            <graphic>
                               <ComboBox fx:id="filterCitCb" maxWidth="600.0" minWidth="175.0" onAction="#setTableWithFilterAndSearch" prefWidth="300.0" promptText="CIT" />
                            </graphic>
                         </TableColumn>
+
                       <TableColumn fx:id="cirNameColumn" editable="false" maxWidth="600.0" minWidth="175.0" prefWidth="300.0" text="CIR-Bezeichnung" />
                     </columns>
                      <columnResizePolicy>
