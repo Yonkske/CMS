@@ -6,6 +6,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+
 <VBox alignment="TOP_RIGHT" stylesheets="@css/MainPagesStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.StartpageController">
    <children>
       <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" style="-fx-background-color: #313c48;">
@@ -32,6 +33,9 @@
                <font>
                   <Font size="14.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </MenuButton>
             <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" prefHeight="36.0" text="Logout" textFill="WHITE">
                <font>
@@ -139,12 +143,15 @@
                   </HBox>
                   <TableView fx:id="cirTable" onMouseClicked="#clickAction" VBox.vgrow="ALWAYS">
                     <columns>
-                      <TableColumn fx:id="citColumn" editable="false" maxWidth="100000.0" minWidth="175.0" prefWidth="300.0">
+                      <TableColumn fx:id="citColumn" editable="false" maxWidth="100000.0" minWidth="175.0" prefWidth="300.0" style="-fx-cursor: hand;">
                            <graphic>
-                              <ComboBox fx:id="filterCitCb" maxWidth="1.7976931348623157E308" minWidth="175.0" onAction="#setTableWithFilterAndSearch" prefWidth="300.0" promptText="CIT" />
+                              <ComboBox fx:id="filterCitCb" maxWidth="1.7976931348623157E308" minWidth="175.0" onAction="#setTableWithFilterAndSearch" prefWidth="300.0" promptText="CIT">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></ComboBox>
                            </graphic>
                         </TableColumn>
-                      <TableColumn fx:id="cirNameColumn" editable="false" maxWidth="100000.0" minWidth="175.0" prefWidth="300.0" text="CIR-Bezeichnung" />
+                      <TableColumn fx:id="cirNameColumn" editable="false" maxWidth="100000.0" minWidth="175.0" prefWidth="300.0" style="-fx-cursor: hand;" text="CIR-Bezeichnung" />
                     </columns>
                      <VBox.margin>
                         <Insets top="20.0" />
@@ -242,7 +249,7 @@
                               </ImageView>
                            </graphic>
                            <font>
-                              <Font name="AppleGothic Regular" size="15.0"/>
+                              <Font name="AppleGothic Regular" size="15.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -250,23 +257,22 @@
                         </Button>
                      </children>
                      <VBox.margin>
-                        <Insets bottom="5.0" top="10.0"/>
+                        <Insets bottom="5.0" top="10.0" />
                      </VBox.margin>
                   </HBox>
                   <HBox alignment="CENTER">
                      <children>
-                        <Label fx:id="statusLbl" alignment="CENTER" style="-fx-border-color: #cf0000;"
-                               textAlignment="CENTER" textFill="#cf0000" visible="false">
+                        <Label fx:id="statusLbl" alignment="CENTER" style="-fx-border-color: #cf0000;" textAlignment="CENTER" textFill="#cf0000" visible="false">
                            <font>
-                              <Font size="14.0"/>
+                              <Font size="14.0" />
                            </font>
                            <padding>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                            </padding>
                         </Label>
                      </children>
                      <VBox.margin>
-                        <Insets top="15.0"/>
+                        <Insets top="15.0" />
                      </VBox.margin>
                   </HBox>
                </children>

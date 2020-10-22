@@ -88,7 +88,7 @@
                   <font>
                      <Font size="15.0" />
                   </font></Label>
-               <ChoiceBox fx:id="authorizationChoiceBox" prefWidth="210.0">
+               <ChoiceBox fx:id="authorizationChoiceBox" prefWidth="210.0" style="-fx-cursor: hand;">
                   <HBox.margin>
                      <Insets />
                   </HBox.margin>

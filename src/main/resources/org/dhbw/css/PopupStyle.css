@@ -41,6 +41,7 @@ Button {
     -fx-font-family: "Hiragino Sans W1";
     -fx-font-size: 12;
     -fx-text-fill: white;
+    -fx-cursor: hand;
 }
 Button:hover {
     -fx-background-color: #313c48;
