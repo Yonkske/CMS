@@ -31,9 +31,7 @@ public class DbCallerUser extends DbConnector {
                 String name = rs.getString("NAME");
                 String surname = rs.getString("SURNAME");
 
-                User userToGet = new User(userName, password, isInitial, isAdmin, name, surname);
-
-                return userToGet;
+                return new User(userName, password, isInitial, isAdmin, name, surname);
             } else {
                 return null;
             }
@@ -142,7 +140,7 @@ public class DbCallerUser extends DbConnector {
     public ArrayList<User> getAllUsers() {
         // TODO: make it work
         ResultSet rs;
-        ArrayList<User> allUsers = new ArrayList<User>();
+        ArrayList<User> allUsers = new ArrayList<>();
 
         try {
             rs = stmt.executeQuery("SELECT * FROM USER WHERE USER_NAME != 'admin'");
