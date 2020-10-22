@@ -117,7 +117,7 @@
                                  <font>
                                     <Font name="Hiragino Sans W2" size="15.0" />
                                  </font></Label>
-                              <TextField fx:id="numberCIRTf" editable="false" prefWidth="100.0" style="-fx-background-color: #c4c4cc; -fx-font-family: Hiragino Sans W1;">
+                              <TextField fx:id="numberCIRTf" editable="false" prefWidth="100.0">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -141,7 +141,7 @@
                                  <HBox.margin>
                                     <Insets left="20.0" right="40.0" />
                                  </HBox.margin></Label>
-                              <TextField fx:id="numberCITTf" editable="false" prefWidth="100.0" style="-fx-background-color: #c4c4cc; -fx-font-family: Hiragino Sans W1;">
+                              <TextField fx:id="numberCITTf" editable="false" prefWidth="100.0">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
