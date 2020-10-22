@@ -48,7 +48,7 @@
                 </Button>
             </children>
         </HBox>
-        <HBox>
+        <HBox VBox.vgrow="ALWAYS">
             <children>
                 <VBox alignment="TOP_CENTER" maxWidth="180.0" minWidth="130.0" style="-fx-background-color: #3D4956;">
                     <children>
@@ -139,6 +139,9 @@
                                     </graphic>
                                 </TableColumn>
                             </columns>
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
                             <VBox.margin>
                                 <Insets top="20.0" />
                             </VBox.margin>

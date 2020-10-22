@@ -97,7 +97,7 @@
                   </Button>
 
             </VBox>
-            <VBox alignment="CENTER_LEFT" style="-fx-background-color: #f0f0f8;" stylesheets="@css/MainPagesStyle.css" HBox.hgrow="ALWAYS">
+            <VBox style="-fx-background-color: #f0f0f8;" stylesheets="@css/MainPagesStyle.css" HBox.hgrow="ALWAYS">
 
                   <HBox prefHeight="54.0" prefWidth="389.0" spacing="5.0">
             <Label prefWidth="100.0" />
@@ -330,7 +330,7 @@
                   <font>
                      <Font name="Hiragino Sans W1" size="15.0" />
                   </font></Button>
-               <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#openDeleteCitPopup" style="-fx-background-color: #92979f;" text="CIT löschen" textFill="WHITE">
+               <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#openDeleteCitPopup" prefWidth="147.5" style="-fx-background-color: #92979f;" text="CIT löschen" textFill="WHITE">
                   <graphic>
                      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                         <image>
