@@ -343,11 +343,19 @@
                   </font></Button>
             </children>
             <VBox.margin>
-               <Insets top="15.0" />
+               <Insets bottom="15.0" top="15.0" />
             </VBox.margin>
             <padding>
                <Insets left="105.0" />
             </padding></HBox>
+         <HBox  alignment="CENTER">
+            <children>
+               <Label fx:id="statusLbl" />
+            </children>
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
+         </HBox>
          <padding>
             <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
          </padding>
