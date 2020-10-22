@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class DbCallerUser extends DbConnector {
 
-    static ResultSet rs;
+
 
     /**
      * Method for the query to get the user out if the database.
@@ -20,7 +20,7 @@ public class DbCallerUser extends DbConnector {
      * @return userToGet - returns the user from the database
      */
     public User getUser(String userName) {
-
+        ResultSet rs;
         try {
             rs = stmt.executeQuery("SELECT * FROM USER WHERE USER_NAME = '" + userName + "'");
             if (rs.first()) {
@@ -31,9 +31,7 @@ public class DbCallerUser extends DbConnector {
                 String name = rs.getString("NAME");
                 String surname = rs.getString("SURNAME");
 
-                User userToGet = new User(userName, password, isInitial, isAdmin, name, surname);
-
-                return userToGet;
+                return new User(userName, password, isInitial, isAdmin, name, surname);
             } else {
                 return null;
             }
@@ -121,6 +119,7 @@ public class DbCallerUser extends DbConnector {
     }
 
     public String getEncryptedPassword(String userName) {
+        ResultSet rs;
         String password = null;
         try {
             rs = stmt.executeQuery("SELECT PASSWORD FROM USER WHERE USER_NAME = '" + userName + "';");
@@ -140,9 +139,8 @@ public class DbCallerUser extends DbConnector {
      */
     public ArrayList<User> getAllUsers() {
         // TODO: make it work
-
-        ArrayList<User> allUsers = new ArrayList<User>();
-        User user = User.getUser("admin");
+        ResultSet rs;
+        ArrayList<User> allUsers = new ArrayList<>();
 
         try {
             rs = stmt.executeQuery("SELECT * FROM USER WHERE USER_NAME != 'admin'");
