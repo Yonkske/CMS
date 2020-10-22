@@ -107,7 +107,7 @@
                <children>
                   <VBox prefHeight="74.0" prefWidth="323.0">
                      <children>
-                        <HBox prefHeight="236.0" prefWidth="470.0">
+                        <HBox alignment="CENTER_LEFT">
                            <children>
                               <Label fx:id="cirLabel" minWidth="30.0" text="Anzahl CIR">
                                  <HBox.margin>
@@ -116,16 +116,19 @@
                                  <font>
                                     <Font name="Hiragino Sans W2" size="15.0" />
                                  </font></Label>
-                              <TextField fx:id="numberCIRTf" alignment="TOP_CENTER" prefWidth="100.0" style="-fx-background-color: #c4c4cc; -fx-font-family: Hiragino Sans W1;">
+                              <TextField fx:id="numberCIRTf" editable="false" prefWidth="100.0" style="-fx-background-color: #c4c4cc; -fx-font-family: Hiragino Sans W1;">
                                  <HBox.margin>
-                                    <Insets bottom="15.0" />
+                                    <Insets />
                                  </HBox.margin>
                                  <font>
                                     <Font size="14.0" />
                                  </font></TextField>
                            </children>
+                           <VBox.margin>
+                              <Insets bottom="15.0" />
+                           </VBox.margin>
                         </HBox>
-                        <HBox prefHeight="27.0" prefWidth="251.0">
+                        <HBox alignment="CENTER_LEFT">
                            <children>
                               <Label fx:id="citLabel" minWidth="30.0" text="Anzahl CIT">
                                  <font>
@@ -134,7 +137,7 @@
                                  <HBox.margin>
                                     <Insets left="20.0" right="40.0" />
                                  </HBox.margin></Label>
-                              <TextField fx:id="numberCITTf" alignment="TOP_CENTER" editable="false" prefWidth="100.0" style="-fx-background-color: #c4c4cc; -fx-font-family: Hiragino Sans W1;">
+                              <TextField fx:id="numberCITTf" editable="false" prefWidth="100.0" style="-fx-background-color: #c4c4cc; -fx-font-family: Hiragino Sans W1;">
                                  <font>
                                     <Font size="14.0" />
                                  </font></TextField>

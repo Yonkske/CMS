@@ -107,7 +107,7 @@
                   <Insets bottom="5.0" />
                </HBox.margin></ChoiceBox>
                  </HBox>
-                  <HBox spacing="5.0">
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
 
                         <Label fx:id="idLbl" prefWidth="100.0" text="ID">
                            <HBox.margin>
@@ -117,7 +117,7 @@
                   <Font name="Hiragino Sans W1" size="15.0" />
                </font>
                         </Label>
-                        <TextField fx:id="idTf" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="idTf" editable="false" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="5.0" />
                            </HBox.margin>
@@ -130,7 +130,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox spacing="5.0">
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
 
                         <Label fx:id="citLbl" prefWidth="100.0" text="CIT">
                            <HBox.margin>
@@ -140,7 +140,7 @@
                   <Font name="Hiragino Sans W1" size="15.0" />
                </font>
                         </Label>
-                        <TextField fx:id="citTf" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="citTf" editable="false" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
@@ -153,7 +153,7 @@
                         <Insets />
                      </VBox.margin>
                   </HBox>
-                  <HBox spacing="5.0">
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
 
                         <Label fx:id="attributeLbl" prefWidth="100.0" text="Attribute: ">
                            <HBox.margin>
@@ -163,7 +163,7 @@
                   <Font name="Hiragino Sans W1" size="15.0" />
                </font>
                         </Label>
-                        <TextField fx:id="attribut1Tf" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="attribut1Tf" editable="false" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
@@ -186,7 +186,7 @@
                   <Font size="15.0" />
                </font>
                     </Label>
-                    <TextField fx:id="attribut2Tf" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
+                    <TextField fx:id="attribut2Tf" editable="false" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
                         <HBox.margin>
                             <Insets bottom="5.0" top="5.0" />
                         </HBox.margin>
@@ -205,7 +205,7 @@
                   <Font size="15.0" />
                </font></Label>
 
-                        <TextField fx:id="attribut3Tf" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="attribut3Tf" editable="false" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
@@ -224,7 +224,7 @@
                   <Font size="15.0" />
                </font></Label>
 
-                        <TextField fx:id="attribut4Tf" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="attribut4Tf" editable="false" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
@@ -240,24 +240,7 @@
                   <Font size="15.0" />
                </font></Label>
 
-                        <TextField fx:id="attribut5Tf" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
-                           <HBox.margin>
-                              <Insets bottom="5.0" top="5.0" />
-                           </HBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
-                        </TextField>
-
-                  </HBox>
-                  <HBox spacing="5.0">
-            <Label prefWidth="100.0">
-               <font>
-                  <Font size="15.0" />
-               </font></Label>
-
-
-                        <TextField fx:id="attribut6Tf" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="attribut5Tf" editable="false" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
@@ -274,7 +257,24 @@
                </font></Label>
 
 
-                        <TextField fx:id="attribut7Tf" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="attribut6Tf" editable="false" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
+                           <HBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+                        </TextField>
+
+                  </HBox>
+                  <HBox spacing="5.0">
+            <Label prefWidth="100.0">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+
+
+                        <TextField fx:id="attribut7Tf" editable="false" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
@@ -292,7 +292,7 @@
 
 
 
-                        <TextField fx:id="attribut8Tf" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
+                        <TextField fx:id="attribut8Tf" editable="false" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
                            <HBox.margin>
                               <Insets bottom="15.0" top="5.0" />
                            </HBox.margin>
@@ -300,9 +300,8 @@
                   <Font size="14.0" />
                </font>
                         </TextField>
-
                   </HBox>
-         <HBox spacing="5.0">
+         <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="396.0" spacing="5.0">
             <children>
                <Label fx:id="numberCIRLbl" prefWidth="100.0" text="Anzahl CIR: ">
                   <font>
