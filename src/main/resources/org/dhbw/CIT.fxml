@@ -319,7 +319,7 @@
          </HBox>
                 <HBox spacing="5.0">
             <children>
-               <Button fx:id="citaddBtn" mnemonicParsing="false" onAction="#swapToCITAdd" style="-fx-background-color: #92979f;" text="CIT hinzufügen" textFill="WHITE">
+               <Button fx:id="citAddBtn" mnemonicParsing="false" onAction="#swapToCITAdd" style="-fx-background-color: #92979f;" text="CIT hinzufügen" textFill="WHITE">
                   <graphic>
                      <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                         <image>
