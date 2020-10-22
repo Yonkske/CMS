@@ -6,7 +6,6 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
 <VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-background-color: #f0f0f8;" stylesheets="@css/MainPagesStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.UserAdminController">
     <children>
         <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" style="-fx-background-color: #313c48;">
@@ -194,9 +193,17 @@
                             </VBox.margin>
                         </HBox>
                   <HBox alignment="CENTER">
-                     <children>
-                        <Label fx:id="statusLbl" />
-                     </children>
+                      <children>
+                          <Label fx:id="statusLbl" alignment="CENTER" style="-fx-border-color: #cf0000;"
+                                 textFill="#cf0000" visible="false">
+                              <padding>
+                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                              </padding>
+                          </Label>
+                      </children>
+                      <VBox.margin>
+                          <Insets top="15.0"/>
+                      </VBox.margin>
                   </HBox>
 
 

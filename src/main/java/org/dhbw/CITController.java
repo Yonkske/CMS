@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -58,6 +59,8 @@ public class CITController extends MainPagesController {
     private Button citAddBtn;
     @FXML
     private Button userBtn;
+    @FXML
+    private Label statusLbl;
 
     /**
      * Methode from the interface Initializable that auto generates the page on
@@ -86,7 +89,14 @@ public class CITController extends MainPagesController {
         choiceBox.setItems(list);
 
         try {
-            list.addAll(DB_CALLER_CIT.getAllCits());
+            ArrayList<Cit> allCits = DB_CALLER_CIT.getAllCits();
+            list.addAll(allCits);
+            if (allCits.stream().count() == 0) {
+                statusLbl.setText("Noch keine CITs vorhanden!");
+                statusLbl.setVisible(true);
+            } else {
+                statusLbl.setVisible(false);
+            }
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
