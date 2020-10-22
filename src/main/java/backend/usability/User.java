@@ -35,27 +35,9 @@ public class User {
      * @return User - return of the user that should be got
      */
     public static User getUser(String userName) {
-
-        User existingUser = new DbCallerUser().getUser(userName);
-        return existingUser;
+        return new DbCallerUser().getUser(userName);
     }
 
-    /**
-     * Within this method a new User will be created. That User will be returned afterwards.
-     * @param userName - username for the user
-     * @param name - the name of the user
-     * @param surname - surname of the user
-     * @param password - initial password the admin gave that user
-     * @param isAdmin - boolean: if true that user is an admin else hes not
-     * @return newUser - the returned new user
-     */
-    public static User create(String userName, String password, boolean isAdmin, String name, String surname) {
-
-        User newUser = new User(userName, password, true, isAdmin, name, surname);
-        new DbCallerUser().insertUser(newUser);
-
-        return newUser;
-    }
 
     /**
      * Within this method the user can change his own password.
