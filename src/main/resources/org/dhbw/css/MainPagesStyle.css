@@ -111,7 +111,6 @@ Button#benutzerDropDownBtn:hover, Button#passwordEditBtn:hover {
 /*
     Style for the table on the start page and the user page
  */
-
 TableView {
     -fx-background-color: #f0f0f8;
     -fx-border-color: #92979f;

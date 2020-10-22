@@ -132,10 +132,10 @@
                         </HBox>
                         <TableView fx:id="userTable" onMouseClicked="#clickAction" VBox.vgrow="ALWAYS">
                             <columns>
-                                <TableColumn fx:id="userColumn" editable="false" maxWidth="600.0" minWidth="175.0" prefWidth="300.0" text="Benutzer" />
-                                <TableColumn fx:id="rightColumn" maxWidth="600.0" minWidth="175.0" prefWidth="300.0">
+                                <TableColumn fx:id="userColumn" editable="false" maxWidth="100000.0" minWidth="175.0" prefWidth="300.0" text="Benutzer" />
+                                <TableColumn fx:id="rightColumn" maxWidth="100000.0" minWidth="175.0" prefWidth="300.0">
                                     <graphic>
-                                        <ComboBox fx:id="filterUser" maxWidth="600.0" minWidth="175.0" onAction="#setTableWithFilterAndSearch" prefWidth="300.0" promptText="Rechte" />
+                                        <ComboBox fx:id="filterUser" maxWidth="1.7976931348623157E308" minWidth="175.0" onAction="#setTableWithFilterAndSearch" prefWidth="300.0" promptText="Rechte" />
                                     </graphic>
                                 </TableColumn>
                             </columns>
