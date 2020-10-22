@@ -72,14 +72,8 @@ public class UserAdminController extends MainPagesController {
     @FXML
     private void getData() {
         this.allUsers = DB_CALLER_USER.getAllUsers();
-        try {
-            userTable.getItems().setAll(allUsers);
-            userColumn.setCellValueFactory(new PropertyValueFactory<User, String>("UserName"));
-            rightColumn.setCellValueFactory(new PropertyValueFactory<User, String>("Right"));
-            filterUser.setValue("Rechte");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        setTableContent(allUsers);
+        filterUser.setValue("Rechte");
     }
 
 // Following are open Popups
@@ -92,7 +86,7 @@ public class UserAdminController extends MainPagesController {
     public void showUser() throws IOException {
         if (Objects.nonNull(userTable.getSelectionModel().getSelectedItem())) {
             openPopup(new UserViewAdminController(userTable.getSelectionModel()
-                    .getSelectedItem()), "UserViewAdmin.fxml", true,
+                            .getSelectedItem()), "UserViewAdmin.fxml", true,
                     false);
             this.disableButtons();
         }
@@ -106,7 +100,7 @@ public class UserAdminController extends MainPagesController {
     public void addUser() throws IOException {
         // TODO: Test method
         openPopup(new UserAddAdminController(), "UserAddAdmin.fxml",
-                    true, true);
+                true, true);
         this.disableButtons();
     }
 
@@ -131,12 +125,12 @@ public class UserAdminController extends MainPagesController {
      * This method opens the popup.
      *
      * @param controller      - you define a new controller for the fxml
-     *                          page you want to open
+     *                        page you want to open
      * @param fxmlName        - this fxml page should be opened
      * @param onHidingRefresh - when the calling page should be refreshed
-     *                          after closing the popup: true
+     *                        after closing the popup: true
      * @param onHindingClose  - when the calling page should be closed after closing
-     *                          the popup: true
+     *                        the popup: true
      * @throws IOException - IOException
      */
     void openPopup(Controller controller, String fxmlName, boolean onHidingRefresh, boolean onHindingClose) throws IOException {
@@ -207,18 +201,24 @@ public class UserAdminController extends MainPagesController {
         userTable.getItems().setAll(user);
         userColumn.setCellValueFactory(new PropertyValueFactory<User, String>("UserName"));
         rightColumn.setCellValueFactory(new PropertyValueFactory<User, String>("Right"));
+        if (user.stream().count() == 0) {
+            statusLbl.setText("Keine Benutzer gefunden oder noch keine Benutzer angelegt!");
+            statusLbl.setVisible(true);
+        } else {
+            statusLbl.setVisible(false);
+        }
     }
 
     /**
      * This method says what to do when filter and search are set.
      */
     @FXML
-    public void setTableWithFilterAndSearch() throws SQLException {
+    public void setTableWithFilterAndSearch() {
         String selectedUser = filterUser.getSelectionModel().getSelectedItem();
         String searchValue = searchTf.getText();
 
         if (selectedUser.equals("Rechte") && searchValue.length() != 0) {
-             this.setTableContent(getUsersBySearchValue(searchValue));
+            this.setTableContent(getUsersBySearchValue(searchValue));
         } else if (!selectedUser.equals("Rechte")) {
             ArrayList<User> containQuery = new ArrayList<>();
             ArrayList<User> memory = getUsersBySearchValue(searchValue);
@@ -237,6 +237,7 @@ public class UserAdminController extends MainPagesController {
 
     /**
      * Gets List of Users that contain searchValue in the Username.
+     *
      * @param searchValue The value
      * @return the ArrayList of Users containing the searchValue
      */
