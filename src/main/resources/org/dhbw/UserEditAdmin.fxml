@@ -93,7 +93,7 @@
                             <Insets />
                         </HBox.margin>
                   <cursor>
-                     <Cursor fx:constant="DISAPPEAR" />
+                     <Cursor fx:constant="HAND" />
                   </cursor></ChoiceBox>
                     <VBox.margin>
                         <Insets bottom="5.0" top="5.0" />

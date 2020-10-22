@@ -6,6 +6,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+
 <VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-background-color: #f0f0f8;" stylesheets="@css/MainPagesStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.UserAdminController">
     <children>
         <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" style="-fx-background-color: #313c48;">
@@ -33,6 +34,9 @@
                             </image>
                         </ImageView>
                     </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                 </MenuButton>
                 <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" prefHeight="36.0" text="Logout" textFill="WHITE">
                <graphic>
@@ -135,10 +139,13 @@
                         </HBox>
                         <TableView fx:id="userTable" onMouseClicked="#clickAction" VBox.vgrow="ALWAYS">
                             <columns>
-                                <TableColumn fx:id="userColumn" editable="false" maxWidth="100000.0" minWidth="175.0" prefWidth="300.0" text="Benutzer" />
+                                <TableColumn fx:id="userColumn" editable="false" maxWidth="100000.0" minWidth="175.0" prefWidth="300.0" style="-fx-cursor: hand;" text="Benutzer" />
                                 <TableColumn fx:id="rightColumn" maxWidth="100000.0" minWidth="175.0" prefWidth="300.0">
                                     <graphic>
-                                        <ComboBox fx:id="filterUser" maxWidth="1.7976931348623157E308" minWidth="175.0" onAction="#setTableWithFilterAndSearch" prefWidth="300.0" promptText="Rechte" />
+                                        <ComboBox fx:id="filterUser" maxWidth="1.7976931348623157E308" minWidth="175.0" onAction="#setTableWithFilterAndSearch" prefWidth="300.0" promptText="Rechte" style="-fx-cursor: hand;">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></ComboBox>
                                     </graphic>
                                 </TableColumn>
                             </columns>
@@ -194,15 +201,14 @@
                         </HBox>
                   <HBox alignment="CENTER">
                       <children>
-                          <Label fx:id="statusLbl" alignment="CENTER" style="-fx-border-color: #cf0000;"
-                                 textFill="#cf0000" visible="false">
+                          <Label fx:id="statusLbl" alignment="CENTER" style="-fx-border-color: #cf0000;" textFill="#cf0000" visible="false">
                               <padding>
-                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                               </padding>
                           </Label>
                       </children>
                       <VBox.margin>
-                          <Insets top="15.0"/>
+                          <Insets top="15.0" />
                       </VBox.margin>
                   </HBox>
 

@@ -175,3 +175,11 @@ TableView .table-column {
     -fx-background-color: #92979f;
     -fx-text-fill: white;
 }
+/*
+ Css Statistik Textfelder
+ */
+#numberCITTf, #numberCIRTf {
+    -fx-font-size: 14;
+    -fx-background-color: #c4c4cc;
+    -fx-font-family: "Hiragino Sans W1";
+}
