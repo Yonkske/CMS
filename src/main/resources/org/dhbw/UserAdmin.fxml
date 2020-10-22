@@ -139,6 +139,9 @@
                                     </graphic>
                                 </TableColumn>
                             </columns>
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
                             <VBox.margin>
                                 <Insets top="20.0" />
                             </VBox.margin>
