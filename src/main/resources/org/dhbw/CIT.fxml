@@ -107,7 +107,7 @@
                   <Insets bottom="5.0" />
                </HBox.margin></ChoiceBox>
                  </HBox>
-                  <HBox spacing="5.0">
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
 
                         <Label fx:id="idLbl" prefWidth="100.0" text="ID">
                            <HBox.margin>
@@ -130,7 +130,7 @@
                         <Insets />
                      </VBox.margin>
                   </HBox>
-                  <HBox spacing="5.0">
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
 
                         <Label fx:id="citLbl" prefWidth="100.0" text="CIT">
                            <HBox.margin>
@@ -153,7 +153,7 @@
                         <Insets />
                      </VBox.margin>
                   </HBox>
-                  <HBox spacing="5.0">
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
 
                         <Label fx:id="attributeLbl" prefWidth="100.0" text="Attribute: ">
                            <HBox.margin>
@@ -302,7 +302,7 @@
                         </TextField>
 
                   </HBox>
-         <HBox prefHeight="47.0" prefWidth="396.0" spacing="5.0">
+         <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="396.0" spacing="5.0">
             <children>
                <Label fx:id="numberCIRLbl" prefWidth="100.0" text="Anzahl CIR: ">
                   <font>
