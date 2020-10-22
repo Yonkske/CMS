@@ -38,6 +38,8 @@ public class StartpageController extends MainPagesController {
     private TextField searchTf;
     @FXML
     private ComboBox<Cit> filterCitCb;
+    @FXML
+    private Label statusLbl;
     private ArrayList<Cir> allCir;
     private final Cit placeholder = new Cit(0, "CIT", new String[]{null, null, null, null, null, null, null});
 
@@ -165,6 +167,12 @@ public class StartpageController extends MainPagesController {
         cirTable.getItems().setAll(cirs);
         citColumn.setCellValueFactory(new PropertyValueFactory<>("CitName"));
         cirNameColumn.setCellValueFactory(new PropertyValueFactory<>("CirName"));
+        if (cirs.stream().count() != 0) {
+            statusLbl.setVisible(false);
+        } else {
+            statusLbl.setText("Keine CIRs für die angegebene Suche und Filter gefunden oder noch keine CIRs vorhanden!");
+            statusLbl.setVisible(true);
+        }
     }
 
     /**
