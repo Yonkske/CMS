@@ -76,8 +76,10 @@ public class FXMLFactory extends Application {
             Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
             double x = bounds.getMinX() + (bounds.getWidth() - scene.getWidth()) * 0.5;
             double y = bounds.getMinY() + (bounds.getHeight() - scene.getHeight()) * 0.5;
-            stage.setX(x);
-            stage.setY(y);
+            if (bounds.getWidth() == scene.getWidth() && bounds.getHeight() == scene.getHeight()) {
+                stage.setX(x);
+                stage.setY(y);
+            }
         } else {
             stage.setResizable(false);
         }
