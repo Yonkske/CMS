@@ -189,14 +189,17 @@
                             </VBox.margin>
                         </HBox>
                   <HBox alignment="CENTER">
-                     <children>
-                         <Label fx:id="statusLbl" alignment="CENTER" style="-fx-border-color: #cf0000;"
-                                textFill="#cf0000" visible="false">
-                             <padding>
-                                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
-                             </padding>
-                         </Label>
-                     </children>
+                      <children>
+                          <Label fx:id="statusLbl" alignment="CENTER" style="-fx-border-color: #cf0000;"
+                                 textFill="#cf0000" visible="false">
+                              <padding>
+                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                              </padding>
+                          </Label>
+                      </children>
+                      <VBox.margin>
+                          <Insets top="15.0"/>
+                      </VBox.margin>
                   </HBox>
 
 
