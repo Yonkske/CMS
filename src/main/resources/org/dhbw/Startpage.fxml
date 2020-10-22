@@ -133,12 +133,12 @@
                   </HBox>
                   <TableView fx:id="cirTable" onMouseClicked="#clickAction" VBox.vgrow="ALWAYS">
                     <columns>
-                      <TableColumn fx:id="citColumn" editable="false" maxWidth="10000.0" minWidth="175.0" prefWidth="300.0">
+                      <TableColumn fx:id="citColumn" editable="false" maxWidth="100000.0" minWidth="175.0" prefWidth="300.0">
                            <graphic>
                               <ComboBox fx:id="filterCitCb" maxWidth="1.7976931348623157E308" minWidth="175.0" onAction="#setTableWithFilterAndSearch" prefWidth="300.0" promptText="CIT" />
                            </graphic>
                         </TableColumn>
-                      <TableColumn fx:id="cirNameColumn" editable="false" maxWidth="10000.0" minWidth="175.0" prefWidth="300.0" text="CIR-Bezeichnung" />
+                      <TableColumn fx:id="cirNameColumn" editable="false" maxWidth="100000.0" minWidth="175.0" prefWidth="300.0" text="CIR-Bezeichnung" />
                     </columns>
                      <VBox.margin>
                         <Insets top="20.0" />
