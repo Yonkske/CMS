@@ -52,7 +52,9 @@ public class UserEditAdminController extends Controller implements Initializable
         } else {
             meldungLbl.setVisible(true);
         }
-        Controller.user = user;
+        if (Controller.user.getUserName().equals(user.getUserName())) {
+            Controller.user = user;
+        }
     }
 
     /**
