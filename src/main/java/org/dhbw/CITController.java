@@ -80,6 +80,8 @@ public class CITController extends MainPagesController {
             userBtn.setVisible(false);
         }
 
+        deleteBtn.setDisable(true);
+
     }
     /**
      * gets Data for the init.
@@ -117,6 +119,7 @@ public class CITController extends MainPagesController {
      * @throws SQLException - if fxml file isn't found
      */
     public void fillingIn() throws SQLException {
+        deleteBtn.setDisable(false);
         Cit cit = choiceBox.getSelectionModel().getSelectedItem();
 
         // Avoids an exception when no CIT was selected in the choiceBox before a new CIT is created
@@ -183,6 +186,7 @@ public class CITController extends MainPagesController {
         else {
             attribut8Tf.setVisible(true);
         }
+
 
     }
 
