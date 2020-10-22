@@ -48,7 +48,7 @@
                 </Button>
             </children>
         </HBox>
-        <HBox>
+        <HBox VBox.vgrow="ALWAYS">
             <children>
                 <VBox alignment="TOP_CENTER" maxWidth="180.0" minWidth="130.0" style="-fx-background-color: #3D4956;">
                     <children>
