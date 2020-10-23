@@ -110,7 +110,7 @@ public class DbConnector {
      */
     private void insertFirstUser() throws SQLException {
         String query = "INSERT INTO USER "
-                + "SELECT 'admin', 'f3BZyl1b+cGrUn+HPjvPfkZcBRCfj0VoocwLEUbB4ZaTyEfyw2ppAOxQP05f64tW', false, true, 'Strator', 'Admini'"
+                + "SELECT 'admin', 'f3BZyl1b+cGrUn+HPjvPfkZcBRCfj0VoocwLEUbB4ZaTyEfyw2ppAOxQP05f64tW', false, true, 'Admini', 'Strator'"
                 + "WHERE NOT EXISTS (SELECT * FROM USER)";
 
         stmt.execute(query);

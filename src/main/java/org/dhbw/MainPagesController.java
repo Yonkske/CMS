@@ -40,7 +40,7 @@ public abstract class MainPagesController extends Controller implements IRefresh
      * @param resourceBundle - demanded by interface
      */
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String name = Controller.user.getSurName() + ", " + Controller.user.getName();
+        String name = Controller.user.getName() + ", " + Controller.user.getSurName();
         if (Controller.user.getIsAdmin()) {
             name += " (Admin)";
         }
