@@ -92,7 +92,7 @@ public class DbCallerCit extends DbConnector {
         ArrayList<Cit> citList = new ArrayList<>();
         ResultSet rs = null;
         try {
-            rs = stmt.executeQuery("Select * From CIT");
+            rs = stmt.executeQuery("Select * From CIT ORDER BY LOWER(TYPE_NAME)");
             while (rs.next()) {
                 /*
                  * ReslutSet's index starts at 1. First column in the CIT-table is
