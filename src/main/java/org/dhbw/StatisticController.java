@@ -55,7 +55,7 @@ public class StatisticController extends MainPagesController {
     private void setUpChart() {
         try {
             ArrayList<Cit> allCit = DB_CALLER_CIT.getAllCits();
-            PieChart.Data[] slice = new PieChart.Data[10];
+            PieChart.Data[] slice = new PieChart.Data[allCit.size()];
 
             for (int i = 0; i < allCit.size(); i++) {
                 slice[i] = new PieChart.Data(allCit.get(i).getCitName(), DB_CALLER_CIR.getCirCountForType(allCit.get(i)));
