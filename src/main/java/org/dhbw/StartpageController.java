@@ -196,10 +196,12 @@ public class StartpageController extends MainPagesController {
         ArrayList<Cit> allCits = DB_CALLER_CIT.getAllCits();
         filterCitCb.getItems().addAll(DB_CALLER_CIT.getAllCits());
 
-        if (temp.getCitID() == 0) {
-            filterCitCb.setValue(placeholder);
-        } else {
-            filterCitCb.setValue(getSelectedFilterCit(temp.getCitID(), allCits));
+        if (Objects.nonNull(temp)) {
+            if (temp.getCitID() == 0) {
+                filterCitCb.setValue(placeholder);
+            } else {
+                filterCitCb.setValue(getSelectedFilterCit(temp.getCitID(), allCits));
+            }
         }
 
         setTableContent(allCir);
