@@ -90,8 +90,6 @@ public class CIRAddController extends Controller implements Initializable {
     @FXML
     public void fillIn() {
         if (nameTf.getText().length() != 0 && !nameTf.getText().matches("^[\\s]+$")) {
-
-
             if (citChoicebox.getSelectionModel().getSelectedItem() == null) {
                 showError("CIT darf nicht leer sein!");
             } else {
@@ -113,6 +111,8 @@ public class CIRAddController extends Controller implements Initializable {
                     showError("Maximal 255 Zeichen!");
                 }
             }
+        } else {
+            showError("Name darf nicht leer sein!");
         }
     }
 
