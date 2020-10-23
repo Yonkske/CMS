@@ -166,7 +166,7 @@ public class StartpageController extends MainPagesController {
         cirTable.getItems().setAll(cirs);
         citColumn.setCellValueFactory(new PropertyValueFactory<>("CitName"));
         cirNameColumn.setCellValueFactory(new PropertyValueFactory<>("CirName"));
-        if (cirs.stream().count() != 0) {
+        if (cirs.size() != 0) {
             statusLbl.setVisible(false);
         } else {
             statusLbl.setText("Keine CIRs für die angegebene Suche und Filter gefunden oder noch keine CIRs vorhanden!");

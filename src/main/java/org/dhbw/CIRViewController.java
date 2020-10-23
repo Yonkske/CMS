@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -120,6 +121,8 @@ public class CIRViewController extends MainCirPopupsController {
                 stClose.close();
             });
         }
+        stage.getIcons().add(new Image(App.class.getResourceAsStream("icons/favicon1.jpg")));
+        stage.setTitle("CMS - Configuration Management System");
         stage.setScene(scene);
         scene.getWindow().sizeToScene();
         stage.initModality(Modality.APPLICATION_MODAL);
