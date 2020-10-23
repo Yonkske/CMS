@@ -33,7 +33,8 @@ public class CIRViewController extends MainCirPopupsController {
 
     /**
      * Initializes the Object.
-     * @param url an url
+     *
+     * @param url            an url
      * @param resourceBundle an resourceBundle
      */
     @Override
@@ -42,17 +43,16 @@ public class CIRViewController extends MainCirPopupsController {
     }
 
     /**
-     *  opens the Edit CIR dialog
+     * opens the Edit CIR dialog
      */
     @FXML
-    public void editCir(){
+    public void editCir() {
         try {
             openPopUpCirEdit(cir);
             Stage stClose = (Stage) editCirBtn.getScene().getWindow();
             stClose.close();
 
-        }
-            catch (IOException e) {
+        } catch (IOException e) {
             // only happens if the resources couldn't be loaded -> won't happen
             e.printStackTrace();
         }
@@ -61,11 +61,10 @@ public class CIRViewController extends MainCirPopupsController {
     /**
      * opens the delete CIR dialog
      */
-    public void deleteCir(){
+    public void deleteCir() {
         try {
             openPopUpNotification(cir);
-        }
-        catch (IOException throwables) {
+        } catch (IOException throwables) {
             // only happens if the resources couldn't be loaded -> won't happen
             throwables.printStackTrace();
         }
@@ -74,7 +73,7 @@ public class CIRViewController extends MainCirPopupsController {
     /**
      * cancels the stage
      */
-    public void cancel(){
+    public void cancel() {
         Stage stClose = (Stage) cancelBtn.getScene().getWindow();
         stClose.close();
     }
@@ -107,8 +106,9 @@ public class CIRViewController extends MainCirPopupsController {
 
     /**
      * Opens a Popup of a Controller.
+     *
      * @param controller The controller class.
-     * @param fxmlName the fxml name.
+     * @param fxmlName   the fxml name.
      * @throws IOException - an exception
      */
     private void openPopUp(Controller controller, String fxmlName) throws IOException {
@@ -117,6 +117,10 @@ public class CIRViewController extends MainCirPopupsController {
         Parent root = loader.load();
         Stage stage = new Stage();
         Scene scene = new Scene(root);
+        stage.setOnHiding(windowEvent -> {
+            Stage stClose = (Stage) deleteBtn.getScene().getWindow();
+            stClose.close();
+        });
         stage.setScene(scene);
         scene.getWindow().sizeToScene();
         stage.initModality(Modality.APPLICATION_MODAL);
