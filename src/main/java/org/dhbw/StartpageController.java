@@ -129,7 +129,7 @@ public class StartpageController extends MainPagesController {
      */
     public void showCir() throws IOException {
         if (Objects.nonNull(cirTable.getSelectionModel().getSelectedItem())) {
-            openPopup(new CIRViewController(cirTable.getSelectionModel().getSelectedItem()), "CIRView.fxml", false);
+            openPopup(new CIRViewController(cirTable.getSelectionModel().getSelectedItem()), "CIRView.fxml", true);
             this.disableButtons();
         }
     }
@@ -166,7 +166,7 @@ public class StartpageController extends MainPagesController {
         cirTable.getItems().setAll(cirs);
         citColumn.setCellValueFactory(new PropertyValueFactory<>("CitName"));
         cirNameColumn.setCellValueFactory(new PropertyValueFactory<>("CirName"));
-        if (cirs.stream().count() != 0) {
+        if (cirs.size() != 0) {
             statusLbl.setVisible(false);
         } else {
             statusLbl.setText("Keine CIRs für die angegebene Suche und Filter gefunden oder noch keine CIRs vorhanden!");
@@ -196,10 +196,12 @@ public class StartpageController extends MainPagesController {
         ArrayList<Cit> allCits = DB_CALLER_CIT.getAllCits();
         filterCitCb.getItems().addAll(DB_CALLER_CIT.getAllCits());
 
-        if (temp.getCitID() == 0) {
-            filterCitCb.setValue(placeholder);
-        } else {
-            filterCitCb.setValue(getSelectedFilterCit(temp.getCitID(), allCits));
+        if (Objects.nonNull(temp)) {
+            if (temp.getCitID() == 0) {
+                filterCitCb.setValue(placeholder);
+            } else {
+                filterCitCb.setValue(getSelectedFilterCit(temp.getCitID(), allCits));
+            }
         }
 
         setTableContent(allCir);
