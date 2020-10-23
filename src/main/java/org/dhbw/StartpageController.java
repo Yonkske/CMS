@@ -129,7 +129,7 @@ public class StartpageController extends MainPagesController {
      */
     public void showCir() throws IOException {
         if (Objects.nonNull(cirTable.getSelectionModel().getSelectedItem())) {
-            openPopup(new CIRViewController(cirTable.getSelectionModel().getSelectedItem()), "CIRView.fxml", false);
+            openPopup(new CIRViewController(cirTable.getSelectionModel().getSelectedItem()), "CIRView.fxml", true);
             this.disableButtons();
         }
     }

@@ -49,9 +49,6 @@ public class CIRViewController extends MainCirPopupsController {
     public void editCir() {
         try {
             openPopUpCirEdit(cir);
-            Stage stClose = (Stage) editCirBtn.getScene().getWindow();
-            stClose.close();
-
         } catch (IOException e) {
             // only happens if the resources couldn't be loaded -> won't happen
             e.printStackTrace();
@@ -88,7 +85,7 @@ public class CIRViewController extends MainCirPopupsController {
      * @throws IOException - if fxml file isn't found
      */
     private void openPopUpCirEdit(Cir selectedCir) throws IOException {
-        openPopUp(new CIREditController(selectedCir), "CIREdit.fxml");
+        openPopUp(new CIREditController(selectedCir), "CIREdit.fxml", false);
     }
 
     /**
@@ -101,7 +98,7 @@ public class CIRViewController extends MainCirPopupsController {
      * @throws IOException - if fxml file isn't found
      */
     private void openPopUpNotification(Cir selectedCir) throws IOException {
-        openPopUp(new NotificationController(selectedCir, "Startpage"), "Notification.fxml");
+        openPopUp(new NotificationController(selectedCir, "Startpage"), "Notification.fxml", true);
     }
 
     /**
@@ -111,21 +108,22 @@ public class CIRViewController extends MainCirPopupsController {
      * @param fxmlName   the fxml name.
      * @throws IOException - an exception
      */
-    private void openPopUp(Controller controller, String fxmlName) throws IOException {
+    private void openPopUp(Controller controller, String fxmlName, boolean onHiding) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
         loader.setController(controller);
         Parent root = loader.load();
         Stage stage = new Stage();
         Scene scene = new Scene(root);
-        stage.setOnHiding(windowEvent -> {
-            Stage stClose = (Stage) deleteBtn.getScene().getWindow();
-            stClose.close();
-        });
+        if (onHiding) {
+            stage.setOnHiding(windowEvent -> {
+                Stage stClose = (Stage) deleteBtn.getScene().getWindow();
+                stClose.close();
+            });
+        }
         stage.setScene(scene);
         scene.getWindow().sizeToScene();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
-
     }
 
 }
