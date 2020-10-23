@@ -149,6 +149,7 @@ public class DbCallerCir extends DbConnector {
         ResultSet rs = null;
         try {
             rs = stmt.executeQuery("Select max(ITEM_ID) FROM CIR");
+            rs.first();
             return rs.getInt(1);
         } catch (SQLException throwables) {
             return 0;
