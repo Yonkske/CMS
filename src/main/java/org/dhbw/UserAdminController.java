@@ -98,7 +98,6 @@ public class UserAdminController extends MainPagesController {
      * @throws IOException - IOException
      */
     public void addUser() throws IOException {
-        // TODO: Test method
         openPopup(new UserAddAdminController(), "UserAddAdmin.fxml",
                 true, true);
         this.disableButtons();
