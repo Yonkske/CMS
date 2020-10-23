@@ -87,23 +87,29 @@ public class DbCallerCit extends DbConnector {
      *
      * @return a list of CIT records in table
      */
-    public ArrayList<Cit> getAllCits() throws SQLException {
+    public ArrayList<Cit> getAllCits() {
 
         ArrayList<Cit> citList = new ArrayList<>();
-        ResultSet rs = stmt.executeQuery("Select * From CIT");
-        while (rs.next()) {
-            /*
-             * ReslutSet's index starts at 1. First column in the CIT-table is
-             * TYPE_ID, second column is TYPE_NAME and columns 3 to 9 are the
-             * attribute names for the CIT
-             */
-            int citId = rs.getInt(1);
-            String citName = rs.getString(2);
-            String[] attributes = new String[7];
-            for (int i = 0; i < attributes.length; i++) {
-                attributes[i] = rs.getString(i + 3);
+        ResultSet rs = null;
+        try {
+            rs = stmt.executeQuery("Select * From CIT");
+            while (rs.next()) {
+                /*
+                 * ReslutSet's index starts at 1. First column in the CIT-table is
+                 * TYPE_ID, second column is TYPE_NAME and columns 3 to 9 are the
+                 * attribute names for the CIT
+                 */
+                int citId = rs.getInt(1);
+                String citName = rs.getString(2);
+                String[] attributes = new String[7];
+                for (int i = 0; i < attributes.length; i++) {
+                    attributes[i] = rs.getString(i + 3);
+                }
+                citList.add(new Cit(citId, citName, attributes));
             }
-            citList.add(new Cit(citId, citName, attributes));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
 
         return citList;
