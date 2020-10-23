@@ -86,7 +86,7 @@ public class CIRViewController extends MainCirPopupsController {
      * @throws IOException - if fxml file isn't found
      */
     private void openPopUpCirEdit(Cir selectedCir) throws IOException {
-        openPopUp(new CIREditController(selectedCir), "CIREdit.fxml", false);
+        openPopUp(new CIREditController(selectedCir), "CIREdit.fxml");
     }
 
     /**
@@ -99,7 +99,7 @@ public class CIRViewController extends MainCirPopupsController {
      * @throws IOException - if fxml file isn't found
      */
     private void openPopUpNotification(Cir selectedCir) throws IOException {
-        openPopUp(new NotificationController(selectedCir, "Startpage"), "Notification.fxml", true);
+        openPopUp(new NotificationController(selectedCir, "Startpage"), "Notification.fxml");
     }
 
     /**
@@ -109,18 +109,16 @@ public class CIRViewController extends MainCirPopupsController {
      * @param fxmlName   the fxml name.
      * @throws IOException - an exception
      */
-    private void openPopUp(Controller controller, String fxmlName, boolean onHiding) throws IOException {
+    private void openPopUp(Controller controller, String fxmlName) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlName));
         loader.setController(controller);
         Parent root = loader.load();
         Stage stage = new Stage();
         Scene scene = new Scene(root);
-        if (onHiding) {
-            stage.setOnHiding(windowEvent -> {
-                Stage stClose = (Stage) deleteBtn.getScene().getWindow();
-                stClose.close();
-            });
-        }
+        stage.setOnHiding(windowEvent -> {
+            Stage stClose = (Stage) deleteBtn.getScene().getWindow();
+            stClose.close();
+        });
         stage.getIcons().add(new Image(App.class.getResourceAsStream("icons/favicon1.jpg")));
         stage.setTitle("CMS - Configuration Management System");
         stage.setScene(scene);
