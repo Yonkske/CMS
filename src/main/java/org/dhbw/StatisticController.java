@@ -52,6 +52,9 @@ public class StatisticController extends MainPagesController {
         setUpChart();
     }
 
+    /**
+     * Methode to set up the data for the chart
+     */
     private void setUpChart() {
         try {
             ArrayList<Cit> allCit = DB_CALLER_CIT.getAllCits();
