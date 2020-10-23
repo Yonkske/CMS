@@ -84,6 +84,9 @@ public abstract class MainPagesController extends Controller implements IRefresh
      */
     public void logOut() throws IOException {
         Controller.user = null;
+        Stage stage = (Stage) logoutBtn.getScene().getWindow();
+        stage.setMaximized(false);
+        stage.setMinHeight(240);
         FXMLFactory.setRoot("Login", true);
     }
 
