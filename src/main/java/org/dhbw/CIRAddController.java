@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
@@ -73,15 +73,14 @@ public class CIRAddController extends Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            idTf.setText(String.valueOf(DB_CALLER_CIR.getMaxItemId() + 1));
-            ObservableList<Cit> list = FXCollections.observableArrayList();
-            citChoicebox.setItems(list);
-            list.addAll(DB_CALLER_CIT.getAllCits());
-        }
-        //Fixme: Error Handling
-        catch (SQLException throwables) {
-            throwables.printStackTrace();
+
+        idTf.setText(String.valueOf(DB_CALLER_CIR.getMaxItemId() + 1));
+        ObservableList<Cit> list = FXCollections.observableArrayList();
+        citChoicebox.setItems(list);
+        ArrayList<Cit> allCits = DB_CALLER_CIT.getAllCits();
+        list.addAll(allCits);
+        if (allCits.stream().count() == 0) {
+            showError("Es ist noch kein CIT angelegt!");
         }
     }
 

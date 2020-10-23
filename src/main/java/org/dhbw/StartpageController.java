@@ -9,7 +9,6 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -189,26 +188,21 @@ public class StartpageController extends MainPagesController {
      */
     @Override
     public void refresh() {
-        try {
-            Cit temp = filterCitCb.getSelectionModel().getSelectedItem();
-            filterCitCb.getItems().clear();
+        Cit temp = filterCitCb.getSelectionModel().getSelectedItem();
+        filterCitCb.getItems().clear();
 
-            filterCitCb.getItems().add(placeholder);
+        filterCitCb.getItems().add(placeholder);
 
-            ArrayList<Cit> allCits = DB_CALLER_CIT.getAllCits();
-            filterCitCb.getItems().addAll(DB_CALLER_CIT.getAllCits());
+        ArrayList<Cit> allCits = DB_CALLER_CIT.getAllCits();
+        filterCitCb.getItems().addAll(DB_CALLER_CIT.getAllCits());
 
-            if (temp.getCitID() == 0) {
-                filterCitCb.setValue(placeholder);
-            } else {
-                filterCitCb.setValue(getSelectedFilterCit(temp.getCitID(), allCits));
-            }
-
-            setTableContent(allCir);
-            // DO IT!
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (temp.getCitID() == 0) {
+            filterCitCb.setValue(placeholder);
+        } else {
+            filterCitCb.setValue(getSelectedFilterCit(temp.getCitID(), allCits));
         }
+
+        setTableContent(allCir);
         allCir = DB_CALLER_CIR.getRecords();
         this.setTableWithFilterAndSearch();
     }
