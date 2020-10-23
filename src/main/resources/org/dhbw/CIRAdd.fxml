@@ -142,9 +142,13 @@
       </HBox>
       <HBox alignment="CENTER" cache="true" spacing="5.0">
          <VBox.margin>
-            <Insets bottom="20.0" left="65.0" top="5.0" />
+            <Insets bottom="20.0" left="65.0" right="120.0" top="5.0" />
          </VBox.margin>
-         <Label fx:id="meldungLbl" contentDisplay="CENTER" prefHeight="36.0" prefWidth="120.0" style="-fx-border-color: #cf0000;" text="Eingaben überpfüfen!" textAlignment="CENTER" textFill="#cf0000" visible="false" wrapText="true" />
+         <VBox prefHeight="200.0" HBox.hgrow="ALWAYS">
+            <children>
+               <Label fx:id="meldungLbl" contentDisplay="CENTER" prefHeight="36.0" style="-fx-border-color: #cf0000;" text="Eingaben überpfüfen!" textAlignment="CENTER" textFill="#cf0000" visible="false" wrapText="true" />
+            </children>
+         </VBox>
          <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#fillIn" prefHeight="25.0" text="Speichern">
             <graphic>
                <ImageView fitHeight="24.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
