@@ -11,7 +11,7 @@ public class DbConnector {
     static Statement stmt;
     private static final String FILE_NAME = "CMS";
     private static final String COMPLETE_PATH = System.getProperty("user.home") + "\\CMSdb\\" + FILE_NAME;
-    private static final String URL = "jdbc:h2:file:\\" + COMPLETE_PATH + ";";
+    private static final String URL = "jdbc:h2:file:\\" + COMPLETE_PATH + ";TRACE_LEVEL_FILE=0";
 
 
     /**
