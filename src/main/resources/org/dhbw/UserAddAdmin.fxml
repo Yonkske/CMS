@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414" prefWidth="600.0" stylesheets="@css/PopupStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="67.8" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="67.8">
+         <children>
+            <HBox alignment="CENTER" cache="true" spacing="5.0">
+               <Label fx:id="surnameLbl" alignment="BOTTOM_LEFT" prefWidth="120.0" text="Vorname:">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font size="15.0" />
+                  </font></Label>
+               <TextField fx:id="surnameTf" prefWidth="210.0">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="TEXT" />
+                  </cursor></TextField>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+            <HBox alignment="CENTER" spacing="5.0">
+               <Label fx:id="nameLbl" alignment="BOTTOM_LEFT" prefWidth="120.0" text="Nachname:">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font size="15.0" />
+                  </font></Label>
+               <TextField fx:id="nameTf" prefWidth="210.0">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="TEXT" />
+                  </cursor></TextField>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" spacing="5.0">
+               <Label fx:id="usernameLbl" alignment="BOTTOM_LEFT" prefWidth="120.0" text="Benutzername:">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font size="15.0" />
+                  </font></Label>
+               <TextField fx:id="usernameTf" prefWidth="210.0">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="TEXT" />
+                  </cursor></TextField>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" spacing="5.0">
+               <Label fx:id="authorizationLbl" alignment="BOTTOM_LEFT" prefWidth="120.0" text="Rechte:">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font size="15.0" />
+                  </font></Label>
+               <ChoiceBox fx:id="authorizationChoiceBox" prefWidth="210.0" style="-fx-cursor: hand;">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <cursor>
+                     <Cursor fx:constant="DISAPPEAR" />
+                  </cursor></ChoiceBox>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" spacing="5.0">
+               <Label fx:id="initialPasswordLbl" alignment="BOTTOM_LEFT" prefWidth="120.0" text="Initiales Passwort:">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font size="15.0" />
+                  </font></Label>
+               <PasswordField fx:id="initialPasswordTf" prefWidth="210.0" promptText="Initiales Passwort eingeben">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="TEXT" />
+                  </cursor></PasswordField>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" spacing="5.0">
+               <Label fx:id="repeatInitialPasswordLbl" alignment="BOTTOM_LEFT" prefWidth="120.0" text="Initiales Passwort:">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font size="15.0" />
+                  </font></Label>
+               <PasswordField fx:id="repeatInitialPasswordTf" onAction="#submit" prefWidth="210.0" promptText="Initiales Passwort wiederholen">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="TEXT" />
+                  </cursor></PasswordField>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" spacing="10.0">
+               <children>
+
+                  <Label fx:id="meldungLbl" contentDisplay="CENTER" prefHeight="36.0" prefWidth="105.0" style="-fx-border-color: #cf0000;" text="Eingaben überpfüfen!" textAlignment="CENTER" textFill="#cf0000" visible="false" wrapText="true">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Label>
+                  <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#submit" text="Speichern">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/speichern.png" />
+                           </image></ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Button>
+                  <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#cancel" prefHeight="32.0" prefWidth="96.4" text="Abbrechen">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/abbrechen.png" />
+                           </image></ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

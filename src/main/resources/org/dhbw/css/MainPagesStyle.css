@@ -1,0 +1,185 @@
+/*
+    Font for the complete main pages
+ */
+VBox {
+    -fx-font-family: "Hiragino Sans W1";
+}
+
+/*
+    Style for all buttons
+ */
+Button {
+    -fx-background-color:  #3D4956;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+Button:hover {
+    -fx-background-color:  #313c48;
+    -fx-translate-y: 1;
+    -fx-text-fill:  #e1a6ad;
+}
+
+/*
+    Style for the buttons to switch between the main pages
+ */
+Button#startpageBtn, Button#statisticsBtn, Button#citBtn, Button#userBtn {
+    -fx-background-color:  #3D4956;
+    -fx-text-fill: white;
+    -fx-font-size: 17;
+}
+Button#startpageBtn:hover, Button#statisticsBtn:hover, Button#citBtn:hover, Button#userBtn:hover {
+    -fx-background-color:  #313c48;
+    -fx-translate-y: 1;
+    -fx-text-fill:  #e1a6ad;
+}
+
+/*
+    Style for the logout button
+ */
+Button#logoutBtn {
+    -fx-background-color: #313c48;
+    -fx-text-fill: white;
+}
+Button#logoutBtn:hover {
+    -fx-text-fill:  #e1a6ad;
+    -fx-scale-y: 1;
+}
+
+/*
+    Style for the menu button
+ */
+MenuButton#adminUserMB {
+    -fx-background-color: #313c48;
+    -fx-text-fill: white;
+}
+MenuButton#adminUserMB:hover {
+    -fx-text-fill: #e1a6ad;
+    -fx-scale-y: 1;
+}
+
+/*
+    Style for the menu item(s) in the opened menu button
+ */
+MenuButton .label {
+    -fx-text-fill: white;
+    -fx-background-color: #313c48;
+}
+MenuButton .menu-item .label{
+    -fx-background-color: transparent;
+    -fx-font-size: 14;
+}
+MenuButton .menu-item:focused {
+    -fx-background-color: #3d4956;
+}
+MenuButton .context-menu {
+    -fx-background-color: #3d4956;
+}
+Button#benutzerDropDownBtn, Button#passwordEditBtn {
+    -fx-text-fill: white;
+    -fx-font-family: "Hiragino Sans W1";
+    -fx-font-size: 14;
+    -fx-background-color: #3d4956;
+    -fx-min-width: 194;
+    -fx-pref-height: 27;
+    -fx-alignment: CENTER_LEFT;
+}
+Button#benutzerDropDownBtn:hover, Button#passwordEditBtn:hover {
+    -fx-text-fill: #e1a6ad;
+    -fx-scale-y: 1;
+}
+
+/*
+    Style for the ChoiceBox on the CIT page
+ */
+#choiceBox .context-menu{
+    -fx-background-color: #c4c4cc;
+    -fx-font-family: "Hiragino Sans W1";
+    -fx-font-size: 14;
+    -fx-text-fill: black;
+    -fx-min-width: 210;
+}
+#choiceBox .menu-item:focused {
+    -fx-text-fill: #e1a6ad;
+    -fx-background-color: #92979f;
+}
+#choiceBox .menu-item > .label {
+    -fx-text-fill: black;
+}
+#choiceBox .menu-item:focused > .label {
+    -fx-text-fill: white;
+}
+
+/*
+    Style for the table on the start page and the user page
+ */
+TableView {
+    -fx-background-color: #f0f0f8;
+    -fx-border-color: #92979f;
+    -fx-font-size: 14;
+    -fx-font-family: "Hiragino Sans W1";
+    -fx-text-fill: black;
+}
+TableView .column-header-background .label {
+    -fx-background-color: #92979f;
+    -fx-text-fill: black;
+    -fx-font-size: 15;
+    -fx-font-weight: normal;
+    -fx-font-family: "Hiragino Sans W1";
+}
+TableView .column-header {
+    -fx-background-color: #92979f;
+}
+.table-view .column-header .label {
+    -fx-alignment: center-left;
+}
+TableView .table-row-cell {
+    -fx-table-cell-border-color: #92979f;
+}
+TableView .table-row-cell:selected {
+    -fx-background-color: #e7b9c0;
+    -fx-table-cell-border-color: #92979f;
+}
+TableView .table-column {
+    -fx-font-family: "Hiragino Sans W1";
+    -fx-font-size: 14;
+}
+
+/*
+    Style for the ComboBox in the TableView on the start page and the user page
+ */
+.combo-box {
+    -fx-background-color: #92979f;
+    -fx-font-size: 15;
+    -fx-font-family: "Hiragino Sans W1";
+}
+.combo-box:hover {
+    -fx-text-fill: white;
+}
+.combo-box-base {
+    -fx-background-color: #92979f;
+}
+.combo-box .list-view {
+    -fx-font-family: "Hiragino Sans W1";
+    -fx-font-size: 14;
+    -fx-background-color: #c4c4cc;
+    -fx-text-fill: black;
+}
+.combo-box .list-view:hover {
+    -fx-text-fill: white;
+    -fx-background-color: #92979f;
+}
+.combo-box-popup .list-view .list-cell{
+    -fx-background-color: #c4c4cc;
+}
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: #92979f;
+    -fx-text-fill: white;
+}
+/*
+ Css Statistik Textfelder
+ */
+#numberCITTf, #numberCIRTf {
+    -fx-font-size: 14;
+    -fx-background-color: #c4c4cc;
+    -fx-font-family: "Hiragino Sans W1";
+}

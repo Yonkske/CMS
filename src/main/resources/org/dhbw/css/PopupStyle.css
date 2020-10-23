@@ -1,0 +1,70 @@
+/*
+    Style for the username text fields, password field and the login button
+ */
+TextField#usernameTf, TextField#passwordField, Button#loginBtn {
+    -fx-font-family: "Hiragino Sans W1";
+    -fx-text-fill: black;
+}
+TextField#usernameTf, TextField#passwordField {
+    -fx-font-size: 14;
+}
+
+/*
+    Hover for the login button
+ */
+Button#loginBtn {
+    -fx-text-fill: black;
+    -fx-background-color: #e1a6ad;
+}
+Button#loginBtn:hover {
+    -fx-scale-y: 1;
+    -fx-background-color: #e7b9c0;
+}
+
+/*
+    General style for the popups
+ */
+anchorPane {
+    -fx-background-color: #f0f0f8;
+    -fx-font-family: "Hiragino Sans W1";
+    -fx-font-size: 15;
+    -fx-text-fill: black;
+}
+
+TextField, ChoiceBox, PasswordField{
+    -fx-background-color: #c4c4cc;
+    -fx-font-size: 14;
+    -fx-text-fill: black;
+}
+Button {
+    -fx-background-color: #3D4956;
+    -fx-font-family: "Hiragino Sans W1";
+    -fx-font-size: 12;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+Button:hover {
+    -fx-background-color: #313c48;
+    -fx-text-fill: #e1a6ad;
+    -fx-scale-y: 1;
+}
+
+/*
+    Style for the choiceboxes rights and cit selection
+ */
+ChoiceBox .context-menu{
+    -fx-background-color: #d9dbde;
+    -fx-font-family: "Hiragino Sans W1";
+    -fx-font-size: 14;
+    -fx-text-fill: black;
+    -fx-pref-width: 208;
+}
+ChoiceBox .menu-item:focused {
+    -fx-background-color: #c4c4cc;
+}
+ChoiceBox .menu-item > .label {
+    -fx-text-fill: black;
+}
+ChoiceBox .menu-item:focused > .label {
+    -fx-text-fill: white;
+}

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <VBox prefHeight="200.0" prefWidth="100.0" stylesheets="@css/PopupStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="2.0">
+            <children>
+                <HBox alignment="CENTER_RIGHT" cache="true" spacing="5.0">
+                    <TextField fx:id="usernameTf" editable="true" prefWidth="250.0" promptText="Benutzername" style="-fx-background-color: #f0f0f8;">
+                        <HBox.margin>
+                            <Insets />
+                        </HBox.margin>
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                        <cursor>
+                            <Cursor fx:constant="TEXT" />
+                        </cursor>
+                    </TextField>
+                    <VBox.margin>
+                        <Insets bottom="5.0" />
+                    </VBox.margin>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                </HBox>
+                <HBox alignment="CENTER_RIGHT" cache="true" spacing="5.0">
+                    <PasswordField fx:id="passwordField" onAction="#logIn" prefWidth="250.0" promptText="Passwort" style="-fx-background-color: #f0f0f8;">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                  <cursor>
+                     <Cursor fx:constant="TEXT" />
+                  </cursor></PasswordField>
+
+                    <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                    </VBox.margin>
+                </HBox>
+                <HBox alignment="TOP_RIGHT" spacing="10.0">
+                    <Label fx:id="meldungLbl" alignment="BOTTOM_LEFT" prefWidth="140.0" style="-fx-border-color: #ff0000; -fx-border-radius: 3;" text="Ihr Benutzer oder Passwort ist falsch." textAlignment="CENTER" textFill="#fc0000" visible="false" wrapText="true">
+                        <HBox.margin>
+                            <Insets />
+                        </HBox.margin></Label>
+                    <Button fx:id="loginBtn" alignment="CENTER" mnemonicParsing="false" onAction="#logIn" prefHeight="30.0" prefWidth="100.0" text="Anmelden">
+                        <graphic>
+                            <ImageView fx:id="imgLogin" fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@icons/anmeldenS.png" />
+                        </image></ImageView>
+                        </graphic>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor></Button>
+                    <VBox.margin>
+                        <Insets top="5.0" />
+                    </VBox.margin>
+                    <padding>
+                        <Insets left="107.0" />
+                    </padding>
+                </HBox>
+            </children>
+         <padding>
+            <Insets top="43.0" />
+         </padding>
+        </VBox>
+      <ImageView fitHeight="170.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="20.0">
+         <image>
+            <Image url="@icons/favicon.png" />
+         </image>
+      </ImageView>
+    </children>
+</AnchorPane>

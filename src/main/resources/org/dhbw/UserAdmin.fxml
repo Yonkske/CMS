@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-background-color: #f0f0f8;" stylesheets="@css/MainPagesStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.UserAdminController">
+    <children>
+        <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" style="-fx-background-color: #313c48;">
+            <children>
+                <MenuButton fx:id="adminUserMB" minWidth="196.8" mnemonicParsing="false" text="Vorname, Nachname" textFill="WHITE">
+                    <items>
+                        <MenuItem fx:id="itemUser" mnemonicParsing="false">
+                            <graphic>
+                                <Button fx:id="benutzerDropDownBtn" mnemonicParsing="false" onAction="#openUserInfo" text="Benutzer" />
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem fx:id="itemPassword" mnemonicParsing="false">
+                            <graphic>
+                                <Button fx:id="passwordEditBtn" mnemonicParsing="false" onAction="#openChangePassword" text="Passwort ändern" />
+                            </graphic>
+                        </MenuItem>
+                    </items>
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@icons/benutzer.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+                </MenuButton>
+                <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" prefHeight="36.0" text="Logout" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/ausloggen.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font>
+                </Button>
+            </children>
+        </HBox>
+        <HBox VBox.vgrow="ALWAYS">
+            <children>
+                <VBox alignment="TOP_CENTER" maxWidth="180.0" minWidth="130.0" style="-fx-background-color: #3D4956;">
+                    <children>
+                        <Button fx:id="startpageBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToStartpage" text="Startseite" textFill="WHITE">
+                            <VBox.margin>
+                                <Insets bottom="5.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font name="Hiragino Sans W1" size="15.0" />
+                            </font>
+                     <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                     </padding>
+                        </Button>
+                        <Button fx:id="citBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToCit" text="CIT" textFill="WHITE">
+                            <VBox.margin>
+                                <Insets bottom="5.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font name="Hiragino Sans W1" size="15.0" />
+                            </font>
+                     <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                     </padding>
+                        </Button>
+                        <Button fx:id="statisticsBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToStatistic" text="Statistik" textFill="WHITE">
+                            <VBox.margin>
+                                <Insets bottom="5.0" />
+                            </VBox.margin>
+                     <font>
+                        <Font name="Hiragino Sans W1" size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                     </padding>
+                        </Button>
+                        <Button fx:id="userBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToUserAdmin" style="-fx-text-fill: #e1a6ad;" text="Benutzer" textFill="WHITE">
+                            <VBox.margin>
+                                <Insets bottom="5.0" />
+                            </VBox.margin>
+                     <font>
+                        <Font name="Hiragino Sans W1" size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                     </padding>
+                        </Button>
+                    </children>
+                </VBox>
+                <VBox style="-fx-background-color: #f0f0f8; -fx-border-color: #d8dce4; -fx-font-size: 15; -fx-font-family: AppleGothic;" HBox.hgrow="ALWAYS">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" style="-fx-background-color: #f0f0f8;">
+                            <children>
+                        <ImageView fitHeight="31.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/suchenS.png" />
+                           </image>
+                        </ImageView>
+                                <TextField fx:id="searchTf" onAction="#setTableWithFilterAndSearch" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #c4c4cc;">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                                </TextField>
+                                <Button fx:id="deleteSearchBtn" mnemonicParsing="false" onAction="#emptySearchTf" prefHeight="32.0" prefWidth="35.0" style="-fx-background-color: #c4c4cc;">
+                                    <graphic>
+                                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@icons/abbrechenS.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></Button>
+                                <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#setTableWithFilterAndSearch" prefHeight="32.0" prefWidth="100.0" text="Suchen" textFill="WHITE">
+                                    <font>
+                                        <Font name="Hiragino Sans W2" size="15.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </HBox>
+                        <TableView fx:id="userTable" onMouseClicked="#clickAction" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="userColumn" editable="false" maxWidth="100000.0" minWidth="175.0" prefWidth="300.0" style="-fx-cursor: hand;" text="Benutzer" />
+                                <TableColumn fx:id="rightColumn" maxWidth="100000.0" minWidth="175.0" prefWidth="300.0">
+                                    <graphic>
+                                        <ComboBox fx:id="filterUser" maxWidth="1.7976931348623157E308" minWidth="175.0" onAction="#setTableWithFilterAndSearch" prefWidth="300.0" promptText="Rechte" style="-fx-cursor: hand;">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></ComboBox>
+                                    </graphic>
+                                </TableColumn>
+                            </columns>
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                        </TableView>
+                        <HBox spacing="10.0" style="-fx-background-color: #f0f0f8;">
+                            <children>
+                                <Button fx:id="showUserBtn" disable="true" mnemonicParsing="false" onAction="#showUser" style="-fx-background-color: #92979f;" text="Anzeigen" textFill="WHITE">
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                    <graphic>
+                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@icons/benutzer.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Button fx:id="addBtn" mnemonicParsing="false" onAction="#addUser" style="-fx-background-color: #92979f;" text="Hinzufügen" textFill="WHITE">
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                    <graphic>
+                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@icons/benutzer-hinzufuegen.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Button fx:id="deleteBtn" disable="true" mnemonicParsing="false" onAction="#deleteUser" style="-fx-background-color: #92979f;" text="Löschen" textFill="WHITE">
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                    <graphic>
+                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@icons/benutzer-loeschen.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="5.0" top="10.0" />
+                            </VBox.margin>
+                        </HBox>
+                  <HBox alignment="CENTER">
+                      <children>
+                          <Label fx:id="statusLbl" alignment="CENTER" style="-fx-border-color: #cf0000;" textFill="#cf0000" visible="false">
+                              <padding>
+                                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                              </padding>
+                          </Label>
+                      </children>
+                      <VBox.margin>
+                          <Insets top="15.0" />
+                      </VBox.margin>
+                  </HBox>
+
+
+                    </children>
+                    <padding>
+                        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                    </padding>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</VBox>

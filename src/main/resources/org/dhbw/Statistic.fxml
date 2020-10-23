@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<VBox alignment="TOP_RIGHT" minHeight="575.0" minWidth="575.0" stylesheets="@css/MainPagesStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dhbw.StatisticController">
+   <children>
+      <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" style="-fx-background-color: #313c48;">
+         <children>
+            <MenuButton fx:id="adminUserMB" minWidth="196.8" mnemonicParsing="false" text="Vorname, Nachname"
+                        textFill="WHITE">
+               <items>
+                  <MenuItem fx:id="itemUser" mnemonicParsing="false">
+                     <graphic>
+                        <Button fx:id="benutzerDropDownBtn" mnemonicParsing="false" onAction="#openUserInfo"
+                                text="Benutzer"/>
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem fx:id="itemPassword" mnemonicParsing="false">
+                     <graphic>
+                        <Button fx:id="passwordEditBtn" mnemonicParsing="false" onAction="#openChangePassword"
+                                text="Passwort ändern"/>
+                     </graphic>
+                  </MenuItem>
+               </items>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/benutzer.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </MenuButton>
+            <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logOut" prefHeight="36.0" text="Logout" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/ausloggen.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <HBox minWidth="85.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox alignment="TOP_CENTER" maxWidth="180.0" minWidth="130.0" style="-fx-background-color: #3D4956;">
+               <children>
+                  <Button fx:id="startpageBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToStartpage" text="Startseite" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Hiragino Sans W2" size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="citBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToCit" text="CIT" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Hiragino Sans W2" size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="statisticsBtn" maxWidth="180.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToStatistic" style="-fx-text-fill: #e1a6ad;" text="Statistik" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Hiragino Sans W2" size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="userBtn" maxWidth="150.0" minWidth="130.0" mnemonicParsing="false" onAction="#swapToUserAdmin" text="Benutzer" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Hiragino Sans W2" size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                     </padding>
+                  </Button>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
+            <VBox minWidth="490.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox prefHeight="74.0" prefWidth="323.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label fx:id="cirLabel" minWidth="30.0" text="Anzahl CIR">
+                                 <HBox.margin>
+                                    <Insets left="20.0" right="40.0"/>
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Hiragino Sans W2" size="15.0" />
+                                 </font></Label>
+                              <TextField fx:id="numberCIRTf" editable="false" prefWidth="100.0">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="DISAPPEAR" />
+                                 </cursor></TextField>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="15.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label fx:id="citLabel" minWidth="30.0" text="Anzahl CIT">
+                                 <font>
+                                    <Font name="Hiragino Sans W2" size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="20.0" right="40.0" />
+                                 </HBox.margin></Label>
+                              <TextField fx:id="numberCITTf" editable="false" prefWidth="100.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="DISAPPEAR" />
+                                 </cursor></TextField>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="15.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <HBox alignment="CENTER" spacing="40.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <PieChart fx:id="adminPieChart" labelLineLength="37.5" maxHeight="1000.0" maxWidth="1000.0"
+                                  style="-fx-font-size: 15; -fx-font-family: Hiragino Sans W1;" HBox.hgrow="ALWAYS">
+                           <effect>
+                              <Blend/>
+                           </effect>
+                           <HBox.margin>
+                              <Insets bottom="15.0"/>
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="DISAPPEAR"/>
+                           </cursor>
+                           <padding>
+                              <Insets left="40.0" right="40.0"/>
+                           </padding>
+                        </PieChart>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label fx:id="statusLbl" />
+                     </children></HBox>
+               </children>
+               <padding>
+                  <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>

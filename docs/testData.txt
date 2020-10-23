@@ -1,0 +1,6 @@
+insert into USER values ('testuser', '8iX0sanoaP+w2B3hMB+D+C+UJMiN3OTzva9wpB3QgxcmkZYYlZpaC7bzlkJQy3EH', false, true, 'Test', 'User');
+// password
+insert into CIT values ( 1, 'Drucker','Hersteller','Modell','Farbe','IP','Raum','Ort','Niederlassung');
+
+insert into CIR values ( 1, 1, 'HP-Drucker','HP','HP-123','Ja','192.193.194.1','205','Stuttgart','Koenigsstrasse');
+insert into CIR values ( 2, 1, 'Samsung-Drucker','Samsung','Samsung-321','Ja','192.193.194.1','4711','Köln','Rheinufer');

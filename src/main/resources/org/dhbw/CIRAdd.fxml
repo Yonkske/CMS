@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="600.0" stylesheets="@css/PopupStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="20.0" />
+         </VBox.margin>
+         <Label fx:id="idLbl" alignment="BOTTOM_LEFT" prefWidth="175.0" text="ID">
+            <font>
+               <Font size="15.0" />
+            </font></Label>
+         <TextField fx:id="idTf" editable="false" prefWidth="210.0">
+            <cursor>
+               <Cursor fx:constant="DISAPPEAR" />
+            </cursor></TextField>
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+
+         <Label fx:id="citLbl" alignment="BOTTOM_LEFT" prefWidth="175.0" text="CIT">
+            <font>
+               <Font size="15.0" />
+            </font></Label>
+         <ChoiceBox fx:id="citChoicebox" onAction="#setLabelTexts" prefWidth="210.0">
+            <cursor>
+               <Cursor fx:constant="DISAPPEAR" />
+            </cursor></ChoiceBox>
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label fx:id="nameLbl" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Name">
+            <font>
+               <Font size="15.0" />
+            </font></Label>
+         <TextField fx:id="nameTf" prefWidth="210.0">
+            <cursor>
+               <Cursor fx:constant="DISAPPEAR" />
+            </cursor></TextField>
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label fx:id="attribut1Lbl" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut1" visible="false">
+            <font>
+               <Font size="15.0" />
+            </font></Label>
+         <TextField fx:id="attribut1Tf" prefWidth="210.0" visible="false">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label fx:id="attribut2Lbl" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut2" visible="false">
+            <font>
+               <Font size="15.0" />
+            </font></Label>
+         <TextField fx:id="attribut2Tf" prefWidth="210.0" visible="false">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label fx:id="attribut3Lbl" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut3" visible="false">
+            <font>
+               <Font size="15.0" />
+            </font></Label>
+         <TextField fx:id="attribut3Tf" prefWidth="210.0" visible="false">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label fx:id="attribut4Lbl" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut4" visible="false">
+            <font>
+               <Font size="15.0" />
+            </font></Label>
+         <TextField fx:id="attribut4Tf" prefWidth="210.0" visible="false">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label fx:id="attribut5Lbl" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut5" visible="false">
+            <font>
+               <Font size="15.0" />
+            </font></Label>
+         <TextField fx:id="attribut5Tf" prefWidth="210.0" visible="false">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
+      </HBox>
+      <HBox alignment="CENTER" cache="true" prefHeight="38.0" prefWidth="193.0" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label fx:id="attribut6Lbl" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut6" visible="false">
+            <font>
+               <Font size="15.0" />
+            </font></Label>
+         <TextField fx:id="attribut6Tf" prefWidth="210.0" visible="false">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </VBox.margin>
+         <Label fx:id="attribut7Lbl" alignment="BOTTOM_LEFT" prefWidth="175.0" text="Attribut7" visible="false">
+            <font>
+               <Font size="15.0" />
+            </font></Label>
+         <TextField fx:id="attribut7Tf" prefWidth="210.0" visible="false">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor></TextField>
+      </HBox>
+      <HBox alignment="CENTER" cache="true" spacing="5.0">
+         <VBox.margin>
+            <Insets bottom="20.0" left="65.0" right="120.0" top="5.0" />
+         </VBox.margin>
+         <VBox prefHeight="200.0" HBox.hgrow="ALWAYS">
+            <children>
+               <Label fx:id="meldungLbl" contentDisplay="CENTER" prefHeight="36.0" style="-fx-border-color: #cf0000;" text="Eingaben überpfüfen!" textAlignment="CENTER" textFill="#cf0000" visible="false" wrapText="true" />
+            </children>
+         </VBox>
+         <Button fx:id="submitBtn" mnemonicParsing="false" onAction="#fillIn" prefHeight="25.0" text="Speichern">
+            <graphic>
+               <ImageView fitHeight="24.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@icons/speichern.png" />
+                  </image>
+               </ImageView>
+            </graphic></Button>
+         <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#cancel" prefHeight="32.0" prefWidth="96.5" text="Abbrechen">
+            <graphic>
+               <ImageView fitHeight="15.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@icons/abbrechen.png" />
+                  </image>
+               </ImageView>
+            </graphic></Button>
+      </HBox>
+   </VBox>
+</AnchorPane>
