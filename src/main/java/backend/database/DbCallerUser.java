@@ -138,7 +138,6 @@ public class DbCallerUser extends DbConnector {
      * @return
      */
     public ArrayList<User> getAllUsers() {
-        // TODO: make it work
         ResultSet rs;
         ArrayList<User> allUsers = new ArrayList<>();
 
