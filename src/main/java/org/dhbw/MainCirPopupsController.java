@@ -62,7 +62,6 @@ public abstract class MainCirPopupsController extends Controller implements Init
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Atrribute des Cir Übergeben und in der View ausgeben
         idTf.setText(String.valueOf(cir.getCirID()));
-        //todo: Change CIT Int to CIT Type
         citTf.setText(String.valueOf(cir.getCitName()));
         nameTf.setText(cir.getCirName());
         attribut1Tf.setText(cir.getCirAttributes()[0]);

@@ -145,14 +145,15 @@ public class DbCallerCir extends DbConnector {
      * @return the highest item_id if there are entries, 0 if there are no entires in the db
      * @throws SQLException - on database access error or other errors
      */
-    public int getMaxItemId() throws SQLException {
-        ResultSet rs = stmt.executeQuery("Select max(ITEM_ID) FROM CIR");
-
-        if (rs.first()) {
+    public int getMaxItemId() {
+        ResultSet rs = null;
+        try {
+            rs = stmt.executeQuery("Select max(ITEM_ID) FROM CIR");
             return rs.getInt(1);
-        } else {
+        } catch (SQLException throwables) {
             return 0;
         }
+
     }
 
     /**
@@ -186,7 +187,7 @@ public class DbCallerCir extends DbConnector {
 
                 String[] attributeNames = new String[7];
                 for (int i = 0; i < attributeNames.length; i++) {
-                    attributeNames[i] = rs.getString("ATTRIBUTE_NAME_"+(i+1));
+                    attributeNames[i] = rs.getString("ATTRIBUTE_NAME_" + (i + 1));
                 }
 
                 Cit type = new Cit(typId, typeName, attributeNames);
@@ -197,7 +198,7 @@ public class DbCallerCir extends DbConnector {
 
                 String[] attributeValues = new String[7];
                 for (int i = 0; i < attributeValues.length; i++) {
-                    attributeValues[i] = rs.getString("ATTRIBUTE_VALUE_"+(i+1));
+                    attributeValues[i] = rs.getString("ATTRIBUTE_VALUE_" + (i + 1));
                 }
 
                 records.add(new Cir(recordId, type, recordName, attributeValues));
