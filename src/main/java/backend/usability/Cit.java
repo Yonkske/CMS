@@ -2,7 +2,6 @@ package backend.usability;
 
 public class Cit {
 
-    // FIXME: change DbCallers to non-static
     private int id;
     private String typename;
     private String[] attributes;

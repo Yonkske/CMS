@@ -53,11 +53,7 @@ public class CITAddController extends Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            idTf.setText(String.valueOf(DB_CALLER_CIT.getMaxItemId() + 1));
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        idTf.setText(String.valueOf(DB_CALLER_CIT.getMaxItemId() + 1));
     }
 
     /**
@@ -68,7 +64,7 @@ public class CITAddController extends Controller implements Initializable {
     @FXML
     public void fillIn() throws SQLException {
 
-        if (citTf.getText().length() !=0 && !citTf.getText().matches("^[\\s]+$")) {
+        if (citTf.getText().length() != 0 && !citTf.getText().matches("^[\\s]+$")) {
             if (DB_CALLER_CIT.isTypeNameAvailable(citTf.getText())) {
                 if (DB_CALLER_CIT.createCit(new Cit(Integer.parseInt(idTf.getText()), citTf.getText(), getAttributeArray()))) {
                     this.close();
@@ -85,6 +81,7 @@ public class CITAddController extends Controller implements Initializable {
 
     /**
      * get all attributes of the attributeTextfields into an array.
+     *
      * @return the array
      */
     private String[] getAttributeArray() {
@@ -103,6 +100,7 @@ public class CITAddController extends Controller implements Initializable {
 
     /**
      * cancels.
+     *
      * @param actionEvent
      */
     @FXML
@@ -119,7 +117,7 @@ public class CITAddController extends Controller implements Initializable {
         stClose.close();
     }
 
-     /**
+    /**
      * shows an Error.
      */
     private void showError(String errorMessage) {

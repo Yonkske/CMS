@@ -52,8 +52,8 @@ public class CIRViewController extends MainCirPopupsController {
             stClose.close();
 
         }
-        //Fixme: Error Handling
             catch (IOException e) {
+            // only happens if the resources couldn't be loaded -> won't happen
             e.printStackTrace();
         }
     }
@@ -65,8 +65,8 @@ public class CIRViewController extends MainCirPopupsController {
         try {
             openPopUpNotification(cir);
         }
-        //Fixme: Error Handling
         catch (IOException throwables) {
+            // only happens if the resources couldn't be loaded -> won't happen
             throwables.printStackTrace();
         }
     }
